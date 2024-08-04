@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<router-outlet />
+
+<div
+  *ngIf="!hideMessage"
+  style="
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #46464d;
+    z-index: 5;
+    font-size: 1rem;
+  "
+>
+  Wuh Oh... You dont want to see back here.
+</div>

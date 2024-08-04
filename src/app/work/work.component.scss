@@ -1,0 +1,110 @@
+#work-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 35rem;
+  background-color: white;
+  z-index: 20;
+  gap: 1.5rem;
+
+  span {
+    font-size: 10rem;
+    font-weight: 400;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+#work-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  z-index: 20;
+  position: relative;
+  border-radius: 0 0 50px 50px;
+
+  #table-header {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+
+    span {
+      color: #c6c6c6;
+      font-weight: 300;
+      font-size: 0.7rem;
+    }
+  }
+
+  #table-row {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+
+    span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      width: 25%;
+    }
+
+    .project-name {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+
+  .table-row-wrapper {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #e4e4e4;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+}
+
+button {
+  background-color: white;
+  border: 1px solid #c3c3c3;
+  border-radius: 10rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem 0;
+
+  app-svg-icon {
+    height: 1rem;
+    width: 1rem;
+    background-color: black;
+  }
+
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+.button-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 100px;
+
+  .button-wrapper {
+    height: 3.25rem;
+    width: 9rem;
+    color: #fff;
+    text-align: center;
+  }
+}

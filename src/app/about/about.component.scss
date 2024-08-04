@@ -1,0 +1,233 @@
+#header-image {
+  width: 100%;
+  height: 85vh;
+  object-fit: cover;
+  position: relative;
+  z-index: 10;
+}
+
+#quote-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 11rem 0;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+
+  span {
+    text-align: center;
+
+    &:first-child {
+      font-size: 2rem;
+    }
+
+    &:last-child {
+      font-size: 1rem;
+      color: #969696;
+    }
+  }
+}
+
+#gradient-background {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(white, #e9eaeb);
+  padding: 4rem 0 0 0;
+  position: relative;
+  z-index: 1;
+
+  #about-section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    #about-wrapper {
+      display: flex;
+      margin-left: 10rem;
+      justify-content: center;
+      gap: 4rem;
+
+      #about {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        width: 17rem;
+
+        #about-description {
+          font-size: 0.9rem;
+          line-height: 1.4rem;
+          color: black;
+        }
+
+        #divider-wrapper {
+          position: relative;
+          width: 100%;
+
+          #divider {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 81vw;
+            height: 1px;
+            background-color: #ebebec;
+          }
+        }
+
+        .work-history {
+          display: flex;
+          justify-content: space-between;
+
+          .position-location {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+          }
+
+          .label {
+            font-size: 0.9rem;
+          }
+
+          .accent {
+            font-size: 0.75rem;
+            color: #a8a8a8;
+          }
+        }
+      }
+
+      #about-headshot {
+        z-index: 10;
+        width: 38rem;
+        height: 110vh;
+        object-fit: cover;
+      }
+    }
+  }
+
+  #list-label {
+    font-size: 2.25rem;
+    padding: 7rem 6rem 6rem;
+  }
+
+  #list-wrapper {
+    display: flex;
+    width: calc(100% - 12rem);
+    padding: 0 6rem 8rem;
+    justify-content: space-between;
+    gap: 6rem;
+
+    .list-item {
+      display: flex;
+      flex-direction: column;
+
+      .index {
+        position: relative;
+        font-size: 0.9rem;
+        color: #bcbcbc;
+        padding-bottom: 1rem;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #bcbcbc;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        padding: 2rem 0;
+        color: #1c1d20;
+      }
+
+      .description {
+        font-size: 0.85rem;
+        line-height: 1.5rem;
+        color: #1c1d20;
+      }
+    }
+  }
+}
+
+#accolades-section {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  border-radius: 0 0 40px 40px;
+
+  #accolades-wrapper {
+    display: flex;
+    gap: 5rem;
+    width: 70%;
+    height: 35rem;
+
+    img {
+      height: 100%;
+      width: calc(50% - 3rem);
+      object-fit: cover;
+    }
+
+    #accolades-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: calc(50% - 3rem);
+      padding: 2.5rem 0;
+
+      .accolade {
+        display: flex;
+        flex-direction: column;
+
+        .accolade-header {
+          display: flex;
+          gap: 1.25rem;
+          align-items: center;
+
+          img {
+            height: 3.5rem;
+            width: 3.5rem;
+          }
+
+          .accolade-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+
+            .accolade-title {
+              font-size: 0.9rem;
+              font-weight: 500;
+              color: black;
+            }
+
+            .accolade-expiration {
+              font-size: 0.6rem;
+              font-weight: 400;
+              color: #bcbcbc;
+            }
+          }
+        }
+
+        .accolade-description {
+          color: #343434;
+          font-size: 0.65rem;
+          margin-left: 4.75rem;
+        }
+
+        .divider {
+          width: 100%;
+          height: 1px;
+          background-color: #d5d5d5;
+        }
+      }
+    }
+  }
+}

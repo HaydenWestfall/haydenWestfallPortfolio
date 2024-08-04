@@ -1,0 +1,68 @@
+<img id="header-image" src="../../assets/about-header.png" />
+
+<div id="quote-wrapper">
+  <span id="quote">
+    An idiot admires complexity,<br />
+    a genius admires simplicity
+  </span>
+  <span id="author">- Terry Davis</span>
+</div>
+
+<div id="gradient-background">
+  <div id="about-section">
+    <div id="about-wrapper">
+      <div id="about">
+        <span id="about-description">
+          A dedicated and goal-oriented software engineer with 6+ years of
+          experience in commercial application development. At Northrop Grumman,
+          I played a key role.
+        </span>
+        <div id="divider-wrapper">
+          <div id="divider"></div>
+        </div>
+        <div class="work-history" *ngFor="let history of workHistory">
+          <div class="position-location">
+            <span class="label">{{ history.position }}</span>
+            <span class="accent">{{ history.location }}</span>
+          </div>
+          <span class="label">{{ history.timeframe }}</span>
+        </div>
+      </div>
+      <img
+        src="../../assets/about-headshot.png"
+        alt="Hayden Headshot"
+        id="about-headshot"
+      />
+    </div>
+  </div>
+
+  <span id="list-label">What can I do for you...</span>
+
+  <div id="list-wrapper">
+    <div class="list-item" *ngFor="let item of listItems; let index = index">
+      <div class="index">0{{ index + 1 }}</div>
+      <div class="divider"></div>
+      <label class="title">{{ item.title }}</label>
+      <p class="description">{{ item.description }}</p>
+    </div>
+  </div>
+</div>
+
+<div id="accolades-section">
+  <div id="accolades-wrapper">
+    <img src="../../assets/about-computer.png" />
+    <div id="accolades-list">
+      <div class="accolade" *ngFor="let accolade of accolades">
+        <div class="accolade-header">
+          <img *ngIf="!accolade.divider" alt="Test" [src]="accolade.image" />
+          <div *ngIf="!accolade.divider" class="accolade-info">
+            <span class="accolade-title">{{ accolade.title }}</span>
+            <span class="accolade-expiration">{{ accolade.expiration }}</span>
+          </div>
+        </div>
+        <span class="accolade-description">{{ accolade.description }}</span>
+        <div *ngIf="accolade.divider" class="divider"></div>
+      </div>
+    </div>
+  </div>
+</div>

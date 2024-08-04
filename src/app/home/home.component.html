@@ -1,0 +1,172 @@
+<div id="page-wrapper">
+  <section id="hero-section">
+    <img src="../../assets/homepage.png" />
+    <span id="name">
+      {{ name }}
+    </span>
+    <app-svg-icon
+      [path]="'assets/icons/angle_accent.svg'"
+      class="angle left"
+    ></app-svg-icon>
+    <app-svg-icon
+      [path]="'assets/icons/angle_accent.svg'"
+      class="angle right"
+    ></app-svg-icon>
+    <div id="roles">
+      <span>FULL STACK DEVELOPER</span><br />
+      <span>PRODUCT DESIGNER</span><br />
+      <span>UI / UX</span><br />
+      <span>FREELANCE DEV + DESIGN</span>
+    </div>
+    <div class="round-button">
+      <div class="button">
+        Contact
+        <app-svg-icon
+          [path]="'assets/icons/link-arrow.svg'"
+          class="md dark"
+        ></app-svg-icon>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="flex-center">
+    <img src="../../assets/logo_bg.png" />
+    <span id="about-header">
+      A DEDICATED AND GOAL-ORIENTED SOFTWARE ENGINEER WITH 6+ YEARS OF
+      EXPERIENCE IN COMMERCIAL APPLICATION + FREELANCE.
+    </span>
+    <!-- <div id="about-footer">
+      <div id="ticker-wrapper">
+        <div id="ticker">
+          <span id="ticker-value" class="animate-in">4</span>
+        </div>
+        <span id="ticker-label">Lead Designer</span>
+      </div>
+      <div id="action-wrapper">
+        <span id="about-snippet">
+          Every detail matters from pixel perfect UIs to efficient backends
+        </span>
+        <a routerLink="/about" class="hds-btn dark md">
+          About Me
+          <app-svg-icon
+            [path]="'assets/icons/link-arrow.svg'"
+            class="sm dark"
+          ></app-svg-icon>
+        </a>
+      </div>
+    </div> -->
+
+    <div class="round-button" style="z-index: 1000" id="about-btn">
+      <a routerLink="/about" class="hds-btn dark md button">
+        About Me
+        <app-svg-icon
+          [path]="'assets/icons/link-arrow.svg'"
+          class="sm dark"
+        ></app-svg-icon>
+      </a>
+    </div>
+  </section>
+
+  <section id="work-section">
+    <div id="work">
+      <div id="showcase">
+        <div
+          class="focused-project"
+          *ngFor="let project of featuredProjects; let index = index"
+          [ngClass]="{ focus: index === hoverIndex }"
+          [attr.id]="'showcase-' + index"
+        >
+          <img
+            [src]="project.showcase"
+            [ngStyle]="{
+              transform: index === hoverIndex ? 'scale(1)' : 'scale(1.4)'
+            }"
+          />
+        </div>
+      </div>
+      <div id="featured-projects">
+        <div
+          class="project-wrapper"
+          *ngFor="let project of featuredProjects; let index = index"
+          (mouseenter)="hoverIndex = index"
+          (mouseleave)="deactivateAnimation(hoverIndex); hoverIndex = null"
+        >
+          <div
+            class="project"
+            [ngClass]="{
+              hovering: hoverIndex === index,
+              'not-hovering': hoverIndex !== index && hoverIndex != null
+            }"
+          >
+            <span class="title">{{ project.label }}</span>
+
+            <div class="project-role">
+              <span>{{ project.role }}</span>
+              <a [href]="project.link">
+                <app-svg-icon
+                  [path]="'assets/icons/link-arrow.svg'"
+                  class="lg light"
+                ></app-svg-icon>
+              </a>
+            </div>
+          </div>
+          <div class="row-hover" *ngIf="project.hover">
+            <div class="marquee-wrapper">
+              <div
+                *ngFor="let i of [].constructor(20); let index = index"
+                class="marquee-item"
+              >
+                {{ project.label }}
+                <app-svg-icon
+                  [path]="'assets/icons/link-arrow.svg'"
+                ></app-svg-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <a routerLink="/work" class="hds-btn lg white">
+      More Projects
+      <app-svg-icon
+        [path]="'assets/icons/link-arrow.svg'"
+        class="lg light"
+      ></app-svg-icon
+    ></a> -->
+
+    <div class="button-container" appParallaxButton>
+      <div class="button-wrapper" id="button2">
+        <button>
+          More Projects (11)
+          <app-svg-icon
+            [path]="'assets/icons/link-arrow.svg'"
+            class="lg light"
+          ></app-svg-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="flex-center">
+    <div class="portfolio-wrapper" id="portfolio1">
+      <div
+        class="portfolio-item flex-center"
+        *ngFor="let item of portfolio1"
+        [ngStyle]="{ 'background-color': item.bg }"
+      >
+        <img [src]="item.img" />
+      </div>
+    </div>
+    <div class="portfolio-wrapper" id="portfolio2">
+      <div
+        class="portfolio-item flex-center"
+        *ngFor="let item of portfolio2"
+        [ngStyle]="{ 'background-color': item.bg }"
+      >
+        <img [src]="item.img" />
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

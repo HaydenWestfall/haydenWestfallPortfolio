@@ -1,0 +1,82 @@
+{
+  "hash": "db5ecb67",
+  "configHash": "13238cb7",
+  "lockfileHash": "10283e76",
+  "browserHash": "ba8f32f3",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "11f20a15",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "d702763e",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "45976758",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "1b152d5f",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "7d044824",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "cb87f008",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../../../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "593abe30",
+      "needsInterop": false
+    },
+    "gsap/Draggable": {
+      "src": "../../../../../node_modules/gsap/Draggable.js",
+      "file": "gsap_Draggable.js",
+      "fileHash": "d010434e",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../../../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "85c6d4f3",
+      "needsInterop": false
+    },
+    "lenis": {
+      "src": "../../../../../node_modules/lenis/dist/lenis.mjs",
+      "file": "lenis.js",
+      "fileHash": "0adacc6d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-F25MQA4J": {
+      "file": "chunk-F25MQA4J.js"
+    },
+    "chunk-7FEYTJH5": {
+      "file": "chunk-7FEYTJH5.js"
+    },
+    "chunk-DUOTECYH": {
+      "file": "chunk-DUOTECYH.js"
+    },
+    "chunk-J4B6MK7R": {
+      "file": "chunk-J4B6MK7R.js"
+    }
+  }
+}
