@@ -1,41 +1,42 @@
-<div class="footer-reveal" *ngIf="hideFooter">
-  <footer>
-    <div id="header">
-      <a id="logo" routerLink="/">//\/\/\</a>
-      <div id="tagline">
-        <span>Interested in working together?</span><br />
-        <span>Lets make something your customers wont forget</span>
-      </div>
-    </div>
-    <div id="contact-wrapper">
-      <button>
-        Lets Talk
-        <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-      </button>
-    </div>
-    <div id="link-coordinate-wrapper">
-      <div id="link-wrapper">
-        <div class="link" *ngFor="let link of links">
-          <a [href]="link.link">{{ link.label }}</a>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
+<footer id="reveal">
+  <div id="header">
+    <div class="category-wrapper">
+      <div *ngFor="let item of footerCategories; let index = index" class="footer-category">
+        <span class="category-index">0{{ index + 1 }}/</span>
+        <div class="footer-links">
+          <div class="link-header">{{ item.label }}</div>
+          <ng-container *ngIf="item.type === 'routerLinks'">
+            <a *ngFor="let link of item.links" class="link rolling-btn" [routerLink]="link.link">
+              <span [attr.data-hover]="link.label">{{ link.label }}</span>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="item.type === 'external-links'">
+            <a *ngFor="let link of item.links" class="link rolling-btn" [href]="link.link" target="_blank">
+              <span [attr.data-hover]="link.label">{{ link.label }}</span>
+            </a>
+          </ng-container>
         </div>
       </div>
-      <div id="coordinates">
-        <span>Remote from Dayton</span>
-        <span>39.7589° N, 84.1916° W</span>
-      </div>
     </div>
+  </div>
 
-    <div id="credits">
-      <div class="accent-row">
-        <span style="color: #8f8f97">Website Designed and Implemented by:</span>
-        <span style="color: #8f8f97">Portfolio 2024 version 1.0.15</span>
-      </div>
-      <div id="big-name">HAYDEN WESTFALL</div>
-      <div class="accent-row">
-        <span>REMOTE FROM DAYTON -- 41° 31' 55.38'' N / 37' 8.5872'' W</span>
-        <span>BACK TO TOP</span>
-      </div>
+  <a id="contact-btn-footer" class="circle-button light" routerLink="/about" appParallaxButton>
+    <div id="contact-btn-footer-text" style="z-index: 10">
+      LETS TALK
+      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
     </div>
-  </footer>
-</div>
+  </a>
+  <div class="accent"></div>
+
+  <div id="credits">
+    <div class="accent-row">
+      <span style="color: #8f8f97">Website Designed and Implemented by:</span>
+      <span style="color: #8f8f97">Portfolio 2024 version 1.0.15</span>
+    </div>
+    <div id="big-name">HAYDEN WESTFALL</div>
+    <div class="accent-row">
+      <span>REMOTE FROM DAYTON -- 41° 31' 55.38'' N / 37' 8.5872'' W</span>
+      <span>BACK TO TOP</span>
+    </div>
+  </div>
+</footer>

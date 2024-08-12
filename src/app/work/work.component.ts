@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { gsap, Power2 } from "gsap";
+import { ThemeService } from "../theme.service";
 
 @Component({
   selector: "app-work",
@@ -7,6 +8,8 @@ import { gsap, Power2 } from "gsap";
   styleUrl: "./work.component.scss",
 })
 export class WorkComponent implements OnInit {
+  themeService = inject(ThemeService);
+
   projects = [
     {
       name: "Trade Shark",
@@ -78,13 +81,12 @@ export class WorkComponent implements OnInit {
   active = false;
 
   ngOnInit() {
+    this.themeService.theme = "dark";
     this.shownProjects = JSON.parse(JSON.stringify(this.projects));
   }
 
   filterProjects(filter: any): void {
-    this.shownProjects = this.projects.filter((x) =>
-      filter === "all" ? x : x.position === filter
-    );
+    this.shownProjects = this.projects.filter((x) => (filter === "all" ? x : x.position === filter));
   }
 
   mouseEnter(event: any): void {
@@ -108,11 +110,7 @@ export class WorkComponent implements OnInit {
   mouseMove(event: any): void {
     // parallaxCursor(e, this, 3);
     const element: HTMLElement = event.target as HTMLElement;
-    this.callParallax(
-      event,
-      event.currentTarget,
-      event.currentTarget.children[0].id
-    );
+    this.callParallax(event, event.currentTarget, event.currentTarget.children[0].id);
   }
 
   callParallax(e: any, parent: any, attributeId: string): void {

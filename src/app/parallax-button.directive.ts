@@ -9,13 +9,12 @@ export class ParallaxButtonDirective {
 
   @HostListener("mouseenter", ["$event"])
   mouseEnter(event: any): void {
-    console.log("test");
-    gsap.to(event.srcElement, 0.3, { scale: 1.05 });
+    gsap.to(event.srcElement, 0.3, { scale: 1.15 });
   }
 
   @HostListener("mouseleave", ["$event"])
   mouseLeave(event: any): void {
-    gsap.to(parent, 0.3, { scale: 1 });
+    gsap.to(event.srcElement, 0.3, { scale: 1 });
     const element: HTMLElement = event.target as HTMLElement;
     gsap.to(document.getElementById(element.children[0].id), 0.3, {
       x: 0,
@@ -26,15 +25,11 @@ export class ParallaxButtonDirective {
   @HostListener("mousemove", ["$event"])
   mouseMove(event: any): void {
     // parallaxCursor(e, this, 3);
-    this.callParallax(
-      event,
-      event.currentTarget,
-      event.currentTarget.children[0].id
-    );
+    this.callParallax(event, event.currentTarget, event.currentTarget.children[0].id);
   }
 
   callParallax(e: any, parent: any, attributeId: string): void {
-    this.parallaxIt(e, parent, document.getElementById(attributeId), 10);
+    this.parallaxIt(e, parent, document.getElementById(attributeId), 35);
   }
 
   parallaxIt(e: any, parent: any, target: any, movement: any): void {

@@ -3,8 +3,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.25vw;
   line-height: 1.15;
 }
@@ -173,7 +173,8 @@ app-svg-icon {
     text-align: center;
   }
 
-  button {
+  button,
+  a {
     background-color: white;
     border: 1px solid #c3c3c3;
     border-radius: 10rem;
@@ -186,6 +187,7 @@ app-svg-icon {
     gap: 0.5rem;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 
     app-svg-icon {
       height: 1rem;
@@ -196,5 +198,145 @@ app-svg-icon {
     &:hover {
       border: 1px solid black;
     }
+  }
+}
+
+.circle-button {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.25rem;
+  height: 9rem;
+  width: 9rem;
+  text-decoration: none;
+  z-index: 10;
+
+  &.translucent {
+    background-color: rgba(255, 255, 255, 0.151);
+    backdrop-filter: blur(5px);
+
+    &:hover {
+      background-color: white;
+      color: black;
+
+      &::before {
+        animation: rotate 20s linear infinite;
+      }
+
+      app-svg-icon {
+        background-color: black;
+      }
+    }
+
+    &::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='1000' ry='1000' stroke='white' stroke-width='1' stroke-dasharray='9' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
+  }
+
+  &.light {
+    background-color: #ffffff;
+    color: black;
+
+    &:hover {
+      background-color: #dddddd;
+
+      &::before {
+        animation: rotate 20s linear infinite;
+      }
+    }
+
+    app-svg-icon {
+      background-color: black;
+    }
+
+    &::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='1000' ry='1000' stroke='white' stroke-width='1' stroke-dasharray='9' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
+  }
+
+  &.dark {
+    background-color: #1d1d20;
+
+    &:hover {
+      background-color: #f1f1f1;
+      color: black;
+
+      &::before {
+        animation: rotate 20s linear infinite;
+      }
+
+      app-svg-icon {
+        background-color: black;
+      }
+    }
+
+    &::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='1000' ry='1000' stroke='black' stroke-width='1' stroke-dasharray='9' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    height: calc(100% + 2rem);
+    width: calc(100% + 2rem);
+    transition: transform 1s;
+  }
+
+  div {
+    display: flex;
+    gap: 0.25rem;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rolling-btn {
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  float: left;
+
+  span {
+    position: relative;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.4s;
+  }
+
+  span::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    content: attr(data-hover);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  &:hover span {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
   }
 }

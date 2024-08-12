@@ -28,62 +28,9 @@ a {
 
     a {
       font-size: 1rem;
-      overflow: hidden;
-      text-align: left;
-      cursor: pointer;
-      float: left;
-
-      span {
-        position: relative;
-        display: inline-block;
-        -webkit-transition: -webkit-transform 0.2s;
-        transition: transform 0.4s;
-      }
-
-      span::before {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        content: attr(data-hover);
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-
-      &:hover span {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-      }
+      font-family: "Open Sans", sans-serif;
+      font-style: italic;
+      font-weight: 600;
     }
-  }
-}
-
-.button-text {
-  font-weight: 600;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  line-height: 60px;
-  overflow: hidden;
-  width: 140px;
-  color: #fff;
-  text-align: left;
-  cursor: pointer;
-  float: left;
-
-  span {
-    position: relative;
-    display: inline-block;
-    -webkit-transition: -webkit-transform 0.2s;
-    transition: transform 0.2s;
-    width: 140px;
-  }
-
-  span::before {
-    position: absolute;
-    width: 140px;
-    top: 100%;
-    left: 0;
-    content: attr(data-hover);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
   }
 }

@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
-<router-outlet />
+
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 
 <div
   *ngIf="!hideMessage"
@@ -14,4 +17,12 @@
   "
 >
   Wuh Oh... You dont want to see back here.
+</div>
+
+<!-- <button (click)="animateAccent()" style="position: absolute; top: 10rem; z-index: 20000">test</button> -->
+
+<div @coverAnimation *ngIf="showCover" (animationDone)="onCoverAnimationDone()" class="cover-container">
+  <span id="accent1" class="text-accent top">{{ newRouteName }}</span>
+  <span class="route-text">{{ newRouteName }}</span>
+  <span id="accent2" class="text-accent bottom">{{ newRouteName }}</span>
 </div>

@@ -1,12 +1,16 @@
 import {
+  AfterViewChecked,
+  AfterViewInit,
   Component,
+  ElementRef,
   HostListener,
   inject,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from "@angular/core";
 import { ThemeService } from "../theme.service";
-import { gsap, Power2 } from "gsap";
+import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -15,11 +19,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.scss",
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
 
-  name =
-    "HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- ";
+  name = "HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- ";
 
   featuredProjects = [
     {
@@ -54,11 +57,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   portfolio1 = [
     {
-      img: "../../assets/home_projects/maddie_west_journal.png",
+      img: "/assets/home_projects/maddie_west_journal.png",
       bg: "#E2DED7",
     },
     {
-      img: "../../assets/home_projects/Business card front.png",
+      img: "/assets/home_projects/Business card front.png",
       bg: "#ECEDF0",
     },
     { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
@@ -78,131 +81,115 @@ export class HomeComponent implements OnInit, OnDestroy {
     { value: "6", label: "Years experience" },
     { value: "3", label: "Certifications" },
   ];
-  currentTicker = 0;
-  private intervalId: any;
 
   lastScrollTop = 0;
-  duration = 12;
+  scrollTimeout = null as any;
+  hoverIndex: number | null = null;
 
-  private tween: gsap.core.Tween = null as any;
-  private scrollTimeout: any;
-
-  timeoutId = null as any;
-
+  animations: gsap.core.Tween[] = [];
+  private bigNameTween: gsap.core.Tween = null as any;
   rewindtween: gsap.core.Tween = null as any;
   forwardtween: gsap.core.Tween = null as any;
 
-  hoverIndex: number | null = null;
-
-  ngOnInit(): void {
-    this.themeService.theme = "light";
-    //this.startInterval();
-
+  constructor() {
     gsap.registerPlugin(ScrollTrigger, Draggable);
+  }
 
-    const scrollText = document.querySelector("#name") as any;
-    const textWidth = scrollText!.offsetWidth;
-    const containerWidth = window.innerWidth;
-
-    this.tween = gsap.to("#name", {
+  ngAfterViewInit(): void {
+    this.themeService.theme = "light";
+    this.bigNameTween = gsap.to("#name", {
       x: "25%",
-      duration: this.duration, // Adjust the duration as needed
+      duration: 12,
       repeat: -1,
       ease: "none",
     });
 
-    // const test = gsap.fromTo(
-    //   "#about-btn",
-    //   { y: 60, opacity: 0 },
-    //   {
-    //     y: 0, // End position,
-    //     opacity: 1,
-    //     duration: 0.6, // Duration of 1 second
-    //     ease: "power1.out", // Ease function
-    //     scrollTrigger: {
-    //       trigger: "#about-btn", // Element that triggers the animation
-    //       start: "top bottom", // Start the animation when the top of the trigger element is at 80% of the viewport height
-    //       end: "bottom top",
-    //     },
-    //   }
-    // );
+    this.animations.push(this.bigNameTween);
+    this.animations.push(this.themeService.setupTranslateAnimation("#contact-btn", 0, 0, -200, 0));
+    this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
+    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
+    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
 
-    // test.from("#about-btn", { y: 30, opacity: 0 });
-
-    const element = document.getElementById("about-btn");
-    const portfolio1 = document.getElementById("portfolio1");
-    const portfolio2 = document.getElementById("portfolio2");
-
-    // const scrollBox = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: element,
-    //     pin: true,
-    //     start: "top bottom",
-    //     end: "bottom top",
-    //     markers: true,
-    //     toggleActions: "play none none reverse",
-    //   },
-    // });
-    // scrollBox.from(element, { y: 30, opacity: 0 });
-
-    gsap.fromTo(
-      element,
-      { y: 250 },
-      {
-        y: 0, // End position,
-        ease: "power1.out", // Ease function
-        scrollTrigger: {
-          trigger: element, // Element that triggers the animation
-          start: "top bottom", // Start the animation when the top of the trigger element is at 80% of the viewport height
-          scrub: true,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      portfolio1,
-      { x: -300 },
-      {
-        x: -100, // End position,
-        scrollTrigger: {
-          trigger: portfolio1, // Element that triggers the animation
-          start: "top bottom", // Start the animation when the top of the trigger element is at 80% of the viewport height
-          scrub: true,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      portfolio2,
-      { x: -100 },
-      {
-        x: -300, // End position,
-        scrollTrigger: {
-          trigger: portfolio2, // Element that triggers the animation
-          start: "top bottom", // Start the animation when the top of the trigger element is at 80% of the viewport height
-          scrub: true,
-        },
-      }
-    );
-
-    setInterval(() => {
-      console.log(this.tween.time());
-    }, 1000);
+    gsap.to("#contact-btn", {
+      scrollTrigger: {
+        trigger: "#contact-btn",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        onUpdate: this.updateRotation,
+      },
+    });
   }
 
-  ngOnDestroy(): void {
-    this.clearInterval();
+  updateRotation() {
+    const scrollPosition = window.scrollY;
+    const rotationDegree = scrollPosition % 360; // Calculate rotation degree based on scroll position
+    document.documentElement.style.setProperty("--rotation-degree", rotationDegree + "deg");
   }
+
+  @HostListener("window:scroll", ["$event"])
+  onWindowScroll(event: any): void {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    let scrollDiff = Math.abs(scrollTop - this.lastScrollTop);
+    scrollDiff = scrollDiff > 100 ? 100 : scrollDiff;
+    const animationSpeed = 20 * (scrollDiff / 100);
+
+    if (scrollTop > this.lastScrollTop) {
+      if (this.forwardtween) {
+        this.forwardtween.kill();
+      }
+
+      const rewindDuration = 1 * (scrollDiff / 100);
+      const newTime = this.bigNameTween.time() - rewindDuration;
+      this.bigNameTween.seek(newTime);
+
+      this.rewindtween = gsap.to(this.bigNameTween, {
+        time: newTime,
+        duration: 0.4,
+      });
+    } else {
+      if (this.rewindtween) {
+        this.rewindtween.kill();
+      }
+
+      this.forwardtween = gsap.to(this.bigNameTween, {
+        timeScale: scrollTop ? 1 + animationSpeed : 1,
+        duration: 0.75,
+      });
+    }
+
+    // After a backoff, reset the animation back to its original speed
+    clearTimeout(this.scrollTimeout);
+    this.scrollTimeout = setTimeout(() => this.resetAnimation());
+
+    // Save the current scroll position
+    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }
+
+  // @HostListener("document:mousemove", ["$event"])
+  // onMouseMove(event: MouseEvent) {
+  //   this.pointArrowAtCursor(event.clientX, event.clientY);
+  // }
+
+  // pointArrowAtCursor(cursorX: number, cursorY: number) {
+  //   const arrowElement = document.getElementById("pointer");
+  //   // const arrowElement = arrow.nativeElement;
+  //   const arrowRect = arrowElement!.getBoundingClientRect();
+  //   const arrowX = arrowRect.left + arrowRect.width / 2;
+  //   const arrowY = arrowRect.top + arrowRect.height / 2;
+
+  //   const angle = Math.atan2(cursorY - arrowY, cursorX - arrowX) * (180 / Math.PI);
+  //   arrowElement!.style.transform = `rotate(${angle + 45}deg)`;
+  // }
 
   resetAnimation() {
-    console.log("resetting");
-    gsap.to(this.tween, {
+    gsap.to(this.bigNameTween, {
       timeScale: 1,
       duration: 0.75,
     });
   }
 
-  deactivateAnimation(index: number | null) {
+  deactivateShowcase(index: number | null) {
     const element = document.getElementById("showcase-" + index!);
     element?.classList.add("deactivate");
     setTimeout(() => {
@@ -210,164 +197,5 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 600);
   }
 
-  @HostListener("window:scroll", ["$event"])
-  onWindowScroll(event: Event): void {
-    clearTimeout(this.scrollTimeout);
-    const scrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
-
-    let scrollDiff = Math.abs(scrollTop - this.lastScrollTop);
-    scrollDiff = scrollDiff > 100 ? 100 : scrollDiff;
-
-    const speed = 20 * (scrollDiff / 100);
-
-    // console.log(scrollTop);
-    // console.log(this.lastScrollTop);
-    // console.log(1 + speed);
-    // this.tween.timeScale(scrollTop ? 1 + speed : 1); // Increase speed when scrolling
-
-    const currentProgress = this.tween.time() / this.duration;
-    if (scrollTop > this.lastScrollTop) {
-      if (this.forwardtween) {
-        this.forwardtween.kill();
-      }
-
-      // Get the current time of the animation
-      const currentTime = this.tween.time();
-
-      let testRewindSpeed = 1 * (scrollDiff / 100);
-
-      //console.log(currentTime);=
-      // Calculate the new time by subtracting the specified seconds
-      const newTime = currentTime - testRewindSpeed; // Ensure time doesn't go below 0
-
-      // Seek to the new time
-      this.tween.seek(newTime);
-
-      this.rewindtween = gsap.to(this.tween, {
-        time: newTime,
-        duration: 0.4,
-      });
-
-      // gsap.to(this.tween, {
-      //   timeScale: scrollTop ? 1 + speed : 1,
-      //   duration: 0.75,
-      // });
-    } else {
-      if (this.rewindtween) {
-        this.rewindtween.kill();
-      }
-
-      this.forwardtween = gsap.to(this.tween, {
-        timeScale: scrollTop ? 1 + speed : 1,
-        duration: 0.75,
-      });
-    }
-
-    clearTimeout(this.timeoutId);
-
-    // Set a new timeout to reset the animation after 3 seconds of inactivity
-    this.timeoutId = setTimeout(() => this.resetAnimation());
-
-    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-
-    // this.scrollTimeout = setTimeout(() => {
-    //   this.tween.timeScale(1); // Reset speed after scrolling stops
-    // }, 200);
-    // console.log(this.lastScrollTop);
-    // const scrollTop =
-    //   window.pageYOffset ||
-    //   document.documentElement.scrollTop ||
-    //   document.body.scrollTop ||
-    //   0;
-    // const scrollText = document.querySelector("#name") as HTMLElement;
-    // const textWidth = scrollText!.offsetWidth;
-    // const containerWidth = window.innerWidth;
-    // const style = window.getComputedStyle(scrollText);
-    // const matrix = style.transform || style.webkitTransform;
-    // const matrixValues = matrix.match(/matrix.*\((.+)\)/);
-    // let x = 0;
-    // let y = 0;
-    // if (matrixValues) {
-    //   const values = matrixValues[1].split(", ").map(parseFloat);
-    //   // Check for 3D transformation matrix
-    //   if (values.length === 16) {
-    //     x = values[12];
-    //     console.log({
-    //       x: values[12],
-    //       y: values[13],
-    //       z: values[14],
-    //     });
-    //   }
-    //   // Check for 2D transformation matrix (in case translate3d is not used)
-    //   else if (values.length === 6) {
-    //     x = values[4];
-    //     console.log({
-    //       x: values[4],
-    //       y: values[5],
-    //       z: 0,
-    //     });
-    //   }
-    // }
-    // scrollText.style.transform = `translate3d(${x - 100}px, 0px, 0px)`;
-    // gsap.to("#name", {
-    //   x: x - 50,
-    //   duration: 20, // Adjust the duration as needed
-    //   ease: "none",
-    // });
-    // if (scrollTop > this.lastScrollTop) {
-    //   const test = gsap.to("#name", {
-    //     x: "-50%",
-    //     duration: this.duration, // Adjust the duration as needed
-    //     repeat: -1,
-    //     ease: "none",
-    //   });
-    // } else {
-    //   gsap.to("#name", {
-    //     x: "-50%",
-    //     duration: this.duration, // Adjust the duration as needed
-    //     repeat: -1,
-    //     ease: "none",
-    //   });
-    // }
-    // this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-  }
-
-  startInterval(): void {
-    this.intervalId = setInterval(() => {
-      this.animateTicker();
-    }, 5000); // 2000 milliseconds = 2 seconds
-  }
-
-  clearInterval(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
-
-  animateTicker(): void {
-    this.currentTicker++;
-    if (this.currentTicker > 3) {
-      this.currentTicker = 0;
-    }
-
-    const test = document.getElementById("ticker-value");
-    const test2 = document.getElementById("ticker-label");
-    test?.classList.remove("animate-in");
-    test?.classList.add("animate-out");
-    test2?.classList.remove("animate-in");
-    test2?.classList.add("animate-out");
-
-    setTimeout(() => {
-      test!.innerText = this.ticker[this.currentTicker].value;
-      test2!.innerText = this.ticker[this.currentTicker].label;
-      test?.classList.remove("animate-out");
-      test?.classList.add("animate-in");
-      test2?.classList.remove("animate-out");
-      test2?.classList.add("animate-in");
-    }, 500);
-  }
+  ngOnDestroy(): void {}
 }

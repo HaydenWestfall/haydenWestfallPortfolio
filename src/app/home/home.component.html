@@ -1,75 +1,44 @@
 <div id="page-wrapper">
   <section id="hero-section">
-    <img src="../../assets/homepage.png" />
+    <img id="bg" src="../../assets/homepage_2.png" />
+    <img id="fg" src="../../assets/homepage_overlay.png" />
     <span id="name">
       {{ name }}
     </span>
-    <app-svg-icon
-      [path]="'assets/icons/angle_accent.svg'"
-      class="angle left"
-    ></app-svg-icon>
-    <app-svg-icon
-      [path]="'assets/icons/angle_accent.svg'"
-      class="angle right"
-    ></app-svg-icon>
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
     <div id="roles">
       <span>FULL STACK DEVELOPER</span><br />
       <span>PRODUCT DESIGNER</span><br />
       <span>UI / UX</span><br />
       <span>FREELANCE DEV + DESIGN</span>
     </div>
-    <div class="round-button">
-      <div class="button">
+    <a class="circle-button translucent" id="contact-btn" appParallaxButton routerLink="/contact">
+      <div id="contact-btn-text">
         Contact
-        <app-svg-icon
-          [path]="'assets/icons/link-arrow.svg'"
-          class="md dark"
-        ></app-svg-icon>
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
       </div>
-    </div>
+    </a>
   </section>
 
   <section id="about" class="flex-center">
-    <img src="../../assets/logo_bg.png" />
-    <span id="about-header">
-      A DEDICATED AND GOAL-ORIENTED SOFTWARE ENGINEER WITH 6+ YEARS OF
-      EXPERIENCE IN COMMERCIAL APPLICATION + FREELANCE.
-    </span>
-    <!-- <div id="about-footer">
-      <div id="ticker-wrapper">
-        <div id="ticker">
-          <span id="ticker-value" class="animate-in">4</span>
-        </div>
-        <span id="ticker-label">Lead Designer</span>
-      </div>
-      <div id="action-wrapper">
-        <span id="about-snippet">
-          Every detail matters from pixel perfect UIs to efficient backends
-        </span>
-        <a routerLink="/about" class="hds-btn dark md">
-          About Me
-          <app-svg-icon
-            [path]="'assets/icons/link-arrow.svg'"
-            class="sm dark"
-          ></app-svg-icon>
-        </a>
-      </div>
-    </div> -->
+    <img src="../../assets/logo_bg.png" alt="logo-watermark" />
+    <p id="about-header">
+      A DEDICATED AND GOAL-ORIENTED SOFTWARE ENGINEER WITH 6+ YEARS OF EXPERIENCE IN COMMERCIAL APPLICATION + FREELANCE.
+    </p>
 
-    <div class="round-button" style="z-index: 1000" id="about-btn">
-      <a routerLink="/about" class="hds-btn dark md button">
+    <a id="about-btn" routerLink="/about" class="circle-button dark" appParallaxButton>
+      <div id="about-btn-text">
         About Me
-        <app-svg-icon
-          [path]="'assets/icons/link-arrow.svg'"
-          class="sm dark"
-        ></app-svg-icon>
-      </a>
-    </div>
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="sm dark"></app-svg-icon>
+      </div>
+    </a>
   </section>
 
   <section id="work-section">
     <div id="work">
       <div id="showcase">
+        <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
         <div
           class="focused-project"
           *ngFor="let project of featuredProjects; let index = index"
@@ -89,7 +58,7 @@
           class="project-wrapper"
           *ngFor="let project of featuredProjects; let index = index"
           (mouseenter)="hoverIndex = index"
-          (mouseleave)="deactivateAnimation(hoverIndex); hoverIndex = null"
+          (mouseleave)="deactivateShowcase(hoverIndex); hoverIndex = null"
         >
           <div
             class="project"
@@ -103,46 +72,28 @@
             <div class="project-role">
               <span>{{ project.role }}</span>
               <a [href]="project.link">
-                <app-svg-icon
-                  [path]="'assets/icons/link-arrow.svg'"
-                  class="lg light"
-                ></app-svg-icon>
+                <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
               </a>
             </div>
           </div>
           <div class="row-hover" *ngIf="project.hover">
             <div class="marquee-wrapper">
-              <div
-                *ngFor="let i of [].constructor(20); let index = index"
-                class="marquee-item"
-              >
+              <div *ngFor="let i of [].constructor(20); let index = index" class="marquee-item">
                 {{ project.label }}
-                <app-svg-icon
-                  [path]="'assets/icons/link-arrow.svg'"
-                ></app-svg-icon>
+                <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <a routerLink="/work" class="hds-btn lg white">
-      More Projects
-      <app-svg-icon
-        [path]="'assets/icons/link-arrow.svg'"
-        class="lg light"
-      ></app-svg-icon
-    ></a> -->
 
     <div class="button-container" appParallaxButton>
       <div class="button-wrapper" id="button2">
-        <button>
+        <a routerLink="/work">
           More Projects (11)
-          <app-svg-icon
-            [path]="'assets/icons/link-arrow.svg'"
-            class="lg light"
-          ></app-svg-icon>
-        </button>
+          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+        </a>
       </div>
     </div>
   </section>

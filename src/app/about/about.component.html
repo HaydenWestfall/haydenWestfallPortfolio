@@ -1,38 +1,55 @@
-<img id="header-image" src="../../assets/about-header.png" />
+<div id="about-header">
+  <span
+    >SCROLL TO FIND OUT MORE ABOUT ME BEING A <br />
+    <span id="rolling-text">{{ rollingText }}</span>
+    <span id="rolling-text-cursor" class="blink-cursor">|</span>
+  </span>
 
-<div id="quote-wrapper">
+  <div id="circle-text" #circleText></div>
+  <div id="accent-border"></div>
+
+  <div id="rotating-text">
+    <app-svg-icon id="micro-animation" [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
+    <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
+  </div>
+</div>
+
+<!-- <img id="header-image" src="../../assets/about-header.png" /> -->
+
+<!-- <div id="quote-wrapper">
   <span id="quote">
     An idiot admires complexity,<br />
     a genius admires simplicity
   </span>
   <span id="author">- Terry Davis</span>
-</div>
+</div> -->
 
 <div id="gradient-background">
   <div id="about-section">
     <div id="about-wrapper">
       <div id="about">
-        <span id="about-description">
-          A dedicated and goal-oriented software engineer with 6+ years of
-          experience in commercial application development. At Northrop Grumman,
-          I played a key role.
-        </span>
-        <div id="divider-wrapper">
-          <div id="divider"></div>
-        </div>
-        <div class="work-history" *ngFor="let history of workHistory">
-          <div class="position-location">
-            <span class="label">{{ history.position }}</span>
-            <span class="accent">{{ history.location }}</span>
+        <div id="about-text">
+          <span id="about-description">
+            A dedicated and goal-oriented software engineer with 6+ years of experience in commercial application
+            development. At Northrop Grumman, I played a key role.
+          </span>
+          <div id="divider-wrapper">
+            <div id="divider"></div>
           </div>
-          <span class="label">{{ history.timeframe }}</span>
+          <div class="work-history" *ngFor="let history of workHistory">
+            <div class="position-location">
+              <span class="label">{{ history.position }}</span>
+              <span class="accent">{{ history.location }}</span>
+            </div>
+            <span class="label">{{ history.timeframe }}</span>
+          </div>
+          <!-- <a>Download Resume <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon></a> -->
         </div>
       </div>
-      <img
-        src="../../assets/about-headshot.png"
-        alt="Hayden Headshot"
-        id="about-headshot"
-      />
+      <div id="about-headshot-wrapper">
+        <img src="../../assets/hayden_about.png" alt="Hayden Headshot" id="about-headshot" />
+      </div>
+      <app-svg-icon [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
     </div>
   </div>
 
@@ -47,6 +64,54 @@
     </div>
   </div>
 </div>
+
+<div id="technologies-wrapper">
+  <span id="technology-title">TECHNOLOGIES I AM DANGEROUS WITH...</span>
+  <div class="technology-list">
+    <div class="technology" *ngFor="let technology of technologies1">
+      <app-svg-icon [path]="technology.icon"></app-svg-icon>
+      <span>{{ technology.name }}</span>
+    </div>
+  </div>
+  <div style="width: 100%; height: 1px; background-color: black"></div>
+  <div class="technology-list">
+    <div class="technology" *ngFor="let technology of technologies2">
+      <app-svg-icon [path]="technology.icon"></app-svg-icon>
+      <span>{{ technology.name }}</span>
+    </div>
+  </div>
+</div>
+
+<div id="quote-wrapper-2">
+  <div id="quote-image-wrapper">
+    <img id="quote-image" src="../../assets/about_quote.png" />
+    <div id="quote-text">
+      <span class="small">Quote of the Day:</span>
+      <div>
+        <span>AN IDIOT ADMIRES COMPLEXITY,</span><br />
+        <span>A GENIUS ADMIRES SIMPLICITY</span>
+      </div>
+      <!-- <span class="small" style="align-self: flex-end">- Terry Davis</span> -->
+    </div>
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
+  </div>
+</div>
+
+<section id="portfolio" class="flex-center">
+  <div class="portfolio-wrapper" id="portfolio1">
+    <div class="technology-2" *ngFor="let technology of technologies1">
+      <app-svg-icon [path]="technology.icon"></app-svg-icon>
+      <span>{{ technology.name }}</span>
+    </div>
+  </div>
+  <div class="portfolio-wrapper" id="portfolio2">
+    <div class="technology-2" *ngFor="let technology of technologies2">
+      <app-svg-icon [path]="technology.icon"></app-svg-icon>
+      <span>{{ technology.name }}</span>
+    </div>
+  </div>
+</section>
 
 <div id="accolades-section">
   <div id="accolades-wrapper">
@@ -66,3 +131,5 @@
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

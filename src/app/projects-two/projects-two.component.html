@@ -1,0 +1,44 @@
+<section id="project-header-wrapper">
+  <div id="project-header">
+    <span id="header">PROJECTS</span><br />
+    <span
+      >Due to non-disclosure agreements (NDAs) and copyright restrictions, I am unable to showcase all of the designs
+      and projects I have worked on. While the examples presented here highlight my skills and experience, please
+      understand that some of my work is confidential and cannot be publicly shared.</span
+    >
+  </div>
+  <img src="../../assets/code-block.png" />
+</section>
+
+<section id="project-wrapper">
+  <div
+    class="project"
+    *ngFor="let project of featuredProjects; let index = index"
+    appIntersection
+    #intersection="intersection"
+    (isIntersecting)="isIntersecting($event, index)"
+    [isContinuous]="false"
+  >
+    <div class="showcase">
+      <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
+      <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
+        <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />
+      </div>
+    </div>
+    <div class="project-information-wrapper">
+      <div class="project-information-header">
+        <div class="header">
+          <span>{{ project.label }}</span>
+          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+        </div>
+        <span class="description">{{ project.description }}</span>
+      </div>
+      <div class="project-information-footer">
+        <span>{{ project.role }}</span>
+        <span>0{{ index + 1 }}. / 07.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,22 +1,7 @@
-<div
-  class="navbar-wrapper"
-  [ngStyle]="{ color: themeService.theme === 'light' ? 'white' : 'black' }"
->
+<div class="navbar-wrapper" [ngStyle]="{ color: themeService.theme === 'light' ? 'white' : 'black' }">
   <a class="logo" routerLink="/">//\/\/\</a>
   <div id="links">
-    <!-- <a
-      data-hover="Click and Hold"
-      [attr.id]="link.id"
-      *ngFor="let link of navbarLinks"
-      routerLink="{{ link.route }}"
-      (mouseenter)="jumbleLetters(link)"
-      (mouseleave)="resetLabel(link)"
-    > -->
-    <a
-      [attr.id]="link.id"
-      *ngFor="let link of navbarLinks"
-      routerLink="{{ link.route }}"
-    >
+    <a [attr.id]="link.id" *ngFor="let link of navbarLinks" routerLink="{{ link.route }}" class="rolling-btn">
       <span [attr.data-hover]="link.label">{{ link.label }}</span>
     </a>
   </div>

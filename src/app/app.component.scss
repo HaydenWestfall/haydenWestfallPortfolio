@@ -18,3 +18,52 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+.cover-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(32, 32, 32); /* or any color */
+  z-index: 10000; /* Ensure it is on top of other content */
+  overflow: hidden;
+
+  .route-text {
+    font-size: 2rem;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  .text-accent {
+    position: absolute;
+    font-size: 10rem;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(43, 43, 43);
+
+    &.top {
+      // transform: rotate(-90deg);
+      // transform-origin: left top;
+      left: 0;
+      top: 0%;
+      transform-origin: top left;
+      transform: rotate(-90deg);
+    }
+
+    &.bottom {
+      transform: rotate(90deg);
+      // width: 0rem;
+      transform-origin: left bottom;
+      bottom: 0;
+      right: -20.5rem;
+    }
+  }
+}
