@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { ExtraOptions, RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
-import { ContactComponent } from "./contact/contact.component";
-import { ProjectsTwoComponent } from "./projects-two/projects-two.component";
-import { FreelanceComponent } from "./freelance/freelance.component";
+import { HomeComponent } from "../home/home.component";
+import { AboutComponent } from "../about/about.component";
+import { ContactComponent } from "../contact/contact.component";
+import { ProjectsTwoComponent } from "../projects-two/projects-two.component";
+import { FreelanceComponent } from "../freelance/freelance.component";
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: "enabled",

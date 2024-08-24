@@ -2,7 +2,7 @@ import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ThemeService } from "../theme.service";
+import { ThemeService } from "../services/theme.service";
 import { MaddieWestEvents } from "./MaddieWestEvents";
 import { ActivatedRoute } from "@angular/router";
 import { STF } from "./STF";

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
-import { ThemeService } from "../theme.service";
+import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -88,21 +88,23 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.themeService.theme = "light";
-    this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
-    this.animations.push(
-      gsap.to("#contact-btn", {
-        y: -125,
-        scrollTrigger: {
-          trigger: "#contact-btn",
-          start: "top 34%",
-          end: "bottom top",
-          scrub: true,
-        },
-      })
-    );
+    setTimeout(() => {
+      this.themeService.theme = "light";
+      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
+      this.animations.push(
+        gsap.to("#contact-btn", {
+          y: -125,
+          scrollTrigger: {
+            trigger: "#contact-btn",
+            start: "top 34%",
+            end: "bottom top",
+            scrub: true,
+          },
+        })
+      );
+    }, 150);
   }
 
   animate = () => {

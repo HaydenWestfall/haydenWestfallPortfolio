@@ -4,24 +4,7 @@
   <router-outlet #outlet="outlet" (activate)="onActivate()"></router-outlet>
 </div>
 
-<div
-  *ngIf="!hideMessage"
-  style="
-    position: fixed;
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #46464d;
-    z-index: 5;
-    font-size: 1rem;
-  "
->
-  Wuh Oh... You dont want to see back here.
-</div>
-
-<!-- <button (click)="animateAccent()" style="position: absolute; top: 10rem; z-index: 20000">test</button> -->
-
-<div @coverAnimation *ngIf="showCover" (animationDone)="onCoverAnimationDone()" class="cover-container">
+<div @coverAnimation *ngIf="showCover" class="cover-container">
   <span id="accent1" class="text-accent top">{{ newRouteName }}</span>
   <span class="route-text">{{ newRouteName }}</span>
   <span id="accent2" class="text-accent bottom">{{ newRouteName }}</span>

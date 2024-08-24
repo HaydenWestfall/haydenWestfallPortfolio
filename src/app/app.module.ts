@@ -8,13 +8,13 @@ import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { FooterComponent } from "./footer/footer.component";
 import { RouterOutlet } from "@angular/router";
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from "./routing/app-routing.module";
 import { ContactComponent } from "./contact/contact.component";
 import { SvgIconComponent } from "./svg-icon/svg-icon.component";
-import { ParallaxButtonDirective } from "./parallax-button.directive";
+import { ParallaxButtonDirective } from "./directives/parallax-button.directive";
 import { CoverComponent } from "./cover/cover.component";
 import { ProjectsTwoComponent } from "./projects-two/projects-two.component";
-import { IntersectionDirective } from "./intersection.directive";
+import { IntersectionDirective } from "./directives/intersection.directive";
 import { FreelanceComponent } from "./freelance/freelance.component";
 import { ShowcaseComponent } from "./showcase/showcase.component";
 

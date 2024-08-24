@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, inject, OnInit, Renderer2 } from "@angular/core";
-import { ThemeService } from "../theme.service";
+import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";

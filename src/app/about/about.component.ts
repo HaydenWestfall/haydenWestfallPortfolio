@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, inject, OnInit, ViewChild } from "@angular/core";
-import { ThemeService } from "../theme.service";
+import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 @Component({
