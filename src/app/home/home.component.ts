@@ -97,28 +97,31 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.themeService.theme = "light";
-    this.bigNameTween = gsap.to("#name", {
-      x: "25%",
-      duration: 12,
-      repeat: -1,
-      ease: "none",
-    });
 
-    this.animations.push(this.bigNameTween);
-    this.animations.push(this.themeService.setupTranslateAnimation("#contact-btn", 0, 0, -200, 0));
-    this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
+    setTimeout(() => {
+      this.bigNameTween = gsap.to("#name", {
+        x: "25%",
+        duration: 12,
+        repeat: -1,
+        ease: "none",
+      });
 
-    gsap.to("#contact-btn", {
-      scrollTrigger: {
-        trigger: "#contact-btn",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        onUpdate: this.updateRotation,
-      },
-    });
+      this.animations.push(this.bigNameTween);
+      this.animations.push(this.themeService.setupTranslateAnimation("#contact-btn", 0, 0, -200, 0));
+      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
+
+      gsap.to("#contact-btn", {
+        scrollTrigger: {
+          trigger: "#contact-btn",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          onUpdate: this.updateRotation,
+        },
+      });
+    }, 1000);
   }
 
   updateRotation() {
@@ -153,7 +156,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       }
 
       this.forwardtween = gsap.to(this.bigNameTween, {
-        timeScale: scrollTop ? 1 + animationSpeed : 1,
+        // timeScale: scrollTop ? 1 + animationSpeed : 1,
+        timeScale: 1,
         duration: 0.75,
       });
     }

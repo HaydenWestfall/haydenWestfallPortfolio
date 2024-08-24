@@ -9,6 +9,18 @@
   line-height: 1.15;
 }
 
+@font-face {
+  font-family: "didot-italic";
+  src: url(./assets/didot-italic.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "helios-antique";
+  src: url(./assets/Helios-Antique-Medium.otf) format("opentype");
+  font-weight: 500;
+}
+
 html,
 body {
   margin: 0;

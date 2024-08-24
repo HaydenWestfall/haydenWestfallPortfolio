@@ -11,13 +11,14 @@
 </section>
 
 <section id="project-wrapper">
-  <div
+  <a
     class="project"
     *ngFor="let project of featuredProjects; let index = index"
     appIntersection
     #intersection="intersection"
     (isIntersecting)="isIntersecting($event, index)"
     [isContinuous]="false"
+    [routerLink]="project.link"
   >
     <div class="showcase">
       <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
@@ -38,7 +39,7 @@
         <span>0{{ index + 1 }}. / 07.</span>
       </div>
     </div>
-  </div>
+  </a>
 </section>
 
 <app-footer></app-footer>

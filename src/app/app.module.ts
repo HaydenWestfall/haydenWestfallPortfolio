@@ -16,6 +16,7 @@ import { ParallaxButtonDirective } from "./parallax-button.directive";
 import { CoverComponent } from "./cover/cover.component";
 import { ProjectsTwoComponent } from "./projects-two/projects-two.component";
 import { IntersectionDirective } from "./intersection.directive";
+import { FreelanceComponent } from './freelance/freelance.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { IntersectionDirective } from "./intersection.directive";
     CoverComponent,
     ProjectsTwoComponent,
     IntersectionDirective,
+    FreelanceComponent,
   ],
   imports: [BrowserAnimationsModule, FormsModule, RouterOutlet, BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

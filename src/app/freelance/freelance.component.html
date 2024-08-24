@@ -1,0 +1,220 @@
+<div id="page-wrapper" *ngIf="project">
+  <section
+    id="hero-section"
+    [ngStyle]="{ background: 'radial-gradient(circle, ' + project.bg[0] + ', ' + project.bg[1] + ')' }"
+  >
+    <div id="project-name-wrapper">
+      <div class="project-name-reveal-wrapper">
+        <div id="project-name-top" [ngStyle]="{ color: project.fg }">{{ project.titleText }}</div>
+      </div>
+      <div class="project-name-reveal-wrapper" style="z-index: 4">
+        <div id="project-name-bottom" [ngStyle]="{ color: project.fg }">{{ project.titleText }}</div>
+      </div>
+      <div id="mockup-wrapper">
+        <img id="mockup" [src]="project.headerMockup" />
+      </div>
+    </div>
+
+    <div class="project-overview">
+      <div class="project-info-wrapper" *ngFor="let info of project.headerInfo">
+        <span id="title">{{ info.title }}</span>
+        <span *ngFor="let bullet of info.description" id="description">{{ bullet }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="project-body">
+    <div *ngFor="let section of project.sections" style="width: 100%; display: flex; justify-content: center">
+      <ng-container *ngIf="section.template === 'project-header'">
+        <ng-container *ngTemplateOutlet="projectHeader; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'macbook'">
+        <ng-container *ngTemplateOutlet="macbookView; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'mockup'">
+        <ng-container *ngTemplateOutlet="marketingMockup; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'mobile-section'">
+        <ng-container *ngTemplateOutlet="mobileSection; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'design-marketing'">
+        <ng-container *ngTemplateOutlet="designAndMarketing; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'conclusion'">
+        <ng-container *ngTemplateOutlet="conclusion; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'next-project'">
+        <ng-container *ngTemplateOutlet="nextProject; context: { $implicit: section }"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="section.template === 'sub-section'">
+        <ng-container *ngTemplateOutlet="subSection; context: { $implicit: section }"></ng-container>
+      </ng-container>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #projectHeader let-section>
+  <div class="project-intro">
+    <div class="text-section">
+      <div class="section-header">
+        {{ project.projectName }}
+        <div class="disclaimer" *ngIf="section.disclaimer">
+          This project is protected by a Non-Disclosure Agreement (NDA) with the original client. While the business
+          details and company information presented here are fictional, the technology stack, skills acquired, and the
+          work showcased accurately reflect my contributions to the actual project.
+        </div>
+      </div>
+
+      <ul>
+        <li *ngFor="let anchor of section.tableOfContents" (click)="scrollToSection(anchor.id)">{{ anchor.label }}</li>
+      </ul>
+      <span class="section-description" *ngIf="project.overview">{{ project.overview }}</span>
+
+      <div *ngFor="let sectionSub of section.subSections">
+        <div [attr.id]="sectionSub.id" class="text-sub-section" style="width: 100%">
+          <h2>{{ sectionSub.title }}</h2>
+          <div class="description-block">
+            <p class="section-description" *ngFor="let desc of sectionSub.description">{{ desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-section">
+      <img class="site-marketing-wrapper" [src]="section.preview.screenshot" />
+      <img class="logo" [src]="section.preview.logo" />
+      <a
+        id="live-site"
+        *ngIf="section.preview.url"
+        [href]="section.preview.url"
+        target="_blank"
+        class="circle-button dark"
+        appParallaxButton
+      >
+        <div id="about-btn-text">
+          VISIT SITE
+          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="sm dark"></app-svg-icon>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-template>
+<ng-template #subSection let-section>
+  <div [attr.id]="section.id" class="text-sub-section">
+    <h2>{{ section.title }}</h2>
+    <div class="description-block">
+      <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #macbookView let-section>
+  <div class="desktop-view">
+    <img class="site-marketing-wrapper" [src]="section.img" />
+  </div>
+</ng-template>
+<ng-template #marketingMockup let-section>
+  <div class="mockup-wrapper">
+    <img class="mockup" [src]="section.img" />
+  </div>
+</ng-template>
+<ng-template #mobileSection let-section>
+  <div id="mobile" class="mobile-section">
+    <span class="section-header">{{ section.title }}</span>
+    <p class="section-description center" style="width: 80%">{{ section.description }}</p>
+    <div class="mobile-view-wrapper">
+      <div id="iphone_mockup_1" class="image-wrapper">
+        <img [src]="section.imgs[0]" />
+      </div>
+      <div id="iphone_mockup_2" class="image-wrapper">
+        <img [src]="section.imgs[1]" />
+      </div>
+      <div id="iphone_mockup_3" class="image-wrapper">
+        <img [src]="section.imgs[2]" />
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #designAndMarketing let-section>
+  <div id="design_marketing" class="accent-section">
+    <div class="text-section">
+      <span class="section-header">{{ section.title }}</span>
+      <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+    </div>
+
+    <div class="tile-wrapper">
+      <div class="tile">
+        <div class="type-wrapper">
+          <h6>TYPEFACE</h6>
+          <div id="type-preview">
+            <span [ngStyle]="{ 'font-family': section.fontFamily }">{{ section.fontName }}</span>
+            <span [ngStyle]="{ 'font-family': section.fontFamily }">
+              Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br />
+              Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br />
+              0123456789
+            </span>
+          </div>
+          <p [ngStyle]="{ 'font-family': section.fontFamily }">The quick brown fox jumps over the lazy dog</p>
+        </div>
+
+        <div id="color-scheme-wrapper">
+          <h6>COLOR SCHEME</h6>
+          <div class="color-scheme" *ngFor="let scheme of section.colorScheme">
+            <div class="color" [ngStyle]="{ background: scheme.colorHex }"></div>
+            <div class="footer">
+              <span>{{ scheme.colorName }}</span>
+              <span>{{ scheme.colorHex }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile2">
+        <h6>{{ section.tile2Title }}</h6>
+        <p class="section-description center" style="width: 80%">
+          {{ section.tile2Description }}
+        </p>
+        <img id="tile-phone" [src]="section.tile2Img" />
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #conclusion let-section>
+  <div id="conclusion" class="text-section">
+    <span class="section-header" style="font-size: 3rem">{{ section.title }}</span>
+    <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+  </div>
+</ng-template>
+<ng-template #nextProject let-section>
+  <div class="next-project-wrapper">
+    <h6>UP NEXT</h6>
+    <section id="project-wrapper">
+      <a
+        class="project"
+        appIntersection
+        #intersection="intersection"
+        [isContinuous]="false"
+        [routerLink]="section.link"
+      >
+        <div class="showcase">
+          <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
+          <div class="focused-project focus" [attr.id]="'up-next'" [class.focus]="intersection._isIntersecting">
+            <img [src]="section.showcase" [class.focus]="intersection._isIntersecting" />
+          </div>
+        </div>
+        <div class="project-information-wrapper">
+          <div class="project-information-header">
+            <div class="header">
+              <span>{{ section.title }}</span>
+              <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+            </div>
+            <span class="description">{{ section.description }}</span>
+          </div>
+          <div class="project-information-footer">
+            <span>{{ section.role }}</span>
+            <span>0{{ section.index }}. / 07.</span>
+          </div>
+        </div>
+      </a>
+    </section>
+  </div>
+</ng-template>

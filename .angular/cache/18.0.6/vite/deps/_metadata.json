@@ -1,85 +1,85 @@
 {
-  "hash": "7d937c4e",
-  "configHash": "877445d5",
+  "hash": "9df23a7f",
+  "configHash": "1708f70d",
   "lockfileHash": "f096c148",
-  "browserHash": "cd0fef9f",
+  "browserHash": "f4b078ba",
   "optimized": {
     "@angular/animations": {
       "src": "../../../../../node_modules/@angular/animations/fesm2022/animations.mjs",
       "file": "@angular_animations.js",
-      "fileHash": "d2f076f4",
+      "fileHash": "66e0f2de",
       "needsInterop": false
     },
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "ac876fdf",
+      "fileHash": "e15c1f81",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "74721a97",
+      "fileHash": "476a0dbb",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "a694dfa9",
+      "fileHash": "87a93eb6",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "3a53e514",
+      "fileHash": "5d096bea",
       "needsInterop": false
     },
     "@angular/platform-browser/animations": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
       "file": "@angular_platform-browser_animations.js",
-      "fileHash": "6932ca7b",
+      "fileHash": "3db0f04d",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "be7a75bb",
+      "fileHash": "c124a87d",
       "needsInterop": false
     },
     "gsap": {
       "src": "../../../../../node_modules/gsap/index.js",
       "file": "gsap.js",
-      "fileHash": "84ca7bec",
+      "fileHash": "d1f82609",
       "needsInterop": false
     },
     "gsap/CustomEase": {
       "src": "../../../../../node_modules/gsap/CustomEase.js",
       "file": "gsap_CustomEase.js",
-      "fileHash": "06ffb24b",
+      "fileHash": "df2c6658",
       "needsInterop": false
     },
     "gsap/Draggable": {
       "src": "../../../../../node_modules/gsap/Draggable.js",
       "file": "gsap_Draggable.js",
-      "fileHash": "a129b333",
+      "fileHash": "715a6d51",
       "needsInterop": false
     },
     "gsap/ScrollTrigger": {
       "src": "../../../../../node_modules/gsap/ScrollTrigger.js",
       "file": "gsap_ScrollTrigger.js",
-      "fileHash": "cfc723fd",
+      "fileHash": "141b69c1",
       "needsInterop": false
     },
     "lenis": {
       "src": "../../../../../node_modules/lenis/dist/lenis.mjs",
       "file": "lenis.js",
-      "fileHash": "b47be524",
+      "fileHash": "72c9cf74",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "2bb7dc5e",
+      "fileHash": "18bb1e3a",
       "needsInterop": false
     }
   },

@@ -19,7 +19,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Technical Lead | Commercial",
       link: "/work/gearHead",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/stf/app_showcase.png",
       hover: false,
     },
     {
@@ -28,7 +28,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
       link: "/work/maddieWestEvents",
-      showcase: "../../assets/stf_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
     {
@@ -37,7 +37,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Technical Lead | Commercial",
       link: "/work/tradeWave",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
     {
@@ -46,7 +46,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
       link: "/work/stf",
-      showcase: "../../assets/stf_showcase.png",
+      showcase: "../../assets/stf/app_showcase.png",
       hover: false,
     },
     {
@@ -55,7 +55,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
       link: "/work/stf",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
     {
@@ -64,7 +64,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Developer | Commercial",
       link: "/work/stf",
-      showcase: "../../assets/stf_showcase.png",
+      showcase: "../../assets/stf/app_showcase.png",
       hover: false,
     },
     {
@@ -73,7 +73,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
       link: "/work/stf",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
   ];

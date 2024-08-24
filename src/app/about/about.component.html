@@ -53,6 +53,37 @@
     </div>
   </div>
 
+  <section id="portfolio" class="flex-center">
+    <div class="portfolio-wrapper" id="portfolio1">
+      <div class="technology-2" *ngFor="let technology of technologies1">
+        <app-svg-icon [path]="technology.icon"></app-svg-icon>
+        <span>{{ technology.name }}</span>
+      </div>
+    </div>
+    <div class="portfolio-wrapper" id="portfolio2">
+      <div class="technology-2" *ngFor="let technology of technologies2">
+        <app-svg-icon [path]="technology.icon"></app-svg-icon>
+        <span>{{ technology.name }}</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="quote-wrapper-2">
+    <div id="quote-image-wrapper">
+      <img id="quote-image" src="../../assets/about_quote.png" />
+      <div id="quote-text">
+        <span class="small">Quote of the Day:</span>
+        <div>
+          <span>AN IDIOT ADMIRES COMPLEXITY,</span><br />
+          <span>A GENIUS ADMIRES SIMPLICITY</span>
+        </div>
+        <!-- <span class="small" style="align-self: flex-end">- Terry Davis</span> -->
+      </div>
+      <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
+      <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
+    </div>
+  </div>
+
   <span id="list-label">What can I do for you...</span>
 
   <div id="list-wrapper">
@@ -65,7 +96,7 @@
   </div>
 </div>
 
-<div id="technologies-wrapper">
+<!-- <div id="technologies-wrapper">
   <span id="technology-title">TECHNOLOGIES I AM DANGEROUS WITH...</span>
   <div class="technology-list">
     <div class="technology" *ngFor="let technology of technologies1">
@@ -80,38 +111,7 @@
       <span>{{ technology.name }}</span>
     </div>
   </div>
-</div>
-
-<div id="quote-wrapper-2">
-  <div id="quote-image-wrapper">
-    <img id="quote-image" src="../../assets/about_quote.png" />
-    <div id="quote-text">
-      <span class="small">Quote of the Day:</span>
-      <div>
-        <span>AN IDIOT ADMIRES COMPLEXITY,</span><br />
-        <span>A GENIUS ADMIRES SIMPLICITY</span>
-      </div>
-      <!-- <span class="small" style="align-self: flex-end">- Terry Davis</span> -->
-    </div>
-    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
-    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
-  </div>
-</div>
-
-<section id="portfolio" class="flex-center">
-  <div class="portfolio-wrapper" id="portfolio1">
-    <div class="technology-2" *ngFor="let technology of technologies1">
-      <app-svg-icon [path]="technology.icon"></app-svg-icon>
-      <span>{{ technology.name }}</span>
-    </div>
-  </div>
-  <div class="portfolio-wrapper" id="portfolio2">
-    <div class="technology-2" *ngFor="let technology of technologies2">
-      <app-svg-icon [path]="technology.icon"></app-svg-icon>
-      <span>{{ technology.name }}</span>
-    </div>
-  </div>
-</section>
+</div> -->
 
 <div id="accolades-section">
   <div id="accolades-wrapper">

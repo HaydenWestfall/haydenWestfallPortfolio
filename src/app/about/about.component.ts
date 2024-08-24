@@ -126,86 +126,92 @@ export class AboutComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.themeService.theme = "dark";
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
 
-    gsap.fromTo(
-      "#quote-image-wrapper",
-      { width: "50%" },
-      {
-        width: "80%",
-        scrollTrigger: {
-          trigger: "#quote-image-wrapper",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-        },
-      }
-    );
+    setTimeout(() => {
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
 
-    gsap.fromTo(
-      "#quote-text",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: "#quote-text",
-          start: "top bottom",
-          scrub: true,
-        },
-      }
-    );
+      gsap.fromTo(
+        "#quote-image-wrapper",
+        { width: "50%" },
+        {
+          width: "80%",
+          scrollTrigger: {
+            trigger: "#quote-image-wrapper",
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
 
-    gsap.fromTo(
-      "#about-headshot",
-      { y: "-20%" },
-      {
-        y: "0",
-        scrollTrigger: {
-          trigger: "#about-headshot",
-          start: "20% bottom",
-          scrub: true,
-          markers: true,
-        },
-      }
-    );
+      gsap.fromTo(
+        "#quote-text",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: "#quote-text",
+            start: "top bottom",
+            scrub: true,
+          },
+        }
+      );
 
-    this.bigNameTween = gsap.to("#micro-animation", {
-      rotate: "100%",
-      duration: 12,
-      repeat: -1,
-      ease: "none",
-    });
+      gsap.fromTo(
+        "#about-headshot",
+        { y: "-20%" },
+        {
+          y: "0",
+          scrollTrigger: {
+            trigger: "#about-headshot",
+            start: "20% bottom",
+            scrub: true,
+          },
+        }
+      );
 
-    const tl = gsap.timeline();
+      this.bigNameTween = gsap.to("#micro-animation", {
+        rotate: "100%",
+        duration: 12,
+        repeat: -1,
+        ease: "none",
+      });
 
-    this.scaleTween = gsap.to("#spark", {
-      scale: "1.2",
-      duration: 1,
-      repeat: -1,
-      yoyo: true,
-      ease: "none",
-    });
+      const tl = gsap.timeline();
 
-    let intervalId = setInterval(() => {
-      const cursor = document.getElementById("rolling-text-cursor");
-      cursor?.classList.add("blink-cursor");
-      this.deleteRollingText();
-      cursor?.classList.remove("blink-cursor");
-    }, 7500);
+      this.scaleTween = gsap.to("#spark", {
+        scale: "1.2",
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: "none",
+      });
+
+      let intervalId = setInterval(() => {
+        const cursor = document.getElementById("rolling-text-cursor");
+        cursor?.classList.add("blink-cursor");
+        this.deleteRollingText();
+        cursor?.classList.remove("blink-cursor");
+      }, 7500);
+    }, 1000);
   }
 
   addRollingText(): void {
     let index = 0;
+    let timeout = 150;
     let intervalId = setInterval(() => {
-      const cursor = document.getElementById("rolling-text-cursor");
-      index = index + 1;
-      this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
-      if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
-        clearInterval(intervalId);
-        cursor?.classList.add("blink-cursor");
-        this.rollingTextIndex = this.rollingTextIndex === 3 ? 0 : this.rollingTextIndex + 1;
-      }
+      setTimeout(() => {
+        const cursor = document.getElementById("rolling-text-cursor");
+        index = index + 1;
+        this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
+        if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
+          clearInterval(intervalId);
+          cursor?.classList.add("blink-cursor");
+          this.rollingTextIndex = this.rollingTextIndex === 3 ? 0 : this.rollingTextIndex + 1;
+        }
+        timeout = Math.floor(Math.random() * (400 - 100 + 1)) + 100;
+      }, timeout);
     }, 150);
   }
 
