@@ -10,36 +10,8 @@
   <img src="../../assets/code-block.png" />
 </section>
 
-<section id="project-wrapper">
-  <a
-    class="project"
-    *ngFor="let project of featuredProjects; let index = index"
-    appIntersection
-    #intersection="intersection"
-    (isIntersecting)="isIntersecting($event, index)"
-    [isContinuous]="false"
-    [routerLink]="project.link"
-  >
-    <div class="showcase">
-      <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
-      <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
-        <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />
-      </div>
-    </div>
-    <div class="project-information-wrapper">
-      <div class="project-information-header">
-        <div class="header">
-          <span>{{ project.label }}</span>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
-        </div>
-        <span class="description">{{ project.description }}</span>
-      </div>
-      <div class="project-information-footer">
-        <span>{{ project.role }}</span>
-        <span>0{{ index + 1 }}. / 07.</span>
-      </div>
-    </div>
-  </a>
+<section>
+  <app-showcase [multi]="false" [projects]="featuredProjects"></app-showcase>
 </section>
 
 <app-footer></app-footer>

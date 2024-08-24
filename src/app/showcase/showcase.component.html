@@ -1,0 +1,92 @@
+<ng-container *ngIf="!multi">
+  <ng-container *ngTemplateOutlet="singleShowcase"></ng-container>
+</ng-container>
+<ng-container *ngIf="multi">
+  <ng-container *ngTemplateOutlet="multiShowcase"></ng-container>
+</ng-container>
+
+<ng-template #singleShowcase let-section>
+  <div id="project-wrapper">
+    <a
+      class="project-link"
+      *ngFor="let project of projects; let index = index"
+      appIntersection
+      #intersection="intersection"
+      (isIntersecting)="isIntersecting($event, index)"
+      [isContinuous]="false"
+      [routerLink]="project.link"
+    >
+      <div class="showcase single">
+        <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
+          <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />
+        </div>
+      </div>
+      <div class="project-information-wrapper">
+        <div class="project-information-header">
+          <div class="header">
+            <span>{{ project.label }}</span>
+            <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+          </div>
+          <span class="description">{{ project.description }}</span>
+        </div>
+        <div class="project-information-footer">
+          <span>{{ project.role }}</span>
+          <span>0{{ index + 1 }}. / 07.</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #multiShowcase let-section>
+  <div id="work">
+    <div class="showcase">
+      <div
+        class="focused-project"
+        *ngFor="let project of projects; let index = index"
+        [ngClass]="{ focus: index === hoverIndex }"
+        [attr.id]="'showcase-' + index"
+      >
+        <img
+          [src]="project.showcase"
+          [ngStyle]="{
+            transform: index === hoverIndex ? 'scale(1)' : 'scale(1.4)'
+          }"
+        />
+      </div>
+    </div>
+    <div class="featured-projects">
+      <div
+        class="project-wrapper"
+        *ngFor="let project of projects; let index = index"
+        (mouseenter)="hoverIndex = index"
+        (mouseleave)="deactivateShowcase(hoverIndex); hoverIndex = null"
+      >
+        <div
+          class="project"
+          [ngClass]="{
+            hovering: hoverIndex === index,
+            'not-hovering': hoverIndex !== index && hoverIndex != null
+          }"
+        >
+          <span class="title">{{ project.label }}</span>
+
+          <div class="project-role">
+            <span>{{ project.role }}</span>
+            <a [href]="project.link">
+              <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+            </a>
+          </div>
+        </div>
+        <div class="row-hover" *ngIf="project.hover">
+          <div class="marquee-wrapper">
+            <div *ngFor="let i of [].constructor(20); let index = index" class="marquee-item">
+              {{ project.label }}
+              <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

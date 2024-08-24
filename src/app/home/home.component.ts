@@ -1,14 +1,4 @@
-import {
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ThemeService } from "../theme.service";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
@@ -19,38 +9,34 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.scss",
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
-  themeService = inject(ThemeService);
-
-  name = "HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- HAYDEN WESTFALL -- ";
-
+export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   featuredProjects = [
     {
       label: "GEARHEAD",
       role: "Technical Lead | Commercial",
       link: "/work/gearHead",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
     {
       label: "MADDIE WEST EVENTS",
       role: "Design + Dev | Freelance",
       link: "/work/maddieWestEvents",
-      showcase: "../../assets/stf_showcase.png",
+      showcase: "../../assets/stf/app_showcase.png",
       hover: false,
     },
     {
       label: "TRADEWAVE",
       role: "Technical Lead | Commercial",
       link: "/work/tradeWave",
-      showcase: "../../assets/maddie_west_showcase.png",
+      showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
     {
       label: "STF",
       role: "Design + Dev | Freelance",
       link: "/work/stf",
-      showcase: "../../assets/stf_showcase.png",
+      showcase: "../../assets/stf/app_showcase.png",
       hover: false,
     },
   ];
@@ -75,131 +61,63 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
   ];
 
-  ticker = [
-    { value: "4", label: "Lead designer" },
-    { value: "5", label: "Freelance projects" },
-    { value: "6", label: "Years experience" },
-    { value: "3", label: "Certifications" },
-  ];
-
-  lastScrollTop = 0;
-  scrollTimeout = null as any;
-  hoverIndex: number | null = null;
-
   animations: gsap.core.Tween[] = [];
-  private bigNameTween: gsap.core.Tween = null as any;
-  rewindtween: gsap.core.Tween = null as any;
-  forwardtween: gsap.core.Tween = null as any;
+  direction = -1;
+  slider = 0;
+  xPos = 0;
+
+  themeService = inject(ThemeService);
 
   constructor() {
     gsap.registerPlugin(ScrollTrigger, Draggable);
   }
 
+  ngOnInit(): void {
+    gsap.to(document.getElementById("name-slider"), {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.5,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (this.direction = e.direction * -1),
+      },
+      x: "-500px",
+    });
+
+    requestAnimationFrame(this.animate);
+  }
+
   ngAfterViewInit(): void {
     this.themeService.theme = "light";
-
-    setTimeout(() => {
-      this.bigNameTween = gsap.to("#name", {
-        x: "25%",
-        duration: 12,
-        repeat: -1,
-        ease: "none",
-      });
-
-      this.animations.push(this.bigNameTween);
-      this.animations.push(this.themeService.setupTranslateAnimation("#contact-btn", 0, 0, -200, 0));
-      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
-
+    this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
+    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
+    this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
+    this.animations.push(
       gsap.to("#contact-btn", {
+        y: -125,
         scrollTrigger: {
           trigger: "#contact-btn",
-          start: "top top",
+          start: "top 34%",
           end: "bottom top",
           scrub: true,
-          onUpdate: this.updateRotation,
         },
-      });
-    }, 1000);
+      })
+    );
   }
 
-  updateRotation() {
-    const scrollPosition = window.scrollY;
-    const rotationDegree = scrollPosition % 360; // Calculate rotation degree based on scroll position
-    document.documentElement.style.setProperty("--rotation-degree", rotationDegree + "deg");
-  }
-
-  @HostListener("window:scroll", ["$event"])
-  onWindowScroll(event: any): void {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    let scrollDiff = Math.abs(scrollTop - this.lastScrollTop);
-    scrollDiff = scrollDiff > 100 ? 100 : scrollDiff;
-    const animationSpeed = 20 * (scrollDiff / 100);
-
-    if (scrollTop > this.lastScrollTop) {
-      if (this.forwardtween) {
-        this.forwardtween.kill();
-      }
-
-      const rewindDuration = 1 * (scrollDiff / 100);
-      const newTime = this.bigNameTween.time() - rewindDuration;
-      this.bigNameTween.seek(newTime);
-
-      this.rewindtween = gsap.to(this.bigNameTween, {
-        time: newTime,
-        duration: 0.4,
-      });
-    } else {
-      if (this.rewindtween) {
-        this.rewindtween.kill();
-      }
-
-      this.forwardtween = gsap.to(this.bigNameTween, {
-        // timeScale: scrollTop ? 1 + animationSpeed : 1,
-        timeScale: 1,
-        duration: 0.75,
-      });
+  animate = () => {
+    if (this.xPos < -100) {
+      this.xPos = 0;
+    } else if (this.xPos > 0) {
+      this.xPos = -100;
     }
+    gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
+    requestAnimationFrame(this.animate);
+    this.xPos += 0.1;
+  };
 
-    // After a backoff, reset the animation back to its original speed
-    clearTimeout(this.scrollTimeout);
-    this.scrollTimeout = setTimeout(() => this.resetAnimation());
-
-    // Save the current scroll position
-    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  ngOnDestroy(): void {
+    this.animations.forEach((x) => x.kill());
   }
-
-  // @HostListener("document:mousemove", ["$event"])
-  // onMouseMove(event: MouseEvent) {
-  //   this.pointArrowAtCursor(event.clientX, event.clientY);
-  // }
-
-  // pointArrowAtCursor(cursorX: number, cursorY: number) {
-  //   const arrowElement = document.getElementById("pointer");
-  //   // const arrowElement = arrow.nativeElement;
-  //   const arrowRect = arrowElement!.getBoundingClientRect();
-  //   const arrowX = arrowRect.left + arrowRect.width / 2;
-  //   const arrowY = arrowRect.top + arrowRect.height / 2;
-
-  //   const angle = Math.atan2(cursorY - arrowY, cursorX - arrowX) * (180 / Math.PI);
-  //   arrowElement!.style.transform = `rotate(${angle + 45}deg)`;
-  // }
-
-  resetAnimation() {
-    gsap.to(this.bigNameTween, {
-      timeScale: 1,
-      duration: 0.75,
-    });
-  }
-
-  deactivateShowcase(index: number | null) {
-    const element = document.getElementById("showcase-" + index!);
-    element?.classList.add("deactivate");
-    setTimeout(() => {
-      element?.classList.remove("deactivate");
-    }, 600);
-  }
-
-  ngOnDestroy(): void {}
 }

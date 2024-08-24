@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
         setTimeout(() => {
           this.showCover = false;
-        }, 1200); // Small delay to allow cover to animate out
+        }, 1200);
       }
     });
   }
@@ -130,5 +130,13 @@ export class AppComponent implements OnInit {
       { bottom: "200%", duration: duration, ease: "myCustomEase" },
       `-=${duration}`
     );
+  }
+
+  onActivate() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
   }
 }
