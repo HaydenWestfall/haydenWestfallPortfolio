@@ -14,34 +14,4 @@ export class NavbarComponent {
     { id: "work", label: "Work", route: "/work" },
     { id: "contact", label: "Contact", route: "/contact" },
   ];
-
-  public jumbleLetters(link: any): void {
-    const button = document.getElementById(link.id);
-    let shuffleCount = 0;
-
-    let shuffleInterval = setInterval(() => {
-      if (shuffleCount >= 4) {
-        clearInterval(shuffleInterval);
-        button!.innerText = link.label;
-      } else {
-        button!.innerText = this.shuffleArray(button!.innerText.split(""));
-        shuffleCount++;
-      }
-    }, 75);
-  }
-
-  private shuffleArray(array: string[]): string {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array.join("");
-  }
-
-  public resetLabel(link: any): void {
-    let charArray: string[] = link.label.split("");
-    const test = this.shuffleArray(charArray);
-
-    console.log(test);
-  }
 }

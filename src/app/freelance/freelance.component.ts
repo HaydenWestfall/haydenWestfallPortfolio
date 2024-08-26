@@ -16,7 +16,7 @@ import { Fireshare } from "./Fireshare";
   templateUrl: "./freelance.component.html",
   styleUrl: "./freelance.component.scss",
 })
-export class FreelanceComponent implements OnInit, AfterViewInit {
+export class FreelanceComponent implements OnInit {
   projectName = "MADDIE WEST EVENTS MADDIE WEST EVENTS MADDIE WEST EVENTS";
   animations: gsap.core.Tween[] = [];
 
@@ -51,26 +51,33 @@ export class FreelanceComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.themeService.theme = "light";
     this.route.paramMap.subscribe((params) => {
-      const projectId = params.get("projectId");
-      if (projectId === "maddieWestEvents") {
-        this.project = MaddieWestEvents;
-      } else if (projectId === "stf") {
-        this.project = STF;
-      } else if (projectId === "missLisaBooks") {
-        this.project = MissLisaBooks;
-      } else if (projectId === "gearHead") {
-        this.project = Gearhead;
-      } else if (projectId === "fireshare") {
-        this.project = Fireshare;
-      } else if (projectId === "tradeshark") {
-        this.project = TradeShark;
-      }
+      setTimeout(() => {
+        console.log("chaning");
+        const projectId = params.get("projectId");
+        if (projectId === "maddieWestEvents") {
+          this.project = MaddieWestEvents;
+        } else if (projectId === "stf") {
+          this.project = STF;
+        } else if (projectId === "missLisaBooks") {
+          this.project = MissLisaBooks;
+        } else if (projectId === "gearHead") {
+          this.project = Gearhead;
+        } else if (projectId === "fireshare") {
+          this.project = Fireshare;
+        } else if (projectId === "tradeshark") {
+          this.project = TradeShark;
+        }
+        setTimeout(() => {
+          this.init();
+        });
+      }, 1000);
     });
   }
 
-  ngAfterViewInit(): void {
-    const tl = gsap.timeline();
+  init(): void {
+    const tl = gsap.timeline({ delay: 0.75 });
 
     tl.fromTo("#project-name-top", { x: -800 }, { x: -200, duration: 6, ease: "power2.out" }, 0);
     tl.fromTo("#project-name-top", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
@@ -83,8 +90,6 @@ export class FreelanceComponent implements OnInit, AfterViewInit {
       { y: "-200", scrollTrigger: { trigger: "#mockup-wrapper", start: "bottom 68%", scrub: true, markers: false } }
     );
 
-    console.log(this.project.sections);
-
     for (const section of this.project.sections) {
       if (section.template === "project-header") {
         this.animations.push(this.themeService.setupTranslateAnimation("#live-site", 0, 0, 200, 0, "power1.out"));
@@ -96,7 +101,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit {
           { y: "-30%" },
           {
             y: "0",
-            scrollTrigger: { trigger: ".mockup", start: "20% bottom", end: "140% top", scrub: true, markers: true },
+            scrollTrigger: { trigger: ".mockup", start: "20% bottom", end: "140% top", scrub: true, markers: false },
           }
         );
       } else if (section.template === "mobile-section") {
@@ -149,7 +154,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit {
     //       start: "top bottom",
     //       end: "bottom top",
     //       scrub: true,
-    //       markers: true,
+    //       markers: false,
     //     },
     //   }
     // );

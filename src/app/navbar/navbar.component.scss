@@ -18,8 +18,12 @@ a {
   justify-content: space-between;
   padding: 2rem;
 
-  #logo {
-    font-size: 2rem;
+  .logo {
+    font-size: 0.8rem;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    white-space: pre;
   }
 
   #links {

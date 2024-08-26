@@ -43,27 +43,26 @@ html.lenis body {
 
   .text-accent {
     position: absolute;
-    font-size: 10rem;
+    font-size: 6.5rem;
+    height: 8rem;
     font-family: "Open Sans", sans-serif;
     font-style: italic;
-    font-weight: 700;
+    font-weight: 800;
     color: rgb(43, 43, 43);
+    white-space: nowrap;
 
     &.top {
-      // transform: rotate(-90deg);
-      // transform-origin: left top;
-      left: 0;
-      top: 0%;
-      transform-origin: top left;
       transform: rotate(-90deg);
+      transform-origin: top left;
+      top: 0%;
+      left: 0;
     }
 
     &.bottom {
       transform: rotate(90deg);
-      // width: 0rem;
       transform-origin: left bottom;
-      bottom: 0;
-      right: -20.5rem;
+      bottom: 0%;
+      right: 0;
     }
   }
 }

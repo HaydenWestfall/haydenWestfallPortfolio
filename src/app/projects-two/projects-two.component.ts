@@ -72,7 +72,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
       description:
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
-      link: "/work/stf",
+      link: "/work/missLisaBooks",
       showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },

@@ -1,5 +1,5 @@
 <div class="navbar-wrapper" [ngStyle]="{ color: themeService.theme === 'light' ? 'white' : 'black' }">
-  <a class="logo" routerLink="/">//\/\/\</a>
+  <a class="logo" routerLink="/">//\/\/\ &nbsp;&nbsp;HAYDEN'S PORTFOLIO</a>
   <div id="links">
     <a [attr.id]="link.id" *ngFor="let link of navbarLinks" routerLink="{{ link.route }}" class="rolling-btn">
       <span [attr.data-hover]="link.label">{{ link.label }}</span>

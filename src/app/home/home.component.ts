@@ -61,6 +61,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
   ];
 
+  animationFrameId: number | null = null;
   animations: gsap.core.Tween[] = [];
   direction = -1;
   slider = 0;
@@ -84,7 +85,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       x: "-500px",
     });
 
-    requestAnimationFrame(this.animate);
+    this.animationFrameId = requestAnimationFrame(this.animate);
   }
 
   ngAfterViewInit(): void {
@@ -115,11 +116,12 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     }
     gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
     gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
-    requestAnimationFrame(this.animate);
-    this.xPos += 0.1;
+    this.animationFrameId = requestAnimationFrame(this.animate);
+    this.xPos += 0.04;
   };
 
   ngOnDestroy(): void {
+    cancelAnimationFrame(this.animationFrameId!);
     this.animations.forEach((x) => x.kill());
   }
 }
