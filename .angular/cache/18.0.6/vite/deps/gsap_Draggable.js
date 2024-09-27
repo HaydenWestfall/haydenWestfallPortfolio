@@ -1,6 +1,6 @@
 import "./chunk-J4B6MK7R.js";
 
-// node_modules/gsap/utils/matrix.js
+// ../../node_modules/gsap/utils/matrix.js
 var _doc;
 var _win;
 var _docElement;
@@ -250,7 +250,7 @@ function getGlobalMatrix(element, inverse, adjustGOffset, includeScrollInFixed) 
   return inverse ? m.inverse() : m;
 }
 
-// node_modules/gsap/Draggable.js
+// ../../node_modules/gsap/Draggable.js
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");

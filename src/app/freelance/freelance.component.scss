@@ -3,18 +3,17 @@
   width: 100%;
   overflow: hidden;
   overflow: hidden;
-  height: 100vh;
+  height: 90vh;
 
   #project-name-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 20vh;
+    height: fit-content;
 
     #mockup-wrapper {
       position: absolute;
-      top: 0;
-      left: 0;
       display: flex;
       height: 100%;
       width: 100%;
@@ -23,7 +22,8 @@
       z-index: 2;
 
       #mockup {
-        height: 120%;
+        height: 30vw;
+        max-height: 25rem;
       }
     }
 
@@ -52,42 +52,50 @@
     }
   }
 
-  .project-overview {
-    position: absolute;
-    display: grid;
+  .project-overview-wrapper {
     width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
     bottom: 0;
     left: 0;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    align-items: center;
     padding: 1.5rem 0;
 
-    .project-info-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-family: "Open Sans", sans-serif;
-      color: white;
-      width: calc(100% - 8rem);
-      padding: 2rem 4rem;
+    .project-overview {
+      position: relative;
+      width: 100%;
+      max-width: 100rem;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      align-items: center;
+      display: grid;
 
-      #title {
-        font-size: 1.2rem;
-        font-style: italic;
-        font-weight: 700;
-        margin-bottom: 0.4rem;
-      }
+      .project-info-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        font-family: "Open Sans", sans-serif;
+        color: white;
+        width: calc(100% - 8rem);
+        padding: 2rem 4rem;
 
-      #description {
-        font-size: 0.7rem;
-        font-weight: 300;
-        color: rgb(220, 220, 220);
-      }
+        #title {
+          font-size: 1.2rem;
+          font-style: italic;
+          font-weight: 700;
+          margin-bottom: 0.4rem;
+        }
 
-      &:nth-child(2) {
-        border-left: 1px solid #474747; /* Border on the left of the center item */
-        border-right: 1px solid #474747; /* Border on the right of the center item */
+        #description {
+          font-size: 0.7rem;
+          font-weight: 300;
+          color: rgb(220, 220, 220);
+        }
+
+        &:nth-child(2) {
+          border-left: 1px solid #474747; /* Border on the left of the center item */
+          border-right: 1px solid #474747; /* Border on the right of the center item */
+        }
       }
     }
   }
@@ -105,7 +113,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    width: 60%;
+    max-width: 60rem;
   }
 
   .project-intro {
@@ -113,7 +121,7 @@
     flex-direction: column;
     align-items: center;
     gap: 5rem;
-    width: 80%;
+    width: 100%;
 
     ul,
     li {
@@ -124,7 +132,6 @@
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
-      width: 80%;
 
       .disclaimer {
         width: 100%;
@@ -145,6 +152,7 @@
     border-radius: 15px;
     background-color: #e1e3e5;
     height: 25rem;
+    max-width: 80rem;
 
     .site-marketing-wrapper {
       position: absolute;
@@ -169,6 +177,7 @@
 
   .desktop-view {
     width: 100%;
+    max-width: 80rem;
     padding: 4rem 0;
     display: flex;
     align-items: center;
@@ -325,6 +334,7 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    max-width: 80rem;
     gap: 2.5rem;
   }
 }
@@ -517,7 +527,7 @@ li {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  width: 60%;
+  max-width: 60rem;
 }
 
 h2 {

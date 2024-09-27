@@ -16,8 +16,7 @@ export const routes: Routes = [
   { path: "about", component: AboutComponent, data: { animation: "Route2Page" } },
   { path: "work", component: ProjectsTwoComponent, data: { animation: "Route3Page" } },
   { path: "work/:projectId", component: FreelanceComponent, data: { animation: "Route4Page" } },
-  { path: "contact", component: ContactComponent, data: { animation: "Route4Page" } },
-  { path: "contact2", component: Contact2Component, data: { animation: "Route5Page" } },
+  { path: "contact", component: Contact2Component, data: { animation: "Route4Page" } },
   { path: "**", redirectTo: "/", pathMatch: "full" },
 ];
 

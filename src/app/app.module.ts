@@ -17,7 +17,8 @@ import { ProjectsTwoComponent } from "./projects-two/projects-two.component";
 import { IntersectionDirective } from "./directives/intersection.directive";
 import { FreelanceComponent } from "./freelance/freelance.component";
 import { ShowcaseComponent } from "./showcase/showcase.component";
-import { Contact2Component } from './contact2/contact2.component';
+import { Contact2Component } from "./contact2/contact2.component";
+import { HideOnScrollDirective } from "./directives/hide-on-scroll.directive";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { Contact2Component } from './contact2/contact2.component';
     FreelanceComponent,
     ShowcaseComponent,
     Contact2Component,
+    HideOnScrollDirective,
   ],
   imports: [BrowserAnimationsModule, FormsModule, RouterOutlet, BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -1,64 +1,75 @@
-<section id="hero-section">
-  <img id="bg" class="abs-position" src="../../assets/homepage_2.png" />
-  <img id="fg" class="abs-position" src="../../assets/homepage_overlay.png" />
-  <!-- <span id="name"></span> -->
-
+<section style="max-width: 100%; overflow: hidden; position: relative">
+  <div id="hero-section" class="section-wrapper">
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
+    <div id="roles">
+      <h5>FULL STACK DEVELOPER</h5>
+      <h5>PRODUCT DESIGNER</h5>
+      <h5>UI / UX</h5>
+      <h5>FREELANCE DEV + DESIGN</h5>
+    </div>
+    <a class="circle-button translucent" id="hero-contact" routerLink="/contact" appParallaxButton>
+      <div id="contact-btn-text">
+        Contact
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
+      </div>
+    </a>
+  </div>
   <div class="name-wrapper">
     <div id="name-slider" class="name-slider">
       <p id="primary">HAYDEN WESTFALL -</p>
       <p id="secondary">HAYDEN WESTFALL -</p>
+      <p id="tertiary">HAYDEN WESTFALL -</p>
     </div>
   </div>
-
-  <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
-  <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
-  <div id="roles">
-    <span>FULL STACK DEVELOPER</span><br />
-    <span>PRODUCT DESIGNER</span><br />
-    <span>UI / UX</span><br />
-    <span>FREELANCE DEV + DESIGN</span>
-  </div>
-  <a class="circle-button translucent" id="contact-btn" appParallaxButton routerLink="/contact">
-    <div id="contact-btn-text">
-      Contact
-      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
-    </div>
-  </a>
+  <img id="bg" class="abs-position" src="../../assets/homepage_2.png" />
 </section>
 
-<section id="about" class="flex-center">
-  <img src="../../assets/logo_bg.png" alt="logo-watermark" />
-  <p id="about-header">
-    A DEDICATED AND GOAL-ORIENTED SOFTWARE ENGINEER WITH 6+ YEARS OF EXPERIENCE IN COMMERCIAL APPLICATION + FREELANCE.
-  </p>
+<section>
+  <div id="about-section" class="flex-center section-wrapper">
+    <img src="../../assets/logo_bg.png" alt="logo-watermark" />
+    <h3 id="about-header">
+      A DEDICATED AND GOAL-ORIENTED SOFTWARE ENGINEER WITH 6+ YEARS OF EXPERIENCE IN COMMERCIAL APPLICATION + FREELANCE.
+    </h3>
 
-  <a id="about-btn" routerLink="/about" class="circle-button dark" appParallaxButton>
-    <div id="about-btn-text">
-      About Me
-      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="sm dark"></app-svg-icon>
-    </div>
-  </a>
-</section>
-
-<section id="work-section">
-  <app-showcase [multi]="true" [projects]="featuredProjects"></app-showcase>
-  <a id="sub-link" routerLink="/work">
-    All Projects (11)
-    <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
-  </a>
-</section>
-
-<section id="portfolio" class="flex-center">
-  <div class="portfolio-wrapper" id="portfolio1">
-    <div class="portfolio-item flex-center" *ngFor="let item of portfolio1" [ngStyle]="{ 'background-color': item.bg }">
-      <img [src]="item.img" />
-    </div>
-  </div>
-  <div class="portfolio-wrapper" id="portfolio2">
-    <div class="portfolio-item flex-center" *ngFor="let item of portfolio2" [ngStyle]="{ 'background-color': item.bg }">
-      <img [src]="item.img" />
-    </div>
+    <a id="about-btn" routerLink="/about" class="circle-button dark" appParallaxButton>
+      <div id="about-btn-text">
+        About Me
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="sm dark"></app-svg-icon>
+      </div>
+    </a>
   </div>
 </section>
 
-<app-footer></app-footer>
+<section>
+  <div id="work-section" class="section-wrapper">
+    <app-showcase [multi]="true" [projects]="featuredProjects"></app-showcase>
+    <a id="sub-link" class="link" routerLink="/work">
+      All Projects (11)
+      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div id="portfolio-section" class="flex-center">
+    <div class="portfolio-wrapper" id="portfolio-1-home">
+      <div
+        class="portfolio-item flex-center"
+        *ngFor="let item of portfolio1"
+        [ngStyle]="{ 'background-color': item.bg }"
+      >
+        <img [src]="item.img" />
+      </div>
+    </div>
+    <div class="portfolio-wrapper" id="portfolio-2-home">
+      <div
+        class="portfolio-item flex-center"
+        *ngFor="let item of portfolio2"
+        [ngStyle]="{ 'background-color': item.bg }"
+      >
+        <img [src]="item.img" />
+      </div>
+    </div>
+  </div>
+</section>

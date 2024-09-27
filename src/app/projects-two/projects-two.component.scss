@@ -31,3 +31,11 @@
     object-fit: cover;
   }
 }
+
+@media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
+  #project-header-wrapper {
+    #project-header {
+      padding: 0;
+    }
+  }
+}

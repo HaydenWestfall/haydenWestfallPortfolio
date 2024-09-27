@@ -15,9 +15,9 @@
 .project-link {
   display: flex;
   gap: 3rem;
-  padding: 0 3rem;
   width: calc(100% - 6rem);
   cursor: pointer;
+  padding: 0 3rem;
   text-decoration: none;
   color: black;
 }
@@ -196,5 +196,11 @@
     span {
       font-size: 0.75rem;
     }
+  }
+}
+
+@media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
+  .project-link {
+    padding: 0;
   }
 }

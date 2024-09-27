@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
-import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
@@ -52,9 +51,37 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     },
     { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
     { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
+    {
+      img: "/assets/home_projects/maddie_west_journal.png",
+      bg: "#E2DED7",
+    },
+    {
+      img: "/assets/home_projects/Business card front.png",
+      bg: "#ECEDF0",
+    },
+    { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
+    { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
+    {
+      img: "/assets/home_projects/maddie_west_journal.png",
+      bg: "#E2DED7",
+    },
+    {
+      img: "/assets/home_projects/Business card front.png",
+      bg: "#ECEDF0",
+    },
+    { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
+    { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
   ];
 
   portfolio2 = [
+    { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
+    { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
+    { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
+    { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
+    { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
+    { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
+    { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
+    { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
     { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
     { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
     { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
@@ -69,14 +96,12 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
 
   themeService = inject(ThemeService);
 
-  constructor() {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
-  }
+  constructor() {}
 
   ngOnInit(): void {
     gsap.to(document.getElementById("name-slider"), {
       scrollTrigger: {
-        trigger: document.documentElement,
+        trigger: document.getElementById("name-slider"),
         scrub: 0.5,
         start: 0,
         end: window.innerHeight,
@@ -89,23 +114,23 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.themeService.theme = "light";
-      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 250, 0, "power1.out"));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
+    this.themeService.theme = "light";
+    if (window.innerWidth >= 768) {
+      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 350, 0, "power1.out"));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio-1-home", -300, -100, 0, 0));
+      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio-2-home", -100, -300, 0, 0));
       this.animations.push(
-        gsap.to("#contact-btn", {
+        gsap.to("#hero-contact", {
           y: -125,
           scrollTrigger: {
-            trigger: "#contact-btn",
+            trigger: "#hero-contact",
             start: "top 34%",
             end: "bottom top",
             scrub: true,
           },
         })
       );
-    }, 150);
+    }
   }
 
   animate = () => {
@@ -116,12 +141,13 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     }
     gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
     gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("tertiary"), { xPercent: this.xPos });
     this.animationFrameId = requestAnimationFrame(this.animate);
     this.xPos += 0.04;
   };
 
   ngOnDestroy(): void {
     cancelAnimationFrame(this.animationFrameId!);
-    this.animations.forEach((x) => x.kill());
+    // this.animations.forEach((x) => x.kill());
   }
 }

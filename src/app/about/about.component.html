@@ -1,32 +1,24 @@
-<div id="about-header">
-  <span
-    >SCROLL TO FIND OUT MORE ABOUT ME BEING A <br />
-    <span id="rolling-text">{{ rollingText }}</span>
-    <span id="rolling-text-cursor" class="blink-cursor">|</span>
-  </span>
+<section>
+  <div id="about-header" class="section-wrapper">
+    <span
+      >SCROLL TO FIND OUT MORE ABOUT ME BEING A <br />
+      <span id="rolling-text">{{ rollingText }}</span>
+      <span id="rolling-text-cursor" class="blink-cursor">|</span>
+    </span>
 
-  <div id="circle-text" #circleText></div>
-  <div id="accent-border"></div>
+    <div id="circle-text" #circleText></div>
+    <div id="accent-border"></div>
 
-  <div id="rotating-text">
-    <app-svg-icon id="micro-animation" [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
-    <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
+    <div id="rotating-text">
+      <app-svg-icon id="micro-animation" [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
+      <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
+    </div>
   </div>
-</div>
-
-<!-- <img id="header-image" src="../../assets/about-header.png" /> -->
-
-<!-- <div id="quote-wrapper">
-  <span id="quote">
-    An idiot admires complexity,<br />
-    a genius admires simplicity
-  </span>
-  <span id="author">- Terry Davis</span>
-</div> -->
+</section>
 
 <div id="gradient-background">
-  <div id="about-section">
-    <div id="about-wrapper">
+  <section>
+    <div id="about-section" class="section-wrapper">
       <div id="about">
         <div id="about-text">
           <span id="about-description">
@@ -47,11 +39,11 @@
         </div>
       </div>
       <div id="about-headshot-wrapper">
-        <img src="../../assets/hayden_about.png" alt="Hayden Headshot" id="about-headshot" />
+        <img src="../../assets/hayden_about.JPG" alt="Hayden Headshot" id="about-headshot" />
       </div>
       <app-svg-icon [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
     </div>
-  </div>
+  </section>
 
   <section id="portfolio" class="flex-center">
     <div class="portfolio-wrapper" id="portfolio1">
@@ -68,7 +60,7 @@
     </div>
   </section>
 
-  <div id="quote-wrapper-2">
+  <!-- <div id="quote-wrapper-2">
     <div id="quote-image-wrapper">
       <img id="quote-image" src="../../assets/about_quote.png" />
       <div id="quote-text">
@@ -77,23 +69,26 @@
           <span>AN IDIOT ADMIRES COMPLEXITY,</span><br />
           <span>A GENIUS ADMIRES SIMPLICITY</span>
         </div>
-        <!-- <span class="small" style="align-self: flex-end">- Terry Davis</span> -->
       </div>
       <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
       <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
     </div>
-  </div>
+  </div> -->
 
-  <span id="list-label">What can I do for you...</span>
+  <section>
+    <div class="section-wrapper">
+      <span id="list-label">What can I do for you...</span>
 
-  <div id="list-wrapper">
-    <div class="list-item" *ngFor="let item of listItems; let index = index">
-      <div class="index">0{{ index + 1 }}</div>
-      <div class="divider"></div>
-      <label class="title">{{ item.title }}</label>
-      <p class="description">{{ item.description }}</p>
+      <div id="list-wrapper">
+        <div class="list-item" *ngFor="let item of listItems; let index = index">
+          <div class="index">0{{ index + 1 }}</div>
+          <div class="divider"></div>
+          <label class="title">{{ item.title }}</label>
+          <p class="description">{{ item.description }}</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </div>
 
 <!-- <div id="technologies-wrapper">
@@ -113,23 +108,23 @@
   </div>
 </div> -->
 
-<div id="accolades-section">
-  <div id="accolades-wrapper">
-    <img src="../../assets/about-computer.png" />
-    <div id="accolades-list">
-      <div class="accolade" *ngFor="let accolade of accolades">
-        <div class="accolade-header">
-          <img *ngIf="!accolade.divider" alt="Test" [src]="accolade.image" />
-          <div *ngIf="!accolade.divider" class="accolade-info">
-            <span class="accolade-title">{{ accolade.title }}</span>
-            <span class="accolade-expiration">{{ accolade.expiration }}</span>
+<section>
+  <div id="accolades-section" class="section-wrapper">
+    <div id="accolades-wrapper">
+      <img src="../../assets/about-computer.png" />
+      <div id="accolades-list">
+        <div class="accolade" *ngFor="let accolade of accolades">
+          <div class="accolade-header">
+            <img *ngIf="!accolade.divider" alt="Test" [src]="accolade.image" />
+            <div *ngIf="!accolade.divider" class="accolade-info">
+              <span class="accolade-title">{{ accolade.title }}</span>
+              <span class="accolade-expiration">{{ accolade.expiration }}</span>
+            </div>
           </div>
+          <span class="accolade-description">{{ accolade.description }}</span>
+          <div *ngIf="accolade.divider" class="divider"></div>
         </div>
-        <span class="accolade-description">{{ accolade.description }}</span>
-        <div *ngIf="accolade.divider" class="divider"></div>
       </div>
     </div>
   </div>
-</div>
-
-<app-footer></app-footer>
+</section>

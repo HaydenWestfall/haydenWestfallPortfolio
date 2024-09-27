@@ -15,10 +15,12 @@
       </div>
     </div>
 
-    <div class="project-overview">
-      <div class="project-info-wrapper" *ngFor="let info of project.headerInfo">
-        <span id="title">{{ info.title }}</span>
-        <span *ngFor="let bullet of info.description" id="description">{{ bullet }}</span>
+    <div class="project-overview-wrapper">
+      <div class="project-overview">
+        <div class="project-info-wrapper" *ngFor="let info of project.headerInfo">
+          <span id="title">{{ info.title }}</span>
+          <span *ngFor="let bullet of info.description" id="description">{{ bullet }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -52,8 +54,6 @@
     </div>
   </section>
 </div>
-
-<app-footer></app-footer>
 
 <ng-template #projectHeader let-section>
   <div class="project-intro">
@@ -92,7 +92,7 @@
         class="circle-button dark"
         appParallaxButton
       >
-        <div id="about-btn-text">
+        <div id="visit-btn-text">
           VISIT SITE
           <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="sm dark"></app-svg-icon>
         </div>

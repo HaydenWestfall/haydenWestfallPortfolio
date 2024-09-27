@@ -1,10 +1,12 @@
-<footer id="reveal">
-  <div id="header">
-    <div class="category-wrapper">
+<footer>
+  <div id="footer-section">
+    <div id="footer-header">
       <div *ngFor="let item of footerCategories; let index = index" class="footer-category">
-        <span class="category-index">0{{ index + 1 }}/</span>
+        <div class="footer-category-header">
+          <span class="category-index">0{{ index + 1 }}/</span>
+          <h5>{{ item.label }}</h5>
+        </div>
         <div class="footer-links">
-          <div class="link-header">{{ item.label }}</div>
           <ng-container *ngIf="item.type === 'routerLinks'">
             <a *ngFor="let link of item.links" class="link rolling-btn" [routerLink]="link.link">
               <span [attr.data-hover]="link.label">{{ link.label }}</span>
@@ -18,25 +20,27 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <a id="contact-btn-footer" class="circle-button light" routerLink="/about" appParallaxButton>
-    <div id="contact-btn-footer-text" style="z-index: 10">
-      LETS TALK
-      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
-    </div>
-  </a>
-  <div class="accent"></div>
+    <a id="contact-btn-footer" class="circle-button light" routerLink="/about" appParallaxButton>
+      <div id="contact-btn-footer-text" style="z-index: 10">
+        LETS TALK
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
+      </div>
+    </a>
+    <div class="accent"></div>
 
-  <div id="credits">
-    <div class="accent-row">
-      <span style="color: #8f8f97">Website Designed and Implemented by:</span>
-      <span style="color: #8f8f97">Portfolio 2024 version 1.0.15</span>
-    </div>
-    <div id="big-name">HAYDEN WESTFALL</div>
-    <div class="accent-row">
-      <span>REMOTE FROM DAYTON -- 41° 31' 55.38'' N / 37' 8.5872'' W</span>
-      <span>BACK TO TOP</span>
+    <div id="credits">
+      <div class="accent-row">
+        <span style="color: #8f8f97">Website Designed and Developed by:</span>
+        <span style="color: #8f8f97">Portfolio 2024 version 1.0.15</span>
+      </div>
+      <div id="big-name">HAYDEN WESTFALL</div>
+      <div class="accent-row">
+        <span>
+          <span>REMOTE FROM DAYTON</span><span id="coordinates"> -- 41° 31' 55.38'' N / 37' 8.5872'' W</span>
+        </span>
+        <span (click)="backToTop()">BACK TO TOP</span>
+      </div>
     </div>
   </div>
 </footer>

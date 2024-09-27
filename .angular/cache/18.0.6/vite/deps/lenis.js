@@ -1,6 +1,6 @@
 import "./chunk-J4B6MK7R.js";
 
-// node_modules/lenis/dist/lenis.mjs
+// ../../node_modules/lenis/dist/lenis.mjs
 function clamp(t2, i, e) {
   return Math.max(t2, Math.min(i, e));
 }

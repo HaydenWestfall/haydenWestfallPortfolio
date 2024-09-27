@@ -87,7 +87,7 @@ export class FreelanceComponent implements OnInit {
     gsap.fromTo(
       "#mockup-wrapper",
       { y: "0" },
-      { y: "-200", scrollTrigger: { trigger: "#mockup-wrapper", start: "bottom 68%", scrub: true, markers: false } }
+      { y: "-200", scrollTrigger: { trigger: "#mockup-wrapper", start: "bottom 55%", scrub: true, markers: true } }
     );
 
     for (const section of this.project.sections) {

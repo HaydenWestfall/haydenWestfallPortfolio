@@ -93,9 +93,21 @@ export class AboutComponent implements AfterViewInit {
     { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
     { name: "HTML", icon: "../../assets/icons/html.svg" },
     { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
+    { name: "SCSS", icon: "../../assets/icons/scss.svg" },
+    { name: "SPRING", icon: "../../assets/icons/spring.svg" },
+    { name: "KUBERNETES", icon: "../../assets/icons/kubernetes.svg" },
+    { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
+    { name: "HTML", icon: "../../assets/icons/html.svg" },
+    { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
   ];
 
   technologies2 = [
+    { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
+    { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
+    { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
+    { name: "MAVEN", icon: "../../assets/icons/maven.svg" },
+    { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
+    { name: "AMAZON", icon: "../../assets/icons/aws.svg" },
     { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
     { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
     { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
@@ -131,6 +143,7 @@ export class AboutComponent implements AfterViewInit {
       this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
       this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
 
+      console.log("here animation setup");
       gsap.fromTo(
         "#quote-image-wrapper",
         { width: "50%" },
@@ -194,7 +207,7 @@ export class AboutComponent implements AfterViewInit {
         this.deleteRollingText();
         cursor?.classList.remove("blink-cursor");
       }, 7500);
-    }, 1000);
+    });
   }
 
   addRollingText(): void {

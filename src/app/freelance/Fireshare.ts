@@ -1,7 +1,7 @@
 export const Fireshare = {
   projectName: "FIRESHARE",
   titleText: "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
-  headerMockup: "../../assets/tradeshark/macbook_tilted.png",
+  headerMockup: "../../assets/innobuild/innobuild_macbook.png",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "SCRUM team developer"] },

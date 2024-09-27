@@ -7,11 +7,14 @@ import {
   NavigationStart,
   Router,
   RouterOutlet,
+  Scroll,
 } from "@angular/router";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { coverAnimation, coverAnimation2, routeAnimation } from "./animations";
+import Draggable from "gsap/Draggable";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
   selector: "app-root",
@@ -38,6 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     requestAnimationFrame(raf);
 
+    gsap.registerPlugin(ScrollTrigger, Draggable);
     gsap.registerPlugin(CustomEase);
     CustomEase.create("myCustomEase", "M0,0 C0.87,0 0.13,1 1,1");
 
@@ -45,10 +49,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (event instanceof NavigationStart) {
         const urlSegments = event.url.split("/");
         this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
-        this.onActivate();
         this.coverState = "show";
 
-        // Half way through the cover animation show the accent words
         setTimeout(() => {
           this.getRightAlignment();
           this.animateAccent();
@@ -58,7 +60,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         // Let cover animation cover the screen in 1s
         // Allow 200ms delay where the cover is over top of the screen
         setTimeout(() => {
+          window.scrollTo(0, 0);
           this.coverState = "hide";
+          ScrollTrigger.refresh();
         }, this.coverAnimationTiming + 200);
       }
     });
@@ -73,7 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  test(): void {
+  resetCover(): void {
     if (this.coverState === "hide") this.coverState = "initial";
   }
 
@@ -102,17 +106,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   getRightAlignment(): void {
     const accent2 = document.getElementById("accent2");
     this.accentRightAlignment = `calc(-${accent2?.getBoundingClientRect().height}px + 8rem)`;
-    console.log(this.accentRightAlignment);
-  }
-
-  onActivate() {
-    setTimeout(() => {
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "instant",
-      });
-    }, 1000);
   }
 
   mapRouteName(routePath: string): string {

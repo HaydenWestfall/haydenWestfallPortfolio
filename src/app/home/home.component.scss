@@ -1,54 +1,20 @@
-section {
-  background-color: white;
-  z-index: 10;
-}
-
 #hero-section {
   position: relative;
-  width: 100%;
-  height: 100vh;
   overflow: hidden;
-
-  .abs-position {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-  }
-
-  #bg {
-    z-index: 0;
-  }
-
-  #fg {
-    z-index: 3;
-    position: absolute;
-    margin-left: 2.7rem;
-  }
+  height: 100vh;
+  z-index: 1;
 
   #roles {
     position: absolute;
-    top: calc(40% - 1rem);
-    transform: translateY(-100%);
-    left: 2rem;
     color: white;
-    z-index: 5;
-
-    span {
-      font-family: "Open Sans", sans-serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
+    top: calc(30%);
+    left: 2rem;
   }
 
-  #contact-btn {
+  #hero-contact {
     position: absolute;
     right: 10rem;
     top: 34%;
-    z-index: 5;
   }
 
   .angle {
@@ -68,63 +34,73 @@ section {
       right: 1rem;
     }
   }
+}
 
-  .name-wrapper {
-    position: absolute;
-    top: 60%;
+.abs-position {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
 
-    .name-slider {
+.name-wrapper {
+  position: absolute;
+  top: 60%;
+  z-index: 20;
+
+  .name-slider {
+    position: relative;
+    white-space: nowrap;
+
+    p {
       position: relative;
-      white-space: nowrap;
+      margin: 0px;
+      color: rgb(255, 255, 255);
+      font-size: 230px;
+      padding-right: 50px;
+      font-family: "Open Sans", sans-serif;
+      font-style: italic;
+      font-weight: 700;
 
-      p {
-        position: relative;
-        margin: 0px;
-        color: rgb(255, 255, 255);
-        font-size: 230px;
-        padding-right: 50px;
-        font-family: "Open Sans", sans-serif;
-        font-style: italic;
-        font-weight: 700;
+      &:nth-of-type(2) {
+        position: absolute;
+        left: 100%;
+        top: 0;
+      }
 
-        &:nth-of-type(2) {
-          position: absolute;
-          left: 100%;
-          top: 0;
-        }
+      &:nth-of-type(3) {
+        position: absolute;
+        left: 200%;
+        top: 0;
       }
     }
   }
 }
 
-#about {
+#about-section {
   height: 60rem;
-  gap: 8rem;
 
   img {
     position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
     width: 95%;
-    pointer-events: none;
   }
 
   #about-header {
-    font-size: 2.75rem;
-    z-index: 1;
-    max-width: 76%;
+    max-width: clamp(0rem, 75%, 75rem);
     text-align: center;
-    font-family: "Open Sans", sans-serif;
-    font-style: italic;
-    font-weight: 700;
+    z-index: 1;
   }
 
   #about-btn {
     position: absolute;
     right: 15rem;
-    top: 55%;
   }
 }
 
@@ -140,24 +116,11 @@ section {
 
   #sub-link {
     font-size: 0.8rem;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    text-decoration: none;
-    color: blue;
     padding: 0 7rem;
-
-    app-svg-icon {
-      height: 1rem;
-      width: 1rem;
-      background-color: blue;
-    }
   }
 }
 
-#portfolio {
-  width: 100%;
-  max-width: 100%;
+#portfolio-section {
   padding: 10rem 0;
   overflow: hidden;
 
@@ -166,18 +129,103 @@ section {
     gap: 2rem;
     padding: 1rem 0;
     width: 100%;
-    // margin-left: -18rem;
 
     .portfolio-item {
       height: 16rem;
       width: 23rem;
       flex-shrink: 0;
-      background-color: gray;
 
       img {
         width: 85%;
         height: 80%;
         object-fit: cover;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #hero-section {
+    height: 120vh;
+
+    #roles {
+      top: unset;
+      bottom: 5rem;
+    }
+
+    #hero-contact {
+      top: unset;
+      bottom: 3rem;
+      right: 3.25rem;
+    }
+
+    .angle {
+      top: 40%;
+    }
+  }
+
+  .abs-position {
+    scale: 1.25;
+  }
+
+  .name-wrapper {
+    top: 50%;
+  }
+
+  #about-section {
+    height: 42rem;
+    padding: 1.5rem;
+
+    img {
+      width: 120%;
+    }
+
+    #about-header {
+      max-width: unset;
+    }
+
+    #about-btn {
+      position: absolute;
+      right: 15rem;
+    }
+  }
+
+  #work-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3rem;
+
+    app-showcase {
+      width: 100%;
+    }
+
+    #sub-link {
+      font-size: 0.8rem;
+      padding: 0 7rem;
+    }
+  }
+
+  #portfolio-section {
+    padding: 10rem 0;
+    overflow: hidden;
+
+    .portfolio-wrapper {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 0;
+      width: 100%;
+
+      .portfolio-item {
+        height: 16rem;
+        width: 23rem;
+        flex-shrink: 0;
+
+        img {
+          width: 85%;
+          height: 80%;
+          object-fit: cover;
+        }
       }
     }
   }
