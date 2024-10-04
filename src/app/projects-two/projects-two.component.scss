@@ -4,6 +4,7 @@
   align-items: center;
   position: relative;
   z-index: 10;
+  height: 35rem;
 
   #project-header {
     display: flex;
@@ -12,15 +13,9 @@
     font-family: "Open Sans", sans-serif;
     flex-grow: 1;
 
-    #header {
-      font-size: 7rem;
-      font-weight: 700;
-      font-style: italic;
-    }
-
     span {
       font-size: 0.8rem;
-      max-width: 38rem;
+      max-width: 58rem;
       margin-top: -1rem;
     }
   }
@@ -29,6 +24,9 @@
     width: 38%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -37,5 +35,44 @@
     #project-header {
       padding: 0;
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #project-header-wrapper {
+    padding: 9rem 1rem 6rem;
+    height: unset;
+    width: fit-content;
+
+    #project-header {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      font-family: "Open Sans", sans-serif;
+      flex-grow: 1;
+
+      h2 {
+        font-size: 4rem;
+        line-height: 4.75rem;
+        font-style: normal;
+      }
+
+      span {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        max-width: unset;
+        font-style: normal;
+        margin-top: 0;
+      }
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  section {
+    max-width: 100%;
+    overflow: hidden;
   }
 }
