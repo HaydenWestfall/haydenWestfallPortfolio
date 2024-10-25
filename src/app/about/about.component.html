@@ -1,23 +1,30 @@
 <section>
   <div id="about-header" class="section-wrapper">
-    <span
-      >SCROLL TO FIND OUT MORE ABOUT ME BEING A <br />
+    <span>
+      IM HAYDEN, A
       <span id="rolling-text">{{ rollingText }}</span>
       <span id="rolling-text-cursor" class="blink-cursor">|</span>
+      <br />
+      BASED IN OHIO
     </span>
 
-    <div id="circle-text" #circleText></div>
-    <div id="accent-border"></div>
+    <div class="header-accent">
+      <div id="accent-border">
+        <div class="text">EMBRACING WHITESPACE LIKE YOUR BEST FRIEND</div>
+      </div>
 
-    <div id="rotating-text">
-      <app-svg-icon id="micro-animation" [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
-      <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
+      <div id="rotating-text">
+        <div id="micro-animation-wrapper">
+          <app-svg-icon id="micro-animation" [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
+        </div>
+        <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
+      </div>
     </div>
   </div>
 </section>
 
-<div id="gradient-background">
-  <section>
+<section>
+  <div id="about-info-header">
     <div id="about-section" class="section-wrapper">
       <div id="about">
         <div id="about-text">
@@ -35,94 +42,98 @@
             </div>
             <span class="label">{{ history.timeframe }}</span>
           </div>
-          <!-- <a>Download Resume <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon></a> -->
+          <a>Download Resume <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon></a>
         </div>
       </div>
       <div id="about-headshot-wrapper">
-        <img src="../../assets/hayden_about.JPG" alt="Hayden Headshot" id="about-headshot" />
-      </div>
-      <app-svg-icon [path]="'../../assets/icons/micro-animation.svg'"></app-svg-icon>
-    </div>
-  </section>
-
-  <section id="portfolio" class="flex-center">
-    <div class="portfolio-wrapper" id="portfolio1">
-      <div class="technology-2" *ngFor="let technology of technologies1">
-        <app-svg-icon [path]="technology.icon"></app-svg-icon>
-        <span>{{ technology.name }}</span>
-      </div>
-    </div>
-    <div class="portfolio-wrapper" id="portfolio2">
-      <div class="technology-2" *ngFor="let technology of technologies2">
-        <app-svg-icon [path]="technology.icon"></app-svg-icon>
-        <span>{{ technology.name }}</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- <div id="quote-wrapper-2">
-    <div id="quote-image-wrapper">
-      <img id="quote-image" src="../../assets/about_quote.png" />
-      <div id="quote-text">
-        <span class="small">Quote of the Day:</span>
-        <div>
-          <span>AN IDIOT ADMIRES COMPLEXITY,</span><br />
-          <span>A GENIUS ADMIRES SIMPLICITY</span>
+        <div id="image-wrapper">
+          <img src="../../assets/hayden_about.JPG" alt="Hayden Headshot" id="about-headshot" />
         </div>
-      </div>
-      <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
-      <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
-    </div>
-  </div> -->
 
-  <section>
-    <div class="section-wrapper">
-      <span id="list-label">What can I do for you...</span>
-
-      <div id="list-wrapper">
-        <div class="list-item" *ngFor="let item of listItems; let index = index">
-          <div class="index">0{{ index + 1 }}</div>
-          <div class="divider"></div>
-          <label class="title">{{ item.title }}</label>
-          <p class="description">{{ item.description }}</p>
+        <div id="quote">
+          AN IDIOT ADMIRES COMPLEXITY, A GENIUS ADMIRES SIMPLICITY<br />
+          - AARON DAVIS
         </div>
       </div>
     </div>
-  </section>
-</div>
-
-<!-- <div id="technologies-wrapper">
-  <span id="technology-title">TECHNOLOGIES I AM DANGEROUS WITH...</span>
-  <div class="technology-list">
-    <div class="technology" *ngFor="let technology of technologies1">
-      <app-svg-icon [path]="technology.icon"></app-svg-icon>
-      <span>{{ technology.name }}</span>
-    </div>
   </div>
-  <div style="width: 100%; height: 1px; background-color: black"></div>
-  <div class="technology-list">
-    <div class="technology" *ngFor="let technology of technologies2">
-      <app-svg-icon [path]="technology.icon"></app-svg-icon>
-      <span>{{ technology.name }}</span>
-    </div>
-  </div>
-</div> -->
+</section>
 
 <section>
-  <div id="accolades-section" class="section-wrapper">
-    <div id="accolades-wrapper">
-      <img src="../../assets/about-computer.png" />
-      <div id="accolades-list">
-        <div class="accolade" *ngFor="let accolade of accolades">
-          <div class="accolade-header">
-            <img *ngIf="!accolade.divider" alt="Test" [src]="accolade.image" />
-            <div *ngIf="!accolade.divider" class="accolade-info">
-              <span class="accolade-title">{{ accolade.title }}</span>
-              <span class="accolade-expiration">{{ accolade.expiration }}</span>
-            </div>
+  <div class="section-wrapper" style="max-width: 70rem">
+    <div id="list-label">TECHNOLOGIES</div>
+
+    <div class="list-section" style="padding-bottom: 6rem" *ngFor="let technologyGroup of technologies">
+      <div class="left-col">
+        <span>{{ technologyGroup.label }}</span>
+      </div>
+
+      <div class="right-col technology-wrapper">
+        <div class="technology-row" *ngFor="let technologyGroup of technologyGroup.technologies; let index = index">
+          <div class="technology" *ngFor="let technology of technologyGroup">
+            <app-svg-icon [path]="technology.icon"></app-svg-icon>
+            <span>{{ technology.name }}</span>
           </div>
-          <span class="accolade-description">{{ accolade.description }}</span>
-          <div *ngIf="accolade.divider" class="divider"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-wrapper" style="max-width: 70rem">
+    <div id="list-label">ACCOLADES</div>
+
+    <div class="list-section" *ngFor="let certificate of certifications; let index = index">
+      <div class="left-col">
+        <span>
+          <span class="superscript">/0{{ index + 1 }}</span
+          >&nbsp; {{ certificate.name }}</span
+        >
+      </div>
+
+      <div class="right-col accolade-wrapper">
+        <div class="accolade">
+          <img [src]="certificate.image" />
+          <div class="accolade-info">
+            <span class="description">{{ certificate.description }}</span>
+            <span class="expiration">{{ certificate.expiration }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom: 10rem">
+  <div class="section-wrapper" style="max-width: 70rem">
+    <div id="list-label">PERSONAL LIFE</div>
+
+    <div class="list-section">
+      <div class="left-col" style="max-width: 45%; width: 45%">
+        <p>
+          When I’m not behind a screen, I love spending time with my wife, Madison, catching a game or playing sports,
+          and hanging out with friends. Madison and I share a passion for travel, with recent adventures taking us to
+          Las Vegas, Hawaii, and Alaska.
+        </p>
+        <p>
+          Though I was born and raised in Ohio, I’m a dedicated New England Patriots fan—no matter how far that
+          allegiance may be from home! During the summer, you’ll often find me on the golf course, enjoying rounds with
+          friends and family.
+        </p>
+        <p>
+          I’ve also recently branched out into freelance web development, offering full-stack development, web design,
+          and hosting services to a range of clients. This side hustle has been a fantastic way to explore my creative
+          side and dive deeper into the world of web development.
+        </p>
+      </div>
+
+      <div class="right-col" style="max-height: 80vh; overflow: hidden; max-width: 45%">
+        <div class="life-images">
+          <img loading="lazy" src="../../assets/about/1.webp" />
+          <img loading="lazy" src="../../assets/about/2.webp" />
+          <img loading="lazy" src="../../assets/about/3.webp" />
+          <img loading="lazy" src="../../assets/about/1.webp" />
         </div>
       </div>
     </div>

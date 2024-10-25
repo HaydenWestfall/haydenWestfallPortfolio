@@ -10,7 +10,7 @@
         <span [attr.data-hover]="link.label">{{ link.label }}</span>
       </a>
     </div>
-    <a (click)="showSlideInPanel = !showSlideInPanel">
+    <a id="menu" (click)="showSlideInPanel = !showSlideInPanel">
       <span>{{ showSlideInPanel ? "Close" : "Menu" }}</span>
     </a>
   </div>

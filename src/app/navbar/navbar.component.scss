@@ -113,6 +113,10 @@ a {
   }
 }
 
+#menu {
+  display: none;
+}
+
 @media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
   .navbar-wrapper {
     .navbar {
@@ -122,6 +126,10 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+  #menu {
+    display: unset;
+  }
+
   .navbar-wrapper {
     .navbar {
       width: 100%;

@@ -1,5 +1,4 @@
 #about-header {
-  width: 100%;
   height: calc(80vh - 8rem);
   position: relative;
   display: flex;
@@ -8,46 +7,69 @@
   background-color: white;
   padding-top: 8rem;
   overflow: hidden;
+  gap: 2rem;
+  max-width: 80rem;
 
   span {
-    font-size: 4rem;
-    max-width: 80%;
+    font-size: 3.5rem;
     color: black;
     font-family: "Open Sans", sans-serif;
-    font-style: italic;
-    font-weight: 700;
+    font-style: normal;
+    font-weight: 400;
     line-height: 3.85rem;
+
+    .blink-cursor {
+      color: black;
+      animation: blink 1.5s infinite;
+    }
   }
 
-  #rolling-text {
-    color: #4072d3;
-  }
-
-  #accent-border {
-    height: 1px;
+  .header-accent {
     width: 100%;
-    background-color: rgb(207, 207, 207);
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+
+    #accent-border {
+      position: relative;
+      height: 1px;
+      background-color: #e1e1e1;
+      z-index: 1;
+      flex-grow: 1;
+
+      .text {
+        background-color: white;
+        color: #e1e1e1;
+        position: absolute;
+        left: 3rem;
+        font-size: 0.6rem;
+        top: -7px;
+        padding: 0 0.75rem;
+      }
+    }
   }
 
   #rotating-text {
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10rem;
     width: 10rem;
-    top: calc(72% - 5rem);
-    right: 12%;
     z-index: 5;
 
-    #micro-animation {
-      background-color: black;
+    #micro-animation-wrapper {
       position: absolute;
       left: 0;
       right: 0;
       height: 100%;
       width: 100%;
+
+      #micro-animation {
+        background-color: black;
+        height: 100%;
+        width: 100%;
+      }
     }
 
     #spark {
@@ -56,91 +78,39 @@
       width: 60%;
     }
   }
-
-  .blink-cursor {
-    color: black;
-    animation: blink 1.5s infinite;
-  }
-
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
 
-#header-image {
-  width: 100%;
-  height: 85vh;
-  object-fit: cover;
-  position: relative;
-  z-index: 10;
-}
-
-#quote-wrapper {
+#about-info-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  padding: 11rem 0;
-  position: relative;
-  z-index: 1;
-  background-color: white;
-
-  span {
-    text-align: center;
-
-    &:first-child {
-      font-size: 2rem;
-    }
-
-    &:last-child {
-      font-size: 1rem;
-      color: #969696;
-    }
-  }
-}
-
-#gradient-background {
-  display: flex;
-  flex-direction: column;
+  padding: 4rem 0;
   background: linear-gradient(white, #e9eaeb);
-  padding: 4rem 0 0 0;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+  width: 100%;
+  align-items: center;
 
   #about-section {
     display: flex;
-    justify-content: center;
     position: relative;
     width: 100%;
-    gap: 2.5rem;
+    gap: 12.5rem;
+    max-width: 80rem;
 
     #about {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      width: 25%;
 
       #about-text {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        width: 80%;
+        width: 21rem;
 
         #about-description {
           font-size: 0.8rem;
           line-height: 1.4rem;
           color: black;
+          text-align: justify;
         }
 
         #divider-wrapper {
@@ -172,317 +142,193 @@
           }
 
           .accent {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: #a8a8a8;
           }
         }
 
         a {
-          color: #4072d3;
-          font-size: 0.9rem;
+          color: #1b2db4;
+          font-size: 0.8rem;
           text-decoration: underline;
+          display: flex;
+          gap: 0.25rem;
+          cursor: pointer;
+          margin-top: 1.5rem;
+
+          app-svg-icon {
+            height: 1rem;
+            width: 1rem;
+            background-color: #1b2db4;
+            z-index: 100;
+            transform: rotate(135deg);
+          }
         }
       }
     }
 
     #about-headshot-wrapper {
-      z-index: 10;
-      width: 57%;
-      height: 110vh;
-      overflow: hidden;
-      position: relative;
-
-      #about-headshot {
-        width: 100%;
-        height: 120%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
-
-    app-svg-icon {
-      position: absolute;
-      bottom: -4rem;
-      right: 2rem;
-      height: 10rem;
-      width: 10rem;
-      background-color: black;
-      z-index: 100;
-    }
-  }
-
-  #list-label {
-    font-size: 2.25rem;
-    padding: 7rem 6rem 6rem;
-  }
-
-  #list-wrapper {
-    display: flex;
-    width: calc(100% - 12rem);
-    padding: 0 6rem 8rem;
-    justify-content: space-between;
-    gap: 6rem;
-
-    .list-item {
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
 
-      .index {
+      #image-wrapper {
+        z-index: 10;
+        height: 110vh;
+        overflow: hidden;
         position: relative;
+
+        #about-headshot {
+          width: 100%;
+          height: 120%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      #quote {
         font-size: 0.9rem;
-        color: #bcbcbc;
-        padding-bottom: 1rem;
-      }
-
-      .divider {
-        width: 100%;
-        height: 1px;
-        background-color: #bcbcbc;
-      }
-
-      .title {
-        font-size: 1.5rem;
-        padding: 2rem 0;
-        color: #1c1d20;
-      }
-
-      .description {
-        font-size: 0.85rem;
-        line-height: 1.5rem;
-        color: #1c1d20;
+        line-height: 1.4rem;
+        text-align: end;
+        padding: 4rem 0 4rem;
+        align-self: flex-end;
       }
     }
   }
 }
 
-#quote-wrapper-2 {
-  display: flex;
-  justify-content: center;
-  padding-top: 7rem;
-
-  #quote-image-wrapper {
-    position: sticky;
-    top: 10vh;
-    width: 70%;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    overflow: hidden;
-
-    img {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #quote-text {
-      position: absolute;
-      left: 0%;
-      top: 0%;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-
-      span {
-        color: white;
-        font-family: "Open Sans", sans-serif;
-        font-style: italic;
-        font-weight: 700;
-        font-size: 2rem;
-      }
-
-      .small {
-        font-size: 1rem;
-      }
-    }
-
-    .angle {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 2rem;
-      width: 2rem;
-      background-color: white;
-
-      &.left {
-        left: 1rem;
-      }
-
-      &.right {
-        transform: rotate(180deg) translateY(-50%);
-        right: 1rem;
-      }
-    }
-  }
-}
-
-#technologies-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  padding: 14rem 8rem;
-  width: calc(100% - 16rem);
-  background-color: white;
-  color: black;
-  gap: 4rem;
-  font-family: "Open Sans", sans-serif;
-
-  #technology-title {
-    font-size: 1.5em;
-    font-style: italic;
-    font-weight: 700;
-    padding-bottom: 2.5rem;
-  }
-
-  .technology-list {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    .technology {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      width: 9rem;
-
-      span {
-        font-style: italic;
-        font-weight: 500;
-        color: #636363;
-      }
-
-      app-svg-icon {
-        height: 3rem;
-        width: 3rem;
-        background-color: #636363;
-      }
-    }
-  }
-}
-
-#accolades-section {
-  display: flex;
+#list-label {
   width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 8rem 0;
-  position: relative;
-  z-index: 1;
-  background-color: white;
-  border-radius: 0 0 40px 40px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 2rem;
+  margin: 5rem 0 2rem;
+}
 
-  #accolades-wrapper {
-    display: flex;
-    gap: 5rem;
-    width: 70%;
-    height: 35rem;
+.list-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 0;
 
-    img {
-      height: 100%;
-      width: calc(50% - 3rem);
-      object-fit: cover;
+  .left-col {
+    width: 30%;
+    max-width: 30%;
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      vertical-align: top;
     }
 
-    #accolades-list {
+    .superscript {
+      font-size: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      line-height: 1.75rem;
+      text-align: justify;
+    }
+  }
+
+  .right-col {
+    width: 60%;
+    max-width: 60%;
+    position: relative;
+
+    &.technology-wrapper {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      width: calc(50% - 3rem);
-      padding: 2.5rem 0;
+      align-items: flex-end;
+      gap: 1.5rem;
+      height: 12.5rem;
+
+      .technology-row {
+        display: flex;
+        gap: 1.5rem;
+
+        .technology {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 20px;
+          border-radius: 5px;
+          width: 9rem;
+
+          app-svg-icon {
+            height: 2rem;
+            width: 2rem;
+            background-color: #1d1d20;
+          }
+
+          span {
+            font-size: 1rem;
+            font-style: normal;
+            color: #1d1d20;
+          }
+        }
+      }
+    }
+
+    &.accolade-wrapper {
+      display: flex;
+      justify-content: flex-end;
 
       .accolade {
         display: flex;
-        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        width: 80%;
 
-        .accolade-header {
+        img {
+          height: 6rem;
+        }
+
+        .accolade-info {
           display: flex;
-          gap: 1.25rem;
-          align-items: center;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 90%;
 
-          img {
-            height: 3.5rem;
-            width: 3.5rem;
+          .description {
+            font-size: 0.9rem;
+            text-align: justify;
           }
 
-          .accolade-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-
-            .accolade-title {
-              font-size: 0.9rem;
-              font-weight: 500;
-              color: black;
-            }
-
-            .accolade-expiration {
-              font-size: 0.6rem;
-              font-weight: 400;
-              color: #bcbcbc;
-            }
+          .expiration {
+            font-size: 0.75rem;
+            color: #949494;
           }
         }
+      }
+    }
 
-        .accolade-description {
-          color: #343434;
-          font-size: 0.65rem;
-          margin-left: 4.75rem;
-        }
+    .life-images {
+      display: flex;
+      width: 100%; /* 100% for each of the four images */
+      height: 100%;
 
-        .divider {
-          width: 100%;
-          height: 1px;
-          background-color: #d5d5d5;
-        }
+      img {
+        width: 100%;
+        min-height: 100%;
+        flex: 1 0 100%;
+        object-fit: cover;
       }
     }
   }
 }
 
-#portfolio {
-  width: 100%;
-  max-width: 100%;
-  padding: 12rem 0 4rem 0;
-  overflow: hidden;
-  gap: 2rem;
-
-  .portfolio-wrapper {
-    display: flex;
-    gap: 7rem;
-    padding: 1rem 0;
-    width: 100%;
-    // margin-left: -18rem;
-
-    .technology-2 {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      width: 20rem;
-
-      span {
-        color: black;
-        font-family: "Open Sans", sans-serif;
-        font-style: italic;
-        font-weight: 700;
-        color: #636363;
-        font-size: 1.7rem;
-      }
-
-      app-svg-icon {
-        height: 4rem;
-        width: 4rem;
-        background-color: #636363;
-      }
-    }
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

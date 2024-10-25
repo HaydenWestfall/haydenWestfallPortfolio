@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, HostListener, inject, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -7,8 +16,24 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   templateUrl: "./about.component.html",
   styleUrl: "./about.component.scss",
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
+  rollingTextIndex = 0;
+  rollingTextLabels = [
+    "FULL STACK DEVELOPER",
+    "UI/UX DESIGNER",
+    "DEVOPS ENGINEER",
+    "PROJECT LEAD",
+    "SCRUM MASTER",
+    "SOFTWARE ENGINEER",
+  ];
+  rollingText = "SOFTWARE ENGINEER";
+  totalImages = 3; // Only count the original images (not the duplicate)
+  timeline: TimelineMax = null as any;
+  intervalId: any = null;
+  direction = -1;
+  animationFrameId: number | null = null;
+  rotatePos = 0;
 
   workHistory = [
     {
@@ -38,194 +63,162 @@ export class AboutComponent implements AfterViewInit {
     },
   ];
 
-  listItems = [
+  technologies = [
     {
-      title: "Design",
-      description:
-        "With a solid track record in designing websites, I deliver strong and user-friendly digital designs. (Since 2024 only in combination with development)",
+      label: "PROFESSIONAL WITH THESE",
+      technologies: [
+        [
+          { name: "SPRING", icon: "../../assets/icons/spring.svg" },
+          { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
+          { name: "KUBERNETES", icon: "../../assets/icons/kubernetes.svg" },
+        ],
+        [
+          { name: "AMAZON", icon: "../../assets/icons/aws.svg" },
+          { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
+          { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
+        ],
+        [
+          { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
+          { name: "MAVEN", icon: "../../assets/icons/maven.svg" },
+          { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
+        ],
+        [
+          { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
+          { name: "SCSS", icon: "../../assets/icons/scss.svg" },
+          { name: "HTML", icon: "../../assets/icons/html.svg" },
+        ],
+      ],
     },
     {
-      title: "Development",
-      description:
-        "With a solid track record in designing websites, I deliver strong and user-friendly digital designs. (Since 2024 only in combination with development)",
-    },
-    {
-      title: "Deployment",
-      description:
-        "With a solid track record in designing websites, I deliver strong and user-friendly digital designs. (Since 2024 only in combination with development)",
+      label: "KNOW ENOUGH TO BE DANGEROUS",
+      technologies: [
+        [
+          { name: "REACT", icon: "../../assets/icons/openapi.svg" },
+          { name: "SVN", icon: "../../assets/icons/docker.svg" },
+          { name: "SQL", icon: "../../assets/icons/gitlab.svg" },
+        ],
+        [
+          { name: "PL/SQL", icon: "../../assets/icons/maven.svg" },
+          { name: "C++", icon: "../../assets/icons/mongodb.svg" },
+          { name: "JENKINS", icon: "../../assets/icons/aws.svg" },
+        ],
+      ],
     },
   ];
 
-  accolades = [
+  certifications = [
     {
-      image: "../../assets/accolades/aws.png",
-      title: "AWS Certified Developer",
-      expiration: "2021-2024",
+      name: "CERTIFIED SCRUM MASTER",
+      image: "../../assets/accolades/csm.png",
       description:
         "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
+      expiration: "LIFETIME",
     },
     {
-      divider: true,
-    },
-    {
+      name: "TS/SCI SECURITY CLEARENCE",
       image: "../../assets/accolades/security-clearence.png",
-      title: "TS/SCI Security Clearence",
+      description:
+        "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
       expiration: "2024 - 2029",
-      description:
-        "Having a Top Secret/SCI security Clearance has allowed me to support customer meetings on site, better understand project requirements, and support project deployments.",
     },
     {
-      divider: true,
-    },
-    {
-      image: "../../assets/accolades/csm.png",
-      title: "Certified Scrum Master",
-      expiration: "Lifetime",
+      name: "AWS CERTIFIED DEVELOPER",
+      image: "../../assets/accolades/aws.png",
       description:
-        "Since earning my Scrum Master certification, I've successfully led agile teams, improved project efficiency, and ensured timely, high-quality delivery on multiple projects.",
+        "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
+      expiration: "2024",
     },
   ];
-
-  technologies1 = [
-    { name: "SCSS", icon: "../../assets/icons/scss.svg" },
-    { name: "SPRING", icon: "../../assets/icons/spring.svg" },
-    { name: "KUBERNETES", icon: "../../assets/icons/kubernetes.svg" },
-    { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
-    { name: "HTML", icon: "../../assets/icons/html.svg" },
-    { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
-    { name: "SCSS", icon: "../../assets/icons/scss.svg" },
-    { name: "SPRING", icon: "../../assets/icons/spring.svg" },
-    { name: "KUBERNETES", icon: "../../assets/icons/kubernetes.svg" },
-    { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
-    { name: "HTML", icon: "../../assets/icons/html.svg" },
-    { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
-  ];
-
-  technologies2 = [
-    { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
-    { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
-    { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
-    { name: "MAVEN", icon: "../../assets/icons/maven.svg" },
-    { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
-    { name: "AMAZON", icon: "../../assets/icons/aws.svg" },
-    { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
-    { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
-    { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
-    { name: "MAVEN", icon: "../../assets/icons/maven.svg" },
-    { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
-    { name: "AMAZON", icon: "../../assets/icons/aws.svg" },
-  ];
-
-  text = "Hello World";
-
-  lastScrollTop = 0;
-  scrollTimeout = null as any;
-  hoverIndex: number | null = null;
-  private bigNameTween: gsap.core.Tween = null as any;
-  private scaleTween: gsap.core.Tween = null as any;
-  rewindtween: gsap.core.Tween = null as any;
-  forwardtween: gsap.core.Tween = null as any;
-
-  rollingTextIndex = 0;
-  rollingTextLabels = ["FULL STACK DEVELOPER", "UI/UX DESIGNER", "DEVOPS ENGINEER", "COMMUNICATOR"];
-  rollingText = "FULL STACK DEVELOPER";
-
-  animations: gsap.core.Tween[] = [];
-
-  constructor() {
-    gsap.registerPlugin(ScrollTrigger);
-  }
 
   ngAfterViewInit(): void {
     this.themeService.theme = "dark";
+    gsap.to(document.getElementById("micro-animation-wrapper"), {
+      scrollTrigger: {
+        trigger: document.getElementById("micro-animation-wrapper"),
+        scrub: 0.5,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (this.direction = e.direction * -1),
+      },
+      rotate: "-100px",
+    });
+    this.animationFrameId = requestAnimationFrame(this.animate);
 
-    setTimeout(() => {
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio1", -300, -100, 0, 0));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio2", -100, -300, 0, 0));
-
-      console.log("here animation setup");
-      gsap.fromTo(
-        "#quote-image-wrapper",
-        { width: "50%" },
-        {
-          width: "80%",
-          scrollTrigger: {
-            trigger: "#quote-image-wrapper",
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
+    const logoWrappers = document.querySelectorAll(".technology-row");
+    logoWrappers.forEach((wrapper, index) => {
+      Array.from(wrapper.children).forEach((child) => {
+        gsap.fromTo(
+          child,
+          {
+            y: 6 * (index + 1) + "rem",
+            opacity: 0,
           },
-        }
-      );
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: wrapper, // Trigger the animation based on this selector
+              start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
+              end: "top 40%", // End the animation when the top hits 30% of the viewport height
+              scrub: 1, // Smooth scrubbing
+            },
+          }
+        );
+      });
+    });
 
+    const accoladeWrappers = document.querySelectorAll(".accolade");
+    accoladeWrappers.forEach((elements) => {
       gsap.fromTo(
-        "#quote-text",
-        { opacity: 0 },
+        elements,
         {
+          y: 5 + "rem",
+          opacity: 0,
+        },
+        {
+          y: 0,
           opacity: 1,
           scrollTrigger: {
-            trigger: "#quote-text",
-            start: "top bottom",
-            scrub: true,
+            trigger: elements, // Trigger the animation based on this selector
+            start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
+            end: "top 70%", // End the animation when the top hits 30% of the viewport height
+            scrub: 1, // Smooth scrubbing
           },
         }
       );
-
-      gsap.fromTo(
-        "#about-headshot",
-        { y: "-20%" },
-        {
-          y: "0",
-          scrollTrigger: {
-            trigger: "#about-headshot",
-            start: "20% bottom",
-            scrub: true,
-          },
-        }
-      );
-
-      this.bigNameTween = gsap.to("#micro-animation", {
-        rotate: "100%",
-        duration: 12,
-        repeat: -1,
-        ease: "none",
-      });
-
-      const tl = gsap.timeline();
-
-      this.scaleTween = gsap.to("#spark", {
-        scale: "1.2",
-        duration: 1,
-        repeat: -1,
-        yoyo: true,
-        ease: "none",
-      });
-
-      let intervalId = setInterval(() => {
-        const cursor = document.getElementById("rolling-text-cursor");
-        cursor?.classList.add("blink-cursor");
-        this.deleteRollingText();
-        cursor?.classList.remove("blink-cursor");
-      }, 7500);
     });
+
+    gsap.fromTo(
+      "#about-headshot",
+      { y: "-20%" },
+      {
+        y: "0",
+        scrollTrigger: {
+          trigger: "#about-headshot",
+          start: "20% bottom",
+          scrub: true,
+        },
+      }
+    );
+    gsap.to("#spark", {
+      scale: "1.2",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "none",
+    });
+    this.initRollingText();
+
+    this.setupTimeline();
   }
 
-  addRollingText(): void {
-    let index = 0;
-    let timeout = 150;
-    let intervalId = setInterval(() => {
-      setTimeout(() => {
-        const cursor = document.getElementById("rolling-text-cursor");
-        index = index + 1;
-        this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
-        if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
-          clearInterval(intervalId);
-          cursor?.classList.add("blink-cursor");
-          this.rollingTextIndex = this.rollingTextIndex === 3 ? 0 : this.rollingTextIndex + 1;
-        }
-        timeout = Math.floor(Math.random() * (400 - 100 + 1)) + 100;
-      }, timeout);
-    }, 150);
+  initRollingText(): void {
+    this.intervalId = setInterval(() => {
+      const cursor = document.getElementById("rolling-text-cursor");
+      cursor?.classList.add("blink-cursor");
+      this.deleteRollingText();
+      cursor?.classList.remove("blink-cursor");
+    }, 7500);
   }
 
   deleteRollingText(): void {
@@ -239,49 +232,55 @@ export class AboutComponent implements AfterViewInit {
     }, 75);
   }
 
-  @HostListener("window:scroll", ["$event"])
-  onWindowScroll(event: any): void {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    let scrollDiff = Math.abs(scrollTop - this.lastScrollTop);
-    scrollDiff = scrollDiff > 100 ? 100 : scrollDiff;
-    const animationSpeed = 20 * (scrollDiff / 100);
+  addRollingText(): void {
+    let index = 0;
+    let intervalId = setInterval(() => {
+      const cursor = document.getElementById("rolling-text-cursor");
+      index = index + 1;
 
-    if (scrollTop < this.lastScrollTop) {
-      if (this.forwardtween) {
-        this.forwardtween.kill();
+      this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
+      if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
+        clearInterval(intervalId);
+        cursor?.classList.add("blink-cursor");
+        this.rollingTextIndex = this.rollingTextIndex === 6 ? 0 : this.rollingTextIndex + 1;
       }
-
-      const rewindDuration = 1 * (scrollDiff / 100);
-      const newTime = this.bigNameTween.time() - rewindDuration;
-      this.bigNameTween.seek(newTime);
-
-      this.rewindtween = gsap.to(this.bigNameTween, {
-        time: newTime,
-        duration: 0.4,
-      });
-    } else {
-      if (this.rewindtween) {
-        this.rewindtween.kill();
-      }
-
-      this.forwardtween = gsap.to(this.bigNameTween, {
-        timeScale: scrollTop ? 1 + animationSpeed : 1,
-        duration: 0.75,
-      });
-    }
-
-    // After a backoff, reset the animation back to its original speed
-    clearTimeout(this.scrollTimeout);
-    this.scrollTimeout = setTimeout(() => this.resetAnimation());
-
-    // Save the current scroll position
-    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, 150);
   }
 
-  resetAnimation() {
-    gsap.to(this.bigNameTween, {
-      timeScale: 1,
-      duration: 0.75,
+  animate = () => {
+    gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
+    this.animationFrameId = requestAnimationFrame(this.animate);
+    this.rotatePos += 0.2;
+  };
+
+  setupTimeline() {
+    this.timeline = gsap.timeline({
+      repeat: -1, // Infinite loop
     });
+
+    this.timeline.to(".life-images", {
+      x: "0%",
+      duration: 0,
+      ease: "none",
+    });
+
+    // Create an animation for each image slide
+    for (let i = 1; i <= this.totalImages; i++) {
+      this.timeline.to(
+        ".life-images",
+        {
+          x: `-${i * 100}%`,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "+=3.5"
+      ); // Hold each image for 4 seconds before sliding to the next
+    }
+
+    this.timeline.play();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
   }
 }
