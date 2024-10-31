@@ -1,5 +1,7 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { ThemeService } from "../services/theme.service";
+import { Component, OnInit } from "@angular/core";
+import { gsap } from "gsap";
+import Draggable from "gsap/Draggable";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
   selector: "app-contact",
@@ -7,15 +9,38 @@ import { ThemeService } from "../services/theme.service";
   styleUrl: "./contact.component.scss",
 })
 export class ContactComponent implements OnInit {
-  themeService = inject(ThemeService);
-  userInput = {
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  };
+  direction = -1;
+  slider = 0;
+  xPos = 0;
+
+  constructor() {
+    gsap.registerPlugin(ScrollTrigger, Draggable);
+  }
 
   ngOnInit(): void {
-    this.themeService.theme = "light";
+    gsap.to(document.getElementById("name-slider"), {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.5,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (this.direction = e.direction * -1),
+      },
+      x: "-500px",
+    });
+
+    requestAnimationFrame(this.animate);
   }
+
+  animate = () => {
+    if (this.xPos < -100) {
+      this.xPos = 0;
+    } else if (this.xPos > 0) {
+      this.xPos = -100;
+    }
+    gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
+    requestAnimationFrame(this.animate);
+    this.xPos += 0.015;
+  };
 }

@@ -1,70 +1,13 @@
 <section>
   <h1>WANT TO GET IN TOUCH?<br />GO ON, DON'T BE SHY</h1>
-  <div id="contact-wrapper">
-    <div id="info-wrapper">
-      <div id="info-section">
-        <label>Contact Information</label>
-        <span>{{ "westfallhayden@gmail.com" }}</span>
-        <span>+1 937 467 9105</span>
-      </div>
-      <div id="info-section">
-        <label>Event more about me</label>
-        <a href="https://www.linkedin.com" target="_blank" id="link-wrapper">
-          <span>Resume</span>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" id="link-wrapper">
-          <span>Linked In</span>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" id="link-wrapper">
-          <span>GitHub</span>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" id="link-wrapper">
-          <span>Instagram</span>
-          <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-        </a>
-      </div>
-    </div>
-    <div id="form-wrapper">
-      <p>
-        Fill in the form below and you will hear back from me within 48 hours. Whether you want to know more about me,
-        work with me, or just say hi. I look forward to your message.
-      </p>
-      <form>
-        <div id="input-wrapper">
-          <label>Name</label>
-          <input name="name" [(ngModel)]="userInput.name" placeholder="McLovin" />
-        </div>
 
-        <div id="input-wrapper">
-          <label>Email</label>
-          <input name="email" [(ngModel)]="userInput.email" placeholder="mclovin@gmail.com" />
-        </div>
-        <div id="input-wrapper">
-          <label>Phone</label>
-          <input name="phone" [(ngModel)]="userInput.phone" placeholder="XXX - XXX - XXXX" />
-        </div>
-        <div id="input-wrapper">
-          <label>Message</label>
-          <textarea
-            name="message"
-            style="height: 8rem"
-            [(ngModel)]="userInput.message"
-            placeholder="Lets work together sometime soon . . ."
-          ></textarea>
-        </div>
-      </form>
-
-      <button>
-        Send the damn thing
-        <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-      </button>
+  <div class="email-wrapper">
+    <div class="email">WESTFALLHAYDEN&#64;GMAIL.COM</div>
+    <div class="name-wrapper">
+      <div id="name-slider" class="name-slider">
+        <p id="primary">WESTFALLHAYDEN&#64;GMAIL.COM -</p>
+        <p id="secondary">WESTFALLHAYDEN&#64;GMAIL.COM -</p>
+      </div>
     </div>
   </div>
 </section>
-
-<div id="name-marquee">
-  <span>Hayden Westfall -- Hayden Westfall -- Hayden Westfall -- Hayden Westfall --</span>
-</div>

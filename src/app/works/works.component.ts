@@ -5,11 +5,11 @@ import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
-  selector: "app-projects-two",
-  templateUrl: "./projects-two.component.html",
-  styleUrl: "./projects-two.component.scss",
+  selector: "app-works",
+  templateUrl: "./works.component.html",
+  styleUrl: "./works.component.scss",
 })
-export class ProjectsTwoComponent implements AfterViewInit {
+export class WorksComponent implements AfterViewInit {
   themeService = inject(ThemeService);
   featuredProjects = [
     {
@@ -31,11 +31,11 @@ export class ProjectsTwoComponent implements AfterViewInit {
       hover: false,
     },
     {
-      label: "TRADEWAVE",
+      label: "TRADESHARK",
       description:
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Technical Lead | Commercial",
-      link: "/work/tradeWave",
+      link: "/work/tradeshark",
       showcase: "../../assets/maddieWestEvents/app_showcase.png",
       hover: false,
     },
