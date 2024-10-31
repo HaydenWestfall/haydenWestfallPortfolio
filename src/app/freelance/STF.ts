@@ -13,7 +13,7 @@ export const STF = {
     {
       template: "project-header",
       title: "OVERVIEW",
-      disclaimer: true,
+      disclaimer: false,
       tableOfContents: [
         { id: "overview", label: "OVERVIEW" },
         { id: "mobile", label: "MOBILE DESIGN" },
@@ -34,14 +34,6 @@ export const STF = {
         logo: "../../assets/stf/logo.png",
         url: "https:///www.stf-ins-group.com",
       },
-    },
-    {
-      template: "macbook",
-      img: "../../assets/stf/macbook_home.png",
-    },
-    {
-      template: "mockup",
-      img: "../../assets/stf/mockup.png",
     },
     {
       template: "mobile-section",
@@ -72,7 +64,7 @@ export const STF = {
       tile2Img: "../../assets/stf/iphone_design_focus.png",
     },
     {
-      template: "journal-section",
+      template: "sub-section",
       title: "JOURNAL",
       description: [
         "Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect, Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect,",

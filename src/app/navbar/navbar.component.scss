@@ -62,7 +62,7 @@ a {
 #slide-in-panel {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
   background-color: #1d1d20;
   height: 100vh;
   width: 100vw;
@@ -70,7 +70,8 @@ a {
   transition: left 0.6s cubic-bezier(0.87, 0, 0.13, 1);
 
   #links {
-    gap: 5rem;
+    gap: 3rem;
+    padding-bottom: 6rem;
 
     a {
       font-size: 2rem;
@@ -78,11 +79,8 @@ a {
       color: white;
       display: flex;
       gap: 0.5rem;
-
-      div {
-        font-size: 0.8rem;
-        margin-top: 0.6rem;
-      }
+      font-style: italic;
+      vertical-align: top;
     }
   }
 
@@ -91,14 +89,14 @@ a {
     flex-direction: column;
     gap: 1.25rem;
     position: absolute;
-    bottom: 0;
+    bottom: 6rem;
     left: 0;
     padding: 2rem 1.25rem;
     margin: 0 1.25rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #ffffff48;
     border-top: 1px solid #ffffff33;
-    width: calc(100% - 5rem);
+    width: calc(100% - 2.5rem);
 
     #socials {
       display: flex;
@@ -106,8 +104,9 @@ a {
       color: white;
 
       a {
-        font-size: 1.2rem;
+        font-size: 0.85rem;
         font-weight: 600;
+        font-style: italic;
       }
     }
   }

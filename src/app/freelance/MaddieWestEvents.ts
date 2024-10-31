@@ -13,7 +13,7 @@ export const MaddieWestEvents = {
     {
       template: "project-header",
       title: "OVERVIEW",
-      disclaimer: true,
+      disclaimer: false,
       tableOfContents: [
         { id: "overview", label: "OVERVIEW" },
         { id: "mobile", label: "MOBILE DESIGN" },
@@ -24,7 +24,6 @@ export const MaddieWestEvents = {
         {
           id: "overview",
           template: "sub-section",
-          title: "OVERVIEW",
           description: [
             "Branding, UI/UX Design, Prototyping, Implementation, and Deployment. Meet Maddie West Events, a new wedding and event coordination company established in 2023. Maddie West Events is a frontend webpage built with Javscript, HTML, SCSS, and Webpack. Madison was in need of a “modern, timeless, and Refined” website that perfectly captured her brand and overall style.",
           ],
@@ -36,30 +35,30 @@ export const MaddieWestEvents = {
         url: "https:///www.maddiewestevents.com",
       },
     },
-    {
-      template: "macbook",
-      img: "../../assets/maddieWestEvents/macbook_home.png",
-    },
-    {
-      template: "mockup",
-      img: "../../assets/maddieWestEvents/mockup.jpeg",
-    },
+    // {
+    //   template: "mockup",
+    //   img: "../../assets/maddieWestEvents/mockup.jpeg",
+    // },
     {
       template: "mobile-section",
-      title: "MOBILE FIRST DESIGN",
+      title: "DESIGN CHALLENGES",
       description:
-        "I always like to starts simple with mobile designs and build up from there. Here are a few snippets of Maddie West Events on mobile.",
+        "A serious challenge changing my mindset from sleek modern design to elegant and timeless which was the requirement for this wedding site. Maddie wanted a simple and elegant website that represented her business and quality of work for day of coordinating and events.",
       imgs: [
         "../../assets/maddieWestEvents/iphone_design_1.png",
         "../../assets/maddieWestEvents/iphone_design_2.png",
         "../../assets/maddieWestEvents/iphone_design_3.png",
       ],
     },
+    // {
+    //   template: "macbook",
+    //   img: "../../assets/maddieWestEvents/macbook_home.png",
+    // },
     {
       template: "design-marketing",
       title: "DESIGN + MARKETING",
       description: [
-        "A serious challenges changing my mindset from sleek modern design to elegant and timeless which was the requirement for this wedding site. Maddie wanted a simple and elegant website that represented her business and quality of work for day of coordinating and events.",
+        "A serious challenge changing my mindset from sleek modern design to elegant and timeless which was the requirement for this wedding site. Maddie wanted a simple and elegant website that represented her business and quality of work for day of coordinating and events.",
         "Here are some aspects of the design that were used. A typeface that screams elegant with a color scheme that is as simple as it gets.",
       ],
       fontFamily: "didot-italic",
@@ -73,7 +72,8 @@ export const MaddieWestEvents = {
       tile2Img: "../../assets/maddieWestEvents/iphone_design_focus.png",
     },
     {
-      template: "conclusion",
+      id: "conclusion",
+      template: "sub-section",
       title: "CLOSING THOUGHTS",
       description: [
         "Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect, Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect,",

@@ -33,15 +33,17 @@ export class FreelanceComponent implements OnInit {
     { color: "black", colorName: "BLACK", colorHex: "#000000" },
   ];
 
-  nextProject = {
-    label: "STF",
-    description:
-      "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-    role: "Design + Dev | Freelance",
-    link: "/work/stf",
-    showcase: "../../assets/stf_showcase.png",
-    hover: false,
-  };
+  nextProject = [
+    {
+      label: "STF",
+      description:
+        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+      role: "Design + Dev | Freelance",
+      link: "/work/stf",
+      showcase: "../../assets/stf/app_showcase.png",
+      hover: false,
+    },
+  ];
 
   themeService = inject(ThemeService);
   route = inject(ActivatedRoute);
@@ -87,7 +89,15 @@ export class FreelanceComponent implements OnInit {
     gsap.fromTo(
       "#mockup-wrapper",
       { y: "0" },
-      { y: "-200", scrollTrigger: { trigger: "#mockup-wrapper", start: "bottom 55%", scrub: true, markers: true } }
+      {
+        y: "-200",
+        scrollTrigger: {
+          trigger: "#hero-section",
+          start: "bottom bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
     );
 
     for (const section of this.project.sections) {
@@ -117,7 +127,6 @@ export class FreelanceComponent implements OnInit {
               start: "top bottom",
               end: "top: 40%",
               scrub: true,
-              markers: false,
             },
           }
         );
@@ -132,29 +141,27 @@ export class FreelanceComponent implements OnInit {
 
     // gsap.fromTo(
     //   "#iphone_mockup_1",
-    //   { marginTop: "5rem" },
+    //   { y: "5rem" },
     //   {
-    //     top: "-5rem",
+    //     y: "-2.5rem",
     //     scrollTrigger: {
-    //       trigger: "#iphone_mockup_1",
+    //       trigger: "#mobile-wrapper",
     //       start: "top bottom",
     //       end: "bottom top",
     //       scrub: true,
-    //       markers: false,
     //     },
     //   }
     // );
     // gsap.fromTo(
     //   "#iphone_mockup_3",
-    //   { marginTop: "0" },
+    //   { y: "-5rem" },
     //   {
-    //     marginTop: "0",
+    //     y: "2.5rem",
     //     scrollTrigger: {
-    //       trigger: "#iphone_mockup_3",
+    //       trigger: "#mobile-wrapper",
     //       start: "top bottom",
     //       end: "bottom top",
     //       scrub: true,
-    //       markers: false,
     //     },
     //   }
     // );

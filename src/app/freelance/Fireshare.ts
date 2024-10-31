@@ -14,13 +14,6 @@ export const Fireshare = {
       template: "project-header",
       title: "OVERVIEW",
       disclaimer: true,
-      tableOfContents: [
-        { id: "overview", label: "OVERVIEW" },
-        { id: "careerDevelopment", label: "CAREER DEVELOPMENT" },
-        { id: "uiuxDesign", label: "USER INTERFACE/EPERIENCE DESIGN" },
-        { id: "design_marketing", label: "BACKEND DESIGN AND IMPLEMENTATION" },
-        { id: "cicd", label: "CONTINUOUS INTEGRATION / CONTINUOUS DEVELOPMENT" },
-      ],
       subSections: [
         {
           id: "overview",
@@ -31,16 +24,16 @@ export const Fireshare = {
             "TradeShark's advanced filtering system allows users to refine their data with precision, supporting complex queries such as inclusion, exclusion, combination, or chaining of multiple attributes. Additionally, the application includes an import feature that facilitates the seamless integration of historical transactions, either from prior services or different providers, making TradeShark a comprehensive solution for financial management.",
           ],
         },
-        {
-          id: "careerDevelopment",
-          template: "sub-section",
-          title: "CAREER DEVELOPMENT",
-          description: [
-            "TradeShark presented a unique challenge, as I stepped in as the technical lead mid-project. The application had been under development for about six months by a different team, which was eventually disbanded, leaving TradeShark in a state of limbo. I was tasked with reviving the project and steering it towards completion.",
-            "The original design aimed to repurpose an existing application within the company, a direction I felt was fundamentally flawed. The user interface was not suited for the new requirements, and the data models and user workflows were markedly different from the previous use cases. Recognizing these issues, I obtained approval to spend a few days creating a prototype and wireframe that better aligned with TradeShark's intended purpose.",
-            "The prototype you see on this page is the result of that effort. Our customers responded positively to the modernized look and feel, which contrasted sharply with the previous design, and they quickly approved the new direction. Following this, I took the lead in the development and deployment of TradeShark, successfully bringing it to completion over the next nine months.",
-          ],
-        },
+        // {
+        //   id: "careerDevelopment",
+        //   template: "sub-section",
+        //   title: "CAREER DEVELOPMENT",
+        //   description: [
+        //     "TradeShark presented a unique challenge, as I stepped in as the technical lead mid-project. The application had been under development for about six months by a different team, which was eventually disbanded, leaving TradeShark in a state of limbo. I was tasked with reviving the project and steering it towards completion.",
+        //     "The original design aimed to repurpose an existing application within the company, a direction I felt was fundamentally flawed. The user interface was not suited for the new requirements, and the data models and user workflows were markedly different from the previous use cases. Recognizing these issues, I obtained approval to spend a few days creating a prototype and wireframe that better aligned with TradeShark's intended purpose.",
+        //     "The prototype you see on this page is the result of that effort. Our customers responded positively to the modernized look and feel, which contrasted sharply with the previous design, and they quickly approved the new direction. Following this, I took the lead in the development and deployment of TradeShark, successfully bringing it to completion over the next nine months.",
+        //   ],
+        // },
       ],
       preview: {
         screenshot: "../../assets/maddieWestEvents/app_preview.png",
@@ -58,10 +51,6 @@ export const Fireshare = {
       ],
     },
     {
-      template: "mockup",
-      img: "../../assets/tradeshark/mockup.png",
-    },
-    {
       id: "design_marketing",
       template: "sub-section",
       title: "BACKEND",
@@ -70,10 +59,6 @@ export const Fireshare = {
         "Using OpenAPI Generator significantly streamlined development, providing us with POJOs, Spring controllers, and client APIs right out of the box. This approach eliminated the need to manually create boilerplate code, resulting in substantial time savings and a more efficient workflow for the development team. For database interactions, we utilized the MongoDB Spring Data plugin, which seamlessly integrated with our backend.",
         "Given the complexity of TradeShark’s data, which includes complex data types and embedded documents, the MongoDB queries required advanced handling. I developed several MongoDB aggregation pipelines to transform the data into the exact formats needed. These pipelines were critical for delivering features like paginated full object results for table views and optimized projections for chart views with hundreds of thousands of records. The success of TradeShark heavily relied on these sophisticated data manipulation techniques.",
       ],
-    },
-    {
-      template: "mockup",
-      img: "../../assets/tradeshark/mockup.png",
     },
     {
       id: "cicd",

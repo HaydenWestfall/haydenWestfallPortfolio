@@ -13,6 +13,7 @@ export class ShowcaseComponent implements OnInit {
   below768Pixels: boolean = false;
 
   ngOnInit(): void {
+    console.log(this.projects);
     this.below768Pixels = window.innerWidth < 768;
   }
 

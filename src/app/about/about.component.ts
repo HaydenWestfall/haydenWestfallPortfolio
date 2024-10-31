@@ -20,7 +20,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
   rollingTextIndex = 0;
   rollingTextLabels = [
-    "FULL STACK DEVELOPER",
+    "FULL STACK DEV",
     "UI/UX DESIGNER",
     "DEVOPS ENGINEER",
     "PROJECT LEAD",
@@ -88,6 +88,32 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
           { name: "HTML", icon: "../../assets/icons/html.svg" },
         ],
       ],
+      technologiesMobile: [
+        [
+          { name: "SPRING", icon: "../../assets/icons/spring.svg" },
+          { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
+        ],
+        [
+          { name: "AMAZON", icon: "../../assets/icons/aws.svg" },
+          { name: "GITLAB", icon: "../../assets/icons/gitlab.svg" },
+        ],
+        [
+          { name: "KUBERNETES", icon: "../../assets/icons/kubernetes.svg" },
+          { name: "JAVASCRIPT", icon: "../../assets/icons/javascript.svg" },
+        ],
+        [
+          { name: "ANGULAR", icon: "../../assets/icons/angular.svg" },
+          { name: "MAVEN", icon: "../../assets/icons/maven.svg" },
+        ],
+        [
+          { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
+          { name: "SCSS", icon: "../../assets/icons/scss.svg" },
+        ],
+        [
+          { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
+          { name: "HTML", icon: "../../assets/icons/html.svg" },
+        ],
+      ],
     },
     {
       label: "KNOW ENOUGH TO BE DANGEROUS",
@@ -100,6 +126,20 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
         [
           { name: "PL/SQL", icon: "../../assets/icons/maven.svg" },
           { name: "C++", icon: "../../assets/icons/mongodb.svg" },
+          { name: "JENKINS", icon: "../../assets/icons/aws.svg" },
+        ],
+      ],
+      technologiesMobile: [
+        [
+          { name: "REACT", icon: "../../assets/icons/openapi.svg" },
+          { name: "SVN", icon: "../../assets/icons/docker.svg" },
+        ],
+        [
+          { name: "PL/SQL", icon: "../../assets/icons/maven.svg" },
+          { name: "C++", icon: "../../assets/icons/mongodb.svg" },
+        ],
+        [
+          { name: "SQL", icon: "../../assets/icons/gitlab.svg" },
           { name: "JENKINS", icon: "../../assets/icons/aws.svg" },
         ],
       ],
@@ -159,7 +199,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: wrapper, // Trigger the animation based on this selector
               start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
-              end: "top 40%", // End the animation when the top hits 30% of the viewport height
+              end: "top 50%", // End the animation when the top hits 30% of the viewport height
               scrub: 1, // Smooth scrubbing
             },
           }
@@ -190,13 +230,14 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
     gsap.fromTo(
       "#about-headshot",
-      { y: "-20%" },
+      { y: "-30%" },
       {
         y: "0",
         scrollTrigger: {
-          trigger: "#about-headshot",
-          start: "20% bottom",
+          trigger: "#image-wrapper",
+          start: "top bottom",
           scrub: true,
+          markers: false,
         },
       }
     );

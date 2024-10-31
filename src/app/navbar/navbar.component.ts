@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   selectedLink = "";
 
   navbarLinks = [
+    { id: "home", label: "Home", route: "/" },
     { id: "about", label: "About", route: "/about" },
     { id: "work", label: "Work", route: "/work", count: 6 },
     { id: "contact", label: "Contact", route: "/contact" },
@@ -70,5 +71,11 @@ export class NavbarComponent implements OnInit {
       return "";
     }
     return window.scrollY < 70 ? "clear-navbar" : "white-navbar";
+  }
+
+  hideSlideInPanel(): void {
+    setTimeout(() => {
+      this.showSlideInPanel = false;
+    }, 1000);
   }
 }

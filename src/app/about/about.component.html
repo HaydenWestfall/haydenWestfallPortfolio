@@ -1,16 +1,19 @@
 <section>
   <div id="about-header" class="section-wrapper">
-    <span>
-      IM HAYDEN, A
+    <span id="title-text">
+      IM HAYDEN, A&nbsp;
+      <br id="rolling-break" />
       <span id="rolling-text">{{ rollingText }}</span>
       <span id="rolling-text-cursor" class="blink-cursor">|</span>
       <br />
-      BASED IN OHIO
+      IN OHIO
     </span>
 
     <div class="header-accent">
       <div id="accent-border">
-        <div class="text">EMBRACING WHITESPACE LIKE YOUR BEST FRIEND</div>
+        <div class="text text-style">
+          EMBRACING WHITESPACE <span id="best-friend-text" class="text-style">LIKE YOUR BEST FRIEND</span>
+        </div>
       </div>
 
       <div id="rotating-text">
@@ -52,7 +55,7 @@
 
         <div id="quote">
           AN IDIOT ADMIRES COMPLEXITY, A GENIUS ADMIRES SIMPLICITY<br />
-          - AARON DAVIS
+          <span style="font-style: italic; font-size: 0.75rem">- AARON DAVIS</span>
         </div>
       </div>
     </div>
@@ -60,16 +63,19 @@
 </section>
 
 <section>
-  <div class="section-wrapper" style="max-width: 70rem">
+  <div class="section-wrapper list-wrapper" style="padding-top: 4rem">
     <div id="list-label">TECHNOLOGIES</div>
 
-    <div class="list-section" style="padding-bottom: 6rem" *ngFor="let technologyGroup of technologies">
+    <div class="list-section grouped" *ngFor="let technologyGroup of technologies; let i = index">
       <div class="left-col">
         <span>{{ technologyGroup.label }}</span>
       </div>
 
       <div class="right-col technology-wrapper">
-        <div class="technology-row" *ngFor="let technologyGroup of technologyGroup.technologies; let index = index">
+        <div
+          class="technology-row"
+          *ngFor="let technologyGroup of technologyGroup.technologiesMobile; let index = index"
+        >
           <div class="technology" *ngFor="let technology of technologyGroup">
             <app-svg-icon [path]="technology.icon"></app-svg-icon>
             <span>{{ technology.name }}</span>
@@ -81,10 +87,10 @@
 </section>
 
 <section>
-  <div class="section-wrapper" style="max-width: 70rem">
+  <div class="section-wrapper list-wrapper" id="certificates">
     <div id="list-label">ACCOLADES</div>
 
-    <div class="list-section" *ngFor="let certificate of certifications; let index = index">
+    <div class="list-section grouped" *ngFor="let certificate of certifications; let index = index">
       <div class="left-col">
         <span>
           <span class="superscript">/0{{ index + 1 }}</span
@@ -106,11 +112,11 @@
 </section>
 
 <section style="padding-bottom: 10rem">
-  <div class="section-wrapper" style="max-width: 70rem">
+  <div class="section-wrapper list-wrapper">
     <div id="list-label">PERSONAL LIFE</div>
 
     <div class="list-section">
-      <div class="left-col" style="max-width: 45%; width: 45%">
+      <div class="left-col wide">
         <p>
           When I’m not behind a screen, I love spending time with my wife, Madison, catching a game or playing sports,
           and hanging out with friends. Madison and I share a passion for travel, with recent adventures taking us to
@@ -128,7 +134,7 @@
         </p>
       </div>
 
-      <div class="right-col" style="max-height: 80vh; overflow: hidden; max-width: 45%">
+      <div class="right-col wide">
         <div class="life-images">
           <img loading="lazy" src="../../assets/about/1.webp" />
           <img loading="lazy" src="../../assets/about/2.webp" />

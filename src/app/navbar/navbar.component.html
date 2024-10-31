@@ -1,6 +1,12 @@
-<div class="navbar-wrapper" hideOnScroll [dontHide]="showNav" [ngClass]="[transparentMode, navbarClass]">
+<div
+  class="navbar-wrapper"
+  hideOnScroll
+  [dontHide]="showNav"
+  [ngClass]="[transparentMode, navbarClass]"
+  [ngStyle]="{ color: showSlideInPanel ? 'white' : '' }"
+>
   <div class="navbar section-wrapper">
-    <a class="rolling-btn" routerLink="/">
+    <a class="rolling-btn" routerLink="/" (click)="hideSlideInPanel()">
       <span [attr.data-hover]="'//\\/\\/\\ &nbsp;&nbsp;HAYDEN\'S PORTFOLIO'"
         ><span id="logo">//\/\/\&nbsp;&nbsp;</span>HAYDEN WESTFALL</span
       >
@@ -17,7 +23,12 @@
 
   <div id="slide-in-panel" class="flex-center" [ngStyle]="{ left: showSlideInPanel ? '0' : '100%' }">
     <div id="links" class="flex-center">
-      <a [attr.id]="link.id" *ngFor="let link of navbarLinks" routerLink="{{ link.route }}">
+      <a
+        [attr.id]="link.id"
+        *ngFor="let link of navbarLinks"
+        routerLink="{{ link.route }}"
+        (click)="hideSlideInPanel()"
+      >
         {{ link.label }}
         <div *ngIf="link.count">{{ link.count }}</div>
       </a>

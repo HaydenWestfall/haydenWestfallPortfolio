@@ -7,18 +7,47 @@
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: clamp(16px, 1.25vw, 19px);
   line-height: 1.15;
+  box-sizing: border-box;
 }
 
 @font-face {
   font-family: "didot-italic";
   src: url(./assets/didot-italic.ttf);
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "helios-antique";
   src: url(./assets/Helios-Antique-Medium.otf) format("opentype");
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "hebrew-condensed";
+  src: url(./assets/font/OpenSansHebrewCondensed-Regular.ttf);
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "hebrew-condensed";
+  src: url(./assets/font/OpenSansHebrewCondensed-Bold.ttf);
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "heathergreen";
+  src: url(./assets/font/Heathergreen.otf) format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 ::-webkit-scrollbar {
@@ -43,7 +72,7 @@ section {
 
   .section-wrapper {
     width: 100%;
-    max-width: 100rem;
+    max-width: 80rem;
   }
 }
 
@@ -58,7 +87,7 @@ h1 {
 
 h2 {
   font-size: 7rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 h3 {

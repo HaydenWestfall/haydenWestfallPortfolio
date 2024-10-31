@@ -11,7 +11,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 })
 export class ProjectsTwoComponent implements AfterViewInit {
   themeService = inject(ThemeService);
-
   featuredProjects = [
     {
       label: "GEARHEAD",
@@ -50,7 +49,7 @@ export class ProjectsTwoComponent implements AfterViewInit {
       hover: false,
     },
     {
-      label: "THIS PORTFOLIO",
+      label: "PORTFOLIO",
       description:
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
@@ -77,10 +76,6 @@ export class ProjectsTwoComponent implements AfterViewInit {
       hover: false,
     },
   ];
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
-  }
 
   ngAfterViewInit(): void {
     this.themeService.theme = "dark";

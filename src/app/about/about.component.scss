@@ -1,3 +1,5 @@
+$page-padding: 3rem;
+
 #about-header {
   height: calc(80vh - 8rem);
   position: relative;
@@ -5,18 +7,28 @@
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  padding-top: 8rem;
   overflow: hidden;
   gap: 2rem;
   max-width: 80rem;
+  padding: 8rem $page-padding 0;
 
-  span {
+  #title-text {
     font-size: 3.5rem;
     color: black;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 3.85rem;
+
+    #rolling-break {
+      display: none;
+    }
+
+    span {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+    }
 
     .blink-cursor {
       color: black;
@@ -39,43 +51,46 @@
 
       .text {
         background-color: white;
-        color: #e1e1e1;
         position: absolute;
         left: 3rem;
-        font-size: 0.6rem;
-        top: -7px;
+        top: -6px;
         padding: 0 0.75rem;
       }
-    }
-  }
 
-  #rotating-text {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10rem;
-    width: 10rem;
-    z-index: 5;
-
-    #micro-animation-wrapper {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 100%;
-      width: 100%;
-
-      #micro-animation {
-        background-color: black;
-        height: 100%;
-        width: 100%;
+      .text-style {
+        color: #e1e1e1;
+        font-size: 0.6rem;
       }
     }
 
-    #spark {
-      background-color: black;
-      height: 60%;
-      width: 60%;
+    #rotating-text {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10rem;
+      width: 10rem;
+      z-index: 5;
+
+      #micro-animation-wrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+
+        #micro-animation {
+          background-color: black;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      #spark {
+        background-color: black;
+        height: 60%;
+        width: 60%;
+      }
     }
   }
 }
@@ -94,6 +109,7 @@
     width: 100%;
     gap: 12.5rem;
     max-width: 80rem;
+    padding: 0 $page-padding;
 
     #about {
       display: flex;
@@ -180,7 +196,7 @@
 
         #about-headshot {
           width: 100%;
-          height: 120%;
+          height: 130%;
           object-fit: cover;
           position: absolute;
           top: 0;
@@ -199,124 +215,316 @@
   }
 }
 
-#list-label {
-  width: 100%;
-  font-size: 1.5rem;
-  border-bottom: 1px solid #d6d6d6;
-  padding-bottom: 2rem;
-  margin: 5rem 0 2rem;
+.list-wrapper {
+  max-width: 80rem;
+  padding: 0 $page-padding;
+
+  #list-label {
+    width: 100%;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 2rem;
+    margin: 2rem 0;
+  }
+
+  .list-section {
+    display: flex;
+    justify-content: space-between;
+
+    .left-col {
+      width: 30%;
+      max-width: 30%;
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 600;
+        vertical-align: top;
+      }
+
+      .superscript {
+        font-size: 0.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        line-height: 1.75rem;
+        text-align: justify;
+      }
+
+      &.wide {
+        max-width: 45%;
+        width: 45%;
+      }
+    }
+
+    .right-col {
+      width: 60%;
+      max-width: 60%;
+      position: relative;
+
+      &.technology-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1.5rem;
+        height: 12.5rem;
+
+        .technology-row {
+          display: flex;
+          gap: 1.5rem;
+
+          .technology {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 20px;
+            border-radius: 5px;
+            width: 9rem;
+
+            app-svg-icon {
+              height: 2rem;
+              width: 2rem;
+              background-color: #1d1d20;
+            }
+
+            span {
+              font-size: 1rem;
+              font-style: normal;
+              color: #1d1d20;
+            }
+          }
+        }
+      }
+
+      &.accolade-wrapper {
+        display: flex;
+        justify-content: flex-end;
+
+        .accolade {
+          display: flex;
+          gap: 1.5rem;
+          align-items: center;
+          width: 80%;
+
+          img {
+            height: 6rem;
+          }
+
+          .accolade-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+
+            .description {
+              font-size: 0.9rem;
+              text-align: justify;
+            }
+
+            .expiration {
+              font-size: 0.75rem;
+              color: #949494;
+              font-style: italic;
+            }
+          }
+        }
+      }
+
+      .life-images {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          min-height: 100%;
+          flex: 1 0 100%;
+          object-fit: cover;
+        }
+      }
+
+      &.wide {
+        max-height: 80vh;
+        overflow: hidden;
+        max-width: 45%;
+      }
+    }
+
+    &.grouped {
+      padding: 4rem 0;
+    }
+  }
 }
 
-.list-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 4rem 0;
+@media screen and (max-width: 768px) {
+  #about-header {
+    padding: 7rem 1.25rem 0;
+    gap: 1rem;
 
-  .left-col {
-    width: 30%;
-    max-width: 30%;
+    #title-text {
+      font-size: 2rem;
+      line-height: 2.75rem;
 
-    span {
-      font-size: 0.9rem;
-      font-weight: 600;
-      vertical-align: top;
+      #rolling-break {
+        display: unset;
+      }
     }
 
-    .superscript {
-      font-size: 0.5rem;
-    }
+    .header-accent {
+      gap: 2.5rem;
+      height: 8rem;
 
-    p {
-      margin-bottom: 1rem;
-      font-size: 0.85rem;
-      line-height: 1.75rem;
-      text-align: justify;
+      #accent-border {
+        .text {
+          top: -5px;
+          padding: 0 0.5rem;
+          left: 1rem;
+        }
+
+        #best-friend-text {
+          display: none;
+        }
+      }
+
+      #rotating-text {
+        height: 8rem;
+        width: 8rem;
+        background-color: white;
+        position: absolute;
+        right: 2.25rem;
+      }
     }
   }
 
-  .right-col {
-    width: 60%;
-    max-width: 60%;
-    position: relative;
+  #about-info-header {
+    padding: 0;
 
-    &.technology-wrapper {
-      display: flex;
+    #about-section {
+      padding: 0 1.25rem;
+      flex-direction: column-reverse;
+      gap: 3rem;
+
+      #about {
+        #about-text {
+          width: unset;
+          padding-bottom: 3rem;
+
+          #about-description {
+            font-size: 0.95rem;
+            line-height: 1.75rem;
+            text-align: left;
+          }
+
+          #divider-wrapper {
+            #divider {
+              width: 100%;
+              position: relative;
+              background-color: #e3e3e3;
+            }
+          }
+
+          .work-history {
+            .label {
+              font-size: 0.9rem;
+            }
+          }
+
+          a {
+            align-self: flex-end;
+          }
+        }
+      }
+
+      #about-headshot-wrapper {
+        flex-direction: column-reverse;
+
+        #image-wrapper {
+          height: 70vh;
+
+          #about-headshot {
+            height: 110%;
+          }
+        }
+
+        #quote {
+          font-size: 1rem;
+          line-height: 1.4rem;
+          text-align: start;
+          padding: 1rem 0 3rem 0;
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+
+  .list-wrapper {
+    padding: 0 1.25rem;
+
+    #list-label {
+      margin: 8rem 0 2rem;
+    }
+
+    .list-section {
       flex-direction: column;
-      align-items: flex-end;
-      gap: 1.5rem;
-      height: 12.5rem;
+      gap: 2rem;
 
-      .technology-row {
-        display: flex;
-        gap: 1.5rem;
-
-        .technology {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          font-size: 20px;
-          border-radius: 5px;
-          width: 9rem;
-
-          app-svg-icon {
-            height: 2rem;
-            width: 2rem;
-            background-color: #1d1d20;
-          }
-
-          span {
-            font-size: 1rem;
-            font-style: normal;
-            color: #1d1d20;
-          }
-        }
-      }
-    }
-
-    &.accolade-wrapper {
-      display: flex;
-      justify-content: flex-end;
-
-      .accolade {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        width: 80%;
-
-        img {
-          height: 6rem;
-        }
-
-        .accolade-info {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 90%;
-
-          .description {
-            font-size: 0.9rem;
-            text-align: justify;
-          }
-
-          .expiration {
-            font-size: 0.75rem;
-            color: #949494;
-          }
-        }
-      }
-    }
-
-    .life-images {
-      display: flex;
-      width: 100%; /* 100% for each of the four images */
-      height: 100%;
-
-      img {
+      .left-col {
         width: 100%;
-        min-height: 100%;
-        flex: 1 0 100%;
-        object-fit: cover;
+        max-width: 100%;
+
+        &.wide {
+          width: 100%;
+          max-width: 100%;
+        }
       }
+
+      .right-col {
+        width: 100%;
+        max-width: 100%;
+
+        &.technology-wrapper {
+          height: unset;
+
+          .technology-row {
+            width: 100%;
+            justify-content: space-around;
+          }
+        }
+
+        &.accolade-wrapper {
+          .accolade {
+            width: 100%;
+
+            img {
+              display: none;
+            }
+
+            .accolade-info {
+              height: unset;
+              padding-left: 1.25rem;
+              gap: 1rem;
+
+              .description {
+                line-height: 1.4rem;
+                text-align: start;
+              }
+            }
+          }
+        }
+
+        &.wide {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  #certificates {
+    .list-section {
+      padding: 2rem 0;
+      gap: 1rem;
     }
   }
 }

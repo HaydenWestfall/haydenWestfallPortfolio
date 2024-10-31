@@ -13,7 +13,7 @@ export const MissLisaBooks = {
     {
       template: "project-header",
       title: "OVERVIEW",
-      disclaimer: true,
+      disclaimer: false,
       tableOfContents: [
         { id: "overview", label: "OVERVIEW" },
         { id: "mobile", label: "MOBILE DESIGN" },
@@ -34,14 +34,6 @@ export const MissLisaBooks = {
         logo: "../../assets/missLisaBooks/logo.png",
         url: "https:///www.missLisaBooks.com",
       },
-    },
-    {
-      template: "macbook",
-      img: "../../assets/missLisaBooks/macbook_home.png",
-    },
-    {
-      template: "mockup",
-      img: "../../assets/missLisaBooks/mockup.png",
     },
     {
       template: "mobile-section",
@@ -72,7 +64,7 @@ export const MissLisaBooks = {
       tile2Img: "../../assets/missLisaBooks/iphone_design_focus.png",
     },
     {
-      template: "conclusion",
+      template: "sub-section",
       title: "CLOSING THOUGHTS",
       description: [
         "Overall, Miss Lisa Books was a fun side project that unlocked a new level of creativity for me. I’m incredibly grateful for the opportunity, as it was the first website I launched as a freelance developer. Though the project was short and sweet, being a single-page application, it will always hold a special place in my heart.",

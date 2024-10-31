@@ -18,7 +18,7 @@
     <div class="project-overview-wrapper">
       <div class="project-overview">
         <div class="project-info-wrapper" *ngFor="let info of project.headerInfo">
-          <span id="title">{{ info.title }}</span>
+          <div id="title">{{ info.title }}</div>
           <span *ngFor="let bullet of info.description" id="description">{{ bullet }}</span>
         </div>
       </div>
@@ -26,15 +26,9 @@
   </section>
 
   <section id="project-body">
-    <div *ngFor="let section of project.sections" style="width: 100%; display: flex; justify-content: center">
+    <ng-container *ngFor="let section of project.sections">
       <ng-container *ngIf="section.template === 'project-header'">
         <ng-container *ngTemplateOutlet="projectHeader; context: { $implicit: section }"></ng-container>
-      </ng-container>
-      <ng-container *ngIf="section.template === 'macbook'">
-        <ng-container *ngTemplateOutlet="macbookView; context: { $implicit: section }"></ng-container>
-      </ng-container>
-      <ng-container *ngIf="section.template === 'mockup'">
-        <ng-container *ngTemplateOutlet="marketingMockup; context: { $implicit: section }"></ng-container>
       </ng-container>
       <ng-container *ngIf="section.template === 'mobile-section'">
         <ng-container *ngTemplateOutlet="mobileSection; context: { $implicit: section }"></ng-container>
@@ -42,21 +36,18 @@
       <ng-container *ngIf="section.template === 'design-marketing'">
         <ng-container *ngTemplateOutlet="designAndMarketing; context: { $implicit: section }"></ng-container>
       </ng-container>
-      <ng-container *ngIf="section.template === 'conclusion'">
-        <ng-container *ngTemplateOutlet="conclusion; context: { $implicit: section }"></ng-container>
-      </ng-container>
       <ng-container *ngIf="section.template === 'next-project'">
-        <ng-container *ngTemplateOutlet="nextProject; context: { $implicit: section }"></ng-container>
+        <ng-container *ngTemplateOutlet="nextProjectTemp; context: { $implicit: section }"></ng-container>
       </ng-container>
       <ng-container *ngIf="section.template === 'sub-section'">
         <ng-container *ngTemplateOutlet="subSection; context: { $implicit: section }"></ng-container>
       </ng-container>
-    </div>
+    </ng-container>
   </section>
 </div>
 
 <ng-template #projectHeader let-section>
-  <div class="project-intro">
+  <div class="section-wrapper project-section project-flex-column">
     <div class="text-section">
       <div class="section-header">
         {{ project.projectName }}
@@ -67,14 +58,9 @@
         </div>
       </div>
 
-      <ul>
-        <li *ngFor="let anchor of section.tableOfContents" (click)="scrollToSection(anchor.id)">{{ anchor.label }}</li>
-      </ul>
-      <span class="section-description" *ngIf="project.overview">{{ project.overview }}</span>
-
       <div *ngFor="let sectionSub of section.subSections">
         <div [attr.id]="sectionSub.id" class="text-sub-section" style="width: 100%">
-          <h2>{{ sectionSub.title }}</h2>
+          <h2 *ngIf="sectionSub.title">{{ sectionSub.title }}</h2>
           <div class="description-block">
             <p class="section-description" *ngFor="let desc of sectionSub.description">{{ desc }}</p>
           </div>
@@ -90,6 +76,7 @@
         [href]="section.preview.url"
         target="_blank"
         class="circle-button dark"
+        rel="noopener"
         appParallaxButton
       >
         <div id="visit-btn-text">
@@ -101,35 +88,31 @@
   </div>
 </ng-template>
 <ng-template #subSection let-section>
-  <div [attr.id]="section.id" class="text-sub-section">
-    <h2>{{ section.title }}</h2>
-    <div class="description-block">
-      <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+  <div [attr.id]="section.id" class="section-wrapper project-section project-flex-column">
+    <div class="text-section">
+      <div class="section-header sub-header">
+        {{ section.title }}
+      </div>
+      <div class="description-block">
+        <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+      </div>
     </div>
   </div>
 </ng-template>
-<ng-template #macbookView let-section>
-  <div class="desktop-view">
-    <img class="site-marketing-wrapper" [src]="section.img" />
-  </div>
-</ng-template>
-<ng-template #marketingMockup let-section>
-  <div class="mockup-wrapper">
-    <img class="mockup" [src]="section.img" />
-  </div>
-</ng-template>
 <ng-template #mobileSection let-section>
-  <div id="mobile" class="mobile-section">
-    <span class="section-header">{{ section.title }}</span>
-    <p class="section-description center" style="width: 80%">{{ section.description }}</p>
-    <div class="mobile-view-wrapper">
-      <div id="iphone_mockup_1" class="image-wrapper">
+  <div id="mobile" class="section-wrapper project-section project-flex-column" style="padding: 0">
+    <div class="text-section" style="padding: 0 1.25rem">
+      <span class="section-header sub-header">{{ section.title }}</span>
+      <p class="section-description">{{ section.description }}</p>
+    </div>
+    <div class="mobile-view-wrapper" id="mobile-wrapper">
+      <div id="iphone_mockup_1" class="mockup-wrapper">
         <img [src]="section.imgs[0]" />
       </div>
-      <div id="iphone_mockup_2" class="image-wrapper">
+      <div id="iphone_mockup_2" class="mockup-wrapper">
         <img [src]="section.imgs[1]" />
       </div>
-      <div id="iphone_mockup_3" class="image-wrapper">
+      <div id="iphone_mockup_3" class="mockup-wrapper">
         <img [src]="section.imgs[2]" />
       </div>
     </div>
@@ -137,13 +120,15 @@
 </ng-template>
 <ng-template #designAndMarketing let-section>
   <div id="design_marketing" class="accent-section">
-    <div class="text-section">
-      <span class="section-header">{{ section.title }}</span>
-      <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+    <div class="section-wrapper project-section project-flex-column">
+      <div class="text-section">
+        <span class="section-header accent-border sub-header">{{ section.title }}</span>
+        <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+      </div>
     </div>
 
     <div class="tile-wrapper">
-      <div class="tile">
+      <div class="tile scrollable">
         <div class="type-wrapper">
           <h6>TYPEFACE</h6>
           <div id="type-preview">
@@ -168,7 +153,7 @@
           </div>
         </div>
       </div>
-      <div class="tile2">
+      <div class="tile2 scrollable">
         <h6>{{ section.tile2Title }}</h6>
         <p class="section-description center" style="width: 80%">
           {{ section.tile2Description }}
@@ -184,37 +169,11 @@
     <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
   </div>
 </ng-template>
-<ng-template #nextProject let-section>
-  <div class="next-project-wrapper">
+<ng-template #nextProjectTemp let-section>
+  <div class="section-wrapper project-section next-project-wrapper">
     <h6>UP NEXT</h6>
     <section id="project-wrapper">
-      <a
-        class="project"
-        appIntersection
-        #intersection="intersection"
-        [isContinuous]="false"
-        [routerLink]="section.link"
-      >
-        <div class="showcase">
-          <!-- <app-svg-icon [path]="'assets/icons/link-arrow.svg'" id="pointer" *ngIf="hoverIndex == null"></app-svg-icon> -->
-          <div class="focused-project focus" [attr.id]="'up-next'" [class.focus]="intersection._isIntersecting">
-            <img [src]="section.showcase" [class.focus]="intersection._isIntersecting" />
-          </div>
-        </div>
-        <div class="project-information-wrapper">
-          <div class="project-information-header">
-            <div class="header">
-              <span>{{ section.title }}</span>
-              <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
-            </div>
-            <span class="description">{{ section.description }}</span>
-          </div>
-          <div class="project-information-footer">
-            <span>{{ section.role }}</span>
-            <span>0{{ section.index }}. / 07.</span>
-          </div>
-        </div>
-      </a>
+      <app-showcase style="max-width: 100%" [multi]="false" [projects]="nextProject"></app-showcase>
     </section>
   </div>
 </ng-template>
