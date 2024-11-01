@@ -2,15 +2,16 @@ section {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 2rem;
   padding: 8rem 0;
   background-color: #17171a;
-  height: calc(100vh - 16rem);
+  height: 100vh;
   overflow: hidden;
   border-bottom: 1px solid #2e2e34;
 
   h1 {
-    font-size: 4.5rem;
-    line-height: 4.4rem;
+    font-size: 3.25rem;
+    line-height: 4rem;
     color: white;
     width: 75%;
     text-align: center;
@@ -25,18 +26,19 @@ section {
     justify-content: center;
 
     .email {
+      position: absolute;
       font-size: 3.5rem;
       color: white;
-      font-family: "Open Sans", sans-serif;
       font-style: italic;
-      font-weight: 700;
+      font-weight: 600;
       text-decoration: underline;
       z-index: 10;
     }
   }
 
   .name-wrapper {
-    position: absolute;
+    position: relative;
+    pointer-events: none;
     top: 0;
 
     .name-slider {
@@ -49,9 +51,8 @@ section {
         color: #1e1e22;
         font-size: 12rem;
         padding-right: 50px;
-        font-family: "Open Sans", sans-serif;
         font-style: italic;
-        font-weight: 700;
+        font-weight: 600;
 
         &:nth-of-type(2) {
           position: absolute;

@@ -35,7 +35,6 @@
     display: flex;
     align-items: center;
     gap: 5rem;
-    height: 10rem;
 
     #accent-border {
       position: relative;
@@ -48,13 +47,43 @@
         background-color: white;
         position: absolute;
         left: 3rem;
-        top: -6px;
+        top: -7px;
         padding: 0 0.75rem;
       }
 
       .text-style {
-        color: #e1e1e1;
-        font-size: 0.6rem;
+        color: #1d1d20;
+        font-size: 0.7rem;
+      }
+    }
+
+    #rotating-text {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10rem;
+      width: 10rem;
+      z-index: 5;
+
+      #micro-animation-wrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+
+        #micro-animation {
+          background-color: black;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      #spark {
+        background-color: black;
+        height: 60%;
+        width: 60%;
       }
     }
   }

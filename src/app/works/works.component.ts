@@ -11,6 +11,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 })
 export class WorksComponent implements AfterViewInit {
   themeService = inject(ThemeService);
+  direction = -1;
+  animationFrameId: number | null = null;
+  rotatePos = 0;
   featuredProjects = [
     {
       label: "GEARHEAD",
@@ -79,7 +82,24 @@ export class WorksComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.themeService.theme = "dark";
+    gsap.to(document.getElementById("micro-animation-wrapper"), {
+      scrollTrigger: {
+        trigger: document.getElementById("micro-animation-wrapper"),
+        scrub: 0.5,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (this.direction = e.direction * -1),
+      },
+      rotate: "-100px",
+    });
+    this.animationFrameId = requestAnimationFrame(this.animate);
   }
+
+  animate = () => {
+    gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
+    this.animationFrameId = requestAnimationFrame(this.animate);
+    this.rotatePos += 0.2;
+  };
 
   isIntersecting(status: boolean, index: number) {
     console.log("Element #" + index + " is intersecting " + status);

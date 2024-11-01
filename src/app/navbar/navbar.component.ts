@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   selectedLink = "";
 
   navbarLinks = [
-    { id: "home", label: "Home", route: "/" },
     { id: "about", label: "About", route: "/about" },
     { id: "work", label: "Work", route: "/work", count: 6 },
     { id: "contact", label: "Contact", route: "/contact" },

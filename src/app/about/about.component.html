@@ -6,7 +6,7 @@
       <span id="rolling-text">{{ rollingText }}</span>
       <span id="rolling-text-cursor" class="blink-cursor">|</span>
       <br />
-      IN OHIO
+      {{ locationText }}
     </span>
 
     <div class="header-accent">
@@ -32,8 +32,9 @@
       <div id="about">
         <div id="about-text">
           <span id="about-description">
-            A dedicated and goal-oriented software engineer with 6+ years of experience in commercial application
-            development. At Northrop Grumman, I played a key role.
+            I’m a software engineer with over six years at Northrop Grumman, known for delivering scalable solutions and
+            excelling in team collaboration. A strong communicator and problem solver, I also take on freelance
+            projects, creating impactful software tailored to client needs.
           </span>
           <div id="divider-wrapper">
             <div id="divider"></div>
@@ -72,10 +73,7 @@
       </div>
 
       <div class="right-col technology-wrapper">
-        <div
-          class="technology-row"
-          *ngFor="let technologyGroup of technologyGroup.technologiesMobile; let index = index"
-        >
+        <div class="technology-row" *ngFor="let technologyGroup of technologyGroup.technologies; let index = index">
           <div class="technology" *ngFor="let technology of technologyGroup">
             <app-svg-icon [path]="technology.icon"></app-svg-icon>
             <span>{{ technology.name }}</span>

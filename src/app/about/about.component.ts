@@ -1,32 +1,25 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { AfterViewInit, Component, HostListener, inject, OnDestroy, OnInit } from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 @Component({
   selector: "app-about",
   templateUrl: "./about.component.html",
   styleUrl: "./about.component.scss",
 })
-export class AboutComponent implements AfterViewInit, OnDestroy {
+export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
   rollingTextIndex = 0;
   rollingTextLabels = [
-    "FULL STACK DEV",
+    "FULL STACK DEVELOPER",
     "UI/UX DESIGNER",
     "DEVOPS ENGINEER",
     "PROJECT LEAD",
     "SCRUM MASTER",
     "SOFTWARE ENGINEER",
   ];
+  mediaQueryMatch = false;
+  locationText = "BASED IN OHIO";
   rollingText = "SOFTWARE ENGINEER";
   totalImages = 3; // Only count the original images (not the duplicate)
   timeline: TimelineMax = null as any;
@@ -52,12 +45,12 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
       timeframe: "2020 - 2022",
     },
     {
-      position: "Associate SE (Intern)",
+      position: "Associate SE | Intern",
       location: "Northrop Grumman",
       timeframe: "2018 - 2020",
     },
     {
-      position: "Student",
+      position: "Student | CS/BS",
       location: "Wright State University",
       timeframe: "2017 - 2019",
     },
@@ -66,7 +59,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
   technologies = [
     {
       label: "PROFESSIONAL WITH THESE",
-      technologies: [
+      technologies: [] as any,
+      technologiesDesktop: [
         [
           { name: "SPRING", icon: "../../assets/icons/spring.svg" },
           { name: "DOCKER", icon: "../../assets/icons/docker.svg" },
@@ -117,7 +111,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     },
     {
       label: "KNOW ENOUGH TO BE DANGEROUS",
-      technologies: [
+      technologies: [] as any,
+      technologiesDesktop: [
         [
           { name: "REACT", icon: "../../assets/icons/openapi.svg" },
           { name: "SVN", icon: "../../assets/icons/docker.svg" },
@@ -170,6 +165,11 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
+  ngOnInit(): void {
+    this.mediaQueryMatch = window.innerWidth <= 768;
+    this.swapTechnologyStack();
+  }
+
   ngAfterViewInit(): void {
     this.themeService.theme = "dark";
     gsap.to(document.getElementById("micro-animation-wrapper"), {
@@ -201,6 +201,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
               start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
               end: "top 50%", // End the animation when the top hits 30% of the viewport height
               scrub: 1, // Smooth scrubbing
+              once: true,
             },
           }
         );
@@ -223,6 +224,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
             start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
             end: "top 70%", // End the animation when the top hits 30% of the viewport height
             scrub: 1, // Smooth scrubbing
+            once: true,
           },
         }
       );
@@ -319,6 +321,27 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     }
 
     this.timeline.play();
+  }
+
+  swapTechnologyStack(): void {
+    this.technologies.forEach((technologySet) => {
+      technologySet.technologies = this.mediaQueryMatch
+        ? technologySet.technologiesMobile
+        : technologySet.technologiesDesktop;
+    });
+
+    this.locationText = this.mediaQueryMatch ? "IN OHIO" : "BASED IN OHIO";
+  }
+
+  @HostListener("window:resize", [])
+  onResize() {
+    if (!this.mediaQueryMatch && window.innerWidth <= 768) {
+      this.mediaQueryMatch = true;
+      this.swapTechnologyStack();
+    } else if (this.mediaQueryMatch && window.innerWidth > 768) {
+      this.mediaQueryMatch = false;
+      this.swapTechnologyStack();
+    }
   }
 
   ngOnDestroy(): void {

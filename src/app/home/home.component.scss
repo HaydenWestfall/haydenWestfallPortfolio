@@ -61,7 +61,7 @@
       color: rgb(255, 255, 255);
       font-size: 230px;
       padding-right: 50px;
-      font-family: "Open Sans", sans-serif;
+      font-family: "hebrew-condensed", sans-serif;
       font-style: italic;
       font-weight: 700;
 
@@ -94,7 +94,10 @@
 
   #about-header {
     max-width: clamp(0rem, 75%, 75rem);
-    text-align: center;
+    font-family: "hebrew-condensed";
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: 500;
     z-index: 1;
   }
 
@@ -150,17 +153,25 @@
 
     #roles {
       top: unset;
-      bottom: 5rem;
+      bottom: 3rem;
+      left: 1rem;
+      height: 8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     #hero-contact {
-      top: unset;
-      bottom: 3rem;
-      right: 3.25rem;
+      top: 15%;
+      bottom: unset;
+      right: 1rem;
+      height: 6rem;
+      width: 6rem;
     }
 
     .angle {
       top: 40%;
+      display: none;
     }
   }
 
@@ -169,17 +180,23 @@
   }
 
   .name-wrapper {
-    top: 50%;
+    top: 55%;
+
+    .name-slider {
+      p {
+        font-size: 150px;
+        padding-right: 50px;
+      }
+    }
   }
 
   #about-section {
-    height: 40rem;
-    padding: 0.75rem;
+    height: unset;
+    padding: 6rem 1.25rem 14rem;
     overflow: hidden;
 
     img {
-      width: 120%;
-      position: relative;
+      width: 160%;
       transform: unset;
       left: unset;
       top: unset;
@@ -188,12 +205,13 @@
     #about-header {
       max-width: unset;
       text-align: left;
+      font-size: 1.25rem;
     }
 
     #about-btn {
       position: absolute;
       right: 3rem;
-      bottom: 10rem;
+      bottom: 4.5rem;
     }
   }
 

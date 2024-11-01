@@ -6,10 +6,11 @@
   [ngStyle]="{ color: showSlideInPanel ? 'white' : '' }"
 >
   <div class="navbar section-wrapper">
-    <a class="rolling-btn" routerLink="/" (click)="hideSlideInPanel()">
-      <span [attr.data-hover]="'//\\/\\/\\ &nbsp;&nbsp;HAYDEN\'S PORTFOLIO'"
-        ><span id="logo">//\/\/\&nbsp;&nbsp;</span>HAYDEN WESTFALL</span
-      >
+    <a class="home" routerLink="/" (click)="hideSlideInPanel()">
+      <span>//\/\/</span>
+      <div class="rolling-btn">
+        <span [attr.data-hover]="'HAYDEN WESTFALL'">HAYDEN WESTFALL</span>
+      </div>
     </a>
     <div id="links">
       <a [attr.id]="link.id" *ngFor="let link of navbarLinks" routerLink="{{ link.route }}" class="rolling-btn">
@@ -23,6 +24,7 @@
 
   <div id="slide-in-panel" class="flex-center" [ngStyle]="{ left: showSlideInPanel ? '0' : '100%' }">
     <div id="links" class="flex-center">
+      <a [attr.id]="'home'" routerLink="/" (click)="hideSlideInPanel()"> Home </a>
       <a
         [attr.id]="link.id"
         *ngFor="let link of navbarLinks"
