@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, HostListener, inject, OnDestroy, OnInit } from "@angular/core";
 import { gsap } from "gsap";
-import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ThemeService } from "../services/theme.service";
 import { MaddieWestEvents } from "./MaddieWestEvents";
@@ -16,7 +15,7 @@ import { Fireshare } from "./Fireshare";
   templateUrl: "./freelance.component.html",
   styleUrl: "./freelance.component.scss",
 })
-export class FreelanceComponent implements OnInit, OnDestroy {
+export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
   route = inject(ActivatedRoute);
   timeline: gsap.core.Timeline = null as any;
@@ -25,16 +24,12 @@ export class FreelanceComponent implements OnInit, OnDestroy {
   projects = [Fireshare, Gearhead, MaddieWestEvents, MissLisaBooks, STF, TradeShark];
   project: any;
 
-  constructor() {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
-  }
-
   ngOnInit(): void {
     this.themeService.theme = "light";
-    if (window.innerWidth <= 768) {
-      this.mediaQueryMatch = true;
-    }
+    this.mediaQueryMatch = window.innerWidth <= 768;
+  }
 
+  ngAfterViewInit(): void {
     this.route.paramMap.subscribe((params) => {
       setTimeout(() => {
         const projectId = params.get("projectId");
@@ -128,6 +123,8 @@ export class FreelanceComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.clearAnimations();
+    setTimeout(() => {
+      this.clearAnimations();
+    }, 750);
   }
 }

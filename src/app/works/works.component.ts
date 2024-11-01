@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, ElementRef, inject, OnInit, Renderer2 } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, Renderer2 } from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
-import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
@@ -9,11 +8,12 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   templateUrl: "./works.component.html",
   styleUrl: "./works.component.scss",
 })
-export class WorksComponent implements AfterViewInit {
+export class WorksComponent implements AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
   direction = -1;
   animationFrameId: number | null = null;
   rotatePos = 0;
+  scrollTimeline = gsap.timeline({});
   featuredProjects = [
     {
       label: "GEARHEAD",
@@ -81,8 +81,14 @@ export class WorksComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeWorks();
+    }, 1000);
+  }
+
+  initializeWorks(): void {
     this.themeService.theme = "dark";
-    gsap.to(document.getElementById("micro-animation-wrapper"), {
+    this.scrollTimeline.to(document.getElementById("micro-animation-wrapper"), {
       scrollTrigger: {
         trigger: document.getElementById("micro-animation-wrapper"),
         scrub: 0.5,
@@ -103,5 +109,21 @@ export class WorksComponent implements AfterViewInit {
 
   isIntersecting(status: boolean, index: number) {
     console.log("Element #" + index + " is intersecting " + status);
+  }
+
+  ngOnDestroy(): void {
+    setTimeout(() => {
+      cancelAnimationFrame(this.animationFrameId as number);
+
+      if (this.scrollTimeline) {
+        this.scrollTimeline.kill();
+      }
+
+      ScrollTrigger.getAll().forEach((trigger) => {
+        console.log(trigger);
+        trigger.vars;
+        trigger.kill();
+      });
+    }, 750);
   }
 }

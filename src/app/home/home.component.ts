@@ -9,6 +9,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   styleUrl: "./home.component.scss",
 })
 export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
+  themeService = inject(ThemeService);
   featuredProjects = [
     {
       label: "GEARHEAD",
@@ -88,18 +89,24 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
   ];
 
+  scrollTimeline = gsap.timeline({});
   animationFrameId: number | null = null;
   animations: gsap.core.Tween[] = [];
   direction = -1;
   slider = 0;
   xPos = 0;
 
-  themeService = inject(ThemeService);
+  ngOnInit(): void {}
 
-  constructor() {}
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeHome();
+    }, 1000);
+  }
 
-  ngOnInit(): void {
-    gsap.to(document.getElementById("name-slider"), {
+  initializeHome(): void {
+    console.log("CREATED");
+    this.scrollTimeline.to(document.getElementById("name-slider"), {
       scrollTrigger: {
         trigger: document.getElementById("name-slider"),
         scrub: 0.5,
@@ -111,25 +118,28 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     });
 
     this.animationFrameId = requestAnimationFrame(this.animate);
-  }
 
-  ngAfterViewInit(): void {
     this.themeService.theme = "light";
     if (window.innerWidth >= 768) {
-      this.animations.push(this.themeService.setupTranslateAnimation("#about-btn", 0, 0, 350, 0, "power1.out"));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio-1-home", -300, -100, 0, 0));
-      this.animations.push(this.themeService.setupTranslateAnimation("#portfolio-2-home", -100, -300, 0, 0));
-      this.animations.push(
-        gsap.to("#hero-contact", {
-          y: -125,
-          scrollTrigger: {
-            trigger: "#hero-contact",
-            start: "top 34%",
-            end: "bottom top",
-            scrub: true,
-          },
-        })
+      this.scrollTimeline.fromTo(
+        "#about-btn",
+        { y: 350 },
+        { y: 0, ease: "power1.out", scrollTrigger: { trigger: "#about-btn", start: "top bottom", scrub: true } }
       );
+      this.scrollTimeline.fromTo(
+        "#portfolio-1-home",
+        { x: -300 },
+        { x: -100, scrollTrigger: { trigger: "#portfolio-1-home", start: "top bottom", scrub: true } }
+      );
+      this.scrollTimeline.fromTo(
+        "#portfolio-2-home",
+        { x: -100 },
+        { x: -300, scrollTrigger: { trigger: "#portfolio-2-home", start: "top bottom", scrub: true } }
+      );
+      this.scrollTimeline.to("#hero-contact", {
+        y: -125,
+        scrollTrigger: { trigger: "#hero-contact", start: "top 34%", end: "bottom top", scrub: true },
+      });
     }
   }
 
@@ -139,15 +149,26 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     } else if (this.xPos > 0) {
       this.xPos = -100;
     }
-    gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
-    gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
-    gsap.set(document.getElementById("tertiary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("name-primary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("name-secondary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("name-tertiary"), { xPercent: this.xPos });
     this.animationFrameId = requestAnimationFrame(this.animate);
     this.xPos += 0.04;
   };
 
   ngOnDestroy(): void {
-    cancelAnimationFrame(this.animationFrameId!);
-    // this.animations.forEach((x) => x.kill());
+    // Let cover animation cover the page before killing all animations
+    setTimeout(() => {
+      cancelAnimationFrame(this.animationFrameId!);
+      if (this.scrollTimeline) {
+        this.scrollTimeline.kill();
+      }
+      console.log("KILLED");
+      ScrollTrigger.getAll().forEach((trigger) => {
+        console.log(trigger);
+        trigger.vars;
+        trigger.kill();
+      });
+    }, 750);
   }
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { gsap } from "gsap";
-import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
@@ -8,19 +7,24 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   templateUrl: "./contact.component.html",
   styleUrl: "./contact.component.scss",
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements AfterViewInit, OnDestroy {
+  scrollTimeline = gsap.timeline({});
+  animationFrameId: number = 0;
   direction = -1;
   slider = 0;
   xPos = 0;
 
-  constructor() {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeContact();
+    }, 1000);
   }
 
-  ngOnInit(): void {
-    gsap.to(document.getElementById("name-slider"), {
+  initializeContact(): void {
+    console.log("CREATED");
+    this.scrollTimeline.to(document.getElementById("email-slider"), {
       scrollTrigger: {
-        trigger: document.documentElement,
+        trigger: document.getElementById("email-slider"),
         scrub: 0.5,
         start: 0,
         end: window.innerHeight,
@@ -29,7 +33,7 @@ export class ContactComponent implements OnInit {
       x: "-500px",
     });
 
-    requestAnimationFrame(this.animate);
+    this.animationFrameId = requestAnimationFrame(this.animate);
   }
 
   animate = () => {
@@ -38,9 +42,25 @@ export class ContactComponent implements OnInit {
     } else if (this.xPos > 0) {
       this.xPos = -100;
     }
-    gsap.set(document.getElementById("primary"), { xPercent: this.xPos });
-    gsap.set(document.getElementById("secondary"), { xPercent: this.xPos });
-    requestAnimationFrame(this.animate);
+    gsap.set(document.getElementById("email-primary"), { xPercent: this.xPos });
+    gsap.set(document.getElementById("email-secondary"), { xPercent: this.xPos });
+    this.animationFrameId = requestAnimationFrame(this.animate);
     this.xPos += 0.015;
   };
+
+  ngOnDestroy(): void {
+    // Let cover animation cover the page before killing all animations
+    setTimeout(() => {
+      cancelAnimationFrame(this.animationFrameId as number);
+
+      if (this.scrollTimeline) {
+        this.scrollTimeline.kill();
+      }
+      console.log("KILLED");
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.vars;
+        trigger.kill();
+      });
+    }, 750);
+  }
 }

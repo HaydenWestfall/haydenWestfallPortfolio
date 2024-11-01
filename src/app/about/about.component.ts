@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, HostListener, inject, OnDestroy, OnInit } from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({
   selector: "app-about",
@@ -22,10 +23,11 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   locationText = "BASED IN OHIO";
   rollingText = "SOFTWARE ENGINEER";
   totalImages = 3; // Only count the original images (not the duplicate)
-  timeline: TimelineMax = null as any;
+  imageRotateTimeline: TimelineMax = null as any;
+  scrollTimeline = gsap.timeline({});
   intervalId: any = null;
   direction = -1;
-  animationFrameId: number | null = null;
+  animationFrameId: number = 0;
   rotatePos = 0;
 
   workHistory = [
@@ -171,8 +173,14 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeAbout();
+    }, 1000);
+  }
+
+  initializeAbout(): void {
     this.themeService.theme = "dark";
-    gsap.to(document.getElementById("micro-animation-wrapper"), {
+    this.scrollTimeline.to(document.getElementById("micro-animation-wrapper"), {
       scrollTrigger: {
         trigger: document.getElementById("micro-animation-wrapper"),
         scrub: 0.5,
@@ -187,7 +195,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     const logoWrappers = document.querySelectorAll(".technology-row");
     logoWrappers.forEach((wrapper, index) => {
       Array.from(wrapper.children).forEach((child) => {
-        gsap.fromTo(
+        this.scrollTimeline.fromTo(
           child,
           {
             y: 6 * (index + 1) + "rem",
@@ -210,7 +218,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const accoladeWrappers = document.querySelectorAll(".accolade");
     accoladeWrappers.forEach((elements) => {
-      gsap.fromTo(
+      this.scrollTimeline.fromTo(
         elements,
         {
           y: 5 + "rem",
@@ -230,7 +238,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     });
 
-    gsap.fromTo(
+    this.scrollTimeline.fromTo(
       "#about-headshot",
       { y: "-30%" },
       {
@@ -243,16 +251,16 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       }
     );
-    gsap.to("#spark", {
+    this.scrollTimeline.to("#spark", {
       scale: "1.2",
       duration: 2,
       repeat: -1,
       yoyo: true,
       ease: "none",
     });
-    this.initRollingText();
 
-    this.setupTimeline();
+    this.initRollingText();
+    this.setupImageRotationTimeline();
   }
 
   initRollingText(): void {
@@ -296,12 +304,12 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.rotatePos += 0.2;
   };
 
-  setupTimeline() {
-    this.timeline = gsap.timeline({
+  setupImageRotationTimeline() {
+    this.imageRotateTimeline = gsap.timeline({
       repeat: -1, // Infinite loop
     });
 
-    this.timeline.to(".life-images", {
+    this.imageRotateTimeline.to(".life-images", {
       x: "0%",
       duration: 0,
       ease: "none",
@@ -309,7 +317,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Create an animation for each image slide
     for (let i = 1; i <= this.totalImages; i++) {
-      this.timeline.to(
+      this.imageRotateTimeline.to(
         ".life-images",
         {
           x: `-${i * 100}%`,
@@ -320,7 +328,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       ); // Hold each image for 4 seconds before sliding to the next
     }
 
-    this.timeline.play();
+    this.imageRotateTimeline.play();
   }
 
   swapTechnologyStack(): void {
@@ -345,6 +353,22 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalId);
+    setTimeout(() => {
+      clearInterval(this.intervalId);
+      cancelAnimationFrame(this.animationFrameId);
+
+      if (this.scrollTimeline) {
+        this.scrollTimeline.kill();
+      }
+      if (this.imageRotateTimeline) {
+        this.imageRotateTimeline.kill();
+      }
+
+      ScrollTrigger.getAll().forEach((trigger) => {
+        console.log(trigger);
+        trigger.vars;
+        trigger.kill();
+      });
+    }, 750);
   }
 }
