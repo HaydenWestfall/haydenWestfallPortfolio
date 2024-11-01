@@ -1,4 +1,5 @@
 export const Fireshare = {
+  id: "fireshare",
   projectName: "FIRESHARE",
   titleText: "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
   headerMockup: "../../assets/innobuild/innobuild_macbook.png",
@@ -71,14 +72,17 @@ export const Fireshare = {
     },
     {
       template: "next-project",
-      title: "MISS LISA BOOKS",
-      description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Design + Dev | Freelance",
-      link: "/work/missLisaBooks",
-      showcase: "../../assets/stf/app_showcase.png",
-      index: 6,
-      hover: false,
+      nextProject: [
+        {
+          label: "MISS LISA BOOKS",
+          description:
+            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+          role: "Design + Dev | Freelance",
+          link: "/work/missLisaBooks",
+          showcase: "../../assets/stf/app_showcase.png",
+          hover: false,
+        },
+      ],
     },
   ],
 };

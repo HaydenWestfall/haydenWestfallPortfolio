@@ -86,10 +86,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   animateAccent() {
+    if (window.innerWidth <= 768) {
+      this.animateMobile();
+    } else {
+      this.animateDesktop();
+    }
+  }
+
+  animateDesktop(): void {
     const accentTextContainer = document.getElementById("accent2");
     const position = `calc(50% + ${accentTextContainer!.getBoundingClientRect().height / 2}px)`;
     const position2 = `calc(100% + ${accentTextContainer!.getBoundingClientRect().height}px + 1rem)`;
-
     const duration = "0.6";
     const tl = gsap.timeline();
     tl.fromTo("#accent1", { top: "0" }, { top: position, duration: duration, ease: "myCustomEase" });
@@ -99,6 +106,24 @@ export class AppComponent implements OnInit, AfterViewInit {
       "#accent2",
       { bottom: position },
       { bottom: position2, duration: duration, ease: "myCustomEase" },
+      `-=${duration}`
+    );
+  }
+
+  animateMobile(): void {
+    const accentTextContainer = document.getElementById("accent2");
+    const position = `calc(50% - ${accentTextContainer!.getBoundingClientRect().width / 2}px)`;
+    const position2 = `calc(-100% - ${accentTextContainer!.getBoundingClientRect().width}px + 1rem)`;
+
+    const duration = "0.6";
+    const tl = gsap.timeline();
+    tl.fromTo("#accent1", { right: "100%" }, { right: position, duration: duration, ease: "myCustomEase" });
+    tl.fromTo("#accent2", { left: "100%" }, { left: position, duration: duration, ease: "myCustomEase" }, 0);
+    tl.fromTo("#accent1", { right: position }, { right: position2, duration: duration, ease: "myCustomEase" });
+    tl.fromTo(
+      "#accent2",
+      { left: position },
+      { left: position2, duration: duration, ease: "myCustomEase" },
       `-=${duration}`
     );
   }

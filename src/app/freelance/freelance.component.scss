@@ -2,19 +2,21 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow-x: hidden;
+  max-width: 100%;
 
   #project-name-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 7rem;
+    margin-top: 5rem;
     height: fit-content;
     width: 100%;
-    overflow: hidden;
+    z-index: 1;
 
     #mockup-wrapper {
       position: absolute;
@@ -23,7 +25,7 @@
       width: 100%;
       align-items: center;
       justify-content: center;
-      z-index: 2;
+      z-index: 4;
 
       #mockup {
         height: 30vw;
@@ -36,11 +38,7 @@
       height: 13rem;
       width: 100%;
       overflow: hidden;
-      z-index: 0;
-
-      &:last-child {
-        z-index: 4;
-      }
+      z-index: 4;
 
       div {
         position: relative;
@@ -59,7 +57,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 8rem;
+    padding: 6rem 0 6rem;
+    z-index: 1;
 
     .project-overview {
       position: relative;
@@ -97,6 +96,15 @@
         }
       }
     }
+  }
+
+  .gsap-scroll-reference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
   }
 }
 
@@ -172,7 +180,7 @@
     display: flex;
     justify-content: center;
     gap: 4rem;
-    margin-top: 8rem;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     max-width: 50rem;
 
@@ -205,15 +213,19 @@
       width: 80%;
       max-width: 50rem;
 
-      .tile {
-        background-color: #d2d0d0;
+      .scrollable-tile {
+        position: relative;
+        background-color: #eaeaea;
         border-radius: 15px;
-        height: 34rem;
         padding: 2rem;
+        height: 34rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         box-shadow: 0px 4px 10px 0px #0000003b;
+      }
+
+      .tile {
+        justify-content: space-between;
 
         .type-wrapper {
           display: flex;
@@ -224,6 +236,15 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            span {
+              &:first-of-type {
+                font-size: 1.25rem;
+              }
+
+              &:last-of-type {
+                font-size: 0.8rem;
+              }
+            }
           }
         }
 
@@ -263,17 +284,9 @@
       }
 
       .tile2 {
-        position: relative;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 1.5rem;
-        background-color: #d2d0d0;
-        border-radius: 15px;
-        height: 34rem;
         overflow: hidden;
-        box-shadow: 0px 4px 10px 0px #0000003b;
+        align-items: center;
 
         img {
           position: absolute;
@@ -445,21 +458,27 @@ h2 {
     }
 
     .preview-section {
-      height: 35rem;
+      height: fit-content;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 10rem;
+      padding: 2.5rem 0 0 0;
 
       .site-marketing-wrapper {
+        position: relative;
         height: unset;
-        width: 80%;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        width: 75%;
+        bottom: unset;
+        left: unset;
       }
 
       .logo {
-        left: 50%;
+        position: relative;
+        top: unset;
         right: unset;
-        transform: translateX(-50%);
-        height: 3rem;
+        height: fit-content;
+        width: 45vw;
       }
 
       #live-site {
@@ -533,14 +552,13 @@ h2 {
         padding: 5vh 17vw;
         cursor: pointer;
 
-        .scrollable {
+        .scrollable-tile {
           width: 80vw;
           overflow: hidden;
           scroll-snap-align: center;
           display: flex;
           align-items: center;
           flex-direction: column;
-          height: unset;
         }
 
         .tile {
@@ -575,24 +593,7 @@ h2 {
         }
 
         .tile2 {
-          position: relative;
-          padding: 2rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
-          background-color: #d2d0d0;
-          border-radius: 15px;
-          height: 34rem;
-          overflow: hidden;
-          box-shadow: 0px 4px 10px 0px #0000003b;
-
           img {
-            position: absolute;
-            bottom: 0%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
           }
         }
       }

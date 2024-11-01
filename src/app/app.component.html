@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div [@routeAnimations]="prepareRoute(outlet)">
+<div [@routeAnimations]="prepareRoute(outlet)" style="max-width: 100vw; overflow-x: hidden">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 

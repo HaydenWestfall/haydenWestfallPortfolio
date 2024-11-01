@@ -1,4 +1,5 @@
 export const MissLisaBooks = {
+  id: "missLisaBooks",
   projectName: "MISS LISA BOOKS",
   titleText: "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
   headerMockup: "../../assets/missLisaBooks/iphone_tilt.png",
@@ -72,14 +73,17 @@ export const MissLisaBooks = {
     },
     {
       template: "next-project",
-      title: "GEARHEAD",
-      description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Technical Lead | Commercial",
-      link: "/work/gearHead",
-      showcase: "../../assets/stf/app_showcase.png",
-      index: 2,
-      hover: false,
+      nextProject: [
+        {
+          label: "GEARHEAD",
+          description:
+            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+          role: "Technical Lead | Commercial",
+          link: "/work/gearHead",
+          showcase: "../../assets/stf/app_showcase.png",
+          hover: false,
+        },
+      ],
     },
   ],
 };

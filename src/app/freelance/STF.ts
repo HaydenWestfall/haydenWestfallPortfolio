@@ -1,4 +1,5 @@
 export const STF = {
+  id: "stf",
   projectName: "STF",
   titleText: "STF STF STF STF STF STF STF STF STF STF STF ",
   headerMockup: "../../assets/stf/iphone_tilt.png",
@@ -74,14 +75,17 @@ export const STF = {
     },
     {
       template: "next-project",
-      title: "FIRESHARE",
-      description:
-        "This portfolio is a way for me to advertise myself and give hiring managers a glimpse into the work I am capable of.",
-      role: "Developer | Freelance",
-      link: "/work/fireshare",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
-      index: 5,
-      hover: false,
+      nextProject: [
+        {
+          label: "GEARHEAD",
+          description:
+            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+          role: "Technical Lead | Commercial",
+          link: "/work/gearHead",
+          showcase: "../../assets/stf/app_showcase.png",
+          hover: false,
+        },
+      ],
     },
   ],
 };

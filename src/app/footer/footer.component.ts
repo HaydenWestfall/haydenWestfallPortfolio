@@ -91,14 +91,12 @@ export class FooterComponent implements AfterViewInit {
         },
       }
     );
-    console.log(this.contactButtonAnimation);
   }
 
   killAnimation(): void {
     if (this.contactButtonAnimation) {
       this.contactButtonAnimation.kill();
       this.contactButtonAnimation = null;
-      console.log("killed");
     }
   }
 

@@ -1,4 +1,5 @@
 export const Gearhead = {
+  id: "gearHead",
   projectName: "GEARHEAD",
   titleText: "GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD",
   headerMockup: "../../assets/tradeshark/macbook_tilted.png",
@@ -70,14 +71,17 @@ export const Gearhead = {
     },
     {
       template: "next-project",
-      title: "TRADESHARK",
-      description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Technical Lead | Commercial",
-      link: "/work/tradeshark",
-      showcase: "../../assets/stf/app_showcase.png",
-      index: 3,
-      hover: false,
+      nextProject: [
+        {
+          label: "TRADESHARK",
+          description:
+            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+          role: "Technical Lead | Commercial",
+          link: "/work/tradeshark",
+          showcase: "../../assets/stf/app_showcase.png",
+          hover: false,
+        },
+      ],
     },
   ],
 };

@@ -39,6 +39,7 @@ html.lenis body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    white-space: nowrap;
   }
 
   .text-accent {
@@ -63,6 +64,31 @@ html.lenis body {
       transform-origin: left bottom;
       bottom: 0%;
       right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cover-container {
+    .route-text {
+      font-size: 1.75rem;
+    }
+    .text-accent {
+      &.top {
+        transform: unset;
+        transform-origin: unset;
+        top: 1rem;
+        right: 100%;
+        left: unset;
+      }
+
+      &.bottom {
+        transform: unset;
+        transform-origin: unset;
+        bottom: 0;
+        left: 100%;
+        right: unset;
+      }
     }
   }
 }
