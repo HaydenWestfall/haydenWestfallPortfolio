@@ -32,7 +32,8 @@
 
   &.single {
     height: 22rem;
-    width: 65rem;
+    aspect-ratio: 1.1 / 1;
+    flex-shrink: 0;
   }
 
   .focused-project {

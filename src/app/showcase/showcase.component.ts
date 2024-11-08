@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit } from "@angular/core";
+import { works } from "../works";
 
 @Component({
   selector: "app-showcase",
@@ -9,11 +10,11 @@ export class ShowcaseComponent implements OnInit {
   @Input("multi") multi: boolean = false;
   @Input("projects") projects: any = [];
 
+  showcaseProjects = works;
   hoverIndex: number | null = null;
   below768Pixels: boolean = false;
 
   ngOnInit(): void {
-    console.log(this.projects);
     this.below768Pixels = window.innerWidth < 768;
   }
 

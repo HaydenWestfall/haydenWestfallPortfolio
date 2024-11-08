@@ -38,13 +38,21 @@
       <ng-container *ngIf="section.template === 'design-marketing'">
         <ng-container *ngTemplateOutlet="designAndMarketing; context: { $implicit: section }"></ng-container>
       </ng-container>
-      <ng-container *ngIf="section.template === 'next-project'">
-        <ng-container *ngTemplateOutlet="nextProjectTemp; context: { $implicit: section }"></ng-container>
-      </ng-container>
       <ng-container *ngIf="section.template === 'sub-section'">
         <ng-container *ngTemplateOutlet="subSection; context: { $implicit: section }"></ng-container>
       </ng-container>
     </ng-container>
+
+    <div class="section-wrapper project-section next-project-wrapper">
+      <h6>UP NEXT</h6>
+      <section id="project-wrapper">
+        <app-showcase
+          style="max-width: 100%"
+          [multi]="false"
+          [projects]="[projectShowcases[project.index < projectShowcases.length - 1 ? project.index + 1 : 0]]"
+        ></app-showcase>
+      </section>
+    </div>
   </section>
 </div>
 
@@ -105,7 +113,9 @@
   <div id="mobile" class="section-wrapper project-section project-flex-column" style="padding: 0">
     <div class="text-section" style="padding: 0 1.25rem">
       <span class="section-header sub-header">{{ section.title }}</span>
-      <p class="section-description">{{ section.description }}</p>
+      <div class="description-block">
+        <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
+      </div>
     </div>
     <div class="mobile-view-wrapper" id="mobile-wrapper">
       <div id="iphone_mockup_1" class="mockup-wrapper">
@@ -169,13 +179,5 @@
   <div id="conclusion" class="text-section">
     <span class="section-header" style="font-size: 3rem">{{ section.title }}</span>
     <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
-  </div>
-</ng-template>
-<ng-template #nextProjectTemp let-section>
-  <div class="section-wrapper project-section next-project-wrapper">
-    <h6>UP NEXT</h6>
-    <section id="project-wrapper">
-      <app-showcase style="max-width: 100%" [multi]="false" [projects]="section.nextProject"></app-showcase>
-    </section>
   </div>
 </ng-template>

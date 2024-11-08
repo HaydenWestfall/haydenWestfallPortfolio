@@ -1,7 +1,6 @@
 $page-padding: 3rem;
 
 #about-header {
-  height: calc(80vh - 8rem);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,15 +9,17 @@ $page-padding: 3rem;
   overflow: hidden;
   gap: 2rem;
   max-width: 80rem;
-  padding: 8rem $page-padding 0;
+  width: 85%;
+  min-width: 55rem;
+  padding: 12rem 3rem 0;
 
   #title-text {
-    font-size: 3.5rem;
+    font-size: 4rem;
     color: black;
     font-family: "hebrew-condensed", sans-serif;
     font-style: normal;
     font-weight: 500;
-    line-height: 3.85rem;
+    line-height: 4.5rem;
 
     #rolling-break {
       display: none;
@@ -99,7 +100,7 @@ $page-padding: 3rem;
 #about-info-header {
   display: flex;
   flex-direction: column;
-  padding: 4rem 0;
+  padding: 0 0 4rem 0;
   background: linear-gradient(white, #e9eaeb);
   width: 100%;
   align-items: center;
@@ -108,9 +109,11 @@ $page-padding: 3rem;
     display: flex;
     position: relative;
     width: 100%;
-    gap: 12.5rem;
+    gap: 8rem;
     max-width: 80rem;
-    padding: 0 $page-padding;
+    width: 85%;
+    min-width: 55rem;
+    padding: 6rem 3rem 0;
 
     #about {
       display: flex;
@@ -222,6 +225,8 @@ $page-padding: 3rem;
 
 .list-wrapper {
   max-width: 80rem;
+  min-width: 55rem;
+  width: 85%;
   padding: 0 $page-padding;
 
   #list-label {

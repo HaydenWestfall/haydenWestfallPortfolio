@@ -1,5 +1,6 @@
 export const Tradewave = {
   id: "tradewave",
+  index: 2,
   projectName: "TRADEWAVE",
   titleText: "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
   headerMockup: "../../assets/tradewave/macbook_tilted.png",
@@ -21,20 +22,10 @@ export const Tradewave = {
           template: "sub-section",
           title: "OVERVIEW",
           description: [
-            "As the technical lead on TradeWave, a comprehensive finance application, I was responsible for overseeing the development of a robust platform designed to empower users in managing their transactions and investments effectively. TradeShark integrates sophisticated data analytics capabilities, featuring customizable charts that enable users to visualize and compare various data points dynamically. The application offers multiple views, including a dashboard for high-level insights, as well as detailed table and chart views for in-depth data exploration.",
-            "TradeWave's advanced filtering system allows users to refine their data with precision, supporting complex queries such as inclusion, exclusion, combination, or chaining of multiple attributes. Additionally, the application includes an import feature that facilitates the seamless integration of historical transactions, either from prior services or different providers, making TradeShark a comprehensive solution for financial management.",
+            "As the technical lead for TradeShark, a comprehensive finance application, I was brought in mid-project to guide it from a stalled state to successful completion. TradeShark enables users to effectively manage transactions and investments, offering a dashboard for high-level insights along with detailed tables and customizable charts for deeper analysis. The application features an advanced filtering system to support complex data queries, as well as an import function for seamless integration of historical transactions.",
+            "Initially, the project aimed to adapt an existing company application, but I quickly recognized this approach wasn’t suitable. The user interface, data models, and workflows didn’t align with the new use case. After proposing a prototype that better fit TradeShark’s purpose, I received approval to move forward with the updated design, which resonated strongly with users. From there, I led the full development and deployment, bringing TradeShark to completion over the following nine months.",
           ],
         },
-        // {
-        //   id: "careerDevelopment",
-        //   template: "sub-section",
-        //   title: "CAREER DEVELOPMENT",
-        //   description: [
-        //     "TradeShark presented a unique challenge, as I stepped in as the technical lead mid-project. The application had been under development for about six months by a different team, which was eventually disbanded, leaving TradeShark in a state of limbo. I was tasked with reviving the project and steering it towards completion.",
-        //     "The original design aimed to repurpose an existing application within the company, a direction I felt was fundamentally flawed. The user interface was not suited for the new requirements, and the data models and user workflows were markedly different from the previous use cases. Recognizing these issues, I obtained approval to spend a few days creating a prototype and wireframe that better aligned with TradeShark's intended purpose.",
-        //     "The prototype you see on this page is the result of that effort. Our customers responded positively to the modernized look and feel, which contrasted sharply with the previous design, and they quickly approved the new direction. Following this, I took the lead in the development and deployment of TradeShark, successfully bringing it to completion over the next nine months.",
-        //   ],
-        // },
       ],
       preview: {
         screenshot: "../../assets/tradewave/app_preview.png",
@@ -46,9 +37,10 @@ export const Tradewave = {
       template: "sub-section",
       title: "UI/UX DESIGN",
       description: [
-        "As the lead designer for TradeShark, I developed a user interface that received high praise from our customers. In my initial discussions with the TradeShark team, it became clear that while they had a strong understanding of their data needs, they lacked a vision for how it should be presented to users. This presented me with a unique opportunity to exercise creativity and design the application from a blank canvas.",
-        "I had the privilege of engaging directly with potential users to understand their desired features and usage patterns. From these conversations, I learned that users typically wanted to quickly access the application, check the latest activity in areas of interest, and then exit. This insight led to the creation of the Dashboard, which provides at-a-glance information on specific tickers, financial events, and analytics. Additionally, TradeShark features a 'Query Manager,' enabling users to save common queries and even apply one automatically upon application load.",
-        "Another standout feature is the enhanced user experience provided by TradeShark's advanced filtering system. Users can chain filters together for precise querying across multiple attributes, and this query chain persists across tabs within the application, minimizing clicks and streamlining their data exploration.",
+        "As the lead designer for Tradewave, I developed a fresh, modern user interface that was highly praised by our customers. In my initial discussions with the Tradewave team, it became clear that while they had a strong grasp of their data needs, they lacked a clear vision for how it should be presented to users. This gave me a unique opportunity to exercise creativity and design a new user interface from the ground up.",
+        "I had the privilege of engaging directly with users to understand their needs and usage patterns. From these conversations, I compiled a list of requirements that reflected features users genuinely wanted—an essential factor in the success of my design.",
+        "A key insight was the common use case of repeated queries, where users frequently returned to check the status of specific data points. This inspired the creation of the Dashboard, providing at-a-glance information on tickers, financial events, and analytics. I also proposed a 'Query Manager' feature to allow users to save common queries and even set one to apply automatically upon application load.",
+        "Tradewave’s advanced filtering system is another standout feature. Users can chain filters together for precise querying across multiple attributes, with this query chain persisting across tabs. This design minimizes clicks and streamlines data exploration for a seamless experience.",
       ],
     },
     {
@@ -56,9 +48,9 @@ export const Tradewave = {
       template: "sub-section",
       title: "BACKEND",
       description: [
-        "The TradeShark backend is powered by a REST API built with Spring Boot, interfacing with a MongoDB datastore. I adopted a documentation-first approach to the design, initially defining all endpoints through an OpenAPI specification. By leveraging OpenAPI Generator, we were able to generate code directly from our OpenAPI spec, a process I have successfully implemented on numerous projects and would highly recommend.",
+        "The Tradewave backend is powered by a REST API built with Spring Boot, interfacing with a MongoDB datastore. I adopted a documentation-first approach to the design, initially defining all POJOs and endpoints through an OpenAPI specification. By leveraging OpenAPI Generator, I was able to generate code directly from our OpenAPI specification, a process I have successfully implemented on numerous projects and would highly recommend.",
         "Using OpenAPI Generator significantly streamlined development, providing us with POJOs, Spring controllers, and client APIs right out of the box. This approach eliminated the need to manually create boilerplate code, resulting in substantial time savings and a more efficient workflow for the development team. For database interactions, we utilized the MongoDB Spring Data plugin, which seamlessly integrated with our backend.",
-        "Given the complexity of TradeShark’s data, which includes complex data types and embedded documents, the MongoDB queries required advanced handling. I developed several MongoDB aggregation pipelines to transform the data into the exact formats needed. These pipelines were critical for delivering features like paginated full object results for table views and optimized projections for chart views with hundreds of thousands of records. The success of TradeShark heavily relied on these sophisticated data manipulation techniques.",
+        "Given the complexity of Tradewave’s data, which includes complex data types and embedded documents, the MongoDB queries required advanced handling. I developed several MongoDB aggregation pipelines to efficiently query the dataset and transform the output into exactly what was required. These aggregation pipelines were critical for delivering features like lazy loaded paginated results and optimized projections for creating charts with hundreds of thousands of records. The success of Tradewave heavily relied on these sophisticated data manipulation techniques.",
       ],
     },
     {
@@ -66,22 +58,8 @@ export const Tradewave = {
       template: "sub-section",
       title: "CI/CD",
       description: [
-        "I was involved in TradeShark from its inception through to its production deployment. Designed for the cloud, this application features a fully automated deployment pipeline utilizing GitLab runners. In our setup, the cloud environment consists of an AWS instance orchestrated by Kubernetes and managed by ISTIO.",
-        "The automated CI/CD pipelines for TradeShark handle the entire process—from building the frontend and backend services, to running tests, performing quality scans with SonarQube, and ultimately generating distributable Docker images. These images are then pushed to a container registry monitored by ArgoCD. Our Argo configuration is designed to track changes in the container registry and automatically redeploy updates to our test environment. This automated process has significantly reduced human error, enhanced team productivity, and streamlined the deployment process.",
-      ],
-    },
-    {
-      template: "next-project",
-      nextProject: [
-        {
-          label: "INNOBUILD",
-          description:
-            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-          role: "Technical Lead | Commercial",
-          link: "/work/innobuild",
-          showcase: "../../assets/innobuild/app_showcase.png",
-          hover: false,
-        },
+        "I was fortunately involved in Tradewave from its inception through to its delivery to a production environment. Designed for the cloud, this application features a fully automated deployment pipeline utilizing GitLab runners. In our setup, the cloud environment consists of an AWS instance orchestrated by Kubernetes and managed by ISTIO.",
+        "The automated CI/CD pipelines for Tradewave handle the entire process—from building the frontend and backend services, to running tests, performing quality scans with SonarQube, and ultimately generating distributable Docker images. These images are then pushed to a container registry monitored by ArgoCD. Our Argo configuration is designed to track changes in the container registry and automatically redeploy updates to our test environment. This automated process has significantly reduced human error, enhanced team productivity, and streamlined the deployment process.",
       ],
     },
   ],

@@ -289,11 +289,13 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       const cursor = document.getElementById("rolling-text-cursor");
       index = index + 1;
 
+      console.log(index);
+
       this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
       if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
         clearInterval(intervalId);
         cursor?.classList.add("blink-cursor");
-        this.rollingTextIndex = this.rollingTextIndex === 6 ? 0 : this.rollingTextIndex + 1;
+        this.rollingTextIndex = this.rollingTextIndex === 5 ? 0 : this.rollingTextIndex + 1;
       }
     }, 150);
   }

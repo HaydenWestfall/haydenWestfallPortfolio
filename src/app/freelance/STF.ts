@@ -1,5 +1,6 @@
 export const STF = {
   id: "stf",
+  index: 4,
   projectName: "STF",
   titleText: "STF STF STF STF STF STF STF STF STF STF STF ",
   headerMockup: "../../assets/stf/iphone_tilt.png",
@@ -26,7 +27,8 @@ export const STF = {
           template: "sub-section",
           title: "OVERVIEW",
           description: [
-            "Spieles Troutwine and Fout (STF) is an established insurance group with a legacy of providing dependable coverage for over 60 years. In 2021, three separate insurance agencies merged to form STF, marking a new chapter in their history. I was brought on board to craft the brand identity, design the website, and manage the Google Ads campaign for the newly formed entity. From conceptualizing the logo and color palette to designing the website, every aspect of STF's brand was meticulously crafted by me to reflect their commitment to excellence.",
+            "Spieles Troutwine and Fout (STF) is an established insurance group with a legacy of providing dependable coverage for over 60 years. In 2021, three separate insurance agencies merged to form STF, marking a new chapter in their history. I was brought on board to craft the brand identity, design the website, and manage a Google Ad campaign for the newly formed entity.",
+            "To streamline development and dedicate more time to STF's brand identity and digital strategy, I chose to build the site using Angular, a familiar framework I knew would support the site's technical needs while allowing me to grow in other areas. This approach enabled me to focus on creating a cohesive logo, structuring the website for optimal SEO, and managing a targeted Google Ads campaign. By leveraging Angular, I ensured a smooth and efficient process, leaving me free to refine STF's online presence and help establish them as a trusted, modernized brand in the insurance market.",
           ],
         },
       ],
@@ -38,9 +40,11 @@ export const STF = {
     },
     {
       template: "mobile-section",
-      title: "MOBILE FIRST DESIGN",
-      description:
-        "Great UI/UX design is all about creating seamless, intuitive experiences that delight users. In today’s fast-paced world, mobile-first design is a game-changer—starting with the smallest screens ensures that your design is not only sleek and responsive but also prioritizes the essentials. When you get it right on mobile, you’re set to captivate users across all devices.",
+      title: "TECHNOLOGIES",
+      description: [
+        'When designing the STF website, I went with a familiar technology in Angular. The only requirement from the client was to include an element of animation or movement on the landing page to capture users\' attention. To meet this, I implemented a dynamic animation that brings the hero text into view while simultaneously drawing an SVG circle around the words "low cost." This subtle yet engaging animation serves to highlight the company’s key value proposition.',
+        "Beyond that, the website itself is modern, with a clean layout and intuitive navigation. A clear call-to-action button is strategically placed throughout the site, guiding visitors to easily request a quote for their insurance needs, ensuring that the site is both visually appealing and conversion-focused.",
+      ],
       imgs: [
         "../../assets/stf/iphone_design_1.png",
         "../../assets/stf/iphone_design_2.png",
@@ -49,10 +53,10 @@ export const STF = {
     },
     {
       template: "design-marketing",
-      title: "DESIGN + MARKETING",
+      title: "DESIGN",
       description: [
-        "A serious challenges changing my mindset from sleek modern design to elegant and timeless which was the requirement for this wedding site. Maddie wanted a simple and elegant website that represented her business and quality of work for day of coordinating and events.",
-        "Here are some aspects of the design that were used. A typeface that screams elegant with a color scheme that is as simple as it gets.",
+        "For STF’s brand identity, I explored multiple logo concepts, ultimately collaborating with the team to select a clean, modern “STF” logo that emphasized simplicity and professionalism. This fresh, minimalistic design was not only versatile but also helped the brand appeal to a younger audience, setting them apart from the dated legacy logo. The new logo was designed to be adaptable across digital and physical materials, enhancing its impact on various marketing channels. To showcase its potential, I developed mockups for branded items such as t-shirts, business cards, and other promotional materials, helping the company visualize the logo’s presence across different platforms.",
+        "In terms of digital marketing, I crafted and managed a Google Ads campaign that maximized STF’s limited budget by focusing on local targeting and highly relevant keywords. With a fully SEO-optimized website and precise ad targeting, the campaign successfully drove more traffic to the new site, outperforming the traffic of their previous website. This strategic approach not only increased visibility within their target market but also demonstrated the effectiveness of cohesive branding and digital strategy.",
       ],
       fontFamily: "helios-antique",
       fontName: "HELIOS ANTIQUE",
@@ -66,25 +70,10 @@ export const STF = {
     },
     {
       template: "sub-section",
-      title: "JOURNAL",
+      title: "CLOSING THOUGHTS",
       description: [
-        "Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect, Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect,",
-        "Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect, Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect,",
-        "Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect, Overall Maddie West Events was an extremely eye opening project for me from a design and implementation aspect. From a design aspect,",
-      ],
-    },
-    {
-      template: "next-project",
-      nextProject: [
-        {
-          label: "MISS LISA BOOKS",
-          description:
-            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-          role: "Design + Dev | Freelance",
-          link: "/work/missLisaBooks",
-          showcase: "../../assets/missLisaBooks/app_showcase.png",
-          hover: false,
-        },
+        "Working with Spieles Troutwine and Fout on their rebranding and digital strategy was a rewarding experience that allowed me to blend creative design with practical marketing solutions. From developing a modern logo that appealed to a younger audience to creating an SEO optimized website with engaging animations.",
+        "Every step of the project was focused on enhancing STF's online presence. Managing their Google Ads campaign and optimizing the site for SEO helped drive measurable results, demonstrating the power of cohesive branding and targeted digital strategies. This project not only strengthened my skills in design and marketing but also deepened my understanding of how technology and creativity can come together to deliver impactful results for businesses.",
       ],
     },
   ],

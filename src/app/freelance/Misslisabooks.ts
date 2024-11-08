@@ -1,5 +1,6 @@
 export const MissLisaBooks = {
   id: "missLisaBooks",
+  index: 5,
   projectName: "MISS LISA BOOKS",
   titleText: "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
   headerMockup: "../../assets/missLisaBooks/iphone_tilt.png",
@@ -26,7 +27,7 @@ export const MissLisaBooks = {
           template: "sub-section",
           title: "OVERVIEW",
           description: [
-            "I developed a playful, single-page website for Miss Lisa Books, a children’s book author dedicated to inspiring young readers. The site is designed to be engaging and informative, featuring an introduction to Miss Lisa and her books, a section highlighting the core pillars of her mission—empowering individuals with disabilities, celebrating intervention specialists, and promoting literacy for all children. The layout ensures a seamless browsing experience with easy access to purchase links for the books. This project reflects my ability to create vibrant and user-friendly designs tailored to the needs of clients in the creative and educational sectors.",
+            "Miss Lisa Books is platform for children with a disability who refuse to allow that particular disability to interfere with advancing in life. Lisa, an inspiring entrepreneur, needed a website to share her impactful message and showcase her work. I created a clean, user-friendly single-page application that highlights Lisa's mission, the products she offers, and the essence of her platform.",
           ],
         },
       ],
@@ -38,9 +39,10 @@ export const MissLisaBooks = {
     },
     {
       template: "mobile-section",
-      title: "MOBILE FIRST DESIGN",
-      description:
-        "Great UI/UX design is all about creating seamless, intuitive experiences that delight users. In today’s fast-paced world, mobile-first design is a game-changer—starting with the smallest screens ensures that your design is not only sleek and responsive but also prioritizes the essentials. When you get it right on mobile, you’re set to captivate users across all devices.",
+      title: "TECHNOLOGIES",
+      description: [
+        "For this project, I used Angular, a framework I’m highly experienced with, to build a dynamic and responsive site. To enhance the user experience, I incorporated GSAP for seamless animations and Lenis for smooth scrolling. These libraries played a key role in creating an engaging and fluid interaction. Additionally, I optimized all images on the page to ensure fast load times, providing a smooth and efficient experience for users.",
+      ],
       imgs: [
         "../../assets/missLisaBooks/iphone_design_1.png",
         "../../assets/missLisaBooks/iphone_design_2.png",
@@ -49,10 +51,10 @@ export const MissLisaBooks = {
     },
     {
       template: "design-marketing",
-      title: "DESIGN + MARKETING",
+      title: "DESIGN",
       description: [
-        "Working on Miss Lisa Books presented a unique challenge, as it was a departure from my previous experience designing CRUD editor applications and modern/sleek websites. This project required me to shift my focus and think creatively about how to incorporate playful fonts, vibrant colors, and engaging transitions that would appeal to children and reflect the spirit of Miss Lisa's brand. It was both a challenge and a rewarding experience to craft a design that feels lighthearted yet professional, successfully capturing the essence of Miss Lisa Books.",
-        "Choosing the right font was particularly challenging. Chelse-Market, with its playful, handwritten, and slightly imperfect style, was not something I would have considered for my previous projects. However, it perfectly complemented the brand's playful nature and the child-oriented theme of the website. It was both a challenge and a rewarding experience to craft a design that feels lighthearted yet professional, successfully capturing the essence of Miss Lisa Books.",
+        "Designing for Miss Lisa Books was a departure from my usual projects, which focused on CRUD editor applications and modern, sleek websites. This project challenged me to think creatively and incorporate playful fonts, vibrant colors, and engaging transitions that would resonate with children and reflect the spirit of Miss Lisa’s brand. It was both a rewarding challenge to create a design that is lighthearted yet professional, capturing the essence of Miss Lisa Books.",
+        "Choosing the right font was particularly difficult. Chelse-Market, with its playful, handwritten, and slightly imperfect style, was a bold choice I wouldn’t typically consider for other projects. However, it perfectly complemented the brand’s whimsical and child-oriented theme, making it a key element in the design’s success.",
       ],
       fontFamily: "chelsea-market",
       fontName: "CHELSEA MARKET",
@@ -66,23 +68,9 @@ export const MissLisaBooks = {
     },
     {
       template: "sub-section",
-      title: "FINAL THOUGHTS",
+      title: "CLOSING THOUGHTS",
       description: [
-        "Overall, Miss Lisa Books was a fun side project that unlocked a new level of creativity for me. I’m incredibly grateful for the opportunity, as it was the first website I launched as a freelance developer. Though the project was short and sweet, being a single-page application, it will always hold a special place in my heart.",
-      ],
-    },
-    {
-      template: "next-project",
-      nextProject: [
-        {
-          label: "FIRESHARE",
-          description:
-            "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-          role: "Developer | Commercial",
-          link: "/work/fireshare",
-          showcase: "../../assets/fireshare/app_showcase.png",
-          hover: false,
-        },
+        "Working on Miss Lisa Books was an exciting and rewarding project that allowed me to step outside my usual design and development work. By combining my expertise with Angular and leveraging tools like GSAP and Lenis, I was able to create a dynamic, user-friendly website that brings Lisa’s vision to life. The design process posed a unique challenge, as it required a shift towards a playful, child-focused aesthetic while still maintaining professionalism. From choosing the perfect font to incorporating vibrant colors and smooth animations, every element was carefully crafted to reflect the spirit of Miss Lisa’s brand. The result is a website that not only showcases the platform’s mission but also provides an engaging and enjoyable experience for users of all ages.",
       ],
     },
   ],

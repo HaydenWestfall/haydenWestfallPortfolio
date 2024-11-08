@@ -9,6 +9,7 @@ import { Tradewave } from "./Tradewave";
 import { MissLisaBooks } from "./Misslisabooks";
 import { Innobuild } from "./Innobuild";
 import { Fireshare } from "./Fireshare";
+import { works } from "../works";
 
 @Component({
   selector: "app-freelance",
@@ -21,6 +22,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
   timeline: gsap.core.Timeline = null as any;
   animations: gsap.core.Tween[] = [];
   mediaQueryMatch = false;
+  projectShowcases = works;
   projects = [Fireshare, Innobuild, MaddieWestEvents, MissLisaBooks, STF, Tradewave];
   project: any;
 
