@@ -77,6 +77,10 @@ footer {
           font-size: 0.6rem;
           font-family: "Open Sans", sans-serif;
           font-weight: 500;
+
+          &:last-of-type {
+            cursor: pointer;
+          }
         }
       }
 

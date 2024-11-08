@@ -11,7 +11,6 @@ import { RouterOutlet } from "@angular/router";
 import { AppRoutingModule } from "./routing/app-routing.module";
 import { SvgIconComponent } from "./svg-icon/svg-icon.component";
 import { ParallaxButtonDirective } from "./directives/parallax-button.directive";
-import { CoverComponent } from "./cover/cover.component";
 import { WorksComponent } from "./works/works.component";
 import { IntersectionDirective } from "./directives/intersection.directive";
 import { FreelanceComponent } from "./freelance/freelance.component";
@@ -29,7 +28,6 @@ import { ContactComponent } from "./contact/contact.component";
     ContactComponent,
     SvgIconComponent,
     ParallaxButtonDirective,
-    CoverComponent,
     WorksComponent,
     IntersectionDirective,
     FreelanceComponent,

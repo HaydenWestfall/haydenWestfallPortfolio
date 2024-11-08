@@ -40,17 +40,19 @@ html.lenis body {
     transform: translate(-50%, -50%);
     color: white;
     white-space: nowrap;
+    z-index: 10;
   }
 
   .text-accent {
     position: absolute;
-    font-size: 6.5rem;
-    height: 8rem;
+    font-size: 5.5rem;
+    height: 7rem;
     font-family: "Open Sans", sans-serif;
     font-style: italic;
     font-weight: 800;
     color: rgb(43, 43, 43);
     white-space: nowrap;
+    z-index: 1;
 
     &.top {
       transform: rotate(-90deg);
@@ -74,21 +76,24 @@ html.lenis body {
       font-size: 1.75rem;
     }
     .text-accent {
-      &.top {
-        transform: unset;
-        transform-origin: unset;
-        top: 1rem;
-        right: 100%;
-        left: unset;
-      }
+      font-size: 3.5rem;
+      height: 4.5rem;
 
-      &.bottom {
-        transform: unset;
-        transform-origin: unset;
-        bottom: 0;
-        left: 100%;
-        right: unset;
-      }
+      // &.top {
+      //   transform: unset;
+      //   transform-origin: unset;
+      //   top: 1rem;
+      //   right: 100%;
+      //   left: unset;
+      // }
+
+      // &.bottom {
+      //   transform: unset;
+      //   transform-origin: unset;
+      //   bottom: 0;
+      //   left: 100%;
+      //   right: unset;
+      // }
     }
   }
 }

@@ -54,7 +54,6 @@ export class FooterComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      gsap.registerPlugin(ScrollTrigger, Draggable);
       if (window.innerWidth >= 768) {
         this.initAnimation();
       }

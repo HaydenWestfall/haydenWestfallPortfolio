@@ -153,7 +153,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     gsap.set(document.getElementById("name-secondary"), { xPercent: this.xPos });
     gsap.set(document.getElementById("name-tertiary"), { xPercent: this.xPos });
     this.animationFrameId = requestAnimationFrame(this.animate);
-    this.xPos += 0.04;
+    this.xPos += 0.02;
   };
 
   ngOnDestroy(): void {
@@ -163,9 +163,13 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       if (this.scrollTimeline) {
         this.scrollTimeline.kill();
       }
-      console.log("KILLED");
+
       ScrollTrigger.getAll().forEach((trigger) => {
-        console.log(trigger);
+        const element = trigger.vars.trigger; // Get the trigger element
+        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+          return;
+        }
+
         trigger.vars;
         trigger.kill();
       });

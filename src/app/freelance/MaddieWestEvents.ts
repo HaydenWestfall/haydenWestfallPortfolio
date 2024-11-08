@@ -86,12 +86,12 @@ export const MaddieWestEvents = {
       template: "next-project",
       nextProject: [
         {
-          label: "GEARHEAD",
+          label: "TRADEWAVE",
           description:
             "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
           role: "Technical Lead | Commercial",
-          link: "/work/gearHead",
-          showcase: "../../assets/stf/app_showcase.png",
+          link: "/work/tradewave",
+          showcase: "../../assets/tradewave/app_showcase.png",
           hover: false,
         },
       ],

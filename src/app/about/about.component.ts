@@ -365,7 +365,10 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       ScrollTrigger.getAll().forEach((trigger) => {
-        console.log(trigger);
+        const element = trigger.vars.trigger; // Get the trigger element
+        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+          return;
+        }
         trigger.vars;
         trigger.kill();
       });

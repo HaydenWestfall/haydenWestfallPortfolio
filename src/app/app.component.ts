@@ -12,7 +12,7 @@ import {
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-import { coverAnimation, coverAnimation2, routeAnimation } from "./animations";
+import { coverAnimation, routeAnimation } from "./animations";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -20,7 +20,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
-  animations: [routeAnimation, coverAnimation, coverAnimation2],
+  animations: [routeAnimation, coverAnimation],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   showCover = true;
@@ -72,8 +72,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     const urlSegments = window.location.pathname.split("/");
     this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
     setTimeout(() => {
-      this.animateAccent();
       this.getRightAlignment();
+      this.animateAccent();
     });
   }
 
@@ -86,14 +86,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   animateAccent() {
-    if (window.innerWidth <= 768) {
-      this.animateMobile();
-    } else {
-      this.animateDesktop();
-    }
-  }
-
-  animateDesktop(): void {
     const accentTextContainer = document.getElementById("accent2");
     const position = `calc(50% + ${accentTextContainer!.getBoundingClientRect().height / 2}px)`;
     const position2 = `calc(100% + ${accentTextContainer!.getBoundingClientRect().height}px + 1rem)`;
@@ -110,27 +102,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
   }
 
-  animateMobile(): void {
-    const accentTextContainer = document.getElementById("accent2");
-    const position = `calc(50% - ${accentTextContainer!.getBoundingClientRect().width / 2}px)`;
-    const position2 = `calc(-100% - ${accentTextContainer!.getBoundingClientRect().width}px + 1rem)`;
-
-    const duration = "0.6";
-    const tl = gsap.timeline();
-    tl.fromTo("#accent1", { right: "100%" }, { right: position, duration: duration, ease: "myCustomEase" });
-    tl.fromTo("#accent2", { left: "100%" }, { left: position, duration: duration, ease: "myCustomEase" }, 0);
-    tl.fromTo("#accent1", { right: position }, { right: position2, duration: duration, ease: "myCustomEase" });
-    tl.fromTo(
-      "#accent2",
-      { left: position },
-      { left: position2, duration: duration, ease: "myCustomEase" },
-      `-=${duration}`
-    );
-  }
-
   getRightAlignment(): void {
     const accent2 = document.getElementById("accent2");
-    this.accentRightAlignment = `calc(-${accent2?.getBoundingClientRect().height}px + 8rem)`;
+    this.accentRightAlignment = `calc(-${accent2?.getBoundingClientRect().height}px + ${
+      window.innerWidth <= 768 ? "4.5" : "8"
+    }rem)`;
   }
 
   mapRouteName(routePath: string): string {
@@ -139,11 +115,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (uppercaseRoutes.includes(routePath)) {
       return routePath.toUpperCase();
     } else if (routePath === "maddieWestEvents") {
-      return "MADDIE WEST EVENTS";
+      return "MADDIE WEST";
     } else if (routePath === "missLisaBooks") {
-      return "MISS LISA BOOKS";
+      return "MISS LISA";
     }
 
-    return "HOME";
+    return "//\\/\\/";
   }
 }

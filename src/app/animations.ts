@@ -2,26 +2,19 @@ import { animate, group, query, state, style, transition, trigger } from "@angul
 
 export const routeAnimation = trigger("routeAnimations", [
   transition("* <=> *", [
-    query(":enter, :leave", style({}), { optional: true }),
+    query(":enter", style({ position: "absolute", top: "0", left: "100%" }), { optional: true }),
+    query(":leave", style({}), { optional: true }),
     group([
       // Delay 1s to allow the cover animation to cover the whole screen
       query(":leave", [animate("0ms 1000ms ease")], { optional: true }),
-      query(":enter", [animate("0ms 1000ms ease")], { optional: true }),
+      query(":enter", [animate("0ms 1000ms ease"), style({ position: "relative", top: "unset", left: "unset" })], {
+        optional: true,
+      }),
     ]),
   ]),
 ]);
+
 export const coverAnimation = trigger("coverAnimation", [
-  // Animate the cover animation onto the screen and back off
-  transition(":enter", [
-    style({ transform: "translateY(-100%)" }),
-    animate("1000ms cubic-bezier(0.87, 0, 0.13, 1)", style({ transform: "translateY(0%)" })),
-  ]),
-  transition(":leave", [
-    style({ transform: "translateY(0)" }),
-    animate("1000ms cubic-bezier(0.87, 0, 0.13, 1)", style({ transform: "translateY(100%)" })),
-  ]),
-]);
-export const coverAnimation2 = trigger("coverAnimation2", [
   state(
     "initial",
     style({

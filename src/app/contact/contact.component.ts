@@ -56,8 +56,11 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
       if (this.scrollTimeline) {
         this.scrollTimeline.kill();
       }
-      console.log("KILLED");
       ScrollTrigger.getAll().forEach((trigger) => {
+        const element = trigger.vars.trigger; // Get the trigger element
+        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+          return;
+        }
         trigger.vars;
         trigger.kill();
       });

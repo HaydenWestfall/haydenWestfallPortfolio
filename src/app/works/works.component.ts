@@ -16,12 +16,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   scrollTimeline = gsap.timeline({});
   featuredProjects = [
     {
-      label: "GEARHEAD",
+      label: "FIRESHARE",
       description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Technical Lead | Commercial",
-      link: "/work/gearHead",
-      showcase: "../../assets/stf/app_showcase.png",
+        "Fireshare is a cutting-edge automotive repair management platform designed to transform the auto care industry. The application delivers essential tools that auto shops rely on daily, enabling seamless management of upcoming appointments, comprehensive access to historical service records, and insightful data analytics to optimize shop performance. Fireshare’s advanced filtering capabilities empower managers and mechanics to swiftly access a vehicle's service history or diagnose recurring issues by referencing previous solutions.",
+      role: "Developer | Commercial",
+      link: "/work/fireshare",
+      showcase: "../../assets/fireshare/app_showcase.png",
       hover: false,
     },
     {
@@ -34,12 +34,21 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       hover: false,
     },
     {
-      label: "TRADESHARK",
+      label: "TRADEWAVE",
       description:
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Technical Lead | Commercial",
-      link: "/work/tradeshark",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
+      link: "/work/tradewave",
+      showcase: "../../assets/tradewave/app_showcase.png",
+      hover: false,
+    },
+    {
+      label: "INNOBUILD",
+      description:
+        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
+      role: "Technical Lead | Commercial",
+      link: "/work/innobuild",
+      showcase: "../../assets/innobuild/app_showcase.png",
       hover: false,
     },
     {
@@ -52,30 +61,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       hover: false,
     },
     {
-      label: "PORTFOLIO",
-      description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Design + Dev | Freelance",
-      link: "/work/stf",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
-      hover: false,
-    },
-    {
-      label: "FIRESHARE",
-      description:
-        "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-      role: "Developer | Commercial",
-      link: "/work/stf",
-      showcase: "../../assets/stf/app_showcase.png",
-      hover: false,
-    },
-    {
       label: "MISS LISA BOOKS",
       description:
         "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
       role: "Design + Dev | Freelance",
       link: "/work/missLisaBooks",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
+      showcase: "../../assets/missLisaBooks/app_showcase.png",
       hover: false,
     },
   ];
@@ -120,7 +111,10 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       }
 
       ScrollTrigger.getAll().forEach((trigger) => {
-        console.log(trigger);
+        const element = trigger.vars.trigger; // Get the trigger element
+        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+          return;
+        }
         trigger.vars;
         trigger.kill();
       });

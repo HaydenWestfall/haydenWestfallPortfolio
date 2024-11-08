@@ -1,8 +1,8 @@
-export const Gearhead = {
-  id: "gearHead",
-  projectName: "GEARHEAD",
-  titleText: "GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD  GEARHEAD",
-  headerMockup: "../../assets/tradeshark/macbook_tilted.png",
+export const Tradewave = {
+  id: "tradewave",
+  projectName: "TRADEWAVE",
+  titleText: "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
+  headerMockup: "../../assets/tradewave/macbook_tilted.png",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "Technical Lead"] },
@@ -19,9 +19,10 @@ export const Gearhead = {
         {
           id: "overview",
           template: "sub-section",
+          title: "OVERVIEW",
           description: [
-            "As the technical lead on TradeShark, a comprehensive finance application, I was responsible for overseeing the development of a robust platform designed to empower users in managing their transactions and investments effectively. TradeShark integrates sophisticated data analytics capabilities, featuring customizable charts that enable users to visualize and compare various data points dynamically. The application offers multiple views, including a dashboard for high-level insights, as well as detailed table and chart views for in-depth data exploration.",
-            "TradeShark's advanced filtering system allows users to refine their data with precision, supporting complex queries such as inclusion, exclusion, combination, or chaining of multiple attributes. Additionally, the application includes an import feature that facilitates the seamless integration of historical transactions, either from prior services or different providers, making TradeShark a comprehensive solution for financial management.",
+            "As the technical lead on TradeWave, a comprehensive finance application, I was responsible for overseeing the development of a robust platform designed to empower users in managing their transactions and investments effectively. TradeShark integrates sophisticated data analytics capabilities, featuring customizable charts that enable users to visualize and compare various data points dynamically. The application offers multiple views, including a dashboard for high-level insights, as well as detailed table and chart views for in-depth data exploration.",
+            "TradeWave's advanced filtering system allows users to refine their data with precision, supporting complex queries such as inclusion, exclusion, combination, or chaining of multiple attributes. Additionally, the application includes an import feature that facilitates the seamless integration of historical transactions, either from prior services or different providers, making TradeShark a comprehensive solution for financial management.",
           ],
         },
         // {
@@ -36,8 +37,8 @@ export const Gearhead = {
         // },
       ],
       preview: {
-        screenshot: "../../assets/maddieWestEvents/app_preview.png",
-        logo: "../../assets/maddieWestEvents/logo.png",
+        screenshot: "../../assets/tradewave/app_preview.png",
+        logo: "../../assets/tradewave/logo.png",
       },
     },
     {
@@ -73,12 +74,12 @@ export const Gearhead = {
       template: "next-project",
       nextProject: [
         {
-          label: "TRADESHARK",
+          label: "INNOBUILD",
           description:
             "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
           role: "Technical Lead | Commercial",
-          link: "/work/tradeshark",
-          showcase: "../../assets/stf/app_showcase.png",
+          link: "/work/innobuild",
+          showcase: "../../assets/innobuild/app_showcase.png",
           hover: false,
         },
       ],

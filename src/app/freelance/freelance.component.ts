@@ -5,9 +5,9 @@ import { ThemeService } from "../services/theme.service";
 import { MaddieWestEvents } from "./MaddieWestEvents";
 import { ActivatedRoute } from "@angular/router";
 import { STF } from "./STF";
-import { TradeShark } from "./Tradeshark";
+import { Tradewave } from "./Tradewave";
 import { MissLisaBooks } from "./Misslisabooks";
-import { Gearhead } from "./Gearhead";
+import { Innobuild } from "./Innobuild";
 import { Fireshare } from "./Fireshare";
 
 @Component({
@@ -21,7 +21,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
   timeline: gsap.core.Timeline = null as any;
   animations: gsap.core.Tween[] = [];
   mediaQueryMatch = false;
-  projects = [Fireshare, Gearhead, MaddieWestEvents, MissLisaBooks, STF, TradeShark];
+  projects = [Fireshare, Innobuild, MaddieWestEvents, MissLisaBooks, STF, Tradewave];
   project: any;
 
   ngOnInit(): void {
@@ -100,7 +100,10 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
       this.timeline.kill();
       console.log("killing");
       ScrollTrigger.getAll().forEach((trigger) => {
-        console.log(trigger);
+        const element = trigger.vars.trigger; // Get the trigger element
+        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+          return;
+        }
         trigger.vars;
         trigger.kill();
       });

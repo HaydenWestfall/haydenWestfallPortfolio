@@ -26,7 +26,7 @@ export const MissLisaBooks = {
           template: "sub-section",
           title: "OVERVIEW",
           description: [
-            "I developed a fun and playful, single-page website for Miss Lisa Books, a children’s book author dedicated to inspiring young readers. The site is designed to be engaging and informative, featuring an introduction to Miss Lisa and her books, a section highlighting the core pillars of her mission—empowering individuals with disabilities, celebrating intervention specialists, and promoting literacy for all children. The layout ensures a seamless browsing experience with easy access to purchase links for the books. This project reflects my ability to create vibrant and user-friendly designs tailored to the needs of clients in the creative and educational sectors.",
+            "I developed a playful, single-page website for Miss Lisa Books, a children’s book author dedicated to inspiring young readers. The site is designed to be engaging and informative, featuring an introduction to Miss Lisa and her books, a section highlighting the core pillars of her mission—empowering individuals with disabilities, celebrating intervention specialists, and promoting literacy for all children. The layout ensures a seamless browsing experience with easy access to purchase links for the books. This project reflects my ability to create vibrant and user-friendly designs tailored to the needs of clients in the creative and educational sectors.",
           ],
         },
       ],
@@ -40,7 +40,7 @@ export const MissLisaBooks = {
       template: "mobile-section",
       title: "MOBILE FIRST DESIGN",
       description:
-        "I always like to starts simple with mobile designs and build up from there. Here are a few snippets of Maddie West Events on mobile.",
+        "Great UI/UX design is all about creating seamless, intuitive experiences that delight users. In today’s fast-paced world, mobile-first design is a game-changer—starting with the smallest screens ensures that your design is not only sleek and responsive but also prioritizes the essentials. When you get it right on mobile, you’re set to captivate users across all devices.",
       imgs: [
         "../../assets/missLisaBooks/iphone_design_1.png",
         "../../assets/missLisaBooks/iphone_design_2.png",
@@ -66,7 +66,7 @@ export const MissLisaBooks = {
     },
     {
       template: "sub-section",
-      title: "CLOSING THOUGHTS",
+      title: "FINAL THOUGHTS",
       description: [
         "Overall, Miss Lisa Books was a fun side project that unlocked a new level of creativity for me. I’m incredibly grateful for the opportunity, as it was the first website I launched as a freelance developer. Though the project was short and sweet, being a single-page application, it will always hold a special place in my heart.",
       ],
@@ -75,12 +75,12 @@ export const MissLisaBooks = {
       template: "next-project",
       nextProject: [
         {
-          label: "GEARHEAD",
+          label: "FIRESHARE",
           description:
             "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created that enraptured her brand and also provided a unique experience to its users. Something that would leave a lasting impact.",
-          role: "Technical Lead | Commercial",
-          link: "/work/gearHead",
-          showcase: "../../assets/stf/app_showcase.png",
+          role: "Developer | Commercial",
+          link: "/work/fireshare",
+          showcase: "../../assets/fireshare/app_showcase.png",
           hover: false,
         },
       ],
