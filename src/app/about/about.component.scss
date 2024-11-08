@@ -31,11 +31,6 @@ $page-padding: 3rem;
       font-weight: inherit;
       font-family: inherit;
     }
-
-    .blink-cursor {
-      color: black;
-      animation: blink 1.5s infinite;
-    }
   }
 
   .header-accent {
@@ -538,17 +533,5 @@ $page-padding: 3rem;
       padding: 2rem 0;
       gap: 1rem;
     }
-  }
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }

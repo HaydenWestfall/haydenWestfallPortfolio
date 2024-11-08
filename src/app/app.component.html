@@ -7,7 +7,16 @@
 <app-footer></app-footer>
 
 <div [@coverAnimation]="coverState" (@coverAnimation.done)="resetCover()" class="cover-container">
-  <span id="accent1" class="text-accent top">{{ newRouteName }}</span>
-  <span class="route-text">{{ newRouteName }}</span>
-  <span id="accent2" class="text-accent bottom" [ngStyle]="{ right: accentRightAlignment }">{{ newRouteName }}</span>
+  <!-- <span id="accent1" class="text-accent top">{{ newRouteName }}</span> -->
+  <span class="route-text"
+    >{{ newRouteName }}
+    <span
+      *ngIf="isInitialLoad"
+      id="rolling-text-cursor"
+      class="blink-cursor"
+      style="font-size: 2rem; color: white; font-style: normal; position: absolute; top: -2px; left: 103%"
+      >|</span
+    ></span
+  >
+  <!-- <span id="accent2" class="text-accent bottom" [ngStyle]="{ right: accentRightAlignment }">{{ newRouteName }}</span> -->
 </div>

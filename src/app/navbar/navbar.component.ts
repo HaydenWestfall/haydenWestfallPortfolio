@@ -37,9 +37,9 @@ export class NavbarComponent implements OnInit {
           this.transparentMode = [
             "/",
             "/contact",
-            "/work/gearHead",
+            "/work/innobuild",
             "/work/maddieWestEvents",
-            "/work/tradeWave",
+            "/work/tradewave",
             "/work/stf",
             "/work/fireshare",
             "/work/missLisaBooks",

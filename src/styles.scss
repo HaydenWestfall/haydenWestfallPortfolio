@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "didot-italic";
-  src: url(./assets/didot-italic.ttf);
+  src: url(./assets/font/didot-italic.ttf);
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: "helios-antique";
-  src: url(./assets/Helios-Antique-Medium.otf) format("opentype");
+  src: url(./assets/font/Helios-Antique-Medium.otf) format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -210,6 +210,23 @@ app-svg-icon {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.blink-cursor {
+  color: black;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .row-hover {

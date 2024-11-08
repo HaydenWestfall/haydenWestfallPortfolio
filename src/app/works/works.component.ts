@@ -44,9 +44,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
     this.rotatePos += 0.2;
   };
 
-  isIntersecting(status: boolean, index: number) {
-    console.log("Element #" + index + " is intersecting " + status);
-  }
+  isIntersecting(status: boolean, index: number) {}
 
   ngOnDestroy(): void {
     setTimeout(() => {

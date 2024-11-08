@@ -18,9 +18,7 @@ export class ShowcaseComponent implements OnInit {
     this.below768Pixels = window.innerWidth < 768;
   }
 
-  isIntersecting(status: boolean, index: number) {
-    console.log("Element #" + index + " is intersecting " + status);
-  }
+  isIntersecting(status: boolean, index: number) {}
 
   deactivateShowcase(index: number | null) {
     const element = document.getElementById("showcase-" + index!);

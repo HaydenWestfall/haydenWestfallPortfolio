@@ -1,7 +1,5 @@
 <section style="max-width: 100%; overflow: hidden; position: relative">
   <div id="hero-section" class="section-wrapper">
-    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left"></app-svg-icon>
-    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right"></app-svg-icon>
     <div id="roles">
       <h5>FULL STACK DEVELOPER</h5>
       <h5>PRODUCT DESIGNER</h5>
@@ -23,7 +21,7 @@
     </div>
   </div>
   <!-- <img id="bg" class="abs-position" src="../../assets/homepage_2.png" /> -->
-  <img id="bg" class="abs-position" src="../../assets/test.jpeg" />
+  <img id="bg" class="abs-position" src="../../assets/home/hero_image.jpeg" />
 </section>
 
 <section>
@@ -33,7 +31,7 @@
       about UI/UX design and delivering scalable solutions. As a strong communicator, team player, and problem solver, I
       also take on freelance work, which allows me to express my creativity.
     </h3>
-    <img src="../../assets/logo_bg.png" alt="logo-watermark" />
+    <img loading="lazy" src="../../assets/home/logo_bg.webp" alt="logo-watermark" />
 
     <a id="about-btn" routerLink="/about" class="circle-button dark" appParallaxButton>
       <div id="about-btn-text">
@@ -62,7 +60,7 @@
         *ngFor="let item of portfolio1"
         [ngStyle]="{ 'background-color': item.bg }"
       >
-        <img [src]="item.img" />
+        <img loading="lazy" [src]="item.img" />
       </div>
     </div>
     <div class="portfolio-wrapper" id="portfolio-2-home">
@@ -71,7 +69,7 @@
         *ngFor="let item of portfolio2"
         [ngStyle]="{ 'background-color': item.bg }"
       >
-        <img [src]="item.img" />
+        <img loading="lazy" [src]="item.img" />
       </div>
     </div>
   </div>

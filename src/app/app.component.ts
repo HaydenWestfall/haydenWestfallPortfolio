@@ -28,6 +28,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   coverAnimationTiming = 1000;
   accentRightAlignment = "";
   coverState = "show";
+  isInitialLoad = true;
+  homeRoute = "//\\/\\/";
 
   router = inject(Router);
   route = inject(ActivatedRoute);
@@ -50,18 +52,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         const urlSegments = event.url.split("/");
         this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
         this.coverState = "show";
-
-        setTimeout(() => {
-          this.getRightAlignment();
-          this.animateAccent();
-        }, 500);
       }
       if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
         // Let cover animation cover the screen in 1s
         // Allow 200ms delay where the cover is over top of the screen
         setTimeout(() => {
           window.scrollTo(0, 0);
-          this.coverState = "hide";
+          if (this.isInitialLoad && !this.newRouteName && false) {
+            this.pageInit();
+          } else {
+            console.log("hiding on tiem");
+            this.coverState = "hide";
+            this.isInitialLoad = false;
+          }
           ScrollTrigger.refresh();
         }, this.coverAnimationTiming + 200);
       }
@@ -71,9 +74,30 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const urlSegments = window.location.pathname.split("/");
     this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
+  }
+
+  async pageInit() {
+    this.newRouteName = "";
+    await this.spellWord("//\\/\\/");
     setTimeout(() => {
-      this.getRightAlignment();
-      this.animateAccent();
+      this.coverState = "hide";
+      this.isInitialLoad = false;
+    }, 750);
+  }
+
+  spellWord(word: string): Promise<void> {
+    return new Promise((resolve) => {
+      let index = 0;
+      setTimeout(() => {
+        const intervalId = setInterval(() => {
+          this.newRouteName += word[index];
+          index++;
+          if (index === word.length) {
+            clearInterval(intervalId);
+            resolve(); // Resolves the promise when done
+          }
+        }, Math.floor(Math.random() * (250 - 150 + 1)) + 150);
+      }, 2750);
     });
   }
 
@@ -85,41 +109,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     return outlet && outlet.activatedRouteData;
   }
 
-  animateAccent() {
-    const accentTextContainer = document.getElementById("accent2");
-    const position = `calc(50% + ${accentTextContainer!.getBoundingClientRect().height / 2}px)`;
-    const position2 = `calc(100% + ${accentTextContainer!.getBoundingClientRect().height}px + 1rem)`;
-    const duration = "0.6";
-    const tl = gsap.timeline();
-    tl.fromTo("#accent1", { top: "0" }, { top: position, duration: duration, ease: "myCustomEase" });
-    tl.fromTo("#accent2", { bottom: "0" }, { bottom: position, duration: duration, ease: "myCustomEase" }, 0);
-    tl.fromTo("#accent1", { top: position }, { top: position2, duration: duration, ease: "myCustomEase" });
-    tl.fromTo(
-      "#accent2",
-      { bottom: position },
-      { bottom: position2, duration: duration, ease: "myCustomEase" },
-      `-=${duration}`
-    );
-  }
-
-  getRightAlignment(): void {
-    const accent2 = document.getElementById("accent2");
-    this.accentRightAlignment = `calc(-${accent2?.getBoundingClientRect().height}px + ${
-      window.innerWidth <= 768 ? "4.5" : "8"
-    }rem)`;
-  }
-
   mapRouteName(routePath: string): string {
-    const uppercaseRoutes = ["about", "work", "contact", "gearHead", "fireshare", "tradeshark", "stf"];
+    const uppercaseRoutes = ["about", "work", "contact", "innobuild", "fireshare", "tradewave", "stf"];
 
     if (uppercaseRoutes.includes(routePath)) {
+      this.isInitialLoad = false;
       return routePath.toUpperCase();
     } else if (routePath === "maddieWestEvents") {
+      this.isInitialLoad = false;
       return "MADDIE WEST";
     } else if (routePath === "missLisaBooks") {
+      this.isInitialLoad = false;
       return "MISS LISA";
+    } else if (this.isInitialLoad) {
+      return "";
     }
 
+    this.isInitialLoad = false;
     return "//\\/\\/";
   }
 }

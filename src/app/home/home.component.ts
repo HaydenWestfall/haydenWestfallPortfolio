@@ -15,50 +15,50 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
 
   portfolio1 = [
     {
-      img: "/assets/home_projects/maddie_west_journal.png",
+      img: "/assets/home/innobiuld_home.webp",
       bg: "#E2DED7",
     },
     {
-      img: "/assets/home_projects/Business card front.png",
+      img: "/assets/home/mwe_home.webp",
       bg: "#ECEDF0",
     },
-    { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
-    { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
+    { img: "../../assets/home/stf_home.webp", bg: "#DAD5D2" },
+    { img: "../../assets/home/tradewave_home.webp", bg: "#E4E9EE" },
     {
-      img: "/assets/home_projects/maddie_west_journal.png",
+      img: "/assets/home/fireshare_home.webp",
       bg: "#E2DED7",
     },
     {
-      img: "/assets/home_projects/Business card front.png",
+      img: "/assets/home/innobiuld_home.webp",
       bg: "#ECEDF0",
     },
-    { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
-    { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
+    { img: "../../assets/home/mwe_home.webp", bg: "#DAD5D2" },
+    { img: "../../assets/home/stf_home.webp", bg: "#E4E9EE" },
     {
-      img: "/assets/home_projects/maddie_west_journal.png",
+      img: "/assets/home/tradewave_home.webp",
       bg: "#E2DED7",
     },
     {
-      img: "/assets/home_projects/Business card front.png",
+      img: "/assets/home/fireshare_home.webp",
       bg: "#ECEDF0",
     },
-    { img: "../../assets/home_projects/stf_home.png", bg: "#DAD5D2" },
-    { img: "../../assets/home_projects/slic_main.png", bg: "#E4E9EE" },
+    { img: "../../assets/home/innobiuld_home.webp", bg: "#DAD5D2" },
+    { img: "../../assets/home/mwe_home.webp", bg: "#E4E9EE" },
   ];
 
   portfolio2 = [
-    { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
-    { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
-    { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
-    { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
-    { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
-    { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
-    { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
-    { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
-    { img: "../../assets/home_projects/spabok_home.png", bg: "#DDDDE7" },
-    { img: "../../assets/home_projects/stf_auto.png", bg: "#D0D8DB" },
-    { img: "../../assets/home_projects/tradewave.png", bg: "#A2B0AC" },
-    { img: "../../assets/home_projects/mw_logo.jpg", bg: "#E1DDD7" },
+    { img: "../../assets/home/tradewave_list.webp", bg: "#DDDDE7" },
+    { img: "../../assets/home/stf_auto_insurance.webp", bg: "#D0D8DB" },
+    { img: "../../assets/home/mwe_journal.webp", bg: "#A2B0AC" },
+    { img: "../../assets/home/mwe_contact.webp", bg: "#E1DDD7" },
+    { img: "../../assets/home/fireshare_customers.webp", bg: "#DDDDE7" },
+    { img: "../../assets/home/tradewave_list.webp", bg: "#D0D8DB" },
+    { img: "../../assets/home/stf_auto_insurance.webp", bg: "#A2B0AC" },
+    { img: "../../assets/home/mwe_journal.webp", bg: "#E1DDD7" },
+    { img: "../../assets/home/mwe_contact.webp", bg: "#DDDDE7" },
+    { img: "../../assets/home/fireshare_customers.webp", bg: "#D0D8DB" },
+    { img: "../../assets/home/tradewave_list.webp", bg: "#A2B0AC" },
+    { img: "../../assets/home/stf_auto_insurance.webp", bg: "#E1DDD7" },
   ];
 
   scrollTimeline = gsap.timeline({});

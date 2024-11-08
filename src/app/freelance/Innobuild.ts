@@ -3,7 +3,7 @@ export const Innobuild = {
   index: 3,
   projectName: "INNOBUILD",
   titleText: "INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD",
-  headerMockup: "../../assets/innobuild/macbook_tilted.png",
+  headerMockup: "../../assets/innobuild/innobuild_macbook.png",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "Technical Lead"] },
