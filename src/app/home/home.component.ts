@@ -2,6 +2,7 @@ import { AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/co
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { works } from "../works";
 
 @Component({
   selector: "app-home",
@@ -10,36 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 })
 export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   themeService = inject(ThemeService);
-  featuredProjects = [
-    {
-      label: "GEARHEAD",
-      role: "Technical Lead | Commercial",
-      link: "/work/gearHead",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
-      hover: false,
-    },
-    {
-      label: "MADDIE WEST EVENTS",
-      role: "Design + Dev | Freelance",
-      link: "/work/maddieWestEvents",
-      showcase: "../../assets/stf/app_showcase.png",
-      hover: false,
-    },
-    {
-      label: "TRADEWAVE",
-      role: "Technical Lead | Commercial",
-      link: "/work/tradeWave",
-      showcase: "../../assets/maddieWestEvents/app_showcase.png",
-      hover: false,
-    },
-    {
-      label: "STF",
-      role: "Design + Dev | Freelance",
-      link: "/work/stf",
-      showcase: "../../assets/stf/app_showcase.png",
-      hover: false,
-    },
-  ];
+  featuredProjects = works.slice(0, 4);
 
   portfolio1 = [
     {

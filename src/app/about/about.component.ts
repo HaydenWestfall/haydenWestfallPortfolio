@@ -148,21 +148,21 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       name: "CERTIFIED SCRUM MASTER",
       image: "../../assets/accolades/csm.png",
       description:
-        "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
+        "My Scrum Master certification strengthens my skills in agile project management, enabling me to enhance team collaboration, streamline workflows, and drive efficient, high-quality results.",
       expiration: "LIFETIME",
     },
     {
       name: "TS/SCI SECURITY CLEARENCE",
       image: "../../assets/accolades/security-clearence.png",
       description:
-        "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
+        "Holding a TS/SCI clearance has enabled me to work on secure, high-level projects to better understand requirements and perform deployments.",
       expiration: "2024 - 2029",
     },
     {
       name: "AWS CERTIFIED DEVELOPER",
       image: "../../assets/accolades/aws.png",
       description:
-        "Acquiring the AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
+        "My AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
       expiration: "2024",
     },
   ];
