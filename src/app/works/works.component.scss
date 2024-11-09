@@ -94,7 +94,7 @@
   max-width: 80rem;
   width: 85%;
   min-width: 55rem;
-  padding: 8rem 4rem 0;
+  padding: 8rem 4rem 4rem;
 }
 
 @media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
@@ -149,7 +149,6 @@
 
   section {
     max-width: 100%;
-    overflow: hidden;
   }
 
   #works-wrapper {

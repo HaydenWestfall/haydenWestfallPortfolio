@@ -3,7 +3,7 @@ export const MissLisaBooks = {
   index: 5,
   projectName: "MISS LISA BOOKS",
   titleText: "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
-  headerMockup: "../../assets/missLisaBooks/iphone_tilt.png",
+  headerMockup: "../../assets/missLisaBooks/iphone_tilt.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Branding + Marketing", "Customer Communication"] },
     { title: "INDUSTRY / ROLE", description: ["Freelance", "Sole Designer", "Sole Developer"] },
@@ -32,8 +32,8 @@ export const MissLisaBooks = {
         },
       ],
       preview: {
-        screenshot: "../../assets/missLisaBooks/app_preview.png",
-        logo: "../../assets/missLisaBooks/logo.png",
+        screenshot: "../../assets/missLisaBooks/app_preview.webp",
+        logo: "../../assets/missLisaBooks/logo.webp",
         url: "https:///www.missLisaBooks.com",
       },
     },
@@ -44,9 +44,9 @@ export const MissLisaBooks = {
         "For this project, I used Angular, a framework I’m highly experienced with, to build a dynamic and responsive site. To enhance the user experience, I incorporated GSAP for seamless animations and Lenis for smooth scrolling. These libraries played a key role in creating an engaging and fluid interaction. Additionally, I optimized all images on the page to ensure fast load times, providing a smooth and efficient experience for users.",
       ],
       imgs: [
-        "../../assets/missLisaBooks/iphone_design_1.png",
-        "../../assets/missLisaBooks/iphone_design_2.png",
-        "../../assets/missLisaBooks/iphone_design_3.png",
+        "../../assets/missLisaBooks/iphone_design_1.webp",
+        "../../assets/missLisaBooks/iphone_design_2.webp",
+        "../../assets/missLisaBooks/iphone_design_3.webp",
       ],
     },
     {
@@ -64,7 +64,7 @@ export const MissLisaBooks = {
       ],
       tile2Title: "LESS IS MORE",
       tile2Description: "Simplifying the design to let Maddies work show through images",
-      tile2Img: "../../assets/missLisaBooks/iphone_design_focus.png",
+      tile2Img: "../../assets/missLisaBooks/iphone_design_focus.webp",
     },
     {
       template: "sub-section",

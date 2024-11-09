@@ -3,7 +3,7 @@ export const MaddieWestEvents = {
   index: 1,
   projectName: "MADDIE WEST EVENTS",
   titleText: "MADDIE WEST EVENTS MADDIE WEST EVENTS MADDIE WEST EVENTS",
-  headerMockup: "../../assets/maddieWestEvents/iphone_tilt.png",
+  headerMockup: "../../assets/maddieWestEvents/iphone_tilt.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Branding + Marketing", "Customer Communication"] },
     { title: "INDUSTRY / ROLE", description: ["Freelance", "Sole Designer", "Sole Developer"] },
@@ -33,8 +33,8 @@ export const MaddieWestEvents = {
         },
       ],
       preview: {
-        screenshot: "../../assets/maddieWestEvents/app_preview.png",
-        logo: "../../assets/maddieWestEvents/logo.png",
+        screenshot: "../../assets/maddieWestEvents/app_preview.webp",
+        logo: "../../assets/maddieWestEvents/logo.webp",
         url: "https:///www.maddiewestevents.com",
       },
     },
@@ -46,9 +46,9 @@ export const MaddieWestEvents = {
         "Developing without a framework gave me a deep understanding of how web applications are structured and optimized, from bundling assets to managing dependencies, but it also highlighted why frameworks exist—they save time and reduce complexity. While this experience was invaluable for learning about the underlying mechanics of modern web development, it's not something I’d recommend unless there’s a specific need. Frameworks are popular for good reason; they streamline development and allow you to focus on building features, rather than reinventing the wheel.",
       ],
       imgs: [
-        "../../assets/maddieWestEvents/iphone_design_1.png",
-        "../../assets/maddieWestEvents/iphone_design_2.png",
-        "../../assets/maddieWestEvents/iphone_design_3.png",
+        "../../assets/maddieWestEvents/iphone_design_1.webp",
+        "../../assets/maddieWestEvents/iphone_design_2.webp",
+        "../../assets/maddieWestEvents/iphone_design_3.webp",
       ],
     },
     {
@@ -66,7 +66,7 @@ export const MaddieWestEvents = {
       ],
       tile2Title: "LESS IS MORE",
       tile2Description: "Simplifying the design to let Maddies work show through images",
-      tile2Img: "../../assets/maddieWestEvents/iphone_design_focus.png",
+      tile2Img: "../../assets/maddieWestEvents/iphone_design_focus.webp",
     },
     {
       id: "conclusion",

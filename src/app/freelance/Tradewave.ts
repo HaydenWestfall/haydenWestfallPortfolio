@@ -3,7 +3,7 @@ export const Tradewave = {
   index: 2,
   projectName: "TRADEWAVE",
   titleText: "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
-  headerMockup: "../../assets/tradewave/macbook_tilted.png",
+  headerMockup: "../../assets/tradewave/mockup.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "Technical Lead"] },
@@ -28,8 +28,8 @@ export const Tradewave = {
         },
       ],
       preview: {
-        screenshot: "../../assets/tradewave/app_preview.png",
-        logo: "../../assets/tradewave/logo.png",
+        screenshot: "../../assets/tradewave/app_preview.webp",
+        logo: "../../assets/tradewave/logo.webp",
       },
     },
     {

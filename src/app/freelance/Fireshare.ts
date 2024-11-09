@@ -3,7 +3,7 @@ export const Fireshare = {
   index: 0,
   projectName: "FIRESHARE",
   titleText: "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
-  headerMockup: "../../assets/innobuild/innobuild_macbook.png",
+  headerMockup: "../../assets/fireshare/mockup.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "SCRUM team developer"] },
@@ -30,8 +30,8 @@ export const Fireshare = {
         },
       ],
       preview: {
-        screenshot: "../../assets/fireshare/app_preview.png",
-        logo: "../../assets/fireshare/logo.png",
+        screenshot: "../../assets/fireshare/app_preview.webp",
+        logo: "../../assets/fireshare/logo.webp",
       },
     },
     {

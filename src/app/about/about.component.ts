@@ -217,9 +217,10 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: wrapper, // Trigger the animation based on this selector
               start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
-              end: "top 50%", // End the animation when the top hits 30% of the viewport height
+              end: "top 62%", // End the animation when the top hits 30% of the viewport height
               scrub: 1, // Smooth scrubbing
               once: true,
+              markers: false,
             },
           }
         );
@@ -266,7 +267,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
           trigger: "#image-wrapper",
           start: "top bottom",
           scrub: true,
-          markers: true,
+          markers: false,
         },
       }
     );

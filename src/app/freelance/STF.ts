@@ -2,8 +2,8 @@ export const STF = {
   id: "stf",
   index: 4,
   projectName: "STF",
-  titleText: "STF STF STF STF STF STF STF STF STF STF STF ",
-  headerMockup: "../../assets/stf/iphone_tilt.png",
+  titleText: "STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF ",
+  headerMockup: "../../assets/stf/iphone_tilt.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Developer", "Branding + Marketing"] },
     { title: "INDUSTRY / ROLE", description: ["Freelance", "Sole Designer", "Sole Developer"] },
@@ -33,8 +33,8 @@ export const STF = {
         },
       ],
       preview: {
-        screenshot: "../../assets/stf/app_preview.png",
-        logo: "../../assets/stf/logo.png",
+        screenshot: "../../assets/stf/app_preview.webp",
+        logo: "../../assets/stf/logo.webp",
         url: "https:///www.stf-ins-group.com",
       },
     },
@@ -46,9 +46,9 @@ export const STF = {
         "Beyond that, the website itself is modern, with a clean layout and intuitive navigation. A clear call-to-action button is strategically placed throughout the site, guiding visitors to easily request a quote for their insurance needs, ensuring that the site is both visually appealing and conversion-focused.",
       ],
       imgs: [
-        "../../assets/stf/iphone_design_1.png",
-        "../../assets/stf/iphone_design_2.png",
-        "../../assets/stf/iphone_design_3.png",
+        "../../assets/stf/iphone_design_1.webp",
+        "../../assets/stf/iphone_design_2.webp",
+        "../../assets/stf/iphone_design_3.webp",
       ],
     },
     {
@@ -66,7 +66,7 @@ export const STF = {
       ],
       tile2Title: "LESS IS MORE",
       tile2Description: "Simplifying the design to let Maddies work show through images",
-      tile2Img: "../../assets/stf/iphone_design_focus.png",
+      tile2Img: "../../assets/stf/iphone_design_focus.webp",
     },
     {
       template: "sub-section",
