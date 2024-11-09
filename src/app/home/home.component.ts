@@ -3,6 +3,7 @@ import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { works } from "../works";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -11,11 +12,12 @@ import { works } from "../works";
 })
 export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   themeService = inject(ThemeService);
+  initPageSubscription: Subscription = null as any;
   featuredProjects = works.slice(0, 4);
 
   portfolio1 = [
     {
-      img: "/assets/home/innobiuld_home.webp",
+      img: "/assets/home/innobuild_home.webp",
       bg: "#E2DED7",
     },
     {
@@ -29,7 +31,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       bg: "#E2DED7",
     },
     {
-      img: "/assets/home/innobiuld_home.webp",
+      img: "/assets/home/innobuild_home.webp",
       bg: "#ECEDF0",
     },
     { img: "../../assets/home/mwe_home.webp", bg: "#DAD5D2" },
@@ -42,7 +44,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       img: "/assets/home/fireshare_home.webp",
       bg: "#ECEDF0",
     },
-    { img: "../../assets/home/innobiuld_home.webp", bg: "#DAD5D2" },
+    { img: "../../assets/home/innobuild_home.webp", bg: "#DAD5D2" },
     { img: "../../assets/home/mwe_home.webp", bg: "#E4E9EE" },
   ];
 
@@ -71,9 +73,16 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
+    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
       this.initializeHome();
-    }, 1000);
+      setTimeout(() => {
+        const duration = 0.68;
+        const timeline = gsap.timeline({ delay: 0.32 });
+        timeline.from("#name-slider", { y: 250, duration: duration, ease: "circ.out" });
+        timeline.from("#roles", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        timeline.from("#hero-contact", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
+      });
+    });
   }
 
   initializeHome(): void {
@@ -129,6 +138,8 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   };
 
   ngOnDestroy(): void {
+    this.initPageSubscription.unsubscribe();
+
     // Let cover animation cover the page before killing all animations
     setTimeout(() => {
       cancelAnimationFrame(this.animationFrameId!);

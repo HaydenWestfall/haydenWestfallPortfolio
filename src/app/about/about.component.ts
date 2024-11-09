@@ -2,6 +2,7 @@ import { AfterViewInit, Component, HostListener, inject, OnDestroy, OnInit } fro
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Subscribable, Subscription } from "rxjs";
 
 @Component({
   selector: "app-about",
@@ -10,6 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 })
 export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
+  initPageSubscription: Subscription = null as any;
   rollingTextIndex = 0;
   rollingTextLabels = [
     "FULL STACK DEVELOPER",
@@ -173,13 +175,21 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
+    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
       this.initializeAbout();
-    }, 1000);
+      setTimeout(() => {
+        const duration = 0.7;
+        const timeline = gsap.timeline({ delay: 0.25 });
+        timeline.from("#title-text", { y: 250, duration: duration, ease: "circ.out" });
+        timeline.from("#header-accent", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        timeline.from("#about-info-header", { y: 500, duration: duration, ease: "circ.out" }, `-=${duration}`);
+      });
+    });
   }
 
   initializeAbout(): void {
     this.themeService.theme = "dark";
+
     this.scrollTimeline.to(document.getElementById("micro-animation-wrapper"), {
       scrollTrigger: {
         trigger: document.getElementById("micro-animation-wrapper"),
@@ -238,19 +248,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     });
 
-    this.scrollTimeline.fromTo(
-      "#about-headshot",
-      { y: "-30%" },
-      {
-        y: "0",
-        scrollTrigger: {
-          trigger: "#image-wrapper",
-          start: "top bottom",
-          scrub: true,
-          markers: false,
-        },
-      }
-    );
     this.scrollTimeline.to("#spark", {
       scale: "1.2",
       duration: 2,
@@ -258,6 +255,21 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       yoyo: true,
       ease: "none",
     });
+
+    console.log("initing");
+    this.scrollTimeline.fromTo(
+      "#about-headshot",
+      { y: "-400px" },
+      {
+        y: "0",
+        scrollTrigger: {
+          trigger: "#image-wrapper",
+          start: "top bottom",
+          scrub: true,
+          markers: true,
+        },
+      }
+    );
 
     this.initRollingText();
     this.setupImageRotationTimeline();
@@ -288,8 +300,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     let intervalId = setInterval(() => {
       const cursor = document.getElementById("rolling-text-cursor");
       index = index + 1;
-
-      console.log(index);
 
       this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
       if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
@@ -355,6 +365,8 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.initPageSubscription.unsubscribe();
+
     setTimeout(() => {
       clearInterval(this.intervalId);
       cancelAnimationFrame(this.animationFrameId);

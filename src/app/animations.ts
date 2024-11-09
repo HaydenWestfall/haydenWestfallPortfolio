@@ -7,7 +7,7 @@ export const routeAnimation = trigger("routeAnimations", [
     group([
       // Delay 1s to allow the cover animation to cover the whole screen
       query(":leave", [animate("0ms 1000ms ease")], { optional: true }),
-      query(":enter", [animate("0ms 1000ms ease"), style({ position: "relative", top: "unset", left: "unset" })], {
+      query(":enter", [animate("0ms 1200ms ease"), style({ position: "relative", top: "unset", left: "unset" })], {
         optional: true,
       }),
     ]),
@@ -30,7 +30,7 @@ export const coverAnimation = trigger("coverAnimation", [
   state(
     "hide",
     style({
-      transform: "translateY(-100%)",
+      transform: "translateY(calc(-100% - 10rem)",
     })
   ),
   transition("initial => show", animate("1000ms cubic-bezier(0.87, 0, 0.13, 1)")),

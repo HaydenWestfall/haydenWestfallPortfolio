@@ -3,6 +3,7 @@ import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { works } from "../works";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-works",
@@ -11,6 +12,7 @@ import { works } from "../works";
 })
 export class WorksComponent implements AfterViewInit, OnDestroy {
   themeService = inject(ThemeService);
+  initPageSubscription: Subscription = null as any;
   direction = -1;
   animationFrameId: number | null = null;
   rotatePos = 0;
@@ -18,9 +20,16 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   featuredProjects = works;
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
+    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
       this.initializeWorks();
-    }, 1000);
+      setTimeout(() => {
+        const duration = 0.7;
+        const timeline = gsap.timeline({ delay: 0.375 });
+        timeline.from("#title-text", { y: 250, duration: duration, ease: "circ.out" });
+        timeline.from("#header-accent", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        timeline.from("#works-wrapper", { y: 500, duration: duration, ease: "circ.out" }, `-=${duration}`);
+      });
+    });
   }
 
   initializeWorks(): void {
@@ -47,6 +56,8 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   isIntersecting(status: boolean, index: number) {}
 
   ngOnDestroy(): void {
+    this.initPageSubscription.unsubscribe();
+
     setTimeout(() => {
       cancelAnimationFrame(this.animationFrameId as number);
 

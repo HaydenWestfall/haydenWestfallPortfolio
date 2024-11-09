@@ -15,6 +15,7 @@ import { CustomEase } from "gsap/CustomEase";
 import { coverAnimation, routeAnimation } from "./animations";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ThemeService } from "./services/theme.service";
 
 @Component({
   selector: "app-root",
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   router = inject(Router);
   route = inject(ActivatedRoute);
+  themeService = inject(ThemeService);
 
   ngOnInit(): void {
     const lenis = new Lenis();
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     gsap.registerPlugin(ScrollTrigger, Draggable);
     gsap.registerPlugin(CustomEase);
     CustomEase.create("myCustomEase", "M0,0 C0.87,0 0.13,1 1,1");
+    CustomEase.create("myCustomEaseOut", "M0,0 C0.13,0 0.87,1 1,1");
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
@@ -58,11 +61,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         // Allow 200ms delay where the cover is over top of the screen
         setTimeout(() => {
           window.scrollTo(0, 0);
-          if (this.isInitialLoad && !this.newRouteName && false) {
+          if (this.isInitialLoad && !this.newRouteName) {
             this.pageInit();
           } else {
-            console.log("hiding on tiem");
             this.coverState = "hide";
+            this.themeService.notifyChange();
             this.isInitialLoad = false;
           }
           ScrollTrigger.refresh();
@@ -81,6 +84,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     await this.spellWord("//\\/\\/");
     setTimeout(() => {
       this.coverState = "hide";
+      this.themeService.notifyChange();
       this.isInitialLoad = false;
     }, 750);
   }
@@ -97,7 +101,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             resolve(); // Resolves the promise when done
           }
         }, Math.floor(Math.random() * (250 - 150 + 1)) + 150);
-      }, 2750);
+      }, 500);
     });
   }
 

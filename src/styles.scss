@@ -10,6 +10,15 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d1d20;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @font-face {
   font-family: "didot-italic";
   src: url(./assets/font/didot-italic.ttf);
@@ -52,15 +61,6 @@
 
 ::-webkit-scrollbar {
   display: none;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #1d1d20;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 section {

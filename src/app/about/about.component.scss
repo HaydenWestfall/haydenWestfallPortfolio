@@ -6,7 +6,6 @@ $page-padding: 3rem;
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  overflow: hidden;
   gap: 2rem;
   max-width: 80rem;
   width: 85%;
@@ -179,7 +178,6 @@ $page-padding: 3rem;
             width: 1rem;
             background-color: #1b2db4;
             z-index: 100;
-            transform: rotate(135deg);
           }
         }
       }
@@ -203,6 +201,7 @@ $page-padding: 3rem;
           position: absolute;
           top: 0;
           left: 0;
+          transform: translate3d(0px, -300px, 0px);
         }
       }
 
@@ -367,6 +366,8 @@ $page-padding: 3rem;
   #about-header {
     padding: 7rem 1.25rem 0;
     gap: 1rem;
+    min-width: unset;
+    width: 100%;
 
     #title-text {
       font-size: 2rem;
@@ -407,9 +408,11 @@ $page-padding: 3rem;
     padding: 0;
 
     #about-section {
-      padding: 2rem 1.25rem;
+      padding: 6rem 1.25rem;
       flex-direction: column-reverse;
       gap: 3rem;
+      min-width: unset;
+      width: 100%;
 
       #about {
         #about-text {
@@ -449,7 +452,7 @@ $page-padding: 3rem;
           height: 70vh;
 
           #about-headshot {
-            height: 120%;
+            height: 140%;
           }
         }
 
@@ -467,6 +470,8 @@ $page-padding: 3rem;
 
   .list-wrapper {
     padding: 0 1.25rem;
+    min-width: unset;
+    width: 100%;
 
     #list-label {
       margin: 8rem 0 2rem;

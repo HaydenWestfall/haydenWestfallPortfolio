@@ -1,6 +1,8 @@
-import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewChecked, AfterViewInit, Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ThemeService } from "../services/theme.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-contact",
@@ -8,6 +10,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   styleUrl: "./contact.component.scss",
 })
 export class ContactComponent implements AfterViewInit, OnDestroy {
+  themeService = inject(ThemeService);
+  initPageSubscription: Subscription = null as any;
   scrollTimeline = gsap.timeline({});
   animationFrameId: number = 0;
   direction = -1;
@@ -15,9 +19,15 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   xPos = 0;
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
+    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
       this.initializeContact();
-    }, 1000);
+      setTimeout(() => {
+        const duration = 0.8;
+        const timeline = gsap.timeline({ delay: 0.275 });
+        timeline.from("#contact-header", { y: 250, duration: duration, ease: "circ.out" });
+        timeline.from("#contact-main", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
+      });
+    });
   }
 
   initializeContact(): void {
@@ -49,6 +59,8 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   };
 
   ngOnDestroy(): void {
+    this.initPageSubscription.unsubscribe();
+
     // Let cover animation cover the page before killing all animations
     setTimeout(() => {
       cancelAnimationFrame(this.animationFrameId as number);

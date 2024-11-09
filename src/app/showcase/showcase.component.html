@@ -7,16 +7,15 @@
 
 <ng-template #singleShowcase let-section>
   <div id="project-wrapper">
-    <a
-      class="project-link"
-      *ngFor="let project of projects; let index = index"
-      appIntersection
-      #intersection="intersection"
-      (isIntersecting)="isIntersecting($event, index)"
-      [isContinuous]="false"
-      [routerLink]="project.link"
-    >
-      <div class="showcase single">
+    <a class="project-link" *ngFor="let project of projects; let index = index" [routerLink]="project.link">
+      <div
+        class="showcase single"
+        appIntersection
+        #intersection="intersection"
+        (isIntersecting)="isIntersecting($event, index)"
+        [isContinuous]="false"
+        [thresholdOverride]="index === 0"
+      >
         <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
           <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />
         </div>

@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  overflow: hidden;
   gap: 2rem;
   max-width: 80rem;
   width: 85%;
@@ -110,6 +109,8 @@
   #about-header {
     padding: 7rem 1.25rem 0;
     gap: 1rem;
+    min-width: unset;
+    width: 100%;
 
     #title-text {
       font-size: 2rem;
@@ -152,6 +153,8 @@
   }
 
   #works-wrapper {
-    padding: 2rem 1.25rem 0;
+    padding: 6rem 1.25rem 0;
+    min-width: unset;
+    width: 100%;
   }
 }

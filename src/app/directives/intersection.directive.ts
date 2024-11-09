@@ -8,9 +8,10 @@ import { debounceTime, Observable, Subscription } from "rxjs";
 export class IntersectionDirective implements OnInit, OnDestroy {
   @Input() root: HTMLElement | null = null;
   @Input() rootMargin = "0px 0px 0px 0px";
-  @Input() threshold = 0.75;
+  @Input() threshold = 0.65;
   @Input() debounceTime = 500;
   @Input() isContinuous = false;
+  @Input() thresholdOverride = false;
 
   @Output() isIntersecting = new EventEmitter<boolean>();
 
@@ -31,7 +32,7 @@ export class IntersectionDirective implements OnInit, OnDestroy {
     const options: IntersectionObserverInit = {
       root: this.root,
       rootMargin: this.rootMargin,
-      threshold: this.threshold,
+      threshold: this.thresholdOverride ? 0 : this.threshold,
     };
 
     return new Observable<boolean>((subscriber) => {

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { gsap } from "gsap";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -7,7 +8,15 @@ import { gsap } from "gsap";
 export class ThemeService {
   theme = "light";
 
-  constructor() {}
+  // Private Subject to keep the original Subject hidden
+  private initPageSubject$ = new Subject<any>();
+
+  // Public Observable that components can subscribe to
+  initPage$ = this.initPageSubject$.asObservable();
+
+  notifyChange() {
+    this.initPageSubject$.next("initpage");
+  }
 
   setupTranslateAnimation(
     element: any,

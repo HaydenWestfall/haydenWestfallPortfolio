@@ -9,7 +9,7 @@
       {{ locationText }}
     </span>
 
-    <div class="header-accent">
+    <div id="header-accent" class="header-accent">
       <div id="accent-border">
         <div class="text text-style">
           EMBRACING WHITESPACE <span id="best-friend-text" class="text-style">LIKE YOUR BEST FRIEND</span>
@@ -47,12 +47,14 @@
             </div>
             <span class="label">{{ history.timeframe }}</span>
           </div>
-          <a>Download Resume <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon></a>
+          <a href="assets/hayden_westfall_resume.pdf" target="_blank" rel="noopener noreferrer"
+            >View Resume <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon
+          ></a>
         </div>
       </div>
       <div id="about-headshot-wrapper">
         <div id="image-wrapper">
-          <img src="../../assets/about/headshot.webp" alt="Hayden Headshot" id="about-headshot" />
+          <img src="../../assets/about/headshot.webp" alt="Hayden Headshot" loading="eager" id="about-headshot" />
         </div>
 
         <div id="quote">
