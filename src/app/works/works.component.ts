@@ -27,7 +27,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         const timeline = gsap.timeline({ delay: 0.375 });
         timeline.from("#title-text", { y: 250, duration: duration, ease: "circ.out" });
         timeline.from("#header-accent", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
-        timeline.from("#works-wrapper", { y: 500, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        // timeline.from("#works-wrapper", { y: 500, duration: duration, ease: "circ.out" }, `-=${duration}`);
       });
     });
   }

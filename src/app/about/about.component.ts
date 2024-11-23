@@ -2,7 +2,7 @@ import { AfterViewInit, Component, HostListener, inject, OnDestroy, OnInit } fro
 import { ThemeService } from "../services/theme.service";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Subscribable, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-about",
@@ -24,7 +24,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   mediaQueryMatch = false;
   locationText = "BASED IN OHIO";
   rollingText = "SOFTWARE ENGINEER";
-  totalImages = 3; // Only count the original images (not the duplicate)
+  totalImages = 4; // Only count the original images (not the duplicate)
   imageRotateTimeline: TimelineMax = null as any;
   scrollTimeline = gsap.timeline({});
   intervalId: any = null;
@@ -62,7 +62,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   technologies = [
     {
-      label: "PROFESSIONAL WITH THESE",
+      label: "PROFESSIONAL EXPERTISE IN",
       technologies: [] as any,
       technologiesDesktop: [
         [
@@ -82,7 +82,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
         ],
         [
           { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
-          { name: "SCSS", icon: "../../assets/icons/scss.svg" },
+          { name: "FIGMA", icon: "../../assets/icons/figma.svg" },
           { name: "HTML", icon: "../../assets/icons/html.svg" },
         ],
       ],
@@ -105,7 +105,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
         ],
         [
           { name: "OPENAPI", icon: "../../assets/icons/openapi.svg" },
-          { name: "SCSS", icon: "../../assets/icons/scss.svg" },
+          { name: "FIGMA", icon: "../../assets/icons/figma.svg" },
         ],
         [
           { name: "MONGO", icon: "../../assets/icons/mongodb.svg" },
@@ -118,28 +118,28 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       technologies: [] as any,
       technologiesDesktop: [
         [
-          { name: "REACT", icon: "../../assets/icons/openapi.svg" },
-          { name: "SVN", icon: "../../assets/icons/docker.svg" },
-          { name: "SQL", icon: "../../assets/icons/gitlab.svg" },
+          { name: "REACT", icon: "../../assets/icons/react.svg" },
+          { name: "SVN", icon: "../../assets/icons/svn.svg" },
+          { name: "SQL", icon: "../../assets/icons/sql.svg" },
         ],
         [
-          { name: "PL/SQL", icon: "../../assets/icons/maven.svg" },
-          { name: "C++", icon: "../../assets/icons/mongodb.svg" },
-          { name: "JENKINS", icon: "../../assets/icons/aws.svg" },
+          { name: "PL/SQL", icon: "../../assets/icons/plsql.svg" },
+          { name: "C++", icon: "../../assets/icons/cplusplus.svg" },
+          { name: "JENKINS", icon: "../../assets/icons/jenkins.svg" },
         ],
       ],
       technologiesMobile: [
         [
-          { name: "REACT", icon: "../../assets/icons/openapi.svg" },
-          { name: "SVN", icon: "../../assets/icons/docker.svg" },
+          { name: "REACT", icon: "../../assets/icons/react.svg" },
+          { name: "SVN", icon: "../../assets/icons/svn.svg" },
         ],
         [
-          { name: "PL/SQL", icon: "../../assets/icons/maven.svg" },
-          { name: "C++", icon: "../../assets/icons/mongodb.svg" },
+          { name: "PL/SQL", icon: "../../assets/icons/plsql.svg" },
+          { name: "C++", icon: "../../assets/icons/cplusplus.svg" },
         ],
         [
-          { name: "SQL", icon: "../../assets/icons/gitlab.svg" },
-          { name: "JENKINS", icon: "../../assets/icons/aws.svg" },
+          { name: "SQL", icon: "../../assets/icons/sql.svg" },
+          { name: "JENKINS", icon: "../../assets/icons/jenkins.svg" },
         ],
       ],
     },
@@ -148,21 +148,21 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   certifications = [
     {
       name: "CERTIFIED SCRUM MASTER",
-      image: "../../assets/accolades/csm.png",
+      image: "../../assets/about/scrum.png",
       description:
         "My Scrum Master certification strengthens my skills in agile project management, enabling me to enhance team collaboration, streamline workflows, and drive efficient, high-quality results.",
       expiration: "LIFETIME",
     },
     {
       name: "TS/SCI SECURITY CLEARENCE",
-      image: "../../assets/accolades/security-clearence.png",
+      image: "../../assets/about/doj.png",
       description:
         "Holding a TS/SCI clearance has enabled me to work on secure, high-level projects to better understand requirements and perform deployments.",
       expiration: "2024 - 2029",
     },
     {
       name: "AWS CERTIFIED DEVELOPER",
-      image: "../../assets/accolades/aws.png",
+      image: "../../assets/about/aws.png",
       description:
         "My AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
       expiration: "2024",
@@ -202,53 +202,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.animationFrameId = requestAnimationFrame(this.animate);
 
-    const logoWrappers = document.querySelectorAll(".technology-row");
-    logoWrappers.forEach((wrapper, index) => {
-      Array.from(wrapper.children).forEach((child) => {
-        this.scrollTimeline.fromTo(
-          child,
-          {
-            y: 6 * (index + 1) + "rem",
-            opacity: 0,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: wrapper, // Trigger the animation based on this selector
-              start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
-              end: "top 62%", // End the animation when the top hits 30% of the viewport height
-              scrub: 1, // Smooth scrubbing
-              once: true,
-              markers: false,
-            },
-          }
-        );
-      });
-    });
-
-    const accoladeWrappers = document.querySelectorAll(".accolade");
-    accoladeWrappers.forEach((elements) => {
-      this.scrollTimeline.fromTo(
-        elements,
-        {
-          y: 5 + "rem",
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: elements, // Trigger the animation based on this selector
-            start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
-            end: "top 70%", // End the animation when the top hits 30% of the viewport height
-            scrub: 1, // Smooth scrubbing
-            once: true,
-          },
-        }
-      );
-    });
-
     this.scrollTimeline.to("#spark", {
       scale: "1.2",
       duration: 2,
@@ -257,10 +210,9 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       ease: "none",
     });
 
-    console.log("initing");
     this.scrollTimeline.fromTo(
       "#about-headshot",
-      { y: "-400px" },
+      { y: "-300px" },
       {
         y: "0",
         scrollTrigger: {
@@ -272,43 +224,97 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
 
-    this.initRollingText();
+    if (window.innerWidth >= 768) {
+      const logoWrappers = document.querySelectorAll(".technology-row");
+      logoWrappers.forEach((wrapper, index) => {
+        Array.from(wrapper.children).forEach((child) => {
+          this.scrollTimeline.fromTo(
+            child,
+            {
+              y: 6 * (index + 1) + "rem",
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scrollTrigger: {
+                trigger: wrapper, // Trigger the animation based on this selector
+                start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
+                end: "top 62%", // End the animation when the top hits 30% of the viewport height
+                scrub: 1, // Smooth scrubbing
+                once: true,
+                markers: false,
+              },
+            }
+          );
+        });
+      });
+      const accoladeWrappers = document.querySelectorAll(".accolade");
+      accoladeWrappers.forEach((elements) => {
+        this.scrollTimeline.fromTo(
+          elements,
+          {
+            y: 5 + "rem",
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: elements, // Trigger the animation based on this selector
+              start: "top bottom", // Start the animation when the top of ".animate-me" hits 80% of the viewport height
+              end: "top 70%", // End the animation when the top hits 30% of the viewport height
+              scrub: 1, // Smooth scrubbing
+              once: true,
+            },
+          }
+        );
+      });
+    }
+
     this.setupImageRotationTimeline();
+    setTimeout(() => {
+      this.initRollingText();
+    }, 3000);
   }
 
-  initRollingText(): void {
-    this.intervalId = setInterval(() => {
-      const cursor = document.getElementById("rolling-text-cursor");
-      cursor?.classList.add("blink-cursor");
-      this.deleteRollingText();
-      cursor?.classList.remove("blink-cursor");
-    }, 7500);
+  async initRollingText() {
+    const cursor = document.getElementById("rolling-text-cursor");
+    cursor?.classList.remove("blink-cursor");
+    await this.deleteRollingText();
+    await this.addRollingText();
+    cursor?.classList.add("blink-cursor");
+    this.rollingTextIndex = this.rollingTextIndex === this.rollingTextLabels.length - 1 ? 0 : this.rollingTextIndex + 1;
+    setTimeout(() => {
+      this.initRollingText();
+    }, 3000);
   }
 
-  deleteRollingText(): void {
-    let intervalId = setInterval(() => {
-      const stringLength = this.rollingText.length - 1;
-      this.rollingText = this.rollingText.slice(0, stringLength) + this.rollingText.slice(stringLength + 1);
-      if (stringLength === -1) {
-        clearInterval(intervalId);
-        this.addRollingText();
-      }
-    }, 75);
+  deleteRollingText(): Promise<void> {
+    return new Promise((resolve) => {
+      let intervalId = setInterval(() => {
+        const stringLength = this.rollingText.length - 1;
+        this.rollingText = this.rollingText.slice(0, stringLength) + this.rollingText.slice(stringLength + 1);
+        if (!stringLength) {
+          clearInterval(intervalId);
+          resolve(); // Resolves the promise when done
+        }
+      }, 75);
+    });
   }
 
-  addRollingText(): void {
-    let index = 0;
-    let intervalId = setInterval(() => {
-      const cursor = document.getElementById("rolling-text-cursor");
-      index = index + 1;
-
-      this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
-      if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
-        clearInterval(intervalId);
-        cursor?.classList.add("blink-cursor");
-        this.rollingTextIndex = this.rollingTextIndex === 5 ? 0 : this.rollingTextIndex + 1;
-      }
-    }, 150);
+  addRollingText(): Promise<void> {
+    return new Promise((resolve) => {
+      let index = 0;
+      let intervalId = setInterval(() => {
+        index++;
+        this.rollingText = this.rollingText + this.rollingTextLabels[this.rollingTextIndex][index - 1];
+        if (index === this.rollingTextLabels[this.rollingTextIndex].length) {
+          clearInterval(intervalId);
+          resolve();
+        }
+      }, 150);
+    });
   }
 
   animate = () => {

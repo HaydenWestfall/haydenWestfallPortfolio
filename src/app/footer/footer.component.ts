@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, HostListener, OnInit } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, inject, OnInit } from "@angular/core";
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from "@angular/router";
 import { gsap, Power2 } from "gsap";
 import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -9,7 +10,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
   styleUrl: "./footer.component.scss",
 })
 export class FooterComponent implements AfterViewInit {
+  router = inject(Router);
+  cd = inject(ChangeDetectorRef);
   hideFooter = false;
+  showContactButton = true;
   contactButtonAnimation: any = null;
   footerCategories = [
     {
@@ -45,7 +49,7 @@ export class FooterComponent implements AfterViewInit {
       type: "external-links",
       links: [
         {
-          label: "RESUME DOWNLOAD",
+          label: "VIEW RESUME",
           link: "/assets/hayden_westfall_resume.pdf",
         },
       ],
@@ -53,11 +57,25 @@ export class FooterComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (window.innerWidth >= 768) {
-        this.initAnimation();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+        // Wait for cover animation to cover screen befor removing button from dom
+        setTimeout(() => {
+          if (event.url === "/contact") {
+            this.showContactButton = false;
+            this.cd.detectChanges();
+            this.killAnimation();
+          } else {
+            console.log("initing");
+            this.showContactButton = true;
+            this.cd.detectChanges();
+            if (window.innerWidth >= 768) {
+              this.initAnimation();
+            }
+          }
+        }, 1000);
       }
-    }, 1000);
+    });
   }
 
   @HostListener("window:scroll", ["$event"])

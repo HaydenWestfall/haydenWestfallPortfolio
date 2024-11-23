@@ -7,7 +7,6 @@
 <app-footer></app-footer>
 
 <div [@coverAnimation]="coverState" (@coverAnimation.done)="resetCover()" class="cover-container">
-  <!-- <span id="accent1" class="text-accent top">{{ newRouteName }}</span> -->
   <span class="route-text"
     >{{ newRouteName }}
     <span
@@ -18,5 +17,4 @@
       >|</span
     ></span
   >
-  <!-- <span id="accent2" class="text-accent bottom" [ngStyle]="{ right: accentRightAlignment }">{{ newRouteName }}</span> -->
 </div>

@@ -1,15 +1,5 @@
 export const works = [
   {
-    label: "FIRESHARE",
-    index: 0,
-    description:
-      "Fireshare is a cutting-edge automotive repair management platform designed to transform the auto care industry. It provides essential tools that auto shops rely on daily, making it easy to manage appointments, access comprehensive service records, and leverage data analytics to optimize shop performance.",
-    role: "Technical lead | Commercial",
-    link: "/work/fireshare",
-    showcase: "../../assets/fireshare/app_showcase.webp",
-    hover: false,
-  },
-  {
     label: "MADDIE WEST EVENTS",
     index: 1,
     description:
@@ -17,6 +7,16 @@ export const works = [
     role: "Design + Dev | Freelance",
     link: "/work/maddieWestEvents",
     showcase: "../../assets/maddieWestEvents/app_showcase.webp",
+    hover: false,
+  },
+  {
+    label: "FIRESHARE",
+    index: 0,
+    description:
+      "Fireshare is a cutting-edge automotive repair management platform designed to transform the auto care industry. It provides essential tools that auto shops rely on daily, making it easy to manage appointments, access comprehensive service records, and leverage data analytics to optimize shop performance.",
+    role: "Technical lead | Commercial",
+    link: "/work/fireshare",
+    showcase: "../../assets/fireshare/app_showcase.webp",
     hover: false,
   },
   {

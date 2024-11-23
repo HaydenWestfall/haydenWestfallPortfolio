@@ -13,6 +13,7 @@ export class ShowcaseComponent implements OnInit {
   showcaseProjects = works;
   hoverIndex: number | null = null;
   below768Pixels: boolean = false;
+  defaultShowcaseHighlight: number = 0;
 
   ngOnInit(): void {
     this.below768Pixels = window.innerWidth < 768;

@@ -70,6 +70,18 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   slider = 0;
   xPos = 0;
 
+  elts = {} as any;
+
+  texts = ["FULL STACK DEVELOPER", "UI/UX DESIGNER", "DEVOPS ENGINEER", "FREELANCE DEVELOPER"];
+
+  morphTime = 1.15;
+  cooldownTime = 3;
+
+  textIndex = this.texts.length - 1;
+  time = new Date();
+  morph = 0;
+  cooldown = this.cooldownTime;
+
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
@@ -81,8 +93,16 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         timeline.from("#name-slider", { y: 250, duration: duration, ease: "circ.out" });
         timeline.from("#roles", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
         timeline.from("#hero-contact", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        this.animateText();
       });
     });
+
+    this.elts = {
+      text1: document.getElementById("text1"),
+      text2: document.getElementById("text2"),
+    };
+    this.elts.text1!.textContent = this.texts[this.textIndex % this.texts.length];
+    this.elts.text2!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
   }
 
   initializeHome(): void {
@@ -121,6 +141,10 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         y: -125,
         scrollTrigger: { trigger: "#hero-contact", start: "top 34%", end: "bottom top", scrub: true },
       });
+      this.scrollTimeline.to("#roles", {
+        opacity: 0,
+        scrollTrigger: { trigger: "#roles", start: "top 19%", end: "bottom top", scrub: true },
+      });
     }
   }
 
@@ -158,4 +182,61 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       });
     }, 750);
   }
+
+  doMorph(): void {
+    this.morph -= this.cooldown;
+    this.cooldown = 0;
+
+    let fraction = this.morph / this.morphTime;
+
+    if (fraction > 1) {
+      this.cooldown = this.cooldownTime;
+      fraction = 1;
+    }
+
+    this.setMorph(fraction);
+  }
+
+  setMorph(fraction: any): void {
+    this.elts.text2!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    this.elts.text2!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    fraction = 1 - fraction;
+    this.elts.text1!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    this.elts.text1!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    this.elts.text1!.textContent = this.texts[this.textIndex % this.texts.length];
+    this.elts.text2!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
+  }
+
+  doCooldown(): void {
+    this.morph = 0;
+
+    this.elts.text2!.style.filter = "";
+    this.elts.text2!.style.opacity = "100%";
+
+    this.elts.text1!.style.filter = "";
+    this.elts.text1!.style.opacity = "0%";
+  }
+
+  animateText = () => {
+    requestAnimationFrame(this.animateText);
+
+    let newTime = new Date();
+    let shouldIncrementIndex = this.cooldown > 0;
+    let dt = (newTime.getTime() - this.time.getTime()) / 1000;
+    this.time = newTime;
+
+    this.cooldown -= dt;
+
+    if (this.cooldown <= 0) {
+      if (shouldIncrementIndex) {
+        this.textIndex++;
+      }
+
+      this.doMorph();
+    } else {
+      this.doCooldown();
+    }
+  };
 }

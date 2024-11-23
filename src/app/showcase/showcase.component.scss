@@ -75,8 +75,8 @@
 }
 
 .featured-projects {
-  width: calc(62.5% - 8rem);
-  margin: 0 4rem;
+  width: calc(62.5% - 4rem);
+  margin-left: 4rem;
   border-top: 1px solid #e4e4e4;
 
   .project-wrapper {
@@ -88,37 +88,25 @@
 
     .project {
       width: 100%;
-      padding: 3rem;
+      padding: 0 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: color 0.25s ease;
+      gap: 1.5rem;
+      cursor: pointer;
 
       .title {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 0.5rem;
         font-size: 0.9rem;
-        font-family: "Open Sans", sans-serif;
-        font-style: italic;
-        font-weight: 600;
+        font-weight: 500;
+        flex-grow: 1;
       }
 
       .project-role {
-        display: flex;
-        gap: 4rem;
-        align-items: center;
-
-        span {
-          font-size: 0.9rem;
-          font-family: "Open Sans", sans-serif;
-          font-style: italic;
-          font-weight: 600;
-        }
-      }
-      transition: color 0.25s ease;
-
-      &:hover {
-        cursor: pointer;
       }
 
       &::after {
@@ -133,16 +121,8 @@
       }
     }
 
-    .project:hover::after {
-      width: 100%;
-    }
-
-    .hovering {
-      color: black;
-    }
-
-    .not-hovering {
-      color: #c0c0c0 !important;
+    .enable-hover::after {
+      width: 100%; /* Desired width */
     }
   }
 }
@@ -204,6 +184,42 @@
 @media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
   .project-link {
     padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1120px) {
+  #work {
+    gap: 2rem;
+  }
+
+  .featured-projects {
+    width: 51%;
+    margin: 0;
+
+    .project-wrapper {
+      height: unset;
+
+      .project {
+        padding: 1.75rem 1rem;
+
+        .title {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 0.5rem;
+
+          span {
+            &:first-child {
+              font-size: 1.1rem;
+            }
+            &:last-child {
+              font-size: 0.775rem;
+              color: rgb(153, 153, 153);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

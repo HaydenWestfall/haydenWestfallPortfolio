@@ -1,14 +1,14 @@
 <section style="max-width: 100%; overflow: hidden; position: relative">
   <div id="hero-section" class="section-wrapper">
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle left" />
+    <app-svg-icon [path]="'assets/icons/angle_accent.svg'" class="angle right" />
     <div id="roles">
-      <h5>FULL STACK DEVELOPER</h5>
-      <h5>PRODUCT DESIGNER</h5>
-      <h5>FREELANCE WORK</h5>
-      <h5>UI/UX DESIGN</h5>
+      <h5 id="text1" class="role"></h5>
+      <h5 id="text2" class="role"></h5>
     </div>
-    <a class="circle-button translucent" id="hero-contact" routerLink="/contact" appParallaxButton>
+    <a class="circle-button light" id="hero-contact" routerLink="/contact" appParallaxButton>
       <div id="contact-btn-text">
-        Contact
+        LETS TALK
         <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
       </div>
     </a>
@@ -20,7 +20,7 @@
       <p id="name-tertiary">HAYDEN WESTFALL -</p>
     </div>
   </div>
-  <img id="bg" class="abs-position" src="../../assets/home/hero_image.jpeg" />
+  <img id="bg" class="abs-position" src="../../assets/home/hero_image.webp" />
 </section>
 
 <section>
@@ -44,10 +44,7 @@
 <section>
   <div id="work-section" class="section-wrapper">
     <app-showcase [multi]="true" [projects]="featuredProjects"></app-showcase>
-    <a id="sub-link" class="link" routerLink="/work">
-      All Projects (6)
-      <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
-    </a>
+    <a id="sub-link" class="link" routerLink="/work"> All Projects (6) </a>
   </div>
 </section>
 

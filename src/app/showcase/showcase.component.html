@@ -39,7 +39,7 @@
 
 <ng-template #multiShowcase let-section>
   <div id="work">
-    <div class="showcase">
+    <div class="showcase" *ngIf="!below768Pixels">
       <div
         class="focused-project"
         *ngFor="let project of projects; let index = index"
@@ -64,14 +64,15 @@
         <div
           class="project"
           [ngClass]="{
-            hovering: hoverIndex === index,
-            'not-hovering': hoverIndex !== index && hoverIndex != null
+            'enable-hover': hoverIndex === index
           }"
         >
-          <span class="title">{{ project.label }}</span>
+          <div class="title">
+            <span>{{ project.label }}</span>
+            <span>{{ project.role }}</span>
+          </div>
 
           <div class="project-role">
-            <span>{{ project.role }}</span>
             <a [href]="project.link">
               <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
             </a>

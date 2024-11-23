@@ -21,13 +21,19 @@
       </div>
     </div>
 
-    <a id="contact-btn-footer" class="circle-button light" routerLink="/about" appParallaxButton>
+    <a
+      id="contact-btn-footer"
+      class="circle-button light"
+      routerLink="/contact"
+      appParallaxButton
+      *ngIf="showContactButton"
+    >
       <div id="contact-btn-footer-text" style="z-index: 10">
         LETS TALK
         <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="md dark"></app-svg-icon>
       </div>
     </a>
-    <div class="accent"></div>
+    <div class="accent" *ngIf="showContactButton"></div>
 
     <div id="credits">
       <div class="accent-row">

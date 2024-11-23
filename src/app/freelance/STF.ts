@@ -64,8 +64,8 @@ export const STF = {
         { colorName: "BLUE", colorHex: "#1D243C" },
         { colorName: "ORANGE", colorHex: "#EE6C23" },
       ],
-      tile2Title: "LESS IS MORE",
-      tile2Description: "Simplifying the design to let Maddies work show through images",
+      tile2Title: "ENGAGING",
+      tile2Description: "Simple design and call to actions to give users the information and accessibility needed.",
       tile2Img: "../../assets/stf/iphone_design_focus.webp",
     },
     {

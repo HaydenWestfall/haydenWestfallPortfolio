@@ -62,8 +62,8 @@ export const MissLisaBooks = {
         { color: "green", colorName: "GREEN", colorHex: "#537864" },
         { color: "white", colorName: "WHITE", colorHex: "#FFFFFF" },
       ],
-      tile2Title: "LESS IS MORE",
-      tile2Description: "Simplifying the design to let Maddies work show through images",
+      tile2Title: "SIMPLE + PLAYFUL",
+      tile2Description: "Letting Miss Lisa's brand shine through creative and simple design.",
       tile2Img: "../../assets/missLisaBooks/iphone_design_focus.webp",
     },
     {

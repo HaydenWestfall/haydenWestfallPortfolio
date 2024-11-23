@@ -25,14 +25,23 @@ section {
     align-items: center;
     justify-content: center;
 
-    .email {
+    .focus-email-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: absolute;
-      font-size: 3.5rem;
       color: white;
-      font-style: italic;
-      font-weight: 600;
-      text-decoration: underline;
       z-index: 10;
+
+      span {
+        font-size: 1rem;
+      }
+
+      .email {
+        font-size: 3.5rem;
+        font-style: italic;
+        font-weight: 600;
+      }
     }
   }
 
@@ -66,7 +75,7 @@ section {
 
 @media only screen and (max-width: 768px) {
   section {
-    padding: 12rem 0;
+    gap: 0;
 
     h1 {
       font-size: 2rem;
@@ -74,8 +83,10 @@ section {
     }
 
     .email-wrapper {
-      .email {
-        font-size: 1.5rem;
+      .focus-email-wrapper {
+        .email {
+          font-size: 1.5rem;
+        }
       }
     }
   }

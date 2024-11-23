@@ -65,7 +65,7 @@ export const MaddieWestEvents = {
         { color: "black", colorName: "BLACK", colorHex: "#000000" },
       ],
       tile2Title: "LESS IS MORE",
-      tile2Description: "Simplifying the design to let Maddies work show through images",
+      tile2Description: "Simplifying the design to let Maddies work show through imagery.",
       tile2Img: "../../assets/maddieWestEvents/iphone_design_focus.webp",
     },
     {
