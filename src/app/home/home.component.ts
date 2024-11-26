@@ -11,7 +11,7 @@ import { Subscription } from "rxjs";
   styleUrl: "./home.component.scss",
 })
 export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
-  themeService = inject(ThemeService);
+  _service = inject(ThemeService);
   initPageSubscription: Subscription = null as any;
   featuredProjects = works.slice(0, 4);
 
@@ -64,13 +64,15 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   ];
 
   scrollTimeline = gsap.timeline({});
-  animationFrameId: number | null = null;
+  nameSliderAnimationFrame: number | null = null;
+  roleFadeAnimationFrame: number | null = null;
   animations: gsap.core.Tween[] = [];
   direction = -1;
   slider = 0;
   xPos = 0;
 
-  elts = {} as any;
+  primaryRole: any = {};
+  secondaryRole: any = {};
 
   texts = ["FULL STACK DEVELOPER", "UI/UX DESIGNER", "DEVOPS ENGINEER", "FREELANCE DEVELOPER"];
 
@@ -82,31 +84,27 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   morph = 0;
   cooldown = this.cooldownTime;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._service.theme = "light";
+  }
 
   ngAfterViewInit(): void {
-    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
+    this.initPageSubscription = this._service.initPage$.subscribe(() => {
       this.initializeHome();
-      setTimeout(() => {
-        const duration = 0.68;
-        const timeline = gsap.timeline({ delay: 0.32 });
-        timeline.from("#name-slider", { y: 250, duration: duration, ease: "circ.out" });
-        timeline.from("#roles", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
-        timeline.from("#hero-contact", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
-        this.animateText();
-      });
+      if (!this._service.isPopState) {
+        setTimeout(() => {
+          const duration = 0.6;
+          const timeline = gsap.timeline({ delay: 0.32 });
+          timeline.from("#name-slider", { y: 250, duration: duration, ease: "circ.out" });
+          timeline.from("#roles", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
+          timeline.from("#hero-contact", { opacity: 0, y: 80, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        });
+      }
     });
-
-    this.elts = {
-      text1: document.getElementById("text1"),
-      text2: document.getElementById("text2"),
-    };
-    this.elts.text1!.textContent = this.texts[this.textIndex % this.texts.length];
-    this.elts.text2!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
   }
 
   initializeHome(): void {
-    console.log("CREATED");
+    this.nameSliderAnimationFrame = requestAnimationFrame(this.animate);
     this.scrollTimeline.to(document.getElementById("name-slider"), {
       scrollTrigger: {
         trigger: document.getElementById("name-slider"),
@@ -118,9 +116,12 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
       x: "-500px",
     });
 
-    this.animationFrameId = requestAnimationFrame(this.animate);
+    this.primaryRole = document.getElementById("role-primary");
+    this.secondaryRole = document.getElementById("role-secondary");
+    this.primaryRole!.textContent = this.texts[this.textIndex % this.texts.length];
+    this.secondaryRole!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
+    this.animateText();
 
-    this.themeService.theme = "light";
     if (window.innerWidth >= 768) {
       this.scrollTimeline.fromTo(
         "#about-btn",
@@ -148,39 +149,38 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
-  animate = () => {
+  animate = (test?: any) => {
     if (this.xPos < -100) {
       this.xPos = 0;
     } else if (this.xPos > 0) {
       this.xPos = -100;
     }
+
     gsap.set(document.getElementById("name-primary"), { xPercent: this.xPos });
     gsap.set(document.getElementById("name-secondary"), { xPercent: this.xPos });
     gsap.set(document.getElementById("name-tertiary"), { xPercent: this.xPos });
-    this.animationFrameId = requestAnimationFrame(this.animate);
+    this.nameSliderAnimationFrame = requestAnimationFrame(this.animate);
     this.xPos += 0.02;
   };
 
   ngOnDestroy(): void {
     this.initPageSubscription.unsubscribe();
 
-    // Let cover animation cover the page before killing all animations
-    setTimeout(() => {
-      cancelAnimationFrame(this.animationFrameId!);
-      if (this.scrollTimeline) {
-        this.scrollTimeline.kill();
+    cancelAnimationFrame(this.nameSliderAnimationFrame!);
+    cancelAnimationFrame(this.roleFadeAnimationFrame!);
+    if (this.scrollTimeline) {
+      this.scrollTimeline.kill();
+    }
+
+    ScrollTrigger.getAll().forEach((trigger) => {
+      const element = trigger.vars.trigger; // Get the trigger element
+      if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+        return;
       }
 
-      ScrollTrigger.getAll().forEach((trigger) => {
-        const element = trigger.vars.trigger; // Get the trigger element
-        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
-          return;
-        }
-
-        trigger.vars;
-        trigger.kill();
-      });
-    }, 750);
+      trigger.vars;
+      trigger.kill();
+    });
   }
 
   doMorph(): void {
@@ -198,29 +198,29 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   setMorph(fraction: any): void {
-    this.elts.text2!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-    this.elts.text2!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+    this.secondaryRole!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    this.secondaryRole!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
     fraction = 1 - fraction;
-    this.elts.text1!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-    this.elts.text1!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+    this.primaryRole!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    this.primaryRole!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
-    this.elts.text1!.textContent = this.texts[this.textIndex % this.texts.length];
-    this.elts.text2!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
+    this.primaryRole!.textContent = this.texts[this.textIndex % this.texts.length];
+    this.secondaryRole!.textContent = this.texts[(this.textIndex + 1) % this.texts.length];
   }
 
   doCooldown(): void {
     this.morph = 0;
 
-    this.elts.text2!.style.filter = "";
-    this.elts.text2!.style.opacity = "100%";
+    this.secondaryRole!.style.filter = "";
+    this.secondaryRole!.style.opacity = "100%";
 
-    this.elts.text1!.style.filter = "";
-    this.elts.text1!.style.opacity = "0%";
+    this.primaryRole!.style.filter = "";
+    this.primaryRole!.style.opacity = "0%";
   }
 
   animateText = () => {
-    requestAnimationFrame(this.animateText);
+    this.roleFadeAnimationFrame = requestAnimationFrame(this.animateText);
 
     let newTime = new Date();
     let shouldIncrementIndex = this.cooldown > 0;

@@ -10,7 +10,7 @@ import { Subscription } from "rxjs";
   styleUrl: "./about.component.scss",
 })
 export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
-  themeService = inject(ThemeService);
+  _service = inject(ThemeService);
   initPageSubscription: Subscription = null as any;
   rollingTextIndex = 0;
   rollingTextLabels = [
@@ -175,20 +175,22 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
+    this.initPageSubscription = this._service.initPage$.subscribe(() => {
       this.initializeAbout();
-      setTimeout(() => {
-        const duration = 0.7;
-        const timeline = gsap.timeline({ delay: 0.25 });
-        timeline.from("#title-text", { y: 250, duration: duration, ease: "circ.out" });
-        timeline.from("#header-accent", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
-        timeline.from("#about-info-header", { y: 500, duration: duration, ease: "circ.out" }, `-=${duration}`);
-      });
+      if (!this._service.isPopState) {
+        setTimeout(() => {
+          const duration = 0.7;
+          const timeline = gsap.timeline({ delay: 0.25 });
+          timeline.from("#title-text", { y: 250, duration: duration, ease: "circ.out" });
+          timeline.from("#header-accent", { y: 300, duration: duration, ease: "circ.out" }, `-=${duration}`);
+          timeline.from("#about-info-header", { y: 350, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        });
+      }
     });
   }
 
   initializeAbout(): void {
-    this.themeService.theme = "dark";
+    this._service.theme = "dark";
 
     this.scrollTimeline.to(document.getElementById("micro-animation-wrapper"), {
       scrollTrigger: {
@@ -203,7 +205,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.animationFrameId = requestAnimationFrame(this.animate);
 
     this.scrollTimeline.to("#spark", {
-      scale: "1.2",
+      scale: "1.3",
       duration: 2,
       repeat: -1,
       yoyo: true,
@@ -320,7 +322,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   animate = () => {
     gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
     this.animationFrameId = requestAnimationFrame(this.animate);
-    this.rotatePos += 0.2;
+    this.rotatePos += 0.1;
   };
 
   setupImageRotationTimeline() {
@@ -374,25 +376,23 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.initPageSubscription.unsubscribe();
 
-    setTimeout(() => {
-      clearInterval(this.intervalId);
-      cancelAnimationFrame(this.animationFrameId);
+    clearInterval(this.intervalId);
+    cancelAnimationFrame(this.animationFrameId);
 
-      if (this.scrollTimeline) {
-        this.scrollTimeline.kill();
-      }
-      if (this.imageRotateTimeline) {
-        this.imageRotateTimeline.kill();
-      }
+    if (this.scrollTimeline) {
+      this.scrollTimeline.kill();
+    }
+    if (this.imageRotateTimeline) {
+      this.imageRotateTimeline.kill();
+    }
 
-      ScrollTrigger.getAll().forEach((trigger) => {
-        const element = trigger.vars.trigger; // Get the trigger element
-        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
-          return;
-        }
-        trigger.vars;
-        trigger.kill();
-      });
-    }, 750);
+    ScrollTrigger.getAll().forEach((trigger) => {
+      const element = trigger.vars.trigger; // Get the trigger element
+      if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+        return;
+      }
+      trigger.vars;
+      trigger.kill();
+    });
   }
 }

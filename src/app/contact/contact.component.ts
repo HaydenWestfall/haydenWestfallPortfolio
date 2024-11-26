@@ -10,7 +10,7 @@ import { Subscription } from "rxjs";
   styleUrl: "./contact.component.scss",
 })
 export class ContactComponent implements AfterViewInit, OnDestroy {
-  themeService = inject(ThemeService);
+  private readonly _service = inject(ThemeService);
   initPageSubscription: Subscription = null as any;
   scrollTimeline = gsap.timeline({});
   animationFrameId: number = 0;
@@ -19,19 +19,20 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   xPos = 0;
 
   ngAfterViewInit(): void {
-    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
+    this.initPageSubscription = this._service.initPage$.subscribe(() => {
       this.initializeContact();
-      setTimeout(() => {
-        const duration = 0.8;
-        const timeline = gsap.timeline({ delay: 0.275 });
-        timeline.from("#contact-header", { y: 250, duration: duration, ease: "circ.out" });
-        timeline.from("#contact-main", { y: 375, duration: duration, ease: "circ.out" }, `-=${duration}`);
-      });
+      if (!this._service.isPopState) {
+        setTimeout(() => {
+          const duration = 0.7;
+          const timeline = gsap.timeline({ delay: 0.275 });
+          timeline.from("#contact-header", { y: 250, duration: duration, ease: "circ.out" });
+          timeline.from("#contact-main", { y: 300, duration: duration, ease: "circ.out" }, `-=${duration}`);
+        });
+      }
     });
   }
 
   initializeContact(): void {
-    console.log("CREATED");
     this.scrollTimeline.to(document.getElementById("email-slider"), {
       scrollTrigger: {
         trigger: document.getElementById("email-slider"),
@@ -60,22 +61,18 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.initPageSubscription.unsubscribe();
+    cancelAnimationFrame(this.animationFrameId as number);
 
-    // Let cover animation cover the page before killing all animations
-    setTimeout(() => {
-      cancelAnimationFrame(this.animationFrameId as number);
-
-      if (this.scrollTimeline) {
-        this.scrollTimeline.kill();
+    if (this.scrollTimeline) {
+      this.scrollTimeline.kill();
+    }
+    ScrollTrigger.getAll().forEach((trigger) => {
+      const element = trigger.vars.trigger; // Get the trigger element
+      if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
+        return;
       }
-      ScrollTrigger.getAll().forEach((trigger) => {
-        const element = trigger.vars.trigger; // Get the trigger element
-        if (element instanceof HTMLElement && element.id == "contact-btn-footer") {
-          return;
-        }
-        trigger.vars;
-        trigger.kill();
-      });
-    }, 750);
+      trigger.vars;
+      trigger.kill();
+    });
   }
 }

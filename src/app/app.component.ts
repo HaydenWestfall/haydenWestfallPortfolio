@@ -29,12 +29,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   coverAnimationTiming = 1000;
   accentRightAlignment = "";
   coverState = "show";
-  isInitialLoad = true;
   homeRoute = "//\\/\\/";
 
-  router = inject(Router);
-  route = inject(ActivatedRoute);
-  themeService = inject(ThemeService);
+  private readonly _router = inject(Router);
+  public readonly _service = inject(ThemeService);
 
   ngOnInit(): void {
     const lenis = new Lenis();
@@ -50,26 +48,32 @@ export class AppComponent implements OnInit, AfterViewInit {
     CustomEase.create("myCustomEase", "M0,0 C0.87,0 0.13,1 1,1");
     CustomEase.create("myCustomEaseOut", "M0,0 C0.13,0 0.87,1 1,1");
 
-    this.router.events.subscribe((event) => {
+    this._router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        const urlSegments = event.url.split("/");
-        this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
-        this.coverState = "show";
+        if (event.navigationTrigger !== "popstate") {
+          console.log("showing");
+          const urlSegments = event.url.split("/");
+          this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
+          this.coverState = "show";
+        } else {
+          this._service.isPopState = true;
+        }
       }
       if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
         // Let cover animation cover the screen in 1s
         // Allow 200ms delay where the cover is over top of the screen
         setTimeout(() => {
           window.scrollTo(0, 0);
-          if (this.isInitialLoad && !this.newRouteName) {
+          if (this._service.isInitialLoad && !this.newRouteName) {
             this.pageInit();
           } else {
             this.coverState = "hide";
-            this.themeService.notifyChange();
-            this.isInitialLoad = false;
+            this._service.notifyChange();
+            this._service.isInitialLoad = false;
           }
+          this._service.isPopState = false;
           ScrollTrigger.refresh();
-        }, this.coverAnimationTiming + 200);
+        }, 200);
       }
     });
   }
@@ -84,8 +88,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     await this.spellWord("//\\/\\/");
     setTimeout(() => {
       this.coverState = "hide";
-      this.themeService.notifyChange();
-      this.isInitialLoad = false;
+      this._service.notifyChange();
+      this._service.isInitialLoad = false;
     }, 750);
   }
 
@@ -117,19 +121,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     const uppercaseRoutes = ["about", "work", "contact", "innobuild", "fireshare", "tradewave", "stf"];
 
     if (uppercaseRoutes.includes(routePath)) {
-      this.isInitialLoad = false;
+      this._service.isInitialLoad = false;
       return routePath.toUpperCase();
     } else if (routePath === "maddieWestEvents") {
-      this.isInitialLoad = false;
-      return "MADDIE WEST";
+      this._service.isInitialLoad = false;
+      return "MADDIE WEST EVENTS";
     } else if (routePath === "missLisaBooks") {
-      this.isInitialLoad = false;
-      return "MISS LISA";
-    } else if (this.isInitialLoad) {
+      this._service.isInitialLoad = false;
+      return "MISS LISA BOOKS";
+    } else if (this._service.isInitialLoad) {
       return "";
     }
 
-    this.isInitialLoad = false;
+    this._service.isInitialLoad = false;
     return "//\\/\\/";
   }
 }

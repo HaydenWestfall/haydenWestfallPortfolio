@@ -28,23 +28,17 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
   projects = [Fireshare, Innobuild, MaddieWestEvents, MissLisaBooks, STF, Tradewave];
   project: any;
 
-  ngOnInit(): void {
-    this.themeService.theme = "light";
-    this.mediaQueryMatch = window.innerWidth <= 768;
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.mediaQueryMatch = window.innerWidth <= 768;
     this.route.paramMap.subscribe((params) => {
-      setTimeout(() => {
-        const projectId = params.get("projectId");
-        this.project = this.projects.find((x: any) => x.id === projectId);
-      }, 1000);
+      const projectId = params.get("projectId");
+      this.project = this.projects.find((x: any) => x.id === projectId);
     });
 
     this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
-      setTimeout(() => {
-        this.init();
-      });
+      this.init();
     });
   }
 
@@ -73,6 +67,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
           { y: 0, ease: "power1.out", scrollTrigger: { trigger: "#live-site", start: "top bottom", scrub: true } }
         );
       } else if (section.template === "mobile-section" && window.innerWidth > 768) {
+        console.log("settign up mobile animatiosn");
         this.timeline.fromTo(
           "#iphone_mockup_1",
           { y: "5rem" },
@@ -112,6 +107,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         trigger.vars;
         trigger.kill();
+        console.log(trigger);
       });
       gsap.set("#iphone_mockup_1", { clearProps: "all" });
       gsap.set("#iphone_mockup_3", { clearProps: "all" });
@@ -133,8 +129,6 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.initPageSubscription.unsubscribe();
-    setTimeout(() => {
-      this.clearAnimations();
-    }, 750);
+    this.clearAnimations();
   }
 }

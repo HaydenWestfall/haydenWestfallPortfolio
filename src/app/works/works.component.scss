@@ -83,8 +83,8 @@
 
       #spark {
         background-color: black;
-        height: 60%;
-        width: 60%;
+        height: 55%;
+        width: 55%;
       }
     }
   }
@@ -94,7 +94,7 @@
   max-width: 80rem;
   width: 85%;
   min-width: 55rem;
-  padding: 8rem 4rem 4rem;
+  padding: 6rem 4rem 4rem;
   min-height: 50rem;
 }
 
@@ -128,12 +128,6 @@
 
       #accent-border {
         .text {
-          top: -5px;
-          padding: 0 0.5rem;
-          left: 1rem;
-        }
-
-        #best-friend-text {
           display: none;
         }
       }

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div [@routeAnimations]="prepareRoute(outlet)" style="max-width: 100vw; overflow-x: hidden">
+<div style="max-width: 100vw; overflow-x: hidden">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 
@@ -10,7 +10,7 @@
   <span class="route-text"
     >{{ newRouteName }}
     <span
-      *ngIf="isInitialLoad"
+      *ngIf="_service.isInitialLoad"
       id="rolling-text-cursor"
       class="blink-cursor"
       style="font-size: 2rem; color: white; font-style: normal; position: absolute; top: -2px; left: 103%"

@@ -14,6 +14,9 @@ export class ThemeService {
   // Public Observable that components can subscribe to
   initPage$ = this.initPageSubject$.asObservable();
 
+  isPopState = false;
+  isInitialLoad = true;
+
   notifyChange() {
     this.initPageSubject$.next("initpage");
   }

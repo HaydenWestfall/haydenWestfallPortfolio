@@ -13,8 +13,6 @@
         appIntersection
         #intersection="intersection"
         (isIntersecting)="isIntersecting($event, index)"
-        [isContinuous]="false"
-        [thresholdOverride]="index === 0"
       >
         <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
           <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />

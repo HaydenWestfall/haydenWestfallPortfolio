@@ -33,21 +33,19 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event["url"];
-        setTimeout(() => {
-          this.transparentMode = [
-            "/",
-            "/contact",
-            "/work/innobuild",
-            "/work/maddieWestEvents",
-            "/work/tradewave",
-            "/work/stf",
-            "/work/fireshare",
-            "/work/missLisaBooks",
-          ].includes(url)
-            ? "transparent-white"
-            : "transparent-black";
-          this.navbarClass = this.navbarStyleSelector();
-        }, 600);
+        this.transparentMode = [
+          "/",
+          "/contact",
+          "/work/innobuild",
+          "/work/maddieWestEvents",
+          "/work/tradewave",
+          "/work/stf",
+          "/work/fireshare",
+          "/work/missLisaBooks",
+        ].includes(url)
+          ? "transparent-white"
+          : "transparent-black";
+        this.navbarClass = this.navbarStyleSelector();
       }
     });
   }
