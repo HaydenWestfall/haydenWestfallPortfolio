@@ -25,6 +25,8 @@ import { ThemeService } from "./services/theme.service";
 })
 export class AppComponent implements OnInit, AfterViewInit {
   showCover = true;
+  heroImageLoaded = false;
+  coverAnimationTimedOut = false;
   newRouteName = "";
   coverAnimationTiming = 1000;
   accentRightAlignment = "";
@@ -87,11 +89,39 @@ export class AppComponent implements OnInit, AfterViewInit {
   async pageInit() {
     this.newRouteName = "";
     await this.spellWord("//\\/\\/");
+
+    // Ensure her image is loaded before hiding cover animation
+    this.waitForImageLoad().then(() => {
+      this.heroImageLoaded = true;
+      if (this.coverAnimationTimedOut) {
+        this.coverState = "hide";
+        this._service.notifyChange();
+        this._service.isInitialLoad = false;
+      }
+    });
+
+    // Show cover animation for at least 750ms before closing
     setTimeout(() => {
-      this.coverState = "hide";
-      this._service.notifyChange();
-      this._service.isInitialLoad = false;
+      this.coverAnimationTimedOut = true;
+      if (this.heroImageLoaded) {
+        this.coverState = "hide";
+        this._service.notifyChange();
+        this._service.isInitialLoad = false;
+      }
     }, 750);
+  }
+
+  private waitForImageLoad(): Promise<void> {
+    const backgroundImage = new Image();
+    backgroundImage.src = "../assets/home/hero_image.webp";
+    return new Promise((resolve) => {
+      if (backgroundImage.complete) {
+        resolve();
+      } else {
+        backgroundImage.onload = () => resolve(); // Resolve on image load
+        backgroundImage.onerror = () => resolve(); // Resolve even if there's an error
+      }
+    });
   }
 
   spellWord(word: string): Promise<void> {
