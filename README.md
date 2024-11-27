@@ -34,8 +34,8 @@ To run this project locally:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/haydenwestfall/portfolio.git
-   cd portfolio
+   git clone https://github.com/HaydenWestfall/haydenWestfallPortfolio.git
+   cd haydenWestfallPortfolio
    ```
 
 2. **Install Dependencies**
