@@ -5,7 +5,8 @@
     <title>HaydenWestfall</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" /> -->
+    <link id="favicon" rel="icon" type="image/png" href="assets/favicon-light.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +14,19 @@
       rel="stylesheet"
     />
     <link rel="preload" href="assets/font/Heathergreen.otf" as="font" type="font/otf" crossorigin="anonymous" />
+    <script>
+      function updateFavicon() {
+        const favicon = document.getElementById("favicon");
+        const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        favicon.href = isDarkMode ? "assets/favicon-light.ico" : "assets/favicon-dark.ico";
+      }
+
+      // Initial check
+      updateFavicon();
+
+      // Listen for system theme changes
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
+    </script>
   </head>
   <body>
     <app-root></app-root>
