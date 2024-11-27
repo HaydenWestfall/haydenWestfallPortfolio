@@ -11,7 +11,6 @@ You can view the live portfolio at [haydenwestfall.com](https://www.haydenwestfa
 - **About Me**: A brief introduction to my skills, background, and interests.
 - **Projects**: A detailed showcase of selected projects, including case studies and links to live demos and GitHub repositories.
 - **Contact**: A simple way to connect with me for opportunities or inquiries.
-- **Dynamic Header**: An interactive header that programmatically changes keywords (e.g., _Full-Stack Developer_, _UI/UX Designer_, _DevOps Engineer_).
 
 ## 🛠️ Technology Stack
 
