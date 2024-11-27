@@ -1,27 +1,77 @@
-# HaydenWestfall
+# Hayden Westfall - Software Engineering Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+Welcome to the source code for my [Hayden Westfall Software Engineering Portfolio](https://www.haydenwestfall.com). This project showcases my skills, experience, and projects as a full-stack developer. It serves as a hub for employers and collaborators to explore my work and learn more about me.
 
-## Development server
+## 🚀 Live Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+You can view the live portfolio at [haydenwestfall.com](https://www.haydenwestfall.com).
 
-## Code scaffolding
+## 📂 Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **About Me**: A brief introduction to my skills, background, and interests.
+- **Projects**: A detailed showcase of selected projects, including case studies and links to live demos and GitHub repositories.
+- **Contact**: A simple way to connect with me for opportunities or inquiries.
+- **Dynamic Header**: An interactive header that programmatically changes keywords (e.g., _Full-Stack Developer_, _UI/UX Designer_, _DevOps Engineer_).
 
-## Build
+## 🛠️ Technology Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Framework**: Angular
+- **Styling**: SCSS
+- **Animations**: GSAP
+- **Hosting**: Hostinger (Static File Deployment)
 
-## Running unit tests
+## ⚙️ Installation and Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To run this project locally:
 
-## Running end-to-end tests
+### Prerequisites
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js (v16+ recommended)
+- Angular CLI
 
-## Further help
+### Steps
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/haydenwestfall/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Serve the Application**
+
+   ```bash
+   ng serve
+   ```
+
+   The application will be available at http://localhost:4200.
+
+4. **Build for Production**
+   ```bash
+   ng build --configuration production
+   ```
+
+## 🌐 Deployment
+
+I deploy this portfolio to Hostinger using their static file hosting. After building the project, the contents of the dist/browser/ folder are uploaded directly to the Hostinger file manager.
+
+## 🤝 Contributing
+
+This portfolio is primarily a personal project, but if you'd like to suggest improvements or report an issue, feel free to:
+
+- Open a pull request.
+- Submit an issue on the [GitHub Isses](https://github.com/HaydenWestfall/haydenWestfallPortfolio/issues) page.
+
+## 🧑‍💻 Contact Me
+
+Feel free to connect with me on:
+
+- [LinkedIn](https://www.linkedin.com/in/haydenwestfall/)
+- [GitHub](https://github.com/HaydenWestfall)
+- [WestfallHayden@gmail.com](WestfallHayden@gmail.com)

@@ -77,7 +77,6 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
           { y: 0, ease: "power1.out", scrollTrigger: { trigger: "#live-site", start: "top bottom", scrub: true } }
         );
       } else if (section.template === "mobile-section" && window.innerWidth > 768) {
-        console.log("settign up mobile animatiosn");
         this.timeline.fromTo(
           "#iphone_mockup_1",
           { y: "5rem" },
@@ -117,7 +116,6 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         trigger.vars;
         trigger.kill();
-        console.log(trigger);
       });
       gsap.set("#iphone_mockup_1", { clearProps: "all" });
       gsap.set("#iphone_mockup_3", { clearProps: "all" });
@@ -129,11 +127,9 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.mediaQueryMatch && window.innerWidth <= 768) {
       this.mediaQueryMatch = true;
       this.init();
-      console.log("init small");
     } else if (this.mediaQueryMatch && window.innerWidth > 768) {
       this.mediaQueryMatch = false;
       this.init();
-      console.log("init big");
     }
   }
 

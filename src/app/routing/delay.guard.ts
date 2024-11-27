@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { CanActivate, NavigationStart, Router } from "@angular/router";
-import { delay, filter, map, Observable, of, switchMap } from "rxjs";
+import { delay, Observable, of } from "rxjs";
 import { ThemeService } from "../services/theme.service";
 
 @Injectable({
@@ -21,7 +21,6 @@ export class DelayGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     if (this._service.isPopState || this._service.isInitialLoad) {
       // Allow immediate navigation for popstate (back/forward button)
-      console.log("overriding an going now");
       return of(true);
     }
 

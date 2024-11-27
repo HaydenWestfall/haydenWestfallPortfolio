@@ -66,7 +66,6 @@ export class FooterComponent implements AfterViewInit {
             this.cd.detectChanges();
             this.killAnimation();
           } else {
-            console.log("initing");
             this.showContactButton = true;
             this.cd.detectChanges();
             if (window.innerWidth >= 768) {

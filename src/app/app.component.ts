@@ -51,7 +51,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     this._router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         if (event.navigationTrigger !== "popstate") {
-          console.log("showing");
           const urlSegments = event.url.split("/");
           this.newRouteName = this.mapRouteName(urlSegments[urlSegments.length - 1]);
           this.coverState = "show";
