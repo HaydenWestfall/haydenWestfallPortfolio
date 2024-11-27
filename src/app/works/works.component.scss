@@ -6,8 +6,7 @@
   background-color: white;
   gap: 2rem;
   max-width: 80rem;
-  width: 85%;
-  min-width: 55rem;
+  width: 90%;
   padding: 12rem 4rem 0;
 
   #title-text {
@@ -92,17 +91,23 @@
 
 #works-wrapper {
   max-width: 80rem;
-  width: 85%;
-  min-width: 55rem;
+  width: 90%;
   padding: 6rem 4rem 4rem;
   min-height: 50rem;
 }
 
-@media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
-  #project-header-wrapper {
-    #project-header {
-      padding: 0;
+@media screen and (max-width: 1000px) {
+  #works-header {
+    width: 100%;
+
+    #title-text {
+      font-size: 3.125rem;
+      line-height: 4rem;
     }
+  }
+
+  #works-wrapper {
+    width: 100%;
   }
 }
 

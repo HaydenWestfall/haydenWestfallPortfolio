@@ -2,7 +2,8 @@ export const MissLisaBooks = {
   id: "missLisaBooks",
   index: 5,
   projectName: "MISS LISA BOOKS",
-  titleText: "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
+  titleText:
+    "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
   headerMockup: "../../assets/missLisaBooks/iphone_tilt.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Branding + Marketing", "Customer Communication"] },

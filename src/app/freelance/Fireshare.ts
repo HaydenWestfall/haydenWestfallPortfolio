@@ -2,7 +2,8 @@ export const Fireshare = {
   id: "fireshare",
   index: 1,
   projectName: "FIRESHARE",
-  titleText: "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
+  titleText:
+    "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
   headerMockup: "../../assets/fireshare/mockup.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },

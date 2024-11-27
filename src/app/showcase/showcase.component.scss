@@ -31,7 +31,8 @@
   border: 2px solid #f9f9f9;
 
   &.single {
-    height: 22rem;
+    height: 35vw;
+    max-height: 22rem;
     aspect-ratio: 1.1 / 1;
     flex-shrink: 0;
   }
@@ -183,9 +184,42 @@
   }
 }
 
-@media screen and (min-width: calc(105 * clamp(16px, 1.25vw, 19px))) {
+@media screen and (max-width: 1000px) {
   .project-link {
     padding: 0;
+  }
+
+  .project-information-wrapper {
+    padding: 1.75rem 1rem;
+
+    .project-information-header {
+      .header {
+        span {
+          font-size: 1.75rem;
+        }
+
+        app-svg-icon {
+          height: 1.2rem;
+          width: 1.2rem;
+        }
+      }
+
+      .description {
+        font-size: 0.75rem;
+        max-width: 100%;
+      }
+    }
+
+    .project-information-footer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      color: #969696;
+
+      span {
+        font-size: 0.75rem;
+      }
+    }
   }
 }
 

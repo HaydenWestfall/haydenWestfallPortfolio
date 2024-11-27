@@ -2,7 +2,8 @@ export const Innobuild = {
   id: "innobuild",
   index: 3,
   projectName: "INNOBUILD",
-  titleText: "INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD  INNOBUILD",
+  titleText:
+    "INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD",
   headerMockup: "../../assets/innobuild/mockup.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },

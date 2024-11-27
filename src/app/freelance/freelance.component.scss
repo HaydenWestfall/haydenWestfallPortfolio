@@ -26,10 +26,10 @@
       align-items: center;
       justify-content: center;
       z-index: 4;
+      margin-top: 2rem;
 
       #mockup {
-        height: 30vw;
-        max-height: 25rem;
+        height: 27rem;
       }
     }
 
@@ -125,6 +125,7 @@
     align-items: center;
     gap: 5rem;
     width: 100%;
+    padding: 0 3rem;
 
     .disclaimer {
       width: 100%;
@@ -379,9 +380,9 @@ h2 {
       margin-top: 7rem;
 
       #mockup-wrapper {
+        margin-top: 1rem;
         #mockup {
-          height: 60vw;
-          max-height: 25rem;
+          height: 18rem;
         }
       }
 

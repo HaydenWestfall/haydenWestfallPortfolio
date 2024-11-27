@@ -2,7 +2,8 @@ export const Tradewave = {
   id: "tradewave",
   index: 2,
   projectName: "TRADEWAVE",
-  titleText: "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
+  titleText:
+    "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
   headerMockup: "../../assets/tradewave/mockup.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },

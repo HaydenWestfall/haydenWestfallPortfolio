@@ -72,6 +72,7 @@ export class FooterComponent implements AfterViewInit {
               this.initAnimation();
             }
           }
+          ScrollTrigger.refresh();
         }, 1000);
       }
     });
@@ -101,8 +102,9 @@ export class FooterComponent implements AfterViewInit {
         x: 0,
         ease: "power1.out",
         scrollTrigger: {
-          trigger: element,
+          trigger: "#footer-section",
           start: "top bottom",
+          end: "bottom top",
           scrub: true,
         },
       }

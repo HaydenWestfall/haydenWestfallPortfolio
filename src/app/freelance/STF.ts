@@ -2,7 +2,8 @@ export const STF = {
   id: "stf",
   index: 4,
   projectName: "STF",
-  titleText: "STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF ",
+  titleText:
+    "STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF STF",
   headerMockup: "../../assets/stf/iphone_tilt.webp",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Developer", "Branding + Marketing"] },
