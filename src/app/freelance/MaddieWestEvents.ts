@@ -1,6 +1,6 @@
 export const MaddieWestEvents = {
   id: "maddieWestEvents",
-  index: 1,
+  index: 0,
   projectName: "MADDIE WEST EVENTS",
   titleText: "MADDIE WEST EVENTS MADDIE WEST EVENTS MADDIE WEST EVENTS",
   headerMockup: "../../assets/maddieWestEvents/iphone_tilt.webp",

@@ -53,11 +53,12 @@
       </div>
     </div>
     <div class="featured-projects">
-      <div
+      <a
         class="project-wrapper"
         *ngFor="let project of projects; let index = index"
         (mouseenter)="hoverIndex = index"
         (mouseleave)="deactivateShowcase(hoverIndex); hoverIndex = null"
+        [routerLink]="project.link"
       >
         <div
           class="project"
@@ -70,21 +71,9 @@
             <span>{{ project.role }}</span>
           </div>
 
-          <div class="project-role">
-            <a [href]="project.link">
-              <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
-            </a>
-          </div>
+          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
         </div>
-        <div class="row-hover" *ngIf="project.hover">
-          <div class="marquee-wrapper">
-            <div *ngFor="let i of [].constructor(20); let index = index" class="marquee-item">
-              {{ project.label }}
-              <app-svg-icon [path]="'assets/icons/link-arrow.svg'"></app-svg-icon>
-            </div>
-          </div>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </ng-template>

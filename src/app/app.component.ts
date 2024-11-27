@@ -63,7 +63,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         // Let cover animation cover the screen in 1s
         // Allow 200ms delay where the cover is over top of the screen
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          if (!this._service.isPopState) {
+            window.scrollTo(0, 0);
+          }
           if (this._service.isInitialLoad && !this.newRouteName) {
             this.pageInit();
           } else {

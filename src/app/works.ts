@@ -1,7 +1,7 @@
 export const works = [
   {
     label: "MADDIE WEST EVENTS",
-    index: 1,
+    index: 0,
     description:
       "Maddie West Events is a wedding coordination and event planning business based out of Dayton, OH. Maddie wanted a custom website created to capture her brand and provide a unique experience that would leave a lasting impact.",
     role: "Design + Dev | Freelance",
@@ -11,7 +11,7 @@ export const works = [
   },
   {
     label: "FIRESHARE",
-    index: 0,
+    index: 1,
     description:
       "Fireshare is a cutting-edge automotive repair management platform designed to transform the auto care industry. It provides essential tools that auto shops rely on daily, making it easy to manage appointments, access comprehensive service records, and leverage data analytics to optimize shop performance.",
     role: "Technical lead | Commercial",

@@ -1,6 +1,6 @@
 export const Fireshare = {
   id: "fireshare",
-  index: 0,
+  index: 1,
   projectName: "FIRESHARE",
   titleText: "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
   headerMockup: "../../assets/fireshare/mockup.webp",

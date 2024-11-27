@@ -18,8 +18,8 @@ import { Subscription } from "rxjs";
   styleUrl: "./freelance.component.scss",
 })
 export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
-  themeService = inject(ThemeService);
-  route = inject(ActivatedRoute);
+  private readonly _service = inject(ThemeService);
+  private readonly _route = inject(ActivatedRoute);
   initPageSubscription: Subscription = null as any;
   timeline: gsap.core.Timeline = null as any;
   animations: gsap.core.Tween[] = [];
@@ -32,30 +32,40 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.mediaQueryMatch = window.innerWidth <= 768;
-    this.route.paramMap.subscribe((params) => {
+    this._route.paramMap.subscribe((params) => {
       const projectId = params.get("projectId");
       this.project = this.projects.find((x: any) => x.id === projectId);
     });
 
-    this.initPageSubscription = this.themeService.initPage$.subscribe(() => {
+    this.initPageSubscription = this._service.initPage$.subscribe(() => {
+      this.clearAnimations();
+      this.timeline = gsap.timeline({ delay: 0.4 });
+
+      if (!this._service.isPopState) {
+        this.timeline.fromTo("#project-name-top", { x: -800 }, { x: -200, duration: 6, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#project-name-top", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#project-name-bottom", { x: -200 }, { x: -800, duration: 6, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#project-name-bottom", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#mockup", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1 }, 1);
+      }
+
       this.init();
+      ScrollTrigger.refresh();
     });
   }
 
   init(): void {
-    this.clearAnimations();
-    this.timeline = gsap.timeline({ delay: 0.4 });
-    this.timeline.fromTo("#project-name-top", { x: -800 }, { x: -200, duration: 6, ease: "power2.out" }, 0);
-    this.timeline.fromTo("#project-name-top", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
-    this.timeline.fromTo("#project-name-bottom", { x: -200 }, { x: -800, duration: 6, ease: "power2.out" }, 0);
-    this.timeline.fromTo("#project-name-bottom", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
-    this.timeline.fromTo("#mockup", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1 }, 1);
     this.timeline.fromTo(
       "#mockup-wrapper",
       { y: "0" },
       {
         y: "-200",
-        scrollTrigger: { trigger: ".gsap-scroll-reference", start: "bottom bottom", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: ".gsap-scroll-reference",
+          start: "bottom bottom",
+          end: "bottom top",
+          scrub: true,
+        },
       }
     );
 
