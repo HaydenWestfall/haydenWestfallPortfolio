@@ -131,6 +131,7 @@
 }
 
 .project-information-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -142,6 +143,7 @@
   .project-information-header {
     display: flex;
     flex-direction: column;
+    transition: color 0.25s ease;
 
     .header {
       display: flex;
@@ -172,6 +174,17 @@
     }
   }
 
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #000000;
+    transition: width 0.6s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
   .project-information-footer {
     display: flex;
     justify-content: space-between;
@@ -182,6 +195,10 @@
       font-size: 0.75rem;
     }
   }
+}
+
+.enable-hover::after {
+  width: 100%; /* Desired width */
 }
 
 @media screen and (max-width: 1000px) {

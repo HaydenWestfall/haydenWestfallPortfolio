@@ -8,17 +8,19 @@
 <ng-template #singleShowcase let-section>
   <div id="project-wrapper">
     <a class="project-link" *ngFor="let project of projects; let index = index" [routerLink]="project.link">
-      <div
-        class="showcase single"
-        appIntersection
-        #intersection="intersection"
-        (isIntersecting)="isIntersecting($event, index)"
-      >
-        <div class="focused-project focus" [attr.id]="'showcase-' + index" [class.focus]="intersection._isIntersecting">
-          <img [src]="project.showcase" [class.focus]="intersection._isIntersecting" />
+      <div class="showcase single">
+        <div class="focused-project focus" [attr.id]="'showcase-' + index">
+          <img [src]="project.showcase" class="focus" />
         </div>
       </div>
-      <div class="project-information-wrapper">
+      <div
+        class="project-information-wrapper"
+        (mouseenter)="hoverIndex = index"
+        (mouseleave)="hoverIndex = null"
+        [ngClass]="{
+          'enable-hover': hoverIndex === index
+        }"
+      >
         <div class="project-information-header">
           <div class="header">
             <span>{{ project.label }}</span>
@@ -46,6 +48,7 @@
       >
         <img
           [src]="project.showcase"
+          loading="lazy"
           [ngStyle]="{
             transform: index === hoverIndex ? 'scale(1)' : 'scale(1.4)'
           }"

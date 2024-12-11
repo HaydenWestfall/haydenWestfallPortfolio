@@ -427,7 +427,7 @@ h2 {
     gap: 8rem;
 
     .project-section {
-      padding: 0 1.25rem;
+      padding: 0;
     }
 
     .project-flex-column {
@@ -455,6 +455,10 @@ h2 {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+      }
+
+      .mobile-text-section {
+        padding: 0 1.25rem;
       }
     }
 
