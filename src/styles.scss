@@ -21,15 +21,14 @@ body {
 
 @font-face {
   font-family: "didot-italic";
-  src: url(./assets/font/didot-italic.ttf);
-  font-weight: 500;
+  src: url(./assets/font/didot-italic.woff2) format("woff2");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "helios-antique";
-  src: url(./assets/font/Helios-Antique-Medium.otf) format("opentype");
+  src: url(./assets/font/Helios-Antique-Medium.woff2) format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -37,7 +36,7 @@ body {
 
 @font-face {
   font-family: "hebrew-condensed";
-  src: url(./assets/font/OpenSansHebrewCondensed-Regular.ttf);
+  src: url(./assets/font/OpenSansHebrewCondensed-Regular.woff2) format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -45,7 +44,7 @@ body {
 
 @font-face {
   font-family: "hebrew-condensed";
-  src: url(./assets/font/OpenSansHebrewCondensed-Bold.ttf);
+  src: url(./assets/font/OpenSansHebrewCondensed-Bold.woff2) format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -53,7 +52,7 @@ body {
 
 @font-face {
   font-family: "heathergreen";
-  src: url(./assets/font/Heathergreen.otf) format("opentype");
+  src: url(./assets/font/Heathergreen.woff2) format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;

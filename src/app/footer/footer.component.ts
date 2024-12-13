@@ -1,7 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, HostListener, inject, OnInit } from "@angular/core";
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from "@angular/router";
-import { gsap, Power2 } from "gsap";
-import Draggable from "gsap/Draggable";
+import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 @Component({

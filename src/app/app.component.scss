@@ -46,6 +46,22 @@ html.lenis body {
   }
 }
 
+.animateCover {
+  transition: transform 1s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.initial {
+  transform: translateY(100%);
+}
+
+.show {
+  transform: translateY(0);
+}
+
+.hide {
+  transform: translateY(calc(-100% - 10rem));
+}
+
 @media only screen and (max-width: 768px) {
   .cover-container {
     .route-text {
