@@ -271,7 +271,9 @@ $page-padding: 2rem;
       }
 
       .superscript {
-        font-size: 0.5rem;
+        font-size: 0.65rem;
+        margin-right: 0.3rem;
+        color: gray;
       }
 
       p {
@@ -349,7 +351,7 @@ $page-padding: 2rem;
 
             .description {
               font-family: "Open sans";
-              font-size: 0.9rem;
+              font-size: 0.95rem;
             }
 
             .expiration {
@@ -467,7 +469,7 @@ $page-padding: 2rem;
         &.technology-wrapper {
           .technology-row {
             .technology {
-              width: 7.75rem;
+              width: 50%;
             }
           }
         }
@@ -476,7 +478,6 @@ $page-padding: 2rem;
           .accolade {
             .accolade-info {
               .description {
-                font-size: 0.7rem;
               }
             }
           }
@@ -530,7 +531,7 @@ $page-padding: 2rem;
     padding: 0;
 
     #about-section {
-      padding: 6rem 1.25rem;
+      padding: 6rem 1.25rem 2rem;
       flex-direction: column-reverse;
       gap: 3rem;
       min-width: unset;
@@ -611,6 +612,19 @@ $page-padding: 2rem;
         width: 100%;
         max-width: 100%;
 
+        span {
+          font-size: 1.275rem;
+        }
+
+        .superscript {
+          display: none;
+        }
+
+        p {
+          font-size: 0.95rem;
+          line-height: 2.2rem;
+        }
+
         &.wide {
           width: 100%;
           max-width: 100%;
@@ -626,7 +640,7 @@ $page-padding: 2rem;
 
           .technology-row {
             width: 100%;
-            justify-content: space-around;
+            justify-content: unset;
           }
         }
 
@@ -640,15 +654,19 @@ $page-padding: 2rem;
 
             .accolade-info {
               height: unset;
-              padding-left: 1.25rem;
+              padding-left: 0;
               gap: 1rem;
 
               .description {
-                line-height: 1.4rem;
+                line-height: 1.6rem;
                 text-align: start;
               }
             }
           }
+        }
+
+        .life-images {
+          height: 100%;
         }
 
         &.wide {

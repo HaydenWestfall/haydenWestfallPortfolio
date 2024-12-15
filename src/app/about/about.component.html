@@ -96,9 +96,9 @@
     <div class="list-section grouped" *ngFor="let certificate of certifications; let index = index">
       <div class="left-col">
         <span>
-          <span class="superscript">/0{{ index + 1 }}</span
-          >&nbsp; {{ certificate.name }}</span
-        >
+          <span class="superscript">/0{{ index + 1 }}</span>
+          {{ certificate.name }}
+        </span>
       </div>
 
       <div class="right-col accolade-wrapper">
@@ -138,7 +138,7 @@
 
       <div class="right-col wide">
         <div class="life-images">
-          <img loading="lazy" src="../../assets/about/1.webp" />
+          <img loading="eager" src="../../assets/about/1.webp" />
           <img loading="lazy" src="../../assets/about/2.webp" />
           <img loading="lazy" src="../../assets/about/3.webp" />
           <img loading="lazy" src="../../assets/about/4.webp" />

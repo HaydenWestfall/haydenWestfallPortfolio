@@ -16,7 +16,7 @@ body {
   padding: 0;
   background-color: #1d1d20;
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  // scrollbar-width: none; /* Firefox */
 }
 
 @font-face {
@@ -58,9 +58,9 @@ body {
   font-display: swap;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 section {
   background-color: white;
