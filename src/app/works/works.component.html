@@ -1,7 +1,8 @@
 <section>
   <div id="works-header" class="section-wrapper">
     <span id="title-text">
-      <span>MY LATEST PROFESSIONAL & <br />FREELANCE WORK</span>
+      <span id="desktop-text">MY LATEST PROFESSIONAL & <br />FREELANCE WORK</span>
+      <span id="mobile-text"> MY LATEST FREELANCE <br />& PROFESSIONAL<br />WORK </span>
     </span>
 
     <div id="header-accent" class="header-accent">
@@ -9,11 +10,13 @@
         <div class="text text-style">SEE WHAT I'VE BEEN WORKING ON</div>
       </div>
 
-      <div id="rotating-text">
-        <div id="micro-animation-wrapper">
-          <app-svg-icon id="micro-animation" [path]="'../../assets/icons/curve text.svg'"></app-svg-icon>
+      <div id="rotating-text-wrapper">
+        <div id="rotating-text">
+          <div id="micro-animation-wrapper">
+            <app-svg-icon id="micro-animation" [path]="'../../assets/icons/curve text.svg'"></app-svg-icon>
+          </div>
+          <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
         </div>
-        <app-svg-icon id="spark" [path]="'../../assets/icons/spark.svg'"></app-svg-icon>
       </div>
     </div>
   </div>
@@ -21,6 +24,6 @@
 
 <section>
   <div class="section-wrapper" id="works-wrapper">
-    <app-showcase [multi]="false" [projects]="featuredProjects"></app-showcase>
+    <app-single-showcase [projects]="showcaseProjects" />
   </div>
 </section>

@@ -5,9 +5,10 @@
   justify-content: center;
   background-color: white;
   gap: 2rem;
-  max-width: 80rem;
+  max-width: 64rem;
   width: 90%;
   padding: 12rem 4rem 0;
+  height: fit-content;
 
   #title-text {
     font-size: 4.2rem;
@@ -21,6 +22,14 @@
       font-size: inherit;
       line-height: inherit;
       font-weight: inherit;
+
+      &#desktop-text {
+        display: unset;
+      }
+
+      &#mobile-text {
+        display: none;
+      }
     }
   }
 
@@ -31,9 +40,11 @@
   }
 
   .header-accent {
-    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
+    height: 10rem;
+    width: 100%;
     gap: 5rem;
 
     #accent-border {
@@ -57,40 +68,49 @@
       }
     }
 
-    #rotating-text {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10rem;
-      width: 10rem;
+    #rotating-text-wrapper {
+      position: absolute;
+      right: 2.5rem;
+      padding: 0 1rem;
+      background-color: white;
+      height: fit-content;
+      width: fit-content;
       z-index: 5;
 
-      #micro-animation-wrapper {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 100%;
-        width: 100%;
+      #rotating-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        width: 10rem;
+        z-index: 5;
 
-        #micro-animation {
-          background-color: black;
+        #micro-animation-wrapper {
+          position: absolute;
+          left: 0;
+          right: 0;
           height: 100%;
           width: 100%;
-        }
-      }
 
-      #spark {
-        background-color: black;
-        height: 55%;
-        width: 55%;
+          #micro-animation {
+            background-color: black;
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        #spark {
+          background-color: black;
+          height: 55%;
+          width: 55%;
+        }
       }
     }
   }
 }
 
 #works-wrapper {
-  max-width: 80rem;
+  max-width: 64rem;
   width: 90%;
   padding: 6rem 4rem 4rem;
   min-height: 50rem;
@@ -108,22 +128,66 @@
 
   #works-wrapper {
     width: 100%;
+
+    .project-link {
+      padding: 0;
+    }
+
+    .project-information-wrapper {
+      padding: 1.75rem 1rem;
+
+      .project-information-header {
+        .header {
+          span {
+            font-size: 1.75rem;
+          }
+
+          app-svg-icon {
+            height: 1.2rem;
+            width: 1.2rem;
+          }
+        }
+
+        .description {
+          font-size: 0.75rem;
+          max-width: 100%;
+        }
+      }
+
+      .project-information-footer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: #969696;
+
+        span {
+          font-size: 0.75rem;
+        }
+      }
+    }
   }
 }
 
 @media only screen and (max-width: 768px) {
   #works-header {
-    padding: 7rem 1.25rem 0;
-    gap: 2.5rem;
+    padding: 12rem 1.25rem 0;
+    gap: 0;
     min-width: unset;
     width: 100%;
 
     #title-text {
-      font-size: 2.75rem;
-      line-height: 3.25rem;
+      font-size: 2.4rem;
+      line-height: 2.9rem;
+      margin-bottom: -1.25rem;
 
-      #rolling-break {
-        display: unset;
+      span {
+        &#desktop-text {
+          display: none;
+        }
+
+        &#mobile-text {
+          display: unset;
+        }
       }
     }
 
@@ -137,23 +201,26 @@
         }
       }
 
-      #rotating-text {
-        height: 9rem;
-        width: 9rem;
-        background-color: white;
-        position: absolute;
-        right: 1rem;
+      #rotating-text-wrapper {
+        padding: 0 0 0 1rem;
+        right: 0;
+
+        #rotating-text {
+          height: 9rem;
+          width: 9rem;
+          position: relative;
+        }
       }
     }
   }
 
   section {
     max-width: 100%;
-  }
 
-  #works-wrapper {
-    padding: 6rem 1.25rem 0;
-    min-width: unset;
-    width: 100%;
+    #works-wrapper {
+      padding: 6rem 1.25rem 0;
+      min-width: unset;
+      width: 100%;
+    }
   }
 }

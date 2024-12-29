@@ -17,7 +17,9 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   animationFrameId: number | null = null;
   rotatePos = 0;
   scrollTimeline = gsap.timeline({});
-  featuredProjects = works;
+
+  showcaseProjects = works;
+  hoverIndex: number | null = null;
 
   ngAfterViewInit(): void {
     this.initPageSubscription = this._service.initPage$.subscribe(() => {
@@ -59,7 +61,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   animate = () => {
     gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
     this.animationFrameId = requestAnimationFrame(this.animate);
-    this.rotatePos += 0.1;
+    this.rotatePos += 0.2;
   };
 
   isIntersecting(status: boolean, index: number) {}

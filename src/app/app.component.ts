@@ -1,19 +1,15 @@
 import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
 import {
-  ActivatedRoute,
   NavigationCancel,
   NavigationEnd,
   NavigationError,
   NavigationStart,
   Router,
   RouterOutlet,
-  Scroll,
 } from "@angular/router";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-import { coverAnimation, routeAnimation } from "./animations";
-import Draggable from "gsap/Draggable";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ThemeService } from "./services/theme.service";
 
@@ -21,7 +17,6 @@ import { ThemeService } from "./services/theme.service";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
-  animations: [routeAnimation, coverAnimation],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   showCover = true;
@@ -45,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     requestAnimationFrame(raf);
 
-    gsap.registerPlugin(ScrollTrigger, Draggable);
+    gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CustomEase);
     CustomEase.create("myCustomEase", "M0,0 C0.87,0 0.13,1 1,1");
     CustomEase.create("myCustomEaseOut", "M0,0 C0.13,0 0.87,1 1,1");
@@ -73,6 +68,9 @@ export class AppComponent implements OnInit, AfterViewInit {
             this.coverState = "hide";
             this._service.notifyChange();
             this._service.isInitialLoad = false;
+            setTimeout(() => {
+              this.resetCover();
+            }, 1000);
           }
           this._service.isPopState = false;
           ScrollTrigger.refresh();
@@ -90,7 +88,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.newRouteName = "";
     await this.spellWord("//\\/\\/");
 
-    // Ensure her image is loaded before hiding cover animation
+    // Ensure hero image is loaded before hiding cover animation
     this.waitForImageLoad().then(() => {
       this.heroImageLoaded = true;
       if (this.coverAnimationTimedOut) {
@@ -107,6 +105,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.coverState = "hide";
         this._service.notifyChange();
         this._service.isInitialLoad = false;
+        setTimeout(() => {
+          this.resetCover();
+        }, 1000);
       }
     }, 750);
   }
@@ -140,8 +141,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * If the cover animation is in the hide state. remove the animation property and
+   * drop the cover animation down off screen bottom and then re add the animation
+   * property.
+   */
   resetCover(): void {
-    if (this.coverState === "hide") this.coverState = "initial";
+    if (this.coverState === "hide") {
+      document.getElementById("coverContainer")?.classList.remove("animateCover");
+      console.log(document.getElementById("coverContainer")?.classList);
+      this.coverState = "initial";
+      setTimeout(() => {
+        document.getElementById("coverContainer")?.classList.add("animateCover");
+      }, 50);
+    }
   }
 
   prepareRoute(outlet: RouterOutlet) {

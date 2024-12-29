@@ -25,7 +25,7 @@ html.lenis body {
   left: 0;
   width: 100%;
   height: calc(100% + 10rem);
-  background: rgb(32, 32, 32);
+  background-color: #1d1d20;
   z-index: 10000;
   overflow: hidden;
 
@@ -44,6 +44,22 @@ html.lenis body {
     height: 2.3rem;
     padding-bottom: 10rem;
   }
+}
+
+.animateCover {
+  transition: transform 1s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.initial {
+  transform: translateY(100%);
+}
+
+.show {
+  transform: translateY(0);
+}
+
+.hide {
+  transform: translateY(calc(-100% - 10rem));
 }
 
 @media only screen and (max-width: 768px) {

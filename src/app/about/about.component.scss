@@ -7,7 +7,7 @@ $page-padding: 2rem;
   justify-content: center;
   background-color: white;
   gap: 2rem;
-  max-width: 80rem;
+  max-width: 60rem;
   width: 90%;
   padding: 12rem 2rem 0;
 
@@ -40,9 +40,11 @@ $page-padding: 2rem;
   }
 
   .header-accent {
-    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
+    height: 10rem;
+    width: 100%;
     gap: 5rem;
 
     #accent-border {
@@ -66,33 +68,42 @@ $page-padding: 2rem;
       }
     }
 
-    #rotating-text {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10rem;
-      width: 10rem;
+    #rotating-text-wrapper {
+      position: absolute;
+      right: 2.5rem;
+      padding: 0 1rem;
+      background-color: white;
+      height: fit-content;
+      width: fit-content;
       z-index: 5;
 
-      #micro-animation-wrapper {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 100%;
-        width: 100%;
+      #rotating-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        width: 10rem;
+        z-index: 5;
 
-        #micro-animation {
-          background-color: black;
+        #micro-animation-wrapper {
+          position: absolute;
+          left: 0;
+          right: 0;
           height: 100%;
           width: 100%;
-        }
-      }
 
-      #spark {
-        background-color: black;
-        height: 55%;
-        width: 55%;
+          #micro-animation {
+            background-color: black;
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        #spark {
+          background-color: black;
+          height: 55%;
+          width: 55%;
+        }
       }
     }
   }
@@ -111,7 +122,7 @@ $page-padding: 2rem;
     position: relative;
     width: 90%;
     gap: clamp(4rem, 6vw, 8rem);
-    max-width: 80rem;
+    max-width: 60rem;
     padding: 6rem 2rem 0;
 
     #about {
@@ -271,7 +282,9 @@ $page-padding: 2rem;
       }
 
       .superscript {
-        font-size: 0.5rem;
+        font-size: 0.65rem;
+        margin-right: 0.3rem;
+        color: gray;
       }
 
       p {
@@ -348,8 +361,7 @@ $page-padding: 2rem;
             height: 90%;
 
             .description {
-              font-family: "Open sans";
-              font-size: 0.9rem;
+              font-size: 0.95rem;
             }
 
             .expiration {
@@ -365,7 +377,7 @@ $page-padding: 2rem;
         display: flex;
         width: 100%;
         height: 100%;
-        height: 50vw;
+        // height: 50vw;
 
         img {
           width: 100%;
@@ -467,7 +479,7 @@ $page-padding: 2rem;
         &.technology-wrapper {
           .technology-row {
             .technology {
-              width: 7.75rem;
+              width: 50%;
             }
           }
         }
@@ -476,7 +488,6 @@ $page-padding: 2rem;
           .accolade {
             .accolade-info {
               .description {
-                font-size: 0.7rem;
               }
             }
           }
@@ -488,14 +499,15 @@ $page-padding: 2rem;
 
 @media screen and (max-width: 768px) {
   #about-header {
-    padding: 7rem 1.25rem 0;
-    gap: 1rem;
+    padding: 12rem 1.25rem 0;
+    gap: 0;
     min-width: unset;
     width: 100%;
 
     #title-text {
-      font-size: 2.5rem;
-      line-height: 3.25rem;
+      font-size: 2.4rem;
+      line-height: 3rem;
+      margin-bottom: -1rem;
 
       #rolling-break {
         display: unset;
@@ -516,12 +528,15 @@ $page-padding: 2rem;
         }
       }
 
-      #rotating-text {
-        height: 9rem;
-        width: 9rem;
-        background-color: white;
-        position: absolute;
-        right: 1rem;
+      #rotating-text-wrapper {
+        padding: 0 0 0 1rem;
+        right: 0;
+
+        #rotating-text {
+          height: 9rem;
+          width: 9rem;
+          position: relative;
+        }
       }
     }
   }
@@ -530,7 +545,7 @@ $page-padding: 2rem;
     padding: 0;
 
     #about-section {
-      padding: 6rem 1.25rem;
+      padding: 6rem 1.25rem 2rem;
       flex-direction: column-reverse;
       gap: 3rem;
       min-width: unset;
@@ -611,6 +626,19 @@ $page-padding: 2rem;
         width: 100%;
         max-width: 100%;
 
+        span {
+          font-size: 1.275rem;
+        }
+
+        .superscript {
+          display: none;
+        }
+
+        p {
+          font-size: 0.95rem;
+          line-height: 1.6rem;
+        }
+
         &.wide {
           width: 100%;
           max-width: 100%;
@@ -626,7 +654,7 @@ $page-padding: 2rem;
 
           .technology-row {
             width: 100%;
-            justify-content: space-around;
+            justify-content: unset;
           }
         }
 
@@ -640,15 +668,19 @@ $page-padding: 2rem;
 
             .accolade-info {
               height: unset;
-              padding-left: 1.25rem;
+              padding-left: 0;
               gap: 1rem;
 
               .description {
-                line-height: 1.4rem;
+                line-height: 1.6rem;
                 text-align: start;
               }
             }
           }
+        }
+
+        .life-images {
+          height: 100%;
         }
 
         &.wide {

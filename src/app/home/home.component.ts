@@ -113,7 +113,7 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
         end: window.innerHeight,
         onUpdate: (e) => (this.direction = e.direction * -1),
       },
-      x: "-500px",
+      x: window.innerWidth <= 768 ? "-300px" : "-500px",
     });
 
     this.primaryRole = document.getElementById("role-primary");

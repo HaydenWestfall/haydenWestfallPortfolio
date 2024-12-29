@@ -1,0 +1,41 @@
+<div id="work">
+  <div class="showcase" *ngIf="!below768Pixels">
+    <div
+      class="focused-project"
+      *ngFor="let project of projects; let index = index"
+      [ngClass]="{ focus: index === hoverIndex }"
+      [attr.id]="'showcase-' + index"
+    >
+      <img
+        [src]="project.showcase"
+        loading="lazy"
+        [ngStyle]="{
+          transform: index === hoverIndex ? 'scale(1)' : 'scale(1.4)'
+        }"
+      />
+    </div>
+  </div>
+  <div class="featured-projects">
+    <a
+      class="project-wrapper"
+      *ngFor="let project of projects; let index = index"
+      (mouseenter)="hoverIndex = index"
+      (mouseleave)="deactivateShowcase(hoverIndex); hoverIndex = null"
+      [routerLink]="project.link"
+    >
+      <div
+        class="project"
+        [ngClass]="{
+          'enable-hover': hoverIndex === index
+        }"
+      >
+        <div class="title">
+          <span>{{ project.label }}</span>
+          <span>{{ project.role }}</span>
+        </div>
+
+        <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+      </div>
+    </a>
+  </div>
+</div>

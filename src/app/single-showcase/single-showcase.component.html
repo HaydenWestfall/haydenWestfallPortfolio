@@ -1,0 +1,29 @@
+<div id="project-wrapper" [ngStyle]="{ 'padding-bottom': projects.length > 1 ? '5rem' : '0' }">
+  <a class="project-link" *ngFor="let project of projects; let index = index" [routerLink]="project.link">
+    <div class="showcase single">
+      <div class="focused-project focus" [attr.id]="'showcase-' + index">
+        <img [src]="project.showcase" loading="eager" class="focus" />
+      </div>
+    </div>
+    <div
+      class="project-information-wrapper"
+      (mouseenter)="hoverIndex = index"
+      (mouseleave)="hoverIndex = null"
+      [ngClass]="{
+        'enable-hover': hoverIndex === index
+      }"
+    >
+      <div class="project-information-header">
+        <div class="header">
+          <span>{{ project.label }}</span>
+          <app-svg-icon [path]="'assets/icons/link-arrow.svg'" class="lg light"></app-svg-icon>
+        </div>
+        <span class="description">{{ project.description }}</span>
+      </div>
+      <div class="project-information-footer">
+        <span>{{ project.role }}</span>
+        <span>0{{ project.index + 1 }}. / 0{{ allWorks.length }}.</span>
+      </div>
+    </div>
+  </a>
+</div>

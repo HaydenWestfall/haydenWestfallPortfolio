@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -14,9 +13,10 @@ import { ParallaxButtonDirective } from "./directives/parallax-button.directive"
 import { WorksComponent } from "./works/works.component";
 import { IntersectionDirective } from "./directives/intersection.directive";
 import { FreelanceComponent } from "./freelance/freelance.component";
-import { ShowcaseComponent } from "./showcase/showcase.component";
+import { MultiShowcaseComponent } from "./multi-showcase/multi-showcase.component";
 import { HideOnScrollDirective } from "./directives/hide-on-scroll.directive";
 import { ContactComponent } from "./contact/contact.component";
+import { SingleShowcaseComponent } from "./single-showcase/single-showcase.component";
 
 @NgModule({
   declarations: [
@@ -31,11 +31,12 @@ import { ContactComponent } from "./contact/contact.component";
     WorksComponent,
     IntersectionDirective,
     FreelanceComponent,
-    ShowcaseComponent,
+    MultiShowcaseComponent,
     HideOnScrollDirective,
     WorksComponent,
+    SingleShowcaseComponent,
   ],
-  imports: [BrowserAnimationsModule, FormsModule, RouterOutlet, BrowserModule, AppRoutingModule, FormsModule],
+  imports: [FormsModule, RouterOutlet, BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
