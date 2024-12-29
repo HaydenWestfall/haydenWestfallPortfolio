@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowcaseComponent } from './showcase.component';
+import { SingleShowcaseComponent } from './single-showcase.component';
 
-describe('ShowcaseComponent', () => {
-  let component: ShowcaseComponent;
-  let fixture: ComponentFixture<ShowcaseComponent>;
+describe('SingleShowcaseComponent', () => {
+  let component: SingleShowcaseComponent;
+  let fixture: ComponentFixture<SingleShowcaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ShowcaseComponent]
+      declarations: [SingleShowcaseComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShowcaseComponent);
+    fixture = TestBed.createComponent(SingleShowcaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

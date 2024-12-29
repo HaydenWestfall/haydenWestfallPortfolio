@@ -2,11 +2,11 @@ import { Component, HostListener, Input, OnInit } from "@angular/core";
 import { works } from "../works";
 
 @Component({
-  selector: "app-showcase",
-  templateUrl: "./showcase.component.html",
-  styleUrl: "./showcase.component.scss",
+  selector: "app-multi-showcase",
+  templateUrl: "./multi-showcase.component.html",
+  styleUrl: "./multi-showcase.component.scss",
 })
-export class ShowcaseComponent implements OnInit {
+export class MultiShowcaseComponent implements OnInit {
   @Input("multi") multi: boolean = false;
   @Input("projects") projects: any = [];
 

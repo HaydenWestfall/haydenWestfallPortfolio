@@ -214,7 +214,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.scrollTimeline.fromTo(
       "#about-headshot",
-      { y: window.innerWidth >= 768 ? "-300px" : "-250px" },
+      { y: window.innerWidth >= 768 ? "-300px" : "-200px" },
       {
         y: window.innerWidth >= 768 ? "0" : "-100px",
         scrollTrigger: {
@@ -323,7 +323,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   animate = () => {
     gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
     this.animationFrameId = requestAnimationFrame(this.animate);
-    this.rotatePos += 0.25;
+    this.rotatePos += 0.2;
   };
 
   setupImageRotationTimeline() {

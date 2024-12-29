@@ -13,9 +13,10 @@ import { ParallaxButtonDirective } from "./directives/parallax-button.directive"
 import { WorksComponent } from "./works/works.component";
 import { IntersectionDirective } from "./directives/intersection.directive";
 import { FreelanceComponent } from "./freelance/freelance.component";
-import { ShowcaseComponent } from "./showcase/showcase.component";
+import { MultiShowcaseComponent } from "./multi-showcase/multi-showcase.component";
 import { HideOnScrollDirective } from "./directives/hide-on-scroll.directive";
 import { ContactComponent } from "./contact/contact.component";
+import { SingleShowcaseComponent } from "./single-showcase/single-showcase.component";
 
 @NgModule({
   declarations: [
@@ -30,9 +31,10 @@ import { ContactComponent } from "./contact/contact.component";
     WorksComponent,
     IntersectionDirective,
     FreelanceComponent,
-    ShowcaseComponent,
+    MultiShowcaseComponent,
     HideOnScrollDirective,
     WorksComponent,
+    SingleShowcaseComponent,
   ],
   imports: [FormsModule, RouterOutlet, BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

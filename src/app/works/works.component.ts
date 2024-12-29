@@ -61,7 +61,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   animate = () => {
     gsap.set(document.getElementById("micro-animation"), { rotate: this.rotatePos });
     this.animationFrameId = requestAnimationFrame(this.animate);
-    this.rotatePos += 0.25;
+    this.rotatePos += 0.2;
   };
 
   isIntersecting(status: boolean, index: number) {}

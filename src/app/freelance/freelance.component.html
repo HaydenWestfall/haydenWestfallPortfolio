@@ -43,21 +43,21 @@
       </ng-container>
     </ng-container>
 
-    <div class="section-wrapper project-section next-project-wrapper">
-      <h6>UP NEXT</h6>
-      <section id="project-wrapper">
-        <app-showcase
-          style="max-width: 100%"
-          [multi]="false"
-          [projects]="[projectShowcases[project.index < projectShowcases.length - 1 ? project.index + 1 : 0]]"
-        ></app-showcase>
-      </section>
+    <div class="section-wrapper project-section project-flex-column">
+      <div class="next-project-wrapper">
+        <h6>UP NEXT</h6>
+        <section id="project-wrapper">
+          <app-single-showcase
+            [projects]="[projectShowcases[project.index < projectShowcases.length - 1 ? project.index + 1 : 0]]"
+          />
+        </section>
+      </div>
     </div>
   </section>
 </div>
 
 <ng-template #projectHeader let-section>
-  <div class="section-wrapper project-section project-flex-column">
+  <div class="section-wrapper project-section project-flex-column" style="padding: 0 1.25rem">
     <div class="text-section">
       <div class="section-header">
         {{ project.projectName }}
@@ -98,7 +98,7 @@
   </div>
 </ng-template>
 <ng-template #subSection let-section>
-  <div [attr.id]="section.id" class="section-wrapper project-section project-flex-column">
+  <div [attr.id]="section.id" class="section-wrapper project-section project-flex-column" style="padding: 0 1.25rem">
     <div class="text-section">
       <div class="section-header sub-header">
         {{ section.title }}
@@ -132,7 +132,7 @@
 </ng-template>
 <ng-template #designAndMarketing let-section>
   <div id="design_marketing" class="accent-section">
-    <div class="section-wrapper project-section project-flex-column">
+    <div class="section-wrapper project-section project-flex-column" style="padding: 0 1.25rem">
       <div class="text-section">
         <span class="section-header accent-border sub-header">{{ section.title }}</span>
         <p class="section-description" *ngFor="let desc of section.description">{{ desc }}</p>
