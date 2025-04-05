@@ -1,8 +1,8 @@
 <div id="project-wrapper" [ngStyle]="{ 'padding-bottom': projects.length > 1 ? '5rem' : '0' }">
   <a class="project-link" *ngFor="let project of projects; let index = index" [routerLink]="project.link">
     <div class="showcase single">
-      <div class="focused-project focus" [attr.id]="'showcase-' + index">
-        <img [src]="project.showcase" loading="eager" class="focus" />
+      <div class="showcase-wrapper">
+        <img *ngFor="let showcase of project.showcaseImages" [src]="showcase" alt="" loading="lazy" />
       </div>
     </div>
     <div

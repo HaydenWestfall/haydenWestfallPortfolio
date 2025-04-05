@@ -13,7 +13,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 7rem;
     height: fit-content;
     width: 100%;
     z-index: 1;
@@ -26,16 +26,16 @@
       align-items: center;
       justify-content: center;
       z-index: 4;
-      margin-top: 2rem;
+      margin-top: 0rem;
 
       #mockup {
-        height: 23rem;
+        height: 28rem;
       }
     }
 
     .project-name-reveal-wrapper {
       position: relative;
-      height: 12rem;
+      height: 12.5rem;
       width: 100%;
       overflow: hidden;
       z-index: 4;
@@ -47,7 +47,7 @@
         color: white;
         font-weight: 600;
         font-family: "heathergreen";
-        line-height: 12rem;
+        line-height: 12.5rem;
         white-space: pre;
       }
     }
@@ -71,13 +71,11 @@
 
       .project-info-wrapper {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.35rem;
         font-family: "Open Sans", sans-serif;
         color: white;
         width: calc(100% - 8rem);
         height: 6rem;
+        gap: 1rem;
 
         #title {
           border: 1px solid white;
@@ -87,12 +85,20 @@
           font-weight: 400;
           margin-bottom: 0.4rem;
           padding: 0.2rem 0.5rem;
+          height: fit-content;
+          padding-top: 0.2rem;
         }
 
-        #description {
-          font-size: 0.95rem;
-          font-weight: 400;
-          color: white;
+        #description-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          #description {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: white;
+          }
         }
       }
     }
@@ -405,15 +411,26 @@ h2 {
         max-width: 100vw;
         grid-template-columns: unset;
         grid-template-rows: repeat(3, 1fr);
+        gap: 2rem;
 
         .project-info-wrapper {
-          padding: 1rem 0;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           height: unset;
+          gap: 0.5rem;
 
           #title {
+            margin-bottom: 0;
+            font-size: 1;
           }
 
-          #description {
+          #description-wrapper {
+            #description {
+              text-align: center;
+              font-size: 1.25rem;
+              line-height: 1.4rem;
+            }
           }
         }
       }

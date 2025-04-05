@@ -4,13 +4,13 @@ export const Tradewave = {
   projectName: "TRADEWAVE",
   titleText:
     "TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE TRADEWAVE",
-  headerMockup: "../../assets/tradewave/mockup.webp",
+  headerMockup: "../../assets/tradewave/mockup.png",
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "Technical Lead"] },
     { title: "TECH STACK", description: ["Angular", "Spring Boot", "MongoDB", "Kubernetes"] },
   ],
-  bg: ["#27513D", "#122721"],
+  bg: ["#37957f", "#37957f"],
   fg: "#ffffff",
   sections: [
     {

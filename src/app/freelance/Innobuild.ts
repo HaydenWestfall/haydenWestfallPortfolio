@@ -1,16 +1,19 @@
 export const Innobuild = {
   id: "innobuild",
-  index: 3,
+  index: 4,
   projectName: "INNOBUILD",
   titleText:
     "INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD INNOBUILD",
-  headerMockup: "../../assets/innobuild/mockup.webp",
+  headerMockup: "../../assets/innobuild/mockup.png",
   headerInfo: [
-    { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
+    {
+      title: "SERVICES",
+      description: ["UI/UX Design/Development", "Backend Design/Development", "Devops (Kubernetes)"],
+    },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "Technical Lead"] },
-    { title: "TECH STACK", description: ["Angular", "Spring Boot", "MongoDB", "Kubernetes"] },
+    { title: "TECH STACK", description: ["Angular", "Spring Boot", "MongoDB"] },
   ],
-  bg: ["#273A51", "#122127"],
+  bg: ["#052d3b", "#052d3b"],
   fg: "#ffffff",
   sections: [
     {

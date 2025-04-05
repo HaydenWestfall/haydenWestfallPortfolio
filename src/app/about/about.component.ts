@@ -161,11 +161,11 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       expiration: "2024 - 2029",
     },
     {
-      name: "AWS CERTIFIED DEVELOPER",
-      image: "../../assets/about/aws.png",
+      name: "REACT MASTERCLASS CERTIFICATION",
+      image: "../../assets/about/react.png",
       description:
-        "My AWS Developer certificate gave me the foundational knowledge I needed to contribute to cloud deployments through Kubernetes.",
-      expiration: "2024",
+        "Obtaining my React certification was a strong introduction to the React ecosystem, providing a solid foundation that I’ve continued to build on through hands-on projects.",
+      expiration: "LIFETIME",
     },
   ];
 

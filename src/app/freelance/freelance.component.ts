@@ -11,6 +11,7 @@ import { Innobuild } from "./Innobuild";
 import { Fireshare } from "./Fireshare";
 import { works } from "../works";
 import { Subscription } from "rxjs";
+import { AlgoReads } from "./AlgoReads";
 
 @Component({
   selector: "app-freelance",
@@ -22,10 +23,9 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _route = inject(ActivatedRoute);
   initPageSubscription: Subscription = null as any;
   timeline: gsap.core.Timeline = null as any;
-  animations: gsap.core.Tween[] = [];
   mediaQueryMatch = false;
   projectShowcases = works;
-  projects = [Fireshare, Innobuild, MaddieWestEvents, MissLisaBooks, STF, Tradewave];
+  projects = [Fireshare, Innobuild, MaddieWestEvents, MissLisaBooks, STF, Tradewave, AlgoReads];
   project: any;
 
   ngOnInit(): void {}
@@ -35,6 +35,7 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
     this._route.paramMap.subscribe((params) => {
       const projectId = params.get("projectId");
       this.project = this.projects.find((x: any) => x.id === projectId);
+      console.log(this.project);
     });
 
     this.initPageSubscription = this._service.initPage$.subscribe(() => {
@@ -42,9 +43,9 @@ export class FreelanceComponent implements OnInit, AfterViewInit, OnDestroy {
       this.timeline = gsap.timeline({ delay: 0.4 });
 
       if (!this._service.isPopState) {
-        this.timeline.fromTo("#project-name-top", { x: -800 }, { x: -200, duration: 6, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#project-name-top", { x: -800 }, { x: -100, duration: 6, ease: "power2.out" }, 0);
         this.timeline.fromTo("#project-name-top", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
-        this.timeline.fromTo("#project-name-bottom", { x: -200 }, { x: -800, duration: 6, ease: "power2.out" }, 0);
+        this.timeline.fromTo("#project-name-bottom", { x: -100 }, { x: -800, duration: 6, ease: "power2.out" }, 0);
         this.timeline.fromTo("#project-name-bottom", { y: "100%" }, { y: 0, duration: 2, ease: "power2.out" }, 0);
         this.timeline.fromTo("#mockup", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1 }, 1);
       }

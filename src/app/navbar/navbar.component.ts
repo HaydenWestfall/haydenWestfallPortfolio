@@ -1,6 +1,7 @@
 import { Component, HostListener, inject, Input, OnInit } from "@angular/core";
 import { ThemeService } from "../services/theme.service";
 import { NavigationEnd, Router } from "@angular/router";
+import { works } from "../works";
 
 @Component({
   selector: "app-navbar",
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   navbarLinks = [
     { id: "about", label: "About", route: "/about" },
-    { id: "work", label: "Work", route: "/work", count: 6 },
+    { id: "work", label: "Work", route: "/work", count: works.length },
     { id: "contact", label: "Contact", route: "/contact" },
   ];
 
@@ -42,6 +43,7 @@ export class NavbarComponent implements OnInit {
           "/work/stf",
           "/work/fireshare",
           "/work/missLisaBooks",
+          "/work/algoReads",
         ].includes(url)
           ? "transparent-white"
           : "transparent-black";

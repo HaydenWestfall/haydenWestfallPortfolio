@@ -8,7 +8,7 @@ export const MaddieWestEvents = {
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Branding + Marketing", "Customer Communication"] },
     { title: "INDUSTRY / ROLE", description: ["Freelance", "Sole Designer", "Sole Developer"] },
-    { title: "TECH STACK", description: ["Javascript", "HTML / SCSS", "Custom Webpack Configuration"] },
+    { title: "TECH STACK", description: ["Tyepscript", "React"] },
   ],
   bg: ["#222222", "#323232"],
   fg: "#ffffff",
@@ -29,7 +29,7 @@ export const MaddieWestEvents = {
           template: "sub-section",
           description: [
             "Maddie West Events, a new wedding and event coordination company established in 2023. This project was both challenging and rewarding. Up until now, my career had focused primarily on designing analytic CRUD applications and modern, functional websites. Maddie West Events was a complete departure from my usual style and prior experience. Maddie was deeply involved in the design process and had a clear vision for what she wanted her website to embody.",
-            "This project also marked my first time building a site from scratch using vanilla JavaScript, HTML, and SCSS. I developed a custom Webpack configuration to optimize the build and incorporated the Lenis and GSAP libraries, which I’ve since used in many other projects. Both tools added a dynamic, visually engaging feel to the site that really brought Maddie's vision to life.",
+            "This project also marked my first time building a site from scratch using vanilla JavaScript, HTML, and SCSS. I developed a custom Webpack configuration to optimize the build and incorporated the Lenis and GSAP libraries. Although this deepened my knowledge of how web applications worked, I quickly unserstood why frameworks exist. I recently revisited the site and migrated it to a TypeScript React application. This upgrade modernized the codebase, improved maintainability, and allowed for more scalable component-driven development",
           ],
         },
       ],
@@ -43,8 +43,8 @@ export const MaddieWestEvents = {
       template: "mobile-section",
       title: "TECHNOLOGIES",
       description: [
-        "For this project, I chose to work with vanilla JavaScript, HTML, and SCSS, building everything from the ground up with a custom Webpack configuration. This approach was a significant undertaking compared to using a framework like React or Angular, which handle many aspects of the setup and build process automatically.",
-        "Developing without a framework gave me a deep understanding of how web applications are structured and optimized, from bundling assets to managing dependencies, but it also highlighted why frameworks exist—they save time and reduce complexity. While this experience was invaluable for learning about the underlying mechanics of modern web development, it's not something I’d recommend unless there’s a specific need. Frameworks are popular for good reason; they streamline development and allow you to focus on building features, rather than reinventing the wheel.",
+        "For this project, I initially chose to work with vanilla JavaScript, HTML, and SCSS, building everything from the ground up with a custom Webpack configuration. This approach was a significant undertaking compared to using a framework like React or Angular, which handle many aspects of the setup and build process automatically.",
+        "Developing without a framework gave me a deep understanding of how web applications are structured and optimized, from bundling assets to managing dependencies, but it also highlighted why frameworks exist—they save time and reduce complexity. While this experience was invaluable for learning about the underlying mechanics of modern web development, it's not something I’d recommend unless there’s a specific need. Frameworks are popular for good reason; they streamline development and allow you to focus on building features, rather than reinventing the wheel. This is ultimately why I revisted this project and converted the code base to Typescript/React.",
       ],
       imgs: [
         "../../assets/maddieWestEvents/iphone_design_1.webp",

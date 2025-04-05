@@ -7,10 +7,12 @@
       [attr.id]="'showcase-' + index"
     >
       <img
-        [src]="project.showcase"
+        *ngFor="let showcase of project.showcaseImages"
+        [src]="showcase"
+        alt=""
         loading="lazy"
         [ngStyle]="{
-          transform: index === hoverIndex ? 'scale(1)' : 'scale(1.4)'
+          transform: index === hoverIndex ? 'scale(1)' : 'scale(1.25)'
         }"
       />
     </div>

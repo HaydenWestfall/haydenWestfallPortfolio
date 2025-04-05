@@ -13,6 +13,7 @@ import { Subscription } from "rxjs";
 export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   _service = inject(ThemeService);
   initPageSubscription: Subscription = null as any;
+  works = works;
   featuredProjects = works.slice(0, 4);
 
   portfolio1 = [

@@ -4,13 +4,16 @@ export const Fireshare = {
   projectName: "FIRESHARE",
   titleText:
     "FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE FIRESHARE",
-  headerMockup: "../../assets/fireshare/mockup.webp",
+  headerMockup: "../../assets/fireshare/mockup.png",
   headerInfo: [
-    { title: "SERVICES", description: ["UI/UX Design/Development", "Backend Design/Development", "Devops"] },
+    {
+      title: "SERVICES",
+      description: ["UI/UX Design/Development", "Backend Design/Development", "Devops - (Kubernetes)"],
+    },
     { title: "INDUSTRY / ROLE", description: ["Commerical", "SCRUM team developer"] },
-    { title: "TECH STACK", description: ["Angular", "Spring Boot", "MongoDB", "Kubernetes"] },
+    { title: "TECH STACK", description: ["Angular", "Spring Boot", "MongoDB"] },
   ],
-  bg: ["#271212", "#512728"],
+  bg: ["#ae4646", "#ae4646"],
   fg: "#ffffff",
   sections: [
     {

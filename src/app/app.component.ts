@@ -162,7 +162,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   mapRouteName(routePath: string): string {
-    const uppercaseRoutes = ["about", "work", "contact", "innobuild", "fireshare", "tradewave", "stf"];
+    const uppercaseRoutes = ["about", "work", "contact", "innobuild", "fireshare", "tradewave", "stf", "algoReads"];
 
     if (uppercaseRoutes.includes(routePath)) {
       this._service.isInitialLoad = false;

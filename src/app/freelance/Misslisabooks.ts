@@ -1,6 +1,6 @@
 export const MissLisaBooks = {
   id: "missLisaBooks",
-  index: 5,
+  index: 6,
   projectName: "MISS LISA BOOKS",
   titleText:
     "MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS MISS LISA BOOKS",
@@ -8,9 +8,9 @@ export const MissLisaBooks = {
   headerInfo: [
     { title: "SERVICES", description: ["UI/UX Design", "Branding + Marketing", "Customer Communication"] },
     { title: "INDUSTRY / ROLE", description: ["Freelance", "Sole Designer", "Sole Developer"] },
-    { title: "TECH STACK", description: ["Javascript", "HTML / SCSS", "Custom Webpack Configuration"] },
+    { title: "TECH STACK", description: ["Angular", "Lenis", "GSAP"] },
   ],
-  bg: ["#537864", "#1F3A2B"],
+  bg: ["#727d5e", "#727d5e"],
   fg: "#ffffff",
   sections: [
     {
